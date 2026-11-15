@@ -177,3 +177,48 @@
   rights: embed-official
   listened: false
   notes: The archetypal waltz, in 3/4. It opens with a slow introduction; the waltz proper starts later. Set the cue start by ear for this specific video (concert videos may include applause first).
+
+# ---------- Vol I ch. 2: harmonics ----------
+- id: hefele-overtone
+  title: Polyphonic overtone singing (demonstration)
+  artist: Anna-Maria Hefele
+  year: 2014
+  youtube: vC9Qh709gas        # Anna-Maria Hefele (her own channel)
+  spotify: null               # a video demonstration, not a released track
+  search: Anna-Maria Hefele polyphonic overtone singing
+  rights: embed-official
+  listened: false
+  notes: The singer holds one note and makes individual harmonics audible as a second, whistling melody above it. Upload year from memory; check.
+
+- id: huun-huur-tu
+  title: Kongurgai (live)
+  artist: Huun-Huur-Tu
+  year: 2020
+  youtube: R2ovoRyv4kw        # KEXP official channel, full live performance (different performance)
+  spotify: 3xBkjTMNFYXzDakWwfGUZm  # Live at The Triskel
+  search: Huun-Huur-Tu throat singing
+  rights: embed-official
+  listened: false
+  notes: Tuvan throat singing ensemble. The YouTube link is a 45-minute KEXP set; pick a start time by ear where a sygyt (whistled harmonic) or kargyraa (growl) passage is clear.
+
+- id: yes-roundabout
+  title: Roundabout
+  artist: Yes
+  year: 1971
+  youtube: LuGAWR2eRyQ        # Yes - Topic (2008 remaster)
+  spotify: 7lPjS6Yd4lRk4BsboDsm1H  # Fragile (2008 remaster)
+  search: Yes Roundabout Fragile
+  rights: embed-official
+  listened: false
+  notes: Steve Howe's acoustic guitar intro uses natural harmonics (bell-like notes made by touching the string at a node). Confirm by ear.
+
+- id: gershwin-rhapsody
+  title: Rhapsody in Blue
+  artist: George Gershwin; Columbia Symphony Orchestra, Leonard Bernstein
+  year: 1924
+  youtube: ImgqGv0TXCs        # Columbia Symphony Orchestra - Topic
+  spotify: 3Ws8L0809ymMtSKiFswYfs  # Bernstein / Columbia Symphony
+  search: Gershwin Rhapsody in Blue Bernstein Columbia Symphony
+  rights: embed-official
+  listened: false
+  notes: Opens with the famous solo clarinet trill and glissando. A good, exposed example of the clarinet's tone.

@@ -207,6 +207,31 @@ export class AdditiveVoice {
     setParam(g, 1, ctx.currentTime, attack / 3);
   }
 
+  /**
+   * A plucked/struck note: instant attack, then exponential decay, all
+   * scheduled on the audio clock (so it works even if the context is still
+   * starting up), then disposes itself.
+   */
+  pluck(decay = 1.5) {
+    if (this.stopped) return;
+    this.stopped = true;
+    const { ctx } = getAudio();
+    const t = ctx.currentTime;
+    const g = this.env.gain;
+    g.cancelScheduledValues(t);
+    g.setValueAtTime(0, t);
+    g.linearRampToValueAtTime(1, t + 0.004);
+    g.setTargetAtTime(0, t + 0.01, decay / 3);
+    const end = t + decay * 2.5;
+    const env = this.env;
+    this.oscs.forEach((o, i) => {
+      try {
+        o.stop(end);
+      } catch {}
+      if (i === 0) o.onended = () => env.disconnect();
+    });
+  }
+
   /** Fade out and dispose. Safe to call more than once. */
   stop(release = 0.08) {
     if (this.stopped) return;

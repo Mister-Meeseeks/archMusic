@@ -504,3 +504,90 @@
     learns from the mismatch (prediction error). In music, a leading
     explanation for why expectations, and their violations, feel the way
     they do.
+
+# ---------- sound: Vol I ch. 1-2 ----------
+- id: waveform
+  term: Waveform
+  category: Sound
+  introducedIn: v1-01
+  aliases: [waveform, waveforms]
+  def: >-
+    A graph of a sound's pressure (or a string's displacement) over time. A
+    sine wave is the smoothest possible waveform; most real sounds have more
+    complicated, repeating shapes.
+
+- id: phase
+  term: Phase
+  category: Sound
+  introducedIn: v1-01
+  aliases: [phase, phases, out of phase, in phase]
+  def: >-
+    Where a wave is in its cycle at a given moment. Two waves of the same
+    frequency can be in phase (peaks together, reinforcing) or out of phase
+    (peaks against troughs, cancelling).
+
+- id: standing-wave
+  term: Standing wave and modes
+  category: Sound
+  introducedIn: v1-02
+  deepIn: v4-01
+  aliases: [standing wave, standing waves, mode of vibration, modes of vibration]
+  def: >-
+    A vibration pattern that stays in place, like a string fixed at both
+    ends swinging in one, two, three… sections. Each pattern is a mode, with
+    still points (nodes) between the moving sections. A string's modes
+    vibrate at whole-number multiples of its lowest frequency.
+
+- id: spectrum
+  term: Spectrum
+  category: Sound
+  introducedIn: v1-02
+  aliases: [spectrum, spectra, spectral]
+  def: >-
+    The recipe of a sound: which frequencies it contains and how strong each
+    one is. Usually drawn with frequency left to right and strength as
+    height.
+
+- id: fourier
+  term: Fourier's theorem
+  category: Sound
+  introducedIn: v1-02
+  aliases: [Fourier]
+  def: >-
+    Any repeating waveform, however complicated, can be built by adding
+    together sine waves at whole-number multiples of its repetition rate,
+    which are its harmonics.
+
+- id: resonance
+  term: Resonance
+  category: Sound
+  introducedIn: v1-02
+  deepIn: v4-01
+  aliases: [resonance, resonances, resonant, resonate, resonates, resonator, resonators]
+  def: >-
+    The tendency of an object or air space to vibrate strongly at particular
+    natural frequencies, like a wine glass ringing or a swing pushed at the
+    right rhythm. Instrument bodies and the vocal tract are resonators that
+    boost some frequency regions more than others.
+
+- id: formant
+  term: Formant
+  category: Sound
+  introducedIn: v1-02
+  deepIn: v4-02
+  aliases: [formant, formants]
+  def: >-
+    A frequency region boosted by a resonance of the vocal tract (or an
+    instrument body), regardless of the note being sung or played. Vowels
+    are distinguished mainly by their formants.
+
+- id: inharmonicity
+  term: Inharmonic sounds
+  category: Sound
+  introducedIn: v1-02
+  deepIn: v4-01
+  aliases: [inharmonic, inharmonicity]
+  def: >-
+    Sounds whose partials are not whole-number multiples of a fundamental,
+    such as bells, gongs, many drums, and (slightly) stiff piano strings. Their
+    pitch can be ambiguous or absent.

@@ -527,3 +527,25 @@ main { padding: 0 1rem 6rem; }
 .w-quiz-btn.is-wrong { border-color: var(--rough); background: color-mix(in srgb, var(--rough) 18%, var(--surface-2)); opacity: 1; }
 .w-quiz-ok { border-left: 3px solid var(--match); padding-left: 0.6rem; color: var(--ink); }
 .w-quiz-no { border-left: 3px solid var(--rough); padding-left: 0.6rem; color: var(--ink); }
+
+/* ---------- harmonics widgets ---------- */
+.harm-slot { fill: var(--surface-2); }
+.harm-bar { fill: var(--accent); }
+.string-line { fill: none; stroke: var(--tone-a); stroke-width: 2.5; stroke-linecap: round; }
+.w-canvas { width: 100%; height: auto; display: block; border-radius: 8px; background: var(--bg); }
+.w-ladder { display: grid; gap: 2px; }
+.w-ladder-row {
+  font: inherit; color: inherit; text-align: left;
+  display: grid; grid-template-columns: 8.5rem 6.5rem 8rem 1fr; gap: 0.6rem; align-items: baseline;
+  padding: 0.28rem 0.5rem; border-radius: 6px; border: 1px solid transparent; background: transparent;
+  font-variant-numeric: tabular-nums; cursor: pointer;
+}
+.w-ladder-row:hover { border-color: var(--rule); }
+.w-ladder-head { cursor: default; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.w-ladder-head:hover { border-color: transparent; }
+.w-ladder-row.is-off { background: color-mix(in srgb, var(--rough) 8%, transparent); }
+.w-ladder-row.is-now { border-color: var(--tone-a); background: color-mix(in srgb, var(--tone-a) 14%, transparent); }
+@media (max-width: 560px) {
+  .w-ladder-row { grid-template-columns: 5.5rem 5.5rem 1fr; }
+  .w-ladder-step { display: none; }
+}

@@ -10,6 +10,10 @@ import GrooveLab from './embeds/GrooveLab.astro';
 import GrooveComplexity from './embeds/GrooveComplexity.astro';
 import Metronome from './embeds/Metronome.astro';
 import IntervalQuiz from './embeds/IntervalQuiz.astro';
+import HarmonicBuilder from './embeds/HarmonicBuilder.astro';
+import HarmonicLadder from './embeds/HarmonicLadder.astro';
+import StringModes from './embeds/StringModes.astro';
+import MicSpectrum from './embeds/MicSpectrum.astro';
 import BeatingLab from './embeds/BeatingLab.astro';
 import ChordRoughness from './embeds/ChordRoughness.astro';
 import IntervalExplorer from './embeds/IntervalExplorer.astro';
@@ -25,6 +29,10 @@ export const mdxComponents = {
   GrooveComplexity,
   Metronome,
   IntervalQuiz,
+  HarmonicBuilder,
+  HarmonicLadder,
+  StringModes,
+  MicSpectrum,
   BeatingLab,
   ChordRoughness,
   IntervalExplorer,

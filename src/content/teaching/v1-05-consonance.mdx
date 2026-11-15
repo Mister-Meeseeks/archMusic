@@ -5,7 +5,7 @@ chapter: 5
 summary: Beating, roughness, harmonics, tuning, and culture. Why some combinations of notes sound smooth and others grind, and why that turns out to be several questions rather than one.
 status: teaching-draft
 updated: 2026-11-14
-assumes: [frequency, pitch, harmonics, timbre, note-names, octave, semitone, middle-c, interval, frequency-ratio, cents, register, chord, root, major-minor]
+assumes: [frequency, pitch, waveform, phase, harmonics, spectrum, inharmonicity, timbre, note-names, octave, semitone, middle-c, interval, frequency-ratio, cents, register, chord, root, major-minor]
 introduces: [sine-wave, cochlea, beats, roughness, critical-band, consonance, power-chord, cluster, voicing, equal-temperament, just-intonation, pythagorean-tuning, resolution, dominant-seventh, common-practice, counterpoint, extensions]
 lintIgnore: [beat] # "beat" here is the acoustic verb (two tones beat), not the rhythmic beat
 ---
@@ -43,7 +43,7 @@ Keep two terms separate from the start:
 
 A third meaning, **functional dissonance**, shows up at the end.
 
-## Step 1: Two pure tones
+## Two pure tones
 
 Start as simply as possible, with two **sine waves**. A sine wave is a pure tone: one frequency, no harmonics. Pure tones are rare in nature (tuning forks, flutes, and whistling come close), but they're the atoms of sound. Every sound is a sum of them, which is the subject of chapter 1.2.
 
@@ -77,7 +77,7 @@ The inner ear works roughly like a bank of overlapping filters. Along the basila
 
 In 1965 Reinier Plomp and Willem Levelt had listeners rate pairs of pure tones. Dissonance peaked when the tones were about **a quarter of a critical band apart** and had mostly gone by about one full critical band. That curve is the bottom plot in the lab. The labs throughout this chapter use William Sethares's mathematical fit of it.
 
-The critical band is **not a fixed musical interval.** Around <Term id="middle-c">middle C</Term> it's very roughly a <Term id="interval">minor third</Term> wide. An octave lower it's closer to a major third, and two octaves lower it's nearly a fifth. In Hz the band shrinks as you go down, but more slowly than the notes themselves get closer together. That fact matters a great deal in step 4.
+The critical band is **not a fixed musical interval.** Around <Term id="middle-c">middle C</Term> it's very roughly a <Term id="interval">minor third</Term> wide. An octave lower it's closer to a major third, and two octaves lower it's nearly a fifth. In Hz the band shrinks as you go down, but more slowly than the notes themselves get closer together. That fact matters a great deal when we get to register, below.
 
 <Callout kind="check">
 Two pure tones at 1000 Hz and 1004 Hz: what do you hear? What about 1000 Hz and 1500 Hz?
@@ -87,7 +87,7 @@ Two pure tones at 1000 Hz and 1004 Hz: what do you hear? What about 1000 Hz and 
 </Answer>
 </Callout>
 
-## Step 2: The surprise with pure tones
+## The surprise with pure tones
 
 Here is the first real surprise. With **pure tones**, every interval wider than about a critical band is *equally smooth*. The perfect fifth (3:2) has no special status, and neither does the octave. A slightly out-of-tune fifth sounds just as good as a perfect one.
 
@@ -99,7 +99,7 @@ Drag the interval from unison up to the octave. The roughness curve has one hump
 
 So if the Pythagorean "simple ratios" story were about frequencies alone, it would be wrong. Something else must be going on.
 
-## Step 3: Real tones have harmonics
+## Real tones have harmonics
 
 The something else is that **real instruments don't produce sine waves.** A plucked string, a sung vowel, or a trumpet note produces a fundamental frequency *f* and also a stack of **harmonics** (also called overtones or partials) at 2*f*, 3*f*, 4*f*, 5*f*, and so on. This stack is the **harmonic series**. You don't hear the harmonics as separate notes. They fuse into a single pitch and give the sound its color (chapter 1.2 covers this in depth).
 
@@ -128,7 +128,7 @@ The violin's tones have near-coinciding partials: the lower tone's 3rd harmonic 
 </Answer>
 </Callout>
 
-## Step 4: Register: the same chord gets rougher down low
+## Register: the same chord gets rougher down low
 
 Go back to the interval explorer above. Set it to a major third and drag the **Register** slider down to C2. The dips get shallower and the rough region near the bottom of the curve widens. The same major third that's sweet around middle C turns muddy near the bottom of the piano.
 
@@ -151,7 +151,7 @@ This is the acoustics behind two pieces of musicians' practical knowledge:
 The exact threshold pitches vary by source; orchestration texts give tables. Pick one source (a standard arranging text) and cite its numbers instead of my "roughly."
 </Callout>
 
-## Step 5: Change the timbre, change the consonance
+## Change the timbre, change the consonance
 
 If consonance comes from harmonic partials lining up, then a sound whose partials are **inharmonic** should have *different* consonant intervals. It does, and this is one of the most striking ideas in the chapter.
 
@@ -171,7 +171,7 @@ Two real-world echoes of this:
 
 **Gamelan.** Javanese and Balinese gamelan orchestras are built mostly from metal: tuned bronze bars and gongs with inharmonic spectra. Their tuning systems, *slendro* and *pelog*, don't line up with Western ratios. Sethares argues that gamelan tunings fit the spectra of gamelan instruments the way Western scales fit harmonic spectra. It's an elegant hypothesis, but it's also contested: gamelan tunings vary a lot from ensemble to ensemble, and cultural preference clearly plays a part.
 
-Balinese gamelan adds a twist. Instruments come in pairs tuned a few Hz apart on purpose, so that together they **beat** and produce a shimmering pulse called *ombak* ("wave"). That's step 1's beating, used as an aesthetic goal rather than treated as a flaw.
+Balinese gamelan adds a twist. Instruments come in pairs tuned a few Hz apart on purpose, so that together they **beat** and produce a shimmering pulse called *ombak* ("wave"). That's the beating from the start of the chapter, used as an aesthetic goal rather than treated as a flaw.
 
 <ListeningCue track="gamelan-kebyar">
 Listen to the metallophones, especially in the sustained and loud passages. The shimmer, a fast trembling inside the sound, comes from paired instruments beating against each other. Compare it with the BeatingLab set to about 5–8 Hz.
@@ -187,7 +187,7 @@ The opening riff is all power chords: roots and fifths, no thirds. It's played c
 The power chord / distortion explanation is standard among guitarists and audio engineers, and it follows from the math of nonlinear distortion. Find a solid citation (an audio engineering text, or a paper on distortion and consonance) before going public.
 </Callout>
 
-## Step 6: Tuning, and how the third became consonant
+## Tuning, and how the third became consonant
 
 Tuning is the same principle in another form. A keyboard can't make every interval a perfect ratio. Stack twelve pure fifths (3:2) and you overshoot seven octaves by about a quarter of a semitone, an amount called the **Pythagorean comma**. Every tuning system has to decide where to hide that error, and the choice changes how rough particular intervals sound.
 
@@ -211,7 +211,7 @@ Vocal Spectrum were the 2006 international barbershop champions, and this ballad
 The broad outline is standard: Pythagorean theory, thirds as imperfect consonances, thirds rising to prominence in 15th-century music, then meantone. Before going public, check the dates and the "English sweetness" framing (the *contenance angloise*) against a music history reference; the Grove article on consonance is a good start. The cents figures are computed: Pythagorean M3 = 407.8¢, 12-TET M3 = 400¢, just M3 = 386.3¢.
 </Callout>
 
-## Step 7: Is roughness the whole story?
+## Is roughness the whole story?
 
 The roughness model has now explained a lot: beats, the critical band, why simple ratios matter, register, timbre, and tuning. It doesn't explain everything, though, and research over the last fifteen years has complicated the picture in a useful way.
 
@@ -260,7 +260,7 @@ The famous repeated chord in "Augurs of Spring" stacks an E♭7 chord on top of 
 Ligeti fills the texture with **tone clusters**: dozens of neighboring notes sounding at once. At that density, individual dissonances stop registering as "wrong notes" and merge into one shimmering, slowly shifting mass. Dissonance has become timbre. Kubrick used this piece in *2001: A Space Odyssey*.
 </ListeningCue>
 
-## Step 8: The third kind of dissonance: musical function
+## The third kind of dissonance: musical function
 
 One last distinction, which sets up Volume III.
 

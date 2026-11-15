@@ -1,0 +1,237 @@
+---
+title: "Harmonics: The Notes Inside Every Note"
+volume: 1
+chapter: 2
+summary: Almost every musical note is secretly a chord of pure tones at whole-number multiples of one frequency. Where that pattern comes from, why we hear it as one sound, and how it explains octaves, tone color, and much of what follows.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [frequency, pitch, waveform, sine-wave, phase, octave, interval, frequency-ratio, cents, note-names, semitone, middle-c, equal-temperament, chord, register]
+introduces: [harmonics, standing-wave, spectrum, fourier, timbre, resonance, formant, inharmonicity]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the others. This chapter has the book's first **microphone** lab. Try it with your own voice: it's the most direct way to *see* that what you sing is a stack of harmonics. If you'd rather not use a mic, every lab has a built-in sound source. Then write your version in `src/content/chapters/v1-02-harmonics.mdx`.
+</Callout>
+
+## The question
+
+Play middle C on a piano, then the same note on a trumpet, then sing it. All three have the same pitch: the same fundamental frequency, about 261.6 Hz. Yet you'd never confuse them. If pitch is frequency, and the frequency is the same, what is different?
+
+The answer is one of the most important facts in music acoustics: **almost no musical note is a single frequency.** A note from a voice, string, or wind instrument is a whole stack of pure tones sounding at once, at **whole-number multiples** of the lowest one: 1×, 2×, 3×, 4×, and so on. These are the note's **harmonics**, and the stack is the **harmonic series**. You hear the stack as one note with one pitch. The proportions of the stack, how strong each harmonic is, are a large part of what makes a trumpet sound like a trumpet.
+
+The harmonic series turns out to explain a surprising amount:
+
+- why an octave sounds like "the same note, higher";
+- where the simple ratios behind intervals like the fifth (3:2) come from;
+- much of what makes instruments and voices sound different (their **timbre**);
+- why some intervals sound smoother than others, the subject of chapter 1.5.
+
+## A vibrating string
+
+Start with the simplest instrument there is: a string stretched between two fixed points, like a guitar string.
+
+When you pluck it, the string can't move at its ends, because they're clamped. That constraint allows only certain patterns of vibration, called **standing waves** or **modes**:
+
+- **Mode 1:** the whole string swings back and forth in one arc. This is the lowest frequency it can make, the **fundamental**. Call it *f*.
+- **Mode 2:** the string swings in two halves, moving in opposite directions, with a still point (a **node**) in the middle. Each half is half as long, so it vibrates twice as fast: **2*f***.
+- **Mode 3:** three sections, two nodes, **3*f***.
+- And so on: mode *n* has *n* sections and frequency ***n* × *f***.
+
+That's where the whole-number multiples come from. Only whole numbers of half-waves fit between two fixed ends.
+
+A real pluck doesn't choose one mode. It sets **all of them going at once**, in proportions that depend on *where* you pluck.
+
+<StringModes />
+
+<Callout kind="try">
+1. Click through **Mode 1** to **Mode 6** and count the sections and the red nodes. Mode 3 vibrates three times as fast as mode 1 (the animation slows them all to the same speed so you can see the shapes).
+2. Switch to **Plucked** with the pluck point at 20% and press **Pluck**. You're hearing all the modes together as one note.
+3. Drag the pluck point to the **middle** and pluck again. Look at the bars: harmonics 2, 4, 6… have disappeared. Each of those modes has a node exactly in the middle, so plucking there can't set them moving. The sound turns hollow.
+4. Now move the pluck point close to the end (5–10%) and pluck. Many more harmonics, and a brighter, twangier sound. Guitarists do exactly this: picking near the bridge sounds bright, picking over the soundhole sounds round.
+</Callout>
+
+Guitarists can also isolate harmonics on purpose. Touching a string *lightly* at exactly half its length (above the 12th fret) forces a node there, which silences every mode that doesn't have a node at that spot. What's left is harmonic 2 and its multiples, a bell-like tone an octave up. Touching at a third of the length (the 7th fret) leaves harmonic 3. These are called **natural harmonics**.
+
+<ListeningCue track="yes-roundabout" start="0:00" end="0:40">
+Steve Howe's acoustic guitar intro uses natural harmonics: the chiming, bell-like notes. Compare them with the ordinary plucked notes around them. The harmonics are purer and glassier because the lower modes have been stopped.
+</ListeningCue>
+
+<Callout kind="verify" title="Roundabout harmonics">
+Confirm by ear that the intro's chiming notes are natural harmonics, and set exact timestamps.
+</Callout>
+
+<Callout kind="check">
+If you pluck a string exactly one-third of the way along, which harmonics go missing?
+
+<Answer>
+Harmonic 3 and its multiples (6, 9, 12…). Each of those modes has a node at the one-third point, so a pluck there can't excite them.
+</Answer>
+</Callout>
+
+## The harmonic series as notes
+
+Now treat each harmonic as a note in its own right. Take a low C (C2, about 65.4 Hz) and list its harmonics:
+
+<HarmonicLadder />
+
+<Callout kind="try">
+1. Press **Climb the series** and listen to the harmonics one after another. The first jumps are big (an octave, then a fifth) and the steps get smaller and smaller as you go up.
+2. Read the **Step up** column. The intervals between neighboring harmonics are the ratios from the Toolkit, in order: **2:1** (octave), **3:2** (fifth), **4:3** (fourth), **5:4** (major third), **6:5** (minor third)…
+3. Click harmonic **7**. It's close to B♭, but more than 30 cents flat, noticeably lower than any piano key. Harmonics 11 and 13 don't match a piano key either.
+4. Press **All 16 together**. The separate notes you just heard fuse into one buzzy C.
+</Callout>
+
+This is worth pausing on. The intervals that feel most basic in Western music, the octave, fifth, fourth, and thirds, are exactly the ratios between neighboring harmonics near the bottom of the series. That isn't a coincidence, and chapter 1.5 shows what it means for how intervals sound.
+
+It also shows something about **equal temperament**. Some harmonics land almost exactly on piano keys: the 3rd (a fifth above the octave) is only 2 cents off. The 5th is 14 cents flat of an equal-tempered E. And the 7th, 11th, and 13th don't fit the twelve-key system at all. Musicians who can bend pitch sometimes reach for them anyway. Barbershop singers, for example, are often said to tune the seventh of a dominant-seventh chord close to the 7th harmonic, well below the piano's B♭.
+
+<Callout kind="verify" title="barbershop sevenths">
+The claim that barbershop singers tune dominant sevenths near the 7th harmonic (a 7:4 ratio, about 969 cents) is widespread. Find a measurement study before going public, or soften the claim.
+</Callout>
+
+## Many tones heard as one
+
+If a sung note is really sixteen-plus pure tones, why do you hear *one* note?
+
+Your auditory system groups frequencies that fall into a harmonic series and hears them as a single sound with a single pitch, normally the pitch of the fundamental. That makes evolutionary sense. Voices and most other natural sound sources produce harmonic series, so "these frequencies are all multiples of one frequency" is excellent evidence that they come from one source. (Chapter 1.3 shows how strong the grouping is: you still hear the fundamental's pitch even when the fundamental itself is removed.)
+
+The microphone lab lets you see it directly.
+
+<MicSpectrum />
+
+<Callout kind="try">
+1. Press **Use microphone** (your browser will ask permission) and sing a steady "ah" on any comfortable note. The orange dashed lines mark multiples of the pitch the lab detects, and the peaks of your voice should sit right on them. That's your harmonic series.
+2. Slide your voice slowly up and down. The whole comb of harmonics moves together, keeping its spacing in proportion.
+3. Keep the same note and change the vowel: "ee", "ah", "oo". The peaks stay at the **same frequencies**, but their **heights** change, with some regions rising and others sinking. Hold that thought; it comes back when we get to timbre.
+4. No microphone? Use **Demo tone** and switch between the recipes.
+</Callout>
+
+### Why octaves sound alike
+
+The harmonic series also answers the question left open in the Toolkit. Take a note and the note an octave above it. The upper note's harmonics fall at 2*f*, 4*f*, 6*f*… which are exactly the **even harmonics of the lower note**. Every harmonic of the upper note is already present in the lower note. The two notes share so much that the brain treats them as versions of the same thing.
+
+<IntervalExplorer initialTimbre="harmonic" timbres={['harmonic']} initialCents={1200} showRegister={false} />
+
+<Callout kind="try">
+This is the interval lab from chapter 1.5, set to an octave. In the partials diagram, every partial of the upper tone is joined to a partial of the lower tone by a green line: an exact match. Now click **P5**: about half of the upper tone's partials still match. Then try **TT** (tritone): almost none do.
+</Callout>
+
+## Timbre: the recipe of harmonics
+
+If the piano, trumpet, and voice share a fundamental, a large part of what separates them is the **recipe**: how strong each harmonic is. That pattern of strengths across frequencies is the sound's **spectrum**. The fundamental fixes the pitch, and the spectrum shapes the color.
+
+In 1822 Joseph Fourier proved a result that makes this exact. Any repeating waveform, however jagged, can be built from sine waves at whole-number multiples of its repetition rate. In other words, any steady pitched tone *is* a harmonic recipe.
+
+<HarmonicBuilder />
+
+<Callout kind="try">
+1. Play **Sine**, then **Bright (all harmonics)**, then **Hollow (odd harmonics)**, then **Brassy**. Same pitch, very different colors. Watch the waveform change too.
+2. Drag the bars yourself. Start from Sine and add harmonics one at a time: 2, then 3, then 4. Each one changes the color more than it changes the pitch.
+3. Load **Hollow** and add some even harmonics back in. The hollowness goes away.
+4. Now press **Scramble phases** a few times while it plays. The waveform's shape changes dramatically, but the sound barely changes, if at all.
+</Callout>
+
+That last experiment matters. It shows that the ear cares mostly about **how much** of each harmonic there is, not about how the harmonics line up in time (their **phase**), and so not about the waveform's shape as such. This is known as **Ohm's acoustic law**, after Georg Ohm (the same Ohm as in electrical resistance), and Helmholtz built on it. It holds well for steady tones like these. There are exceptions, especially for very low notes and for harmonics too high and close together for the ear to separate, but as a first approximation the spectrum is what you hear.
+
+<Callout kind="verify" title="Ohm's acoustic law caveats">
+The phase-insensitivity claim is standard, but the exceptions are real and well studied. Check the wording against a psychoacoustics text (for example, Moore's *An Introduction to the Psychology of Hearing*) before going public.
+</Callout>
+
+Real instruments show these recipes clearly:
+
+- **Clarinet.** The clarinet's bore is roughly a cylinder that behaves acoustically as if closed at one end, which favors the **odd harmonics**, especially in its low register. That's the woody, hollow quality you heard in the "Hollow" recipe.
+- **Brass.** Played loudly, brass instruments put a lot of energy into their middle harmonics, often more than into the fundamental. That's what makes them bright and blazing.
+- **Flute and soft voices.** A strong fundamental and few harmonics, which sounds pure and breathy.
+
+<Callout kind="verify" title="instrument spectra">
+These descriptions are standard simplifications. Real spectra vary with register, loudness, and player. Check the clarinet claim in particular ("odd harmonics dominate in the low register, less so higher up") against Fletcher & Rossing or Benade.
+</Callout>
+
+<ListeningCue track="gershwin-rhapsody" start="0:00" end="0:25">
+The most famous clarinet entrance in the repertoire: a low trill that rises in a long, smeared glissando. Listen to the tone in the low notes at the very start, woody and hollow, and notice how it brightens as it climbs.
+</ListeningCue>
+
+### Resonance and formants
+
+Back to the vowel experiment from earlier. The pitch stayed the same, the harmonics stayed at the same frequencies, yet their heights changed with the vowel. Why?
+
+Your vocal folds produce a buzz rich in harmonics. That buzz then passes through your throat, mouth, and lips, a set of air spaces that **resonate**. Like a wine glass that rings at one particular frequency, each space naturally reinforces certain frequency regions. Shaping your mouth for a different vowel changes those spaces and moves the boosted regions. Whichever harmonics happen to fall in a boosted region come out stronger.
+
+Those boosted regions are called **formants**. The crucial point is that they stay put when your pitch changes: they depend on the shape of the resonator, not on the note. That's why an "ee" sounds like "ee" whether you sing it high or low. Instrument bodies work the same way: a violin's wooden body and a guitar's soundbox have resonances that color every note played on them.
+
+Overtone singers exploit this to an extraordinary degree. By shaping the mouth very precisely, they tune a formant so narrowly that it boosts **one single harmonic** far above the rest. That harmonic then pops out as a separate, whistling note above the drone, and moving the formant plays a melody on the harmonic series.
+
+<ListeningCue track="hefele-overtone">
+Anna-Maria Hefele holds one low note while a second, whistling melody moves above it. That melody is made entirely of harmonics of the low note, picked out one at a time with her mouth shape. You're hearing the harmonic series from the ladder lab, sung.
+</ListeningCue>
+
+<ListeningCue track="huun-huur-tu">
+The Tuvan ensemble Huun-Huur-Tu, from the tradition where overtone singing is most developed. Listen for *sygyt*, a high, flute-like whistle floating over a drone, and *kargyraa*, a deep, growling style.
+</ListeningCue>
+
+## When the series bends
+
+Everything so far assumes perfectly whole-number harmonics. Real instruments get close, but not all of them get there.
+
+- **Piano strings** are thick steel wire, and their **stiffness** pushes the upper partials slightly sharp: mode 2 vibrates a little faster than exactly twice the fundamental, mode 3 a little faster than three times, and the error grows as you go up. Piano tuners compensate by **stretching** the octaves, tuning the high notes slightly sharp and the low notes slightly flat, so that each note lines up with the stretched partials of the notes below it. This "stretch tuning" is measurable on any professionally tuned piano.
+- **Bells, gongs, metal bars, and drums** vibrate in two-dimensional or three-dimensional patterns whose modes aren't whole-number multiples at all. Such sounds are **inharmonic**. Their pitch can be ambiguous, or there may be no clear pitch at all, and each bell can seem to sound several notes at once.
+
+Inharmonic sounds aren't flawed sounds. Whole musical traditions are built around them, and chapter 1.5 shows that they even change which intervals sound smooth.
+
+<Callout kind="verify" title="piano stretch tuning">
+Stretch tuning (often shown as the "Railsback curve", from Railsback 1938) is well documented. Before going public, check the reference details and whether to show the curve itself.
+</Callout>
+
+## The idea in one picture
+
+| Fact | Where it comes from | What it explains |
+|---|---|---|
+| Notes contain harmonics at 1×, 2×, 3×… | Standing waves: only whole numbers of half-waves fit | Why notes aren't pure tones |
+| The ear fuses them into one pitch | Grouping of harmonic series | Why you hear one note, not sixteen |
+| Neighboring harmonics form 2:1, 3:2, 4:3, 5:4… | Arithmetic of the series | Where the basic intervals' ratios come from |
+| The upper octave's harmonics are all in the lower note | Even harmonics | Why octaves sound alike |
+| The recipe of strengths varies | Instrument shape, how it's played, resonances | Much of timbre, and vowels |
+| Real partials can stray from whole numbers | Stiffness, multi-dimensional vibration | Stretch tuning, bells, gongs |
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. Why a string fixed at both ends vibrates at whole-number multiples of its fundamental (standing waves and nodes).
+2. How pluck position changes which harmonics are present, and what natural harmonics are.
+3. The harmonic series as notes, and how its first steps give the octave, fifth, fourth, and thirds.
+4. Why many harmonics are heard as one note, and why octaves sound alike.
+5. Timbre as a recipe of harmonics (Fourier), and why the ear mostly ignores phase.
+6. Resonance and formants: why vowels keep their identity at any pitch, and how overtone singing works.
+7. Inharmonicity: stiff piano strings and stretch tuning, bells and drums.
+
+**Decisions for your rewrite:**
+
+- **The hook.** I opened with the piano, trumpet, and voice puzzle. Overtone singing is an even stronger opener: one person singing two notes at once.
+- **Timbre.** Vol IV covers timbre in depth. Decide how much belongs here. I've kept it to "the recipe of harmonics" and left out how sounds change over time (attack and decay), which is just as important.
+- **The microphone lab.** It's the most memorable experience in the chapter. You might build the chapter around it.
+
+**Misconceptions to watch for:**
+
+- "Harmonics are separate notes you can hear." Normally they fuse. You *can* learn to hear them out, and overtone singing makes them obvious.
+- "The waveform's shape *is* the timbre." The spectrum matters far more than the shape (the phase experiment).
+- "All instruments have harmonic overtones." Many percussion instruments don't, and piano strings only approximately.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Helmholtz, H. von (1863/1885). *On the Sensations of Tone as a Physiological Basis for the Theory of Music*, trans. A. J. Ellis.
+- Fletcher, N. H., & Rossing, T. D. (1998). *The Physics of Musical Instruments* (2nd ed.). Springer.
+- Rossing, T. D., Moore, F. R., & Wheeler, P. A. (2002). *The Science of Sound* (3rd ed.). Addison-Wesley.
+- Benade, A. H. (1976/1990). *Fundamentals of Musical Acoustics*. Oxford University Press / Dover.
+- Sundberg, J. (1987). *The Science of the Singing Voice*. Northern Illinois University Press.
+- Moore, B. C. J. (2012). *An Introduction to the Psychology of Hearing* (6th ed.). Brill.
+- Railsback, O. L. (1938). Scale temperament as applied to piano tuning. *Journal of the Acoustical Society of America*, 9, 274.
+- de Cheveigné, A., & Kawahara, H. (2002). YIN, a fundamental frequency estimator for speech and music. *Journal of the Acoustical Society of America*, 111(4), 1917–1930. (The method behind the microphone lab's pitch readout.)
+
+</div>
+
+<Callout kind="verify" title="references">
+Check editions, years, and page numbers.
+</Callout>

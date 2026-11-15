@@ -11,6 +11,8 @@ The owner is **learning this material as they go**. They have some rusty music t
 2. **The owner rewrites** it in their own voice → `src/content/chapters/<same id>.mdx`. Rewriting is how they learn the material and how the text loses its AI tone. Don't write their version for them.
 3. **Claude reviews** the rewrite (`status: in-review`): factual accuracy against the teaching draft and the sources, clarity, proofreading. Suggest edits rather than silently rewriting their voice.
 
+Section headings are plain textbook titles ("A vibrating string"), never "Step N:". Chapters read like a textbook, not a how-to guide. Refer to other sections by name, not number.
+
 Chapter ids look like `v1-05-consonance` (volume, chapter, slug). The `volume` and `chapter` frontmatter link a chapter to `src/data/outline.ts`.
 
 ## Introduced before use (important)
