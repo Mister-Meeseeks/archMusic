@@ -1,0 +1,328 @@
+---
+title: Tension and Release
+volume: 5
+chapter: 4
+summary: Why music feels like it's going somewhere. Tension as a prediction you make, carried by harmony, loudness, pitch, density, and silence, and how composers shape it over minutes into contrast and climax.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [scale, key, filter, frequency, pitch, harmonics, frequency-ratio, note-names, octave, semitone, interval, chord, root, major-minor, dominant-seventh, resolution, consonance, roughness, register, timbre, spectrum, beat, tempo, meter, drum-kit, backbeat, groove, predictive-processing]
+introduces: [tension, dominant, cadence, suspension, pedal-point, dynamics, texture, build-drop, modulation, song-sections, habituation, frisson]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts, with one new kind of lab: the **song map**, which runs over a real recording. Draw your own tension curve on the Whitney Houston map *before* reading the section that discusses it. The section timestamps in the maps are my estimates and need checking by ear (there's a "Retime" panel under each map for that). Then write your version in `src/content/chapters/v5-04-tension.mdx`.
+
+This is the first chapter from Volume V, so it's the first to work at the scale of whole songs rather than single sounds or single bars. It leans on chapter 1.5 (consonance) and chapter 2.5 (groove), and reaches forward into harmony (Volume III), which hasn't been written yet. So it introduces keys and cadences itself, quickly.
+</Callout>
+
+## The question
+
+Listen to the first thirty seconds of Whitney Houston's "I Will Always Love You," then the last ninety. It's the same melody, the same words, the same singer. Yet the ending is overwhelming in a way the opening isn't even trying to be, and you can feel it coming before it arrives.
+
+Musicians have a word for what builds up over those four minutes: **tension**. Music feels unsettled, pulls toward something, and then (sometimes) gets there: **release**. Every musical tradition seems to have some version of this, and listeners talk about it without any training: a chord "wants to resolve," a song "builds," a moment "pays off."
+
+This chapter argues three things:
+
+1. **Tension is a prediction, not a sound.** The same chord can be restful in one place and unbearable in another. What changes is what you expect to come next.
+2. **Many dials carry it.** Harmony is the famous one, but loudness, pitch height, how busy the music is, rhythm, and silence all carry tension, and composers turn several at once.
+3. **It's shaped over minutes.** Tension gives a piece its architecture: where it relaxes, where it contrasts, where it peaks.
+
+## Tension as a curve
+
+Can a feeling like this be measured? Surprisingly well. In the 1980s the Danish researcher Frede Nielsen gave listeners a pair of tongs with a pressure sensor and asked them to squeeze harder as the music grew more tense. Later studies used sliders or a computer mouse. Carol Krumhansl had listeners move a slider continuously through a Mozart piano sonata. Their curves agreed closely with each other, and musicians and non-musicians produced similar shapes (Krumhansl, 1996).
+
+So we'll treat tension as a **curve over time**: a line that rises and falls as the music plays. Later in this chapter you'll draw your own on top of real recordings. First, where does it come from?
+
+<Callout kind="verify" title="continuous tension ratings">
+Check the details: Nielsen's tongs (1983, Danish), and Krumhansl 1996 (Mozart, K. 282): what was rated, how close the agreement was, and the musician/non-musician comparison. Also check Fredrickson's continuous-rating work as a possible extra reference.
+</Callout>
+
+## Home and away: harmonic tension
+
+### Scales, keys, and the tonic
+
+The Toolkit introduced the twelve notes in each octave. Most music doesn't use all twelve equally. It draws mainly on a subset, usually seven, called a **scale**. Play the white keys from C up to the next C and you've played the **C major scale**: C D E F G A B.
+
+A piece that mostly uses those notes *and treats C as home* is **in the key of C major**. The home note is the **tonic**, and the major chord built on it (C–E–G) is the tonic chord. Phrases sound finished when they land there. In a different key, say G major, the scale shifts (G A B C D E F♯), and G becomes home.
+
+"Home" isn't a metaphor researchers made up. In the *probe-tone* experiments, Krumhansl and Kessler (1982) played a short passage that established a key, then a single note, and asked listeners how well that note fit. The ratings formed a clear hierarchy: the tonic fit best, then the fifth note of the scale (G in C major), then the third (E), then the other scale notes, with the five notes outside the scale fitting worst. The same hierarchy matches how often those notes actually occur in Western music, which suggests listeners learn it from exposure. Supporting that: when Western listeners heard North Indian music, they picked up its hierarchy within a single session, largely from which notes came up most (Castellano, Bharucha & Krumhansl, 1984).
+
+That's the foundation of harmonic tension: once a key is established, every note and chord has a *distance from home*, and you feel it.
+
+<Callout kind="verify" title="probe-tone results">
+Check the order of the Krumhansl–Kessler major profile (tonic, then fifth, then third, then other scale notes, then non-scale notes) and the Castellano, Bharucha & Krumhansl 1984 finding about Western listeners and North Indian rāgs.
+</Callout>
+
+### The dominant and the cadence
+
+The most tense chord in a key, in the sense of pulling hardest toward home, is the **dominant**: the chord built on the fifth note of the scale. In C major that's G–B–D, often with an F added on top to make **G7**, the <Term id="dominant-seventh">dominant seventh</Term> from chapter 1.5.
+
+Why does it pull? Three reasons stack up:
+
+- **Half-step neighbors.** G7 contains B, a semitone below C, and F, a semitone above E. Each has a near neighbor in the tonic chord to slide into. B is called the **leading tone** because it leads so strongly up to the tonic.
+- **The tritone.** B and F are six semitones apart, the tritone. In G7 → C they move in opposite directions by a half step each (B up to C, F down to E), the smoothest possible way out.
+- **Habit.** Dominant-to-tonic is the most common chord move at phrase endings in centuries of Western music. Your predictions are built from that history.
+
+Notice that none of these is about roughness. The first two are about *motion*: where each note can go next. The third is pure expectation.
+
+A conventional chord move that ends a phrase is called a **cadence**, and it works like punctuation:
+
+- **Dominant → tonic** (G7 → C): a full stop. The *authentic cadence*.
+- **Ending on the dominant**: a comma, or a question. The *half cadence*. The phrase is clearly not finished.
+- **Dominant → the minor chord on A** (G7 → Am): a sidestep. The *deceptive cadence*. Your ear expected C and got something close (A minor shares two notes with C major, C and E) but not home.
+
+A sequence of chords like these is called a **chord progression**. Here's a short one in C major: C, F, the dominant, and an ending of your choice.
+
+<CadenceLab />
+
+<Callout kind="try">
+1. Play it with **→ C (home)**. Then **Stop on G**. The second version sounds unfinished: you're left waiting for a C that never comes.
+2. Try **→ Am (fake-out)**. It's not wrong, but it's a surprise. Composers use it to extend a phrase: the music has to try again to get home.
+3. Set **Hold the dominant** to 8 beats with the home ending. The longer the G7 hangs, the more the arrival is worth. Delay is one of the cheapest ways to make tension.
+4. Turn on **Delay with Gsus4**. In Gsus4 (G–C–D), the C is held over from the previous chord where it doesn't belong, then steps down to B. A held-over note like this is a **suspension**: a tiny delay inside the delay.
+5. Turn off **Add the seventh**. Plain G (G–B–D) is a perfectly smooth major chord, yet it still pulls toward C.
+</Callout>
+
+<Callout kind="check">
+Look at the roughness bars. Which chord is roughest? Is the roughest chord the most tense one? And is the deceptive ending rough?
+
+<Answer>
+G7 is a bit rougher than the others: its seventh (F) adds a tritone against the B. But plain G is about as smooth as C, and it still pulls hard toward home. A minor is smooth too, yet as an ending it sounds like a dodge. So tension in harmony is mostly *not* roughness. It's the third kind of dissonance from chapter 1.5: musical function, a learned expectation about what comes next.
+</Answer>
+</Callout>
+
+### The same chord, different meanings
+
+If tension were a property of the chord, a C major chord would always sound the same. Switch the lab to **Context**.
+
+<CadenceLab initialMode="context" />
+
+<Callout kind="try">
+Play **In C**, then **In G**, then **C alone**. All three end on the identical chord. After a passage in C it's home. After a passage that has made G the tonic, the same C sounds like a step *away* from home, an opening rather than an ending. Alone, it's just a pleasant chord.
+</Callout>
+
+<Callout kind="check">
+Where is the "pull" in the In G example, if not in the final chord?
+
+<Answer>
+In your head. The first three chords establish G as the tonic, so your prediction for what follows is "back to G." The C chord, a perfectly consonant chord, is then heard relative to that home. Harmonic tension is a relationship between a sound and the key you're holding in mind, which is why it's a matter of expectation (prediction) rather than acoustics.
+</Answer>
+</Callout>
+
+### Two masters of delay
+
+**Beethoven's Fifth Symphony** has one of the most famous builds in orchestral music: the passage that links the third movement to the finale. The music sinks to almost nothing. The timpani taps a single repeated note while the harmony above it shifts (a held or repeated note under changing chords is a **pedal point**). Then the music settles on the dominant and grows louder and louder, a long **crescendo**, until it bursts into the finale in C major. Two minutes of almost pure tension and one enormous release.
+
+<ListeningCue track="beethoven5-transition" start="0:00">
+Listen for the quiet timpani taps, the slow rise in loudness once the harmony locks onto the dominant, and the explosion when C major arrives.
+</ListeningCue>
+
+**Wagner's *Tristan und Isolde*** goes the other way: it hardly ever lets you arrive. The prelude opens with a phrase that ends on an unstable chord, then silence, then the same idea again, higher. Wagner keeps steering away from full cadences for the whole opera. The harmonic release that the opening seems to ask for doesn't fully come until the closing minutes, more than four hours later. It's the musical equivalent of a sentence that never ends, and it was hugely influential: it's often pointed to as the start of the road toward music without a home key at all (Volume III).
+
+<ListeningCue track="wagner-tristan-prelude" start="0:00" end="0:50">
+The opening phrase: a rising line that lands on a famously ambiguous chord (the "Tristan chord"), slides to a dominant-seventh chord, and stops. Silence. Then it tries again.
+</ListeningCue>
+
+<Callout kind="verify" title="Beethoven and Wagner details">
+Beethoven 5: confirm the timpani pedal (which note) and the harmony over it, and the crescendo on the dominant into the C major finale. Tristan: confirm the description of the opening, and the claim that the prelude's harmonic tension isn't fully resolved until the end of the opera (the B major ending of the Liebestod).
+</Callout>
+
+## The other dials
+
+Harmony gets most of the attention in music theory, but it isn't the only source of tension, and in a lot of popular music it isn't even the main one. Researchers who model tension curves find that several other features each push the curve up (Farbood, 2012; Granot & Eitan, 2011):
+
+- **Loudness.** Louder is more tense. How loudly music is played, and how that changes, is called **dynamics**. A gradual increase is a **crescendo**; a gradual decrease, a *diminuendo*.
+- **Pitch height.** Higher is more tense, especially rising lines. (This ties into <Term id="register">register</Term>: singers strain to reach high notes, and we hear the strain.)
+- **Density.** More notes per second, more tense.
+- **Rhythmic drive.** Accelerating patterns and repeated hits build urgency.
+- **Brightness.** A brighter <Term id="timbre">timbre</Term>, with more energy in the upper part of the <Term id="spectrum">spectrum</Term>, sounds more tense.
+- **Texture.** How many layers are playing at once. A voice alone is a *thin* **texture**; a full band, a thick one.
+
+These dials interact. In Granot and Eitan's experiments, some combinations reinforced each other and some features dominated others. Farbood's model combines several features into one predicted curve, and it fits listeners' slider ratings well, but the weights differ from piece to piece and listener to listener. There's no single formula.
+
+<Callout kind="verify" title="tension models">
+Check the summaries of Farbood 2012 (which features: loudness, pitch height, onset frequency, harmonic tension, and others, and how well it fits) and Granot & Eitan 2011 (which parameters, and the interactions and asymmetries they found).
+</Callout>
+
+### The build and the drop
+
+Electronic dance music has turned these dials into a craft. Its central gesture is the **build** and the **drop**. Over a few bars the producer piles on tension with almost everything *except* harmony: a snare roll that speeds up, a *riser* (a rising swoosh of noise), pitches that climb, the bass and kick drum removed. Then the **drop**: the full beat and bass line crash back in on the *downbeat*, beat one of the bar.
+
+Build one yourself.
+
+<BuildLab />
+
+<Callout kind="try">
+1. Turn **every ingredient off** and play. The "drop" is just the bass line arriving. It's fine, and it's flat.
+2. Turn on only the **snare roll**. One, two, four, then eight hits per beat: a rising rate, in two-bar steps. Already the drop has somewhere to land.
+3. Add **Cut the bass & kick**. A filter gradually removes the low end through the build (the *high-pass* sweep in the lanes). Now the drop is a return, not just an arrival.
+4. Add the **noise riser** and the **silent beat**. The silence on the last beat is the moment of highest tension in the whole passage, and there's no sound in it.
+</Callout>
+
+<Callout kind="check">
+Why does *removing* the bass and kick during the build make the drop feel bigger, when the drop itself hasn't changed at all?
+
+<Answer>
+Because impact is relative. The drop's force comes from the change between before and after. Removing the low end makes the difference bigger. It also removes the beat's anchor (the kick on every beat), so your body is left predicting a downbeat that isn't being played, and the drop confirms that prediction emphatically.
+</Answer>
+</Callout>
+
+Producers make records like this for dancers, and dancers respond: in a study that recorded people's movement to EDM, the drop was where movement and reported pleasure peaked, and a build without a satisfying drop was felt as a letdown (Solberg & Jensenius, 2017).
+
+<ListeningCue track="avicii-levels" start="1:10">
+Avicii's "Levels": a breakdown with the famous vocal sample, then the build, then the drop. Listen for which ingredients from the lab you can hear.
+</ListeningCue>
+
+Long before EDM, the Beatles built one of rock's most famous risers by hand. For "A Day in the Life," a forty-piece orchestra was asked to rise from the lowest note on each instrument to the highest over twenty-four bars, each player at their own pace. Pitch, loudness, and density all climb together, with no agreed harmony at all, which makes it pure tension. The first rise breaks off into the next section; the second ends in one long piano chord that takes about forty seconds to fade away.
+
+<ListeningCue track="beatles-day-in-the-life" start="1:39" end="2:20">
+The first orchestral rise. Then jump to about 3:44 for the second, and the final chord.
+</ListeningCue>
+
+<Callout kind="verify" title="EDM and Beatles details">
+Check Solberg & Jensenius 2017: what exactly they measured (motion capture? ratings?) and found about the drop. Check the "A Day in the Life" orchestra story: forty players, lowest to highest note, twenty-four bars, and the length of the final chord. And check both cue timings in these uploads.
+</Callout>
+
+## Release, surprise, and silence
+
+If tension is a prediction, then **release** isn't simply stopping. It's the predicted thing arriving. That explains some odd facts:
+
+- **A deceptive cadence feels pleasant, not wrong.** The prediction fails, but harmlessly, and the surprise is enjoyable.
+- **Silence can be the tensest moment.** In the build lab, the silent beat is where the prediction is strongest and nothing is there to satisfy it.
+- **Familiar music still works.** You know the drop is coming, and it still lands. Expectations operate partly below conscious knowledge.
+
+David Huron's book *Sweet Anticipation* (2006) organizes this into a five-part model he calls **ITPRA**. *Before* an expected event come **Imagination** (you picture how it might go) and **Tension** (arousal and attention rise as the moment approaches). *After* it come three responses: **Prediction** (a reward simply for having guessed right), a fast, reflexive **Reaction**, and a slower **Appraisal** (thinking it over: "that surprise was fine"). The deceptive cadence is a case where a negative Prediction response is outweighed by a positive Appraisal. This is the <Term id="predictive-processing">predictive-processing</Term> idea from the groove chapter, applied over seconds and minutes rather than within a single bar.
+
+The brain-imaging evidence fits. Salimpoor and colleagues (2011) had people listen to music they chose for its peak moments. Dopamine, a chemical messenger in the brain's reward system, was released *in the seconds before* the peak, in one region linked to anticipation, and again *at* the peak, in a different region linked to pleasure. Tension and release, as two separate reward events.
+
+Sometimes the release produces a physical response: goosebumps, or a shiver down the spine. Researchers call this **frisson** (or *musical chills*). Studies that asked people to mark their chills found them clustered at moments of change after a build: a new harmony, a voice or instrument entering, a sudden jump in loudness (Sloboda, 1991; Grewe et al., 2007). Chills are fairly rare and vary a lot between people, but where they happen points at the same mechanism.
+
+<Callout kind="verify" title="Huron, Salimpoor, chills">
+Check the ITPRA summary against *Sweet Anticipation*, the Salimpoor 2011 regions (caudate during anticipation, nucleus accumbens at the peak), and the chills triggers in Sloboda 1991 and Grewe et al. 2007.
+</Callout>
+
+## The long arc: contrast and climax
+
+### Why music has to change
+
+Play the same thing for long enough, unchanged, and it stops registering. This fading of response to an unchanging stimulus is called **habituation**, and it applies to music: a single texture or loudness held long enough becomes background. So a piece that wants to keep you involved over minutes has to keep changing. It has to create contrast, and build toward something.
+
+Pop songs manage this with a standard set of **song sections**. You've heard all of these whether or not you know the names (Chapter 5.5 covers song form in depth):
+
+- **Intro** and **outro**: the start and end.
+- **Verse**: the same music each time, new words each time. Usually lower energy.
+- **Chorus**: the same music and the same words each time, built around the hook. Usually the peak.
+- **Pre-chorus**: a short ramp between verse and chorus: a small build.
+- **Bridge**: a contrasting section, typically after the second chorus, that sets up the final choruses.
+
+The simplest contrast is loudness. Nirvana's "Smells Like Teen Spirit" alternates quiet, clean-guitar verses with explosive, distorted choruses, a loud–quiet–loud design they borrowed from the Pixies. Each chorus hits harder because the verse has just taken the energy away, the same logic as cutting the bass before a drop.
+
+<ListeningCue track="nirvana-teen-spirit" start="0:00" end="1:35">
+Through the first chorus. Notice how much of the chorus's force comes from the quiet verse before it.
+</ListeningCue>
+
+### The climax
+
+Most songs, and most longer pieces, save their highest point for late. In pop, a favorite device for the final lift is the **key change**, or **modulation**: shifting the whole song to a new tonic, usually a half step or a whole step higher, for the last choruses. Everything is the same, only higher, and pitch height is one of the tension dials. (Critics sometimes call the cheap version the "truck driver's modulation," like a truck shifting gear.) A well-placed one feels like the song taking a breath and going further than you thought it could.
+
+Now try the song map. Draw your tension curve before reading on.
+
+<SongMap track="whitney-always" prompt="Turn on Draw my tension, press play, and trace how tense it feels from start to finish. Don't look at the section names; just listen." />
+
+<Callout kind="check">
+Where did your curve peak? What happens at about the three-minute mark, and how many dials turn at once?
+
+<Answer>
+For most listeners the curve climbs gradually and peaks in the final chorus. At about 3:00, almost everything happens together. The verse ends, and there's a moment of near **silence** (maximum anticipation). Then a single **drum hit**, and the final chorus starts a whole step **higher** (a modulation), **louder**, with the full band behind her, after a song that began with a voice alone (the thinnest possible texture). It's the build-and-drop logic, in a ballad.
+</Answer>
+</Callout>
+
+Beyoncé's "Love On Top" pushes the device to an extreme: after the bridge, the chorus repeats four times, and each repetition is a half step higher than the last.
+
+<SongMap track="beyonce-love-on-top" />
+
+<Callout kind="check">
+Does each key change feel as strong as the one before? Why might it not?
+
+<Answer>
+Many listeners find the first one strongest and the later ones more like a delightful stunt: by the third you're expecting it, and an expected change is less surprising (habituation to the device itself). What keeps it working is that each change also asks more of the singer, so the strain in her voice rises with every step. The pitch dial keeps turning even as the surprise wears off.
+</Answer>
+</Callout>
+
+Ravel's *Boléro* is the purest experiment in this whole chapter. For about fifteen minutes, one melody repeats over the same snare-drum rhythm, at the same tempo, in the same key. All the tension comes from two dials: **loudness**, one continuous crescendo from very quiet to very loud, and **texture and timbre**, as instruments are added and combined in new ways each time. Ravel withholds harmony completely, until near the very end, when the music lurches into a new key for a few bars, then slams back home and collapses. One modulation, saved for the last minute.
+
+<ListeningCue track="ravel-bolero" start="0:00" end="1:00">
+The opening: snare drum, plucked strings, and a solo flute, very quiet. Then compare with the last two minutes (from about 14:10 in this upload).
+</ListeningCue>
+
+<Callout kind="verify" title="climax examples">
+Confirm by ear and against sources: Whitney's opening is unaccompanied; the final chorus is a whole step up (A major to B major?) after the pause and drum hit. "Love On Top" modulates four times by a half step each (C → D♭ → D → E♭ → E?). Boléro's late modulation (to E major) and collapse back into C. The Pixies influence on "Teen Spirit" (Cobain said so in interviews). And the claim that pieces tend to put the climax late: is there a study, or only practice?
+</Callout>
+
+## The dials together
+
+| Dial | Builds tension | Releases it | Heard in |
+|---|---|---|---|
+| **Harmony** | Moving away from the tonic; the dominant; delaying the cadence | Arriving home | Cadence lab, Beethoven, *Tristan* |
+| **Dynamics** | Crescendo | The arrival at full volume, or a sudden drop | Beethoven, *Boléro* |
+| **Pitch height** | Rising lines, higher keys | Landing, falling back | "A Day in the Life," key changes |
+| **Density and rhythm** | More notes per second, accelerating rolls | The steady groove returns | Snare roll, EDM |
+| **Texture and timbre** | Layers added, brighter sound, the bass removed | Everything in at once | *Boléro*, the build lab |
+| **Silence** | The pause before the downbeat | The downbeat | The silent beat, Whitney at 3:00 |
+| **Form** | Verse to pre-chorus to chorus; withholding contrast | The final chorus | Song maps |
+
+As with consonance (chapter 1.5) and groove (chapter 2.5), one word turns out to name several mechanisms stacked together. What they share is expectation: each dial sets up a prediction, and the music decides when, and whether, to pay it off.
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. What tension means, and how continuous rating studies measure it as a curve.
+2. Scale, key, and tonic; the probe-tone tonal hierarchy, and the evidence that it's learned.
+3. Why the dominant pulls toward the tonic (half-step neighbors, the tritone, habit), and what authentic, half, and deceptive cadences do.
+4. Why harmonic tension isn't roughness, using the same-chord-in-two-contexts demonstration.
+5. The non-harmonic dials (dynamics, pitch height, density, rhythm, brightness, texture), and that they interact.
+6. How an EDM build and drop works, and why removing things increases the drop's impact.
+7. Release as fulfilled prediction: ITPRA, the deceptive cadence, silence, dopamine before and at the peak, chills.
+8. Habituation and contrast; song sections; the key-change climax.
+
+**Decisions for your rewrite:**
+
+- **The hook.** I opened with Whitney. Alternatives: open on the silent beat before a drop ("the tensest moment in the track has no sound in it"), or on *Tristan*'s four-hour wait.
+- **How much harmony to teach.** I introduced key, tonic, dominant, and cadence quickly because the chapter needs them, but Volume III will teach them properly. Decide whether your version stays this brief or goes a little deeper (for example, showing why the dominant is the *fifth* note, which connects to the 3:2 ratio from the harmonics chapter).
+- **Labs.** Two cadence labs, the build lab, and two song maps. The context lab and the Whitney map are the most important. The second song map could become a listening cue.
+- **Examples.** Swap in builds and climaxes you love: a post-rock crescendo (Godspeed You! Black Emperor, Explosions in the Sky), a gospel vamp, a Mahler finale, a Radiohead song that refuses to release.
+
+**Misconceptions to watch for:**
+
+- "Tension means dissonance." The deceptive cadence and the same-chord demo say otherwise.
+- "Release means quiet." Often release is the loudest moment in the piece.
+- "Key changes are cheap." Sometimes they are, but used well they're turning a tension dial at the right moment.
+- "If you know what's coming, it can't work." Expectations run below conscious knowledge; the drop still lands.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Meyer, L. B. (1956). *Emotion and Meaning in Music*. University of Chicago Press.
+- Huron, D. (2006). *Sweet Anticipation: Music and the Psychology of Expectation*. MIT Press.
+- Nielsen, F. V. (1983). *Oplevelse af musikalsk spænding* [The experience of musical tension]. Akademisk Forlag.
+- Krumhansl, C. L. (1996). A perceptual analysis of Mozart's Piano Sonata K. 282: Segmentation, tension, and musical ideas. *Music Perception*, 13(3), 401–432.
+- Krumhansl, C. L., & Kessler, E. J. (1982). Tracing the dynamic changes in perceived tonal organization in a spatial representation of musical keys. *Psychological Review*, 89(4), 334–368.
+- Castellano, M. A., Bharucha, J. J., & Krumhansl, C. L. (1984). Tonal hierarchies in the music of North India. *Journal of Experimental Psychology: General*, 113(3), 394–412.
+- Lerdahl, F., & Krumhansl, C. L. (2007). Modeling tonal tension. *Music Perception*, 24(4), 329–366.
+- Farbood, M. M. (2012). A parametric, temporal model of musical tension. *Music Perception*, 29(4), 387–428.
+- Granot, R. Y., & Eitan, Z. (2011). Musical tension and the interaction of dynamic auditory parameters. *Music Perception*, 28(3), 219–246.
+- Lehne, M., & Koelsch, S. (2015). Toward a general psychological model of tension and suspense. *Frontiers in Psychology*, 6, 79.
+- Salimpoor, V. N., Benovoy, M., Larcher, K., Dagher, A., & Zatorre, R. J. (2011). Anatomically distinct dopamine release during anticipation and experience of peak emotion to music. *Nature Neuroscience*, 14(2), 257–262.
+- Blood, A. J., & Zatorre, R. J. (2001). Intensely pleasurable responses to music correlate with activity in brain regions implicated in reward and emotion. *PNAS*, 98(20), 11818–11823.
+- Sloboda, J. A. (1991). Music structure and emotional response: Some empirical findings. *Psychology of Music*, 19(2), 110–120.
+- Grewe, O., Nagel, F., Kopiez, R., & Altenmüller, E. (2007). Listening to music as a re-creative process: Physiological, psychological, and psychoacoustical correlates of chills and strong emotions. *Music Perception*, 24(3), 297–314.
+- Butler, M. J. (2006). *Unlocking the Groove: Rhythm, Meter, and Musical Design in Electronic Dance Music*. Indiana University Press.
+- Solberg, R. T., & Jensenius, A. R. (2017). Pleasurable and intersubjectively embodied experiences of electronic dance music. *Empirical Musicology Review*, 11(3–4), 301–318.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details (volume, pages, year), especially Nielsen 1983, Castellano et al. 1984, and Solberg & Jensenius 2017.
+</Callout>

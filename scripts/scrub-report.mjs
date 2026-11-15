@@ -36,6 +36,8 @@ for (const block of tracksSrc.split(/\n(?=- id:)/)) {
     rights: block.match(/\n\s+rights:\s*(\S+)/)?.[1] ?? 'unknown',
     youtube: block.match(/\n\s+youtube:\s*(\S+)/)?.[1] ?? 'null',
     listened: block.match(/\n\s+listened:\s*(\S+)/)?.[1] === 'true',
+    hasMap: /\n\s+map:/.test(block),
+    mapVerified: /\n\s+verified:\s*true/.test(block),
   };
 }
 const OK_RIGHTS = new Set(['embed-official', 'cc', 'public-domain', 'own']);
@@ -68,17 +70,20 @@ for (const [label, dir] of [
       const line = src.slice(0, m.index).split('\n').length;
       issues.push(`  L${line}  ${m[1]} (comment)  ${m[2].trim().split('\n')[0]}`);
     }
-    for (const m of body.matchAll(/<ListeningCue\s+track="([^"]+)"/g)) {
-      const t = tracks[m[1]];
+    for (const m of body.matchAll(/<(ListeningCue|SongMap)\s+track="([^"]+)"/g)) {
+      const t = tracks[m[2]];
+      m[1] = m[2];
       const line = src.slice(0, m.index).split('\n').length;
       if (!t) issues.push(`  L${line}  TRACK  "${m[1]}" missing from tracks.yaml`);
       else {
         if (!OK_RIGHTS.has(t.rights)) issues.push(`  L${line}  RIGHTS  ${m[1]}: rights=${t.rights}`);
         if (t.youtube === 'null') issues.push(`  L${line}  TRACK  ${m[1]}: no specific recording chosen (youtube: null)`);
         if (!t.listened) issues.push(`  L${line}  LISTEN  ${m[1]}: not yet confirmed by ear (listened: false)`);
+        if (m[0].startsWith('<SongMap') && !t.hasMap) issues.push(`  L${line}  MAP  ${m[1]}: SongMap used but the track has no map`);
+        if (m[0].startsWith('<SongMap') && t.hasMap && !t.mapVerified) issues.push(`  L${line}  MAP  ${m[1]}: section timestamps not confirmed by ear (map.verified: false)`);
       }
     }
-    if (isMine && /teaching draft|Claude/i.test(body))
+    if (isMine && /teaching draft|Claude/i.test(body.replace(/^---[\s\S]*?\n---/, '')))
       issues.push('  ??   TONE  mentions "Claude"/"teaching draft" in body text');
 
     say(`\n${rel}  [status: ${fm.status ?? '?'}]${willPublish ? '  <-- PUBLIC' : ''}`);

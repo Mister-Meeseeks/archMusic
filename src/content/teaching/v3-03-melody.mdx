@@ -1,0 +1,323 @@
+---
+title: "Melody: Contour, Motif, Phrasing, Ornament"
+volume: 3
+chapter: 3
+summary: What makes a string of notes a tune you can recognize anywhere. Scales and the tonic, contour and intervals, the statistics of steps and leaps that shape our expectations, motifs and their development, phrases, and ornament.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [frequency, pitch, harmonics, note-names, octave, semitone, interval, frequency-ratio, register, timbre, chord, major-minor, beat, tempo, meter, auditory-stream, grouping, predictive-processing]
+introduces: [scale, key, contour, step-leap, melodic-expectation, motif, melodic-transformation, melodic-sequence, phrase, ornament]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the others. One new lab, with two modes: **Transform** (change a tune in different ways and hear which changes keep it recognizable) and **Statistics** (what the notes of real tunes actually do). Try the mystery-tune game before reading the section on what makes a tune the same tune. Then write your version in `src/content/chapters/v3-03-melody.mdx`.
+
+This is the first chapter from Volume III, so it introduces **scales** and the **tonic** itself, briefly. Chapter 5.4 (tension) also explains them, more quickly; once this chapter exists, that one can lean on it.
+</Callout>
+
+## The question
+
+Sing "Happy Birthday." Now imagine it sung by a child, a bass, a crowd in a restaurant, or played on a kazoo, twice as fast, in a different key. You'd recognize every version within two or three notes. Yet a version with the same notes played in a scrambled order would be unrecognizable.
+
+So a melody isn't a set of notes, or a set of frequencies, or a particular performance. It's a *pattern*, and something about that pattern survives huge changes while other, smaller-seeming changes destroy it. This chapter asks what that something is.
+
+Four ideas organize it:
+
+1. **A melody is a path through a scale**, toward and away from a home note.
+2. **Its identity lives in relationships**: the ups and downs (contour) and the exact distances (intervals), more than the notes themselves.
+3. **Melodies follow statistical habits**, mostly small steps with leaps that turn back, and listeners have learned those habits as expectations.
+4. **Melodies are built from small units**: motifs, repeated and transformed, grouped into phrases, and decorated with ornaments.
+
+## A melody is a stream
+
+Start with the most basic requirement. Chapter 1.4 showed that notes close in pitch and time hold together as one <Term id="auditory-stream">auditory stream</Term>, while notes far apart split into separate streams. A melody has to be a single stream, or it isn't heard as a melody at all.
+
+Diana Deutsch showed this vividly in 1972. She took "Yankee Doodle" and moved each note into a randomly chosen octave, keeping the note names (every C still a C, every D still a D) and the rhythm. Listeners almost never recognized it. The notes were "the same," but the line had been broken into fragments that jumped across registers, and the tune vanished.
+
+You can try it below. Pick a tune, choose **Octave-scrambled**, and play. Then switch back to **Original**.
+
+<MelodyLab />
+
+<Callout kind="try">
+1. Choose **Yankee Doodle**, then **Octave-scrambled**. Even knowing what it is, you may find it hard to hear the tune.
+2. Click **Mystery tune**, choose **Octave-scrambled**, and play it *before* revealing the name. Can you name it? Then switch to **Original**.
+3. Deutsch found something else: once listeners were told the name, they could often *check* that the scrambled version matched. Knowing what to listen for helps, just as it did with the interleaved tunes in chapter 1.4.
+</Callout>
+
+<Callout kind="verify" title="Deutsch 1972">
+Check the details of Deutsch (1972), "Octave generalization and tune recognition": which tune, how the octaves were chosen (three octaves?), the recognition rates, and the finding that listeners told the name could confirm a match.
+</Callout>
+
+## Scales and the tonic
+
+### The notes a melody chooses
+
+Most melodies don't use all twelve notes of the octave. They draw mainly on a set of seven, called a **scale**. Play the white keys from C up to the next C and you've played the **C major scale**: C D E F G A B C.
+
+The scale's pattern of distances is what gives it its character. Counting in semitones, the major scale goes up by 2, 2, 1, 2, 2, 2, 1. The two-semitone moves are called *whole steps* and the one-semitone moves *half steps*. Start the same pattern on any note and you get a major scale there: start on G and you need an F♯ to keep the pattern (G A B C D E F♯ G).
+
+The **natural minor scale** uses a different pattern: 2, 1, 2, 2, 1, 2, 2. On C that gives C D E♭ F G A♭ B♭ C. Same starting note, three notes lowered, and a very different mood. It's the same distinction as major and minor chords from the Toolkit, extended to a whole melody.
+
+Notes of a scale are often numbered, starting from 1 on the bottom note. These numbers are **scale degrees**: in C major, C is degree 1, D is 2, G is 5, and B is 7.
+
+<Callout kind="note" title="why seven?">
+Why these particular seven out of twelve? That's chapter 3.2's question, and the answer involves the harmonic series (chapter 1.2), the math of stacking fifths, and some cultural choice. Plenty of traditions use five-note (pentatonic) scales, and some use intervals that fall between our twelve notes entirely (chapter 3.10).
+</Callout>
+
+### Home
+
+A melody that uses the C major scale *and treats C as home* is **in the key of C major**. The home note is the **tonic**. Melodies tend to end there, and a phrase that stops anywhere else sounds unfinished.
+
+You can hear this in the lab. Play **Ode to Joy**. It's two phrases built from almost the same notes. The first ends on D (degree 2), and it sounds like a question, a comma. The second ends on C (degree 1), and it sounds like an answer, a full stop. Nothing distinguishes them except the last two notes. Chapter 5.4 shows how strongly listeners feel this pull toward the tonic, and how composers exploit it.
+
+<Callout kind="check">
+Most of the tunes in the lab are written in C major. Which note does every one of them end on? And how many of them *begin* on it?
+
+<Answer>
+All of the major-key tunes end on C, the tonic. Their beginnings vary more: Twinkle, Frère Jacques, Yankee Doodle, and Row, Row, Row start on C; Ode to Joy, Mary, and Jingle Bells start on E (degree 3); Happy Birthday starts on G (degree 5), below the tonic. Endings are much more constrained than beginnings: a melody can start anywhere in its world, but it nearly always comes home.
+</Answer>
+</Callout>
+
+## What makes a tune the same tune
+
+Now use the lab's **Transform** menu as an experiment. For each transformation, ask: is it still the same tune?
+
+<Callout kind="try">
+Use **Twinkle, Twinkle** or **Happy Birthday**, and play each transformation in turn:
+
+1. **Transposed**: every note moved up 5 semitones.
+2. **Same contour**: the same ups and downs and the same rhythm, but every interval a different size.
+3. **Rhythm removed**: the same pitches, all the same length.
+4. **Shuffled**: the same pitches and rhythm, the pitches in a random order.
+5. **Inverted** and **Backwards**.
+
+Rank them from "obviously the same tune" to "unrecognizable."
+</Callout>
+
+What researchers have found matches what you probably just heard.
+
+**Transposition preserves identity.** A melody moved to a new starting pitch is heard as the same melody, as long as every **interval** stays the same. What you remember about a tune is mostly *relative*: the distances between notes, not the notes themselves. (Most people can't name a note heard in isolation; the rare ability to do so is called absolute pitch.) There is a twist, though: when Daniel Levitin asked people to sing a favorite pop song from memory, many sang it within a semitone or two of the original recording's key. Memory holds more absolute pitch than we can name.
+
+**Contour carries a lot, but not everything.** The **contour** is the pattern of ups, downs, and repeats, ignoring how big each move is. The lab spells it out below the plot: U for up, D for down, R for a repeated note. In the 1970s, Denys Parsons compiled a *Directory of Tunes* that indexed thousands of classical themes by contour alone, and it worked: the first fifteen or so ups and downs are enough to identify most of them. W. Jay Dowling found that for an *unfamiliar* melody, listeners can't easily tell an exact transposition from an imitation with the same contour but different intervals. For a *familiar* tune, they notice the difference immediately. Contour is what you grasp first; exact intervals come with familiarity.
+
+**Rhythm matters too.** Remove the rhythm and many tunes get much harder to recognize. Keep the rhythm alone (clap it) and recognition is usually poor. Pitch and rhythm work together, and neither carries a familiar tune completely by itself.
+
+**Inversion and retrograde are mostly invisible to the ear.** Turning every interval upside down (**inversion**), or playing the tune backwards (**retrograde**), preserves its structure in a mathematical sense. Composers have used both for centuries, from Bach's fugues to Schoenberg's twelve-tone music (chapter 3.9). But listeners rarely recognize them spontaneously. They're relationships you can see on the page more easily than hear.
+
+<Callout kind="check">
+In **Same contour** mode, the lab keeps every up, down, and repeat, and the exact rhythm. Why does Twinkle, Twinkle still sound "sort of right," while Shuffled sounds like a different tune, even though Shuffled keeps every original note?
+
+<Answer>
+Because the tune's identity is in the relationships between successive notes, not in the collection of notes. Same contour preserves the shape of the path (and the rhythm), so it resembles the original even with wrong intervals. Shuffled preserves the collection but destroys the path: the ups and downs are new, so it's a new tune made from the same ingredients. A melody is a sequence of moves, not a bag of notes.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="melody recognition findings">
+Check: Levitin (1994), singing pop songs from memory near the original key (what proportion within one or two semitones); Parsons (1975), how many contour symbols are typically enough; Dowling (1978) and Dowling & Fujitani (1971) on contour versus exact intervals for novel versus familiar melodies; Hébert & Peretz (1997) on recognizing familiar songs from pitch alone versus rhythm alone; and Dowling (1972) on recognition of inversions and retrogrades.
+</Callout>
+
+## Steps, leaps, and expectation
+
+### What melodies actually do
+
+A move from one note to the next scale note (one or two semitones) is called a **step**; anything bigger is a **leap** (or skip). A melody that moves mostly by step is **stepwise**. Switch the lab to **Statistics** to see what the tunes in it actually do.
+
+<MelodyLab initialMode="stats" />
+
+Three patterns stand out, and they hold up far beyond these few children's songs, in large collections of melodies from many cultures:
+
+- **Small intervals dominate.** Most moves are steps or repeated notes; big leaps are rare. This tendency is called **pitch proximity**. It's the streaming rule from chapter 1.4 again: a melody built from small moves holds together as one stream.
+- **After a leap, melodies turn back.** In the lab's tunes, after a step the melody usually keeps going the same way. After a leap of five semitones or more, it almost never does: it turns back or repeats. Music theorists call the turn-back *gap-fill*: a leap opens a gap, and the melody steps back to fill it.
+- **Phrases tend to arch.** Across thousands of folk songs, David Huron found that phrases tend to rise and then fall, ending lower than their peak.
+
+The most famous gap-fill in popular song opens "Over the Rainbow." On "Some-where," the melody leaps up a full octave, then steps back down through the gap on "o-ver the rain-bow."
+
+<ListeningCue track="garland-rainbow" start="0:00" end="0:30">
+The first sung line: the octave leap on "Some-where," then the stepwise descent that fills the gap.
+</ListeningCue>
+
+### Why leaps turn back
+
+Is gap-fill a rule composers follow, or something deeper? Paul von Hippel and David Huron (2000) proposed a simpler explanation: **regression to the mean**. Every melody has a comfortable middle range. A big leap usually carries the melody toward the edge of that range, simply because big leaps go far. From near the edge, most of the available notes lie back toward the middle, so the next note is likely to turn back. Their test: leaps that *cross* the middle (going from low to high, landing near the center) shouldn't reverse as often. In their data, they mostly didn't. The pattern may be less a rule about leaps than a consequence of melodies staying within a range.
+
+### Expectation
+
+Listeners have absorbed these regularities. In experiments where people hear the start of a melody and rate which next note fits best, or sing the continuation, their predictions follow proximity, the turn-back after leaps, and the pull toward the tonic. The music theorist Eugene Narmour built an influential model of melodic expectation, called **implication-realization**, around a few such principles, and later work (Schellenberg 1997) showed that a simplified version, mostly proximity and the post-leap turn, predicts listeners' ratings about as well. This is the <Term id="predictive-processing">predictive-processing</Term> idea from Volume I applied note by note: a melody constantly sets up small expectations and decides whether to meet them.
+
+<Callout kind="check">
+If small steps are what listeners expect, why do so many memorable melodies feature a big leap near the start ("Over the Rainbow," "Somewhere" from *West Side Story*, the opening of "Singin' in the Rain")?
+
+<Answer>
+Because a leap is a surprise, and surprise grabs attention. Putting it early, often on an important word, makes the opening distinctive. Then the melody spends the next few notes doing what's expected, filling the gap by step, which makes the whole gesture feel satisfying rather than random. Memorable melodies balance surprise and predictability; a melody made only of steps is easy to follow and easy to forget.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="melodic statistics">
+The lab's numbers come from only eight children's and folk tunes, typed in by hand (check them against standard versions). Check the general claims: interval-size distributions across cultures (Vos & Troost 1989; Huron 2006, ch. 5), the melodic arch (Huron 1996), von Hippel & Huron (2000) on regression to the mean (including the result for leaps that cross the median), and Schellenberg (1997) on simplifying Narmour's model.
+</Callout>
+
+## Motifs and their development
+
+### Small ideas, big structures
+
+Long melodies are rarely invented note by note. They're built from small, recognizable units, a few notes with a characteristic rhythm, repeated and varied. Such a unit is called a **motif**.
+
+The most famous motif in Western music opens Beethoven's Fifth Symphony: three short notes and a long one, dropping a third. *Da-da-da-dum.* Choose **Beethoven 5 (opening)** in the lab to hear it in isolation: G G G E♭, then the same figure one step lower, F F F D.
+
+What's remarkable isn't the motif, which is almost nothing, but what Beethoven builds from it. The short-short-short-long rhythm runs through nearly the entire first movement: passed between instruments, stacked up in imitation, stretched into longer notes, squeezed into a driving accompaniment. The process of transforming a motif to build larger music is called **development**.
+
+<ListeningCue track="beethoven5-mvt1" start="0:00" end="1:00">
+The opening, and then listen for how often the short-short-short-long rhythm returns in the next minute, in different instruments and at different pitches.
+</ListeningCue>
+
+The basic ways of varying a motif are the transformations from the lab:
+
+- **Transposition**: the same motif starting on a different note.
+- **Sequence**: the motif repeated immediately at a new pitch level, usually a step higher or lower each time, like climbing or descending a staircase.
+- **Inversion**: the intervals turned upside down.
+- **Augmentation** and **diminution**: the same notes in longer or shorter rhythmic values.
+- **Fragmentation**: using only part of the motif (often just its rhythm, or its last two notes).
+
+<ListeningCue track="beethoven5-mvt1" start="2:50" end="3:40">
+The development section (the start time is an estimate). The motif is broken into fragments and passed around the orchestra, building toward the return of the opening.
+</ListeningCue>
+
+The **sequence** deserves its own example, because Baroque composers used it constantly to keep music moving: a figure, then the same figure a step lower, then a step lower again.
+
+<ListeningCue track="bach-double-vivace" start="0:45" end="1:10">
+Bach's Concerto for Two Violins. Listen for a short figure repeated several times in a row, each time at a different pitch. (Approximate cue: find the clearest sequence by ear.)
+</ListeningCue>
+
+### Riffs
+
+In rock and pop, a short repeated instrumental motif is called a *riff*. The White Stripes' "Seven Nation Army" is built on one: seven notes, played alone at the start, then repeated almost unchanged under the vocals. It became a football chant sung by stadium crowds around the world, which says something about what makes a motif portable: short, rhythmically distinctive, and narrow enough in range for anyone to sing.
+
+<ListeningCue track="white-stripes-seven-nation" start="0:00" end="0:30">
+The riff, alone. (It's a guitar run through an octave-down effect, so it sounds like a bass.) Count how many times it repeats before anything changes.
+</ListeningCue>
+
+<Callout kind="verify" title="motif examples">
+Check the cue time for the Beethoven development (estimated by bar counts), find the clearest sequence in the Bach Double's first movement, and check that the Seven Nation Army riff is seven notes, played on guitar through an octave pedal.
+</Callout>
+
+## Phrases
+
+### Musical sentences
+
+Melodies are grouped into **phrases**, units something like sentences: a few seconds long, often four or eight bars, ending with a sense of arrival, often a longer note or a pause. Singers breathe between phrases. Listeners hear phrase boundaries using the same grouping cues as chapter 1.4: a long note, a gap in time, or a leap all suggest "something just ended."
+
+Phrases often come in pairs that work like a question and an answer. The first phrase, the **antecedent**, ends somewhere open; the second, the **consequent**, starts the same way and ends at home. Ode to Joy is a perfect example: the same opening, a first ending on D, a second ending on C. Many folk songs, hymns, and pop melodies follow the pattern, sometimes extended into longer schemes like AABA.
+
+### The value of an odd phrase
+
+Because four- and eight-bar phrases are so common, listeners come to expect them, and a phrase of a different length is quietly surprising. The Beatles' "Yesterday" opens with a seven-bar phrase where you'd expect eight. Most listeners never notice consciously; it just sounds slightly unsettled, a little off-balance, in a way that suits the song.
+
+<ListeningCue track="beatles-yesterday" start="0:00" end="0:30">
+Count bars from the first sung word, four beats per bar. Where does the first phrase end?
+</ListeningCue>
+
+<Callout kind="check">
+Using what you know about phrases and the tonic: why might a songwriter end the first half of a song's main tune on degree 2 or 5, and the second half on degree 1?
+
+<Answer>
+To create an antecedent–consequent pair. Ending the first phrase away from the tonic leaves a question hanging: the listener expects more. Ending the second on the tonic answers it. The pair sounds complete as a unit, and the open first ending pulls the listener into the second. It's the melodic version of the half and full stops of punctuation.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="phrase details">
+Check that the opening section of "Yesterday" is seven bars (and how it's usually counted), and the claim about how listeners perceive phrase boundaries (Lerdahl & Jackendoff's grouping rules; Deliège 1987).
+</Callout>
+
+## Ornament
+
+Finally, the surface of a melody. An **ornament** decorates a note: a quick neighboring note just before it (a *grace note*), a rapid alternation with the note above (a *trill*), a slide into or between notes, or many notes sung on one syllable (a **melisma**).
+
+In much Western classical music, ornaments are treated as decoration added to an underlying melody, and the score sometimes doesn't even write them out. In many other traditions that distinction doesn't hold. In Hindustani music, the slides between notes (*meend*) and the oscillations on a note (*gamak*) are part of what defines a rāga. Play the same notes without them and you haven't played the rāga. In Irish traditional music, ornaments are a large part of what distinguishes one player's style from another's.
+
+<ListeningCue track="shankar-jogeshwari-alap" start="0:00" end="2:30">
+Ravi Shankar's opening ālāp, the slow, unmetered introduction of a rāga performance. Listen to how rarely a note simply starts and stops: most are approached by a slide, and many are shaded by a slow oscillation. The ornaments *are* the melody.
+</ListeningCue>
+
+Gospel and soul singing developed its own art of melisma, passed into pop by singers like Aretha Franklin and Whitney Houston. The opening of "I Will Always Love You," sung unaccompanied, is a gallery of it: single syllables stretched across many notes, each phrase decorated differently.
+
+<ListeningCue track="whitney-always" start="0:00" end="0:40">
+Listen for single syllables carried across several notes, and for how the decoration differs each time a phrase returns.
+</ListeningCue>
+
+<Callout kind="check">
+Using the transform lab's lesson (identity lives in relationships between notes), why might ornaments be "part of the melody" in one tradition but "decoration" in another?
+
+<Answer>
+It depends on what the tradition treats as the structure that must be preserved. In the Western classical tradition, the notated pitches and rhythms are the identity; ornaments vary between performances, so they're heard as a layer on top. In rāga, the identity includes *how* you move between notes (which notes are approached by a slide, which are shaken), so removing ornaments changes the relationships that define it. What counts as "the melody" is a cultural decision about which relationships matter.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="ornament details">
+Check the descriptions of meend and gamak and the claim that they are part of a rāga's identity (chapter 3.10 will go further); check the cue time for the ālāp, and the claim about ornamentation in Irish traditional music.
+</Callout>
+
+## The architecture of a melody
+
+| Level | What it is | What the ear uses | Example |
+|---|---|---|---|
+| **Stream** | Notes heard as one line | Proximity in pitch and time | Octave-scrambled tunes vanish |
+| **Scale and tonic** | The note set, and home | Learned hierarchy of notes | Ode to Joy's two endings |
+| **Intervals and contour** | The moves between notes | Relative pitch; contour first | Transposition keeps the tune |
+| **Steps and leaps** | The statistics of moves | Expectation (proximity, turn-back) | "Over the Rainbow" |
+| **Motif** | A small, repeatable idea | Pattern recognition | Beethoven 5, "Seven Nation Army" |
+| **Phrase** | A musical sentence | Grouping cues; question and answer | Ode to Joy, "Yesterday" |
+| **Ornament** | Decoration, or identity | Depends on the tradition | Rāga ālāp, gospel melisma |
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. Why a melody has to be a single stream (Deutsch's octave-scrambled tune).
+2. Scales (major and natural minor patterns), scale degrees, and the tonic; why endings sound open or closed.
+3. What preserves a tune's identity: transposition (intervals), contour, rhythm; why shuffled notes don't; why inversion and retrograde are hard to hear.
+4. Steps and leaps: pitch proximity, gap-fill, the melodic arch, and the regression-to-the-mean explanation.
+5. Melodic expectation as learned statistics (Narmour, Schellenberg), linked to predictive processing.
+6. Motifs and development; the basic transformations, including sequence; riffs.
+7. Phrases, antecedent and consequent, and the effect of an unexpected phrase length.
+8. Ornament, and why it's decoration in one tradition and identity in another.
+
+**Decisions for your rewrite:**
+
+- **The hook.** I opened with "Happy Birthday" sung by anyone. Alternatives: open with the octave-scrambled "Yankee Doodle" (a tune destroyed without changing a note name), or with Beethoven's four-note motif.
+- **How much scale theory.** I kept scales brief because chapter 3.2 is about why scales exist. You could add the pentatonic scale here, since many folk tunes use it.
+- **The statistics lab.** It's built from children's songs, which keeps it honest (you can play every tune it counts) but narrow. Consider whether to cite larger corpora more prominently, or to add a few tunes from other traditions.
+- **Examples.** Swap in melodies you love: a jazz standard's leap and fill, a Bollywood melisma, a hip-hop hook built from a two-note motif.
+
+**Misconceptions to watch for:**
+
+- "A melody is its notes." It's the relationships between them, grouped in time.
+- "Contour is enough." It's enough to recognize the shape of a new melody, not to tell a familiar one from a near miss.
+- "Gap-fill is a law." It may be mostly regression to the mean.
+- "Ornaments are optional extras." In many traditions they're structural.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Deutsch, D. (1972). Octave generalization and tune recognition. *Perception & Psychophysics*, 11(6), 411–412.
+- Dowling, W. J., & Fujitani, D. S. (1971). Contour, interval, and pitch recognition in memory for melodies. *Journal of the Acoustical Society of America*, 49(2B), 524–531.
+- Dowling, W. J. (1972). Recognition of melodic transformations: Inversion, retrograde, and retrograde inversion. *Perception & Psychophysics*, 12(5), 417–421.
+- Dowling, W. J. (1978). Scale and contour: Two components of a theory of memory for melodies. *Psychological Review*, 85(4), 341–354.
+- Hébert, S., & Peretz, I. (1997). Recognition of music in long-term memory: Are melodic and temporal patterns equal partners? *Memory & Cognition*, 25(4), 518–533.
+- Levitin, D. J. (1994). Absolute memory for musical pitch: Evidence from the production of learned melodies. *Perception & Psychophysics*, 56(4), 414–423.
+- Parsons, D. (1975). *The Directory of Tunes and Musical Themes*. Spencer Brown.
+- Vos, P. G., & Troost, J. M. (1989). Ascending and descending melodic intervals: Statistical findings and their perceptual relevance. *Music Perception*, 6(4), 383–396.
+- Huron, D. (1996). The melodic arch in Western folksongs. *Computing in Musicology*, 10, 3–23.
+- von Hippel, P., & Huron, D. (2000). Why do skips precede reversals? The effect of tessitura on melodic structure. *Music Perception*, 18(1), 59–85.
+- Narmour, E. (1990). *The Analysis and Cognition of Basic Melodic Structures: The Implication-Realization Model*. University of Chicago Press.
+- Schellenberg, E. G. (1997). Simplifying the implication-realization model of melodic expectancy. *Music Perception*, 14(3), 295–318.
+- Huron, D. (2006). *Sweet Anticipation: Music and the Psychology of Expectation*. MIT Press.
+- Meyer, L. B. (1956). *Emotion and Meaning in Music*. University of Chicago Press.
+- Lerdahl, F., & Jackendoff, R. (1983). *A Generative Theory of Tonal Music*. MIT Press.
+- Deliège, I. (1987). Grouping conditions in listening to music: An approach to Lerdahl & Jackendoff's grouping preference rules. *Music Perception*, 4(4), 325–359.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details (volume, pages, year), especially Deutsch 1972, Dowling 1972, and Huron 1996.
+</Callout>

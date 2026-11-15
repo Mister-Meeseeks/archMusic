@@ -1,0 +1,37 @@
+---
+// <SongMap track="whitney-always" prompt="..." />
+// Reads the track and its `map` (sections/events) from src/data/tracks.yaml.
+import { getEntry } from 'astro:content';
+import Widget from '../widgets/SongMap.tsx';
+import { toSeconds } from '../../lib/sequence';
+
+interface Props {
+  track: string;
+  prompt?: string;
+}
+const { track, prompt } = Astro.props;
+const entry = await getEntry('tracks', track);
+if (!entry) throw new Error(`SongMap: unknown track "${track}". Add it to src/data/tracks.yaml.`);
+const t = entry.data;
+if (!t.youtube) throw new Error(`SongMap: track "${track}" has no youtube id.`);
+if (!t.map) throw new Error(`SongMap: track "${track}" has no map (sections). Add one in tracks.yaml.`);
+if (t.duration == null) throw new Error(`SongMap: track "${track}" needs a duration.`);
+const sections = t.map.sections.map((s) => ({ ...s, t: toSeconds(s.t) })).sort((a, b) => a.t - b.t);
+const events = t.map.events.map((e) => ({ ...e, t: toSeconds(e.t) })).sort((a, b) => a.t - b.t);
+const editable = import.meta.env.PUBLIC_SITE !== '1';
+---
+
+<Widget
+  client:visible
+  trackId={track}
+  title={t.title}
+  artist={t.artist}
+  year={t.year}
+  youtube={t.youtube}
+  duration={toSeconds(t.duration)}
+  sections={sections}
+  events={events}
+  verified={t.map.verified}
+  editable={editable}
+  prompt={prompt}
+/>

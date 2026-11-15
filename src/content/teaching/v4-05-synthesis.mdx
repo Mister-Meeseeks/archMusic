@@ -1,0 +1,287 @@
+---
+title: "Synthesis: Building Sounds from Scratch"
+volume: 4
+chapter: 5
+summary: How synthesizers make sounds that never existed. Every method is a strategy for controlling a spectrum and how it changes over time; additive, subtractive, FM, physical modeling, wavetable, and granular synthesis each choose a different strategy.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [frequency, pitch, sine-wave, waveform, harmonics, spectrum, fourier, timbre, formant, resonance, standing-wave, inharmonicity, fusion, octave, semitone, interval, chord, frequency-ratio, cents, beats, tempo, sequencer]
+introduces: [synthesizer, oscillator, filter, envelope, additive-synthesis, subtractive-synthesis, lfo, fm-synthesis, physical-modeling, granular-wavetable]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the others. This chapter's main lab is a playable **synthesizer** with a live waveform and spectrum display. Play it from the on-screen keys or your computer keyboard. Spend time with the presets first, then break them. Headphones help: some presets have a lot of low end. Then write your version in `src/content/chapters/v4-05-synthesis.mdx`.
+
+This chapter leans heavily on chapter 1.2 (harmonics and spectra). It skips ahead of chapters 4.1–4.4 (acoustic instruments, the voice, envelopes, orchestration), so it introduces envelopes itself.
+</Callout>
+
+## The question
+
+Chapter 1.2 ended with a recipe for timbre: a sound's character comes from its <Term id="spectrum">spectrum</Term> (which harmonics, how strong) and from how that spectrum changes over the course of a note. A trumpet and a clarinet playing the same pitch differ in both.
+
+Turn that around. If timbre *is* a spectrum changing over time, then to make any sound you like, you only need a machine that can specify a spectrum and how it changes. That machine is a **synthesizer**, and the history of synthesis is a history of different strategies for that one job.
+
+The problem is that a realistic spectrum is enormously complicated: dozens of harmonics, each with its own strength, each changing on its own schedule. Nobody can turn a hundred knobs at once. So every method of synthesis is a trade: a small number of controls that move the spectrum in useful, musical ways.
+
+| Method | The strategy |
+|---|---|
+| **Additive** | Specify every harmonic directly |
+| **Subtractive** | Start with too many harmonics and carve some away |
+| **FM** | Make two simple waves interact to generate many harmonics |
+| **Physical modeling** | Simulate the instrument and let the spectrum emerge |
+| **Wavetable and granular** | Step through stored waveforms, or rebuild sound from tiny fragments |
+
+## Additive synthesis: build it from sine waves
+
+The most direct strategy is <Term id="fourier">Fourier</Term>'s idea run in reverse. Any steady periodic sound can be built by adding <Term id="sine-wave">sine waves</Term> at the right frequencies and strengths, so build it that way. This is **additive synthesis**. You met it already, in chapter 1.2's harmonic builder:
+
+<HarmonicBuilder recipes={['sine', 'saw', 'odd', 'brass', 'soft']} />
+
+Additive synthesis is the most general method there is: in principle it can make any sound. The difficulty is control. That lab has sixteen harmonics with a fixed level each, and it already takes some fiddling to get a sound you like. A real instrument's note needs each harmonic to have its *own* changing level: the high harmonics of a piano note die away much faster than the low ones. Specifying all that by hand, for every note, is impractical.
+
+The idea is old. The Hammond organ (1935) is an additive instrument: its drawbars set the levels of nine sine-like tones at harmonic and near-harmonic pitches, and organists mix them in real time. That works because organ tones are steady. For sounds that change, additive synthesis had to wait for computers that could analyze a real sound into hundreds of changing partials and resynthesize it.
+
+<Callout kind="verify" title="Hammond organ">
+Check: the Hammond (1935) uses tonewheels, nine drawbars per manual, at which harmonic pitches (including the sub-octave and the 3rd harmonic below the fundamental?), and how close to sine waves the tonewheels are.
+</Callout>
+
+## Subtractive synthesis: start rich, carve away
+
+### Oscillator, filter, amplifier
+
+The breakthrough for musicians came from the opposite direction. Instead of building a spectrum up from nothing, start with a waveform that already contains plenty of harmonics, then remove what you don't want. This is **subtractive synthesis**, and it's the method of nearly every classic analog synthesizer.
+
+A subtractive synthesizer has three basic parts, connected in a chain:
+
+1. **The oscillator** makes a repeating waveform at the pitch you play. The classic shapes each have a fixed recipe of harmonics:
+   - **Sine**: the fundamental only.
+   - **Triangle**: odd harmonics only, fading fast (1, 1/9, 1/25...). Soft, a little hollow.
+   - **Square wave**: odd harmonics only, fading slowly (1, 1/3, 1/5...). Hollow and reedy.
+   - **Sawtooth**: every harmonic (1, 1/2, 1/3...). Bright and buzzy, the richest starting point.
+2. **The filter** removes part of the spectrum. The most important kind is the **low-pass** filter: it lets frequencies below its **cutoff frequency** through and increasingly suppresses those above. Lower the cutoff and the sound gets darker, as harmonics are carved away from the top. Most filters also have a **resonance** control, which boosts the harmonics right at the cutoff, adding a nasal, vowel-like peak.
+3. **The amplifier** controls loudness over time.
+
+This is the same arrangement as the human voice. Chapter 1.2 showed that the vocal folds produce a buzz rich in harmonics, and the vocal tract shapes it, its <Term id="resonance">resonances</Term> creating the peaks called <Term id="formant">formants</Term>. A subtractive synth is a source and a filter, just like a singer. A resonant filter swept slowly even sounds like a voice saying "wow."
+
+<SynthLab presets={['sine', 'saw', 'dark', 'pluck', 'brass', 'acid', 'pad']} methods={['subtractive']} title="A subtractive synthesizer" />
+
+<Callout kind="try">
+1. Choose **Sine** and play a few notes. Then **Raw saw**. Look at the spectrum: the sine is one peak; the sawtooth is a whole comb of harmonics, evenly spaced on a frequency scale, bunching up on this log scale as they rise.
+2. Choose **Filtered saw**. Same oscillator, but the cutoff is at 400 Hz. Drag **Cutoff** up and down while holding a note (or with the pattern playing). Watch the right side of the spectrum disappear and reappear.
+3. Switch **Oscillator** between square and saw with the filter wide open. The square's spectrum has gaps where the even harmonics would be.
+4. Now raise **Resonance** to about 10 and sweep the cutoff again. A peak rides along the spectrum, and the sound starts to "talk."
+</Callout>
+
+<Callout kind="check">
+The filter can only remove harmonics, never add new ones. So why does a filtered sawtooth sound so different from a filtered sine wave, even with the same cutoff?
+
+<Answer>
+Because there's nothing in a sine wave to remove. A sine is a single frequency; a low-pass filter either lets it through or quietens it, but can't change its tone color. A sawtooth has every harmonic, so the filter has something to sculpt. That's why subtractive synthesis starts from rich waveforms: the oscillator supplies the raw material, the filter does the shaping.
+</Answer>
+</Callout>
+
+### Envelopes: sound changes over time
+
+A static spectrum sounds lifeless. Real notes change: a plucked string starts bright and grows darker as it fades; a brass note swells in brightness as the player pushes air. Synthesizers handle this with **envelopes**: shapes that change a setting over the course of each note.
+
+The standard envelope has four stages, known by their initials, **ADSR**:
+
+- **Attack**: how long the sound takes to reach full level after you press the key.
+- **Decay**: how long it takes to fall from that peak to the sustain level.
+- **Sustain**: the level held for as long as the key stays down. (Note that this one is a *level*; the other three are *times*.)
+- **Release**: how long the sound takes to fade after you let go.
+
+An envelope on the amplifier shapes loudness. The lab draws it. But the real magic of the classic synths is a second envelope on the **filter cutoff**: open the filter at the start of each note and let it close, and every note starts bright and darkens, the way acoustic instruments do.
+
+<Callout kind="try">
+1. Choose **Pluck**. Its amplifier has no sustain, so each note dies away. Its filter envelope opens to five octaves above the cutoff and closes in under 0.2 seconds. Set **Filter env** to 0: the pluck turns into a dull thud. The brightness at the start was doing the work.
+2. Choose **Synth brass**. The amplifier attack is slower (60 ms), and the filter closes gradually over most of a second. Lengthen **Attack** to 0.5 s: it becomes more like a string section swelling in.
+3. Choose **Pad**: a slow attack, a long release, and two sawtooth oscillators **detuned** a few <Term id="cents">cents</Term> apart. The slow <Term id="beats">beating</Term> between them is what makes pads shimmer. Set **Detune** to 0 and the shimmer disappears.
+</Callout>
+
+Synthesizers also have a **low-frequency oscillator** (**LFO**): an oscillator too slow to hear as a pitch, below about 20 Hz, used to wobble another setting. An LFO on pitch makes vibrato; on loudness, tremolo; on the filter cutoff, a rhythmic "wah." (The lab doesn't include one, to keep the controls manageable.)
+
+### The Moog and its descendants
+
+Robert Moog's modular synthesizers of the mid-1960s made these ideas practical, using *voltage control*: every module (oscillator, filter, amplifier, envelope) could be controlled by a voltage, so modules could steer each other. A keyboard sent a voltage for pitch; an envelope sent a voltage to the filter. The Minimoog (1970) packed the most useful arrangement into a portable instrument that could go on tour. Moog's own low-pass filter design, the "ladder filter," gave the instrument much of its warm, thick character.
+
+The Moog quickly reached rock. In Emerson, Lake & Palmer's "Lucky Man," Keith Emerson's closing solo is a single synthesizer voice gliding between notes: a sawtooth-rich tone shaped by the Moog filter.
+
+<ListeningCue track="elp-lucky-man" start="3:30">
+The solo that ends the track (start time estimated). Listen for the smooth glides between notes and how the tone brightens and darkens.
+</ListeningCue>
+
+Giorgio Moroder used a Moog modular for the pulsing, sequenced bass line of Donna Summer's "I Feel Love" (1977), one of the first hit records built almost entirely from synthesizers. The line is a short pattern played by a <Term id="sequencer">sequencer</Term>, repeated with machine precision, and its tone, bright at each note's start and closing down fast, is a filter envelope at work.
+
+<ListeningCue track="donna-summer-i-feel-love" start="0:00" end="0:40">
+The bass line, from the first second: a fast, octave-bouncing pattern, every note shaped by the same envelope. Almost everything you hear is synthesized.
+</ListeningCue>
+
+A decade later, a cheap bass machine from Roland, the TB-303, became the voice of a new genre. Its resonant low-pass filter, swept by hand while a pattern loops, produces the squelching, vocal sound called *acid*. In Phuture's "Acid Tracks," the notes barely change for twelve minutes. The music is in the cutoff and resonance knobs.
+
+<Callout kind="try">
+Choose **Acid bass** in the lab and press **Play a repeating pattern**. While it loops, slowly sweep **Cutoff** and **Resonance**. Then shorten and lengthen **Filter decay**. You're performing subtractive synthesis the way acid producers do.
+</Callout>
+
+<ListeningCue track="phuture-acid-tracks" start="0:00" end="2:00">
+A looping TB-303 pattern. Listen to the tone, not the notes: the same notes go from muffled to sharp and squelchy as the filter is opened and the resonance is raised.
+</ListeningCue>
+
+Polyphonic analog synthesizers (instruments that could play chords) became the sound of film scores and pop in the late 1970s and 1980s. Vangelis's *Blade Runner* score is a showcase for one of them, the Yamaha CS-80, whose keys respond to how hard you press them as you hold a note, so each note's brightness and vibrato can swell under the player's fingers.
+
+<ListeningCue track="vangelis-blade-runner" start="0:00" end="1:30">
+The lead voice is a CS-80. Listen to how individual notes brighten, bend, and gain vibrato as they're held. Filter and pitch controlled by pressure, note by note.
+</ListeningCue>
+
+<Callout kind="verify" title="subtractive history">
+Check: Moog modular dates (first modules 1964; Moog's 1965 AES paper), the Minimoog's release (1970), the ladder filter's patent; whether the "Lucky Man" solo was the modular Moog or a Minimoog, and the cue time; the Moog modular and sequencing setup on "I Feel Love" (Sound On Sound's "Classic Tracks" article); the TB-303 (1981–84) and Phuture's "Acid Tracks" (1987; recorded in 1985?); and the CS-80's polyphonic aftertouch and ribbon controller on *Blade Runner*.
+</Callout>
+
+## FM synthesis: let two waves collide
+
+### Vibrato that goes too fast
+
+In the late 1960s, the composer John Chowning, working with computers at Stanford, was experimenting with vibrato. Vibrato is a slow wobble in pitch, five or six times a second. What happens if you make it faster? At 20, 50, 100 wobbles a second, you stop hearing a wobble at all. You hear a new tone color.
+
+This is **frequency modulation**, or **FM synthesis**. One oscillator, the **carrier**, makes the tone you hear. A second oscillator, the **modulator**, wobbles the carrier's frequency up and down at an audible rate. The wobbling creates new frequencies, called **sidebands**, spaced around the carrier's frequency at multiples of the modulator's frequency: carrier ± modulator, carrier ± 2 × modulator, and so on.
+
+Two controls do almost everything:
+
+- **The ratio** between modulator and carrier frequencies sets *where* the sidebands fall. With a whole-number <Term id="frequency-ratio">ratio</Term> (1:1, 2:1, 3:1), every sideband lands on a harmonic of one fundamental, so the result is a harmonic, pitched tone. With a ratio that isn't a whole number (3.5:1, or 1.41:1), the sidebands fall between harmonics: the spectrum is <Term id="inharmonicity">inharmonic</Term>, like a bell or a gong.
+- **The modulation index** sets *how many* sidebands are strong. At index 0 you hear a pure sine. As the index rises, more and more sidebands appear and the sound grows brighter.
+
+Two sine waves, two numbers, and you can reach a huge range of spectra. That economy is what made FM attractive in the days of expensive computing.
+
+<SynthLab presets={['epiano', 'bell', 'fmbass']} methods={['fm']} title="FM synthesis" />
+
+<Callout kind="try">
+1. Choose **FM e-piano**, then set **Index** to 0 and play. Pure sine. Raise the index slowly while holding a note (or with the pattern playing): watch sidebands march out across the spectrum.
+2. With the index around 3, step the **Ratio** through 1, 2, 3, 4. Each whole number gives a different harmonic recipe. Then try 3.5, or 1.25. The spectrum's peaks stop lining up evenly, and the tone turns metallic.
+3. Choose **FM bell**. Its ratio of 3.5 makes it inharmonic, and its long decay lets you hear the clangorous partials fade.
+4. The key to FM's realism is **Index decay**: the index starts high and falls, so each note starts bright and mellows, like a struck or plucked instrument. Set it very long on the e-piano and it stays harsh; very short, and only the attack sparkles.
+</Callout>
+
+<Callout kind="check">
+Why does the FM e-piano sound more like a real struck instrument than a filtered sawtooth with no filter envelope?
+
+<Answer>
+Because its spectrum changes over the note the way a struck instrument's does. The index decay means the high sidebands are strong at the start (a bright, percussive attack) and fade away, leaving a rounder tone. In real struck strings and bars, the higher modes also die away faster than the lower ones. A static sawtooth has the same spectrum from start to finish, which the ear hears as electronic.
+</Answer>
+</Callout>
+
+### The DX7
+
+Stanford licensed Chowning's FM patent to Yamaha, which released the DX7 in 1983. It was digital, affordable, polyphonic, and it could make bright, glassy, bell-like and percussive sounds that analog subtractive synths struggled with. It became one of the best-selling synthesizers in history, and its factory electric-piano preset, "E. PIANO 1," is all over mid-1980s pop and film music. The DX7 uses six sine-wave "operators" per voice, which can modulate each other in different arrangements; the lab's version uses just two, which is enough to hear the principle.
+
+<ListeningCue track="dx7-epiano" start="0:00" end="0:40">
+Angelo Badalamenti's *Twin Peaks* theme. The slow, chiming chords are the DX7's E. PIANO 1 patch: a glassy attack that softens into a mellow sustain. That's the index decaying.
+</ListeningCue>
+
+The DX7 was famously hard to program. Its sounds don't map onto intuitive controls the way a filter's cutoff does, so most players used the presets. That's a reminder of the trade every synthesis method makes between power and control.
+
+<Callout kind="verify" title="FM history">
+Check: Chowning's discovery story (late 1960s; the 1973 *Journal of the Audio Engineering Society* paper), the Stanford–Yamaha license, the DX7's release (1983) and sales figures (often quoted as 160,000 or more), six operators and 32 algorithms, and the source naming E. PIANO 1 on the *Twin Peaks* theme. Check the sideband rule (carrier ± n × modulator) and the role of the index (Bessel functions; the "about index + 1 significant sideband pairs" rule of thumb).
+</Callout>
+
+## Physical modeling: simulate the instrument
+
+Every method so far describes the *sound*. **Physical modeling** describes the *instrument*, and lets the sound emerge.
+
+The simplest example is a plucked string, and it takes only a few lines of code. Chapter 1.2 showed that a string's vibrations are <Term id="standing-wave">standing waves</Term>, and that the string's pitch is set by how long a wave takes to travel to the end and back. So model exactly that:
+
+1. Fill a short loop of memory, a *delay line*, with random noise: that's the pluck, a burst of energy containing every frequency.
+2. Play the loop out, over and over. A loop of fixed length repeats once per trip around it, so it produces a pitch: the loop length sets the period, just as the string length does.
+3. Each time around, average neighboring samples slightly. That gently smooths the waveform, removing the highest frequencies fastest, just as a real string loses its high harmonics faster than its low ones.
+
+This is the **Karplus–Strong** algorithm (1983). Start with noise, and within a few trips around the loop, only the frequencies that "fit" the loop survive: the harmonics of one fundamental. The string tunes itself, the way a real one does.
+
+<SynthLab presets={['string']} methods={['string']} title="A plucked string, simulated" />
+
+<Callout kind="try">
+1. Play a few notes. Watch the spectrum: a cloud of noise at the very start, which within a fraction of a second organizes into a comb of harmonics.
+2. Lower **Brightness**: the initial noise burst is smoother, like plucking with the flesh of your finger instead of a pick.
+3. Raise **Damping**: the string loses energy faster, like a muted string.
+4. Play the lowest and highest keys in octave 4. Notice that high notes die away faster than low notes, without anyone programming that in. The loop is shorter, so it passes through the smoothing step more times per second. Real strings behave the same way.
+</Callout>
+
+The same idea extends to tubes (wind instruments), membranes (drums), and the human voice. The general method, called *digital waveguide* synthesis, was developed largely by Julius O. Smith at Stanford, and Yamaha's VL1 (1994) brought it to a commercial instrument. Physical models are especially good at *expressive behavior*: overblowing a model clarinet squeaks, because the physics says it should. Today they're common in software for pianos, strings, and drums.
+
+<Callout kind="verify" title="physical modeling">
+Check: Karplus & Strong (1983) and Jaffe & Smith's 1983 extensions; Julius O. Smith's waveguide work and the Yamaha VL1 (1994); and the claim that in Karplus–Strong, higher notes decay faster (because the loss is applied once per period).
+</Callout>
+
+## Wavetable and granular synthesis
+
+Two digital methods round out the toolkit. Neither is in the lab, but both are everywhere in modern music.
+
+**Wavetable synthesis** stores a sequence of single-cycle waveforms (a "table") and plays through them, stepping or morphing from one to the next. Moving through the table changes the spectrum smoothly, so the timbre can evolve in ways a single fixed oscillator can't. The German designer Wolfgang Palm built it into his PPG Wave synthesizers around 1980, and modern software synthesizers have made wavetable sweeps a signature sound of electronic dance music.
+
+**Granular synthesis** takes the opposite view of sound: not as waves, but as particles. Break a recording into thousands of tiny **grains**, each just 10 to 100 milliseconds long and faded in and out, then scatter, stretch, layer, and reshuffle them. The physicist Dennis Gabor proposed thinking of sound as "acoustical quanta" in 1947; the composer Iannis Xenakis explored the idea with tape in the late 1950s; Curtis Roads developed computer granular synthesis from the 1970s; and Barry Truax made it work in real time in the 1980s. Granular methods underlie much of today's time-stretching and pitch-shifting: when software makes a recording slower without lowering its pitch, it's usually rearranging tiny grains.
+
+<Callout kind="verify" title="wavetable and granular">
+Check: Wolfgang Palm and the PPG Wave (dates; the Wave 2 around 1981), modern wavetable synths; Gabor (1947), Xenakis's granular tape works (*Analogique B*, 1959), Roads's early computer granular work (1970s), and Truax's real-time granular synthesis (*Riverrun*, 1986). Consider finding an official recording with a clear granular or wavetable sweep for a listening cue.
+</Callout>
+
+## Why synthesis changed music
+
+Before synthesizers, timbre came with the instrument. A composer could choose a clarinet or a violin and combine them, but couldn't design a new tone color. Synthesis made timbre a parameter you can write: a filter sweep is as composable as a melody, and an envelope as much a part of a sound's identity as its pitch.
+
+Combine that with the sequencer from chapter 2.5, and you get the foundations of electronic music: patterns played with machine precision, by sounds built from scratch, shaped in real time by a performer turning knobs. "I Feel Love" is the founding document, and it gets its own chapter in the Atlas.
+
+| Method | You control | Good at | Hard to do | Classic instrument | Hear it |
+|---|---|---|---|---|---|
+| **Additive** | Every harmonic's level | Steady tones; precise spectra | Sounds that change over time | Hammond organ | Harmonic builder lab |
+| **Subtractive** | Oscillator shape, filter cutoff and resonance, envelopes | Warm, fat, expressive sounds; sweeps | Bells, metallic and glassy sounds | Moog, TB-303, CS-80 | "I Feel Love," "Acid Tracks" |
+| **FM** | Ratio, index, and their envelopes | Bells, electric pianos, plucks, basses | Intuitive programming | Yamaha DX7 | *Twin Peaks* theme |
+| **Physical modeling** | The instrument's physics | Realistic, expressive acoustic behavior | Sounds with no physical source | Yamaha VL1; software instruments | Plucked string lab |
+| **Wavetable** | Which waveforms, how fast you move between them | Evolving timbres | Natural sounds | PPG Wave; modern software | |
+| **Granular** | Grain size, density, position | Textures, time-stretching | Clear pitched tones | Software | |
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. The core idea: timbre is a changing spectrum, so a synthesizer is a machine for controlling one, and every method trades generality for control.
+2. Additive synthesis and why it's hard to control.
+3. Subtractive synthesis: oscillator waveforms and their harmonics, low-pass filter, cutoff, resonance; the source–filter parallel with the voice.
+4. Envelopes (ADSR), and why a filter envelope makes sounds feel alive; LFOs.
+5. The classic subtractive instruments and records: Moog, "I Feel Love," the TB-303 and acid, the CS-80.
+6. FM: carrier, modulator, sidebands, ratio (harmonic versus inharmonic), index and its envelope; the DX7.
+7. Physical modeling, using Karplus–Strong: why noise in a loop becomes a pitched, naturally decaying string.
+8. Wavetable and granular synthesis in outline.
+9. Why synthesis made timbre composable.
+
+**Decisions for your rewrite:**
+
+- **The hook.** I started from chapter 1.2's recipe for timbre. Alternatives: open with "I Feel Love," a record that sounded like the future in 1977, or with the Karplus–Strong surprise (random noise in a loop becomes a guitar string).
+- **How much history.** The chapter mixes method and history. You could separate them: a methods section, then a short history of instruments and records.
+- **Lab presets.** The presets are designed to demonstrate one idea each. Consider making a preset that imitates a specific instrument you know well, and describing how you got there.
+- **Examples.** Swap in records you love: Kraftwerk, Stevie Wonder's synth bass, Herbie Hancock, Daft Punk's filter sweeps, modern dubstep wavetable basses, Aphex Twin.
+
+**Misconceptions to watch for:**
+
+- "Synthesizers imitate instruments." Some sounds do; the point is designing new ones.
+- "Analog is warm, digital is cold." The method and the design matter more than the technology.
+- "The filter adds the sound." It only removes; the oscillator supplies the harmonics.
+- "FM is just vibrato." It's vibrato fast enough to become timbre.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Chowning, J. M. (1973). The synthesis of complex audio spectra by means of frequency modulation. *Journal of the Audio Engineering Society*, 21(7), 526–534.
+- Moog, R. A. (1965). Voltage-controlled electronic music modules. *Journal of the Audio Engineering Society*, 13(3), 200–206.
+- Karplus, K., & Strong, A. (1983). Digital synthesis of plucked-string and drum timbres. *Computer Music Journal*, 7(2), 43–55.
+- Jaffe, D. A., & Smith, J. O. (1983). Extensions of the Karplus-Strong plucked-string algorithm. *Computer Music Journal*, 7(2), 56–69.
+- Smith, J. O. (1992). Physical modeling using digital waveguides. *Computer Music Journal*, 16(4), 74–91.
+- Gabor, D. (1947). Acoustical quanta and the theory of hearing. *Nature*, 159, 591–594.
+- Truax, B. (1988). Real-time granular synthesis with a digital signal processor. *Computer Music Journal*, 12(2), 14–26.
+- Roads, C. (1996). *The Computer Music Tutorial*. MIT Press.
+- Roads, C. (2001). *Microsound*. MIT Press.
+- Pinch, T., & Trocco, F. (2002). *Analog Days: The Invention and Impact of the Moog Synthesizer*. Harvard University Press.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details (volume, pages, year), especially Moog 1965 and Smith 1992.
+</Callout>

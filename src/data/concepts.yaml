@@ -591,3 +591,405 @@
     Sounds whose partials are not whole-number multiples of a fundamental,
     such as bells, gongs, many drums, and (slightly) stiff piano strings. Their
     pitch can be ambiguous or absent.
+
+# ---------- keys, cadences, form & tension (Vol V ch. 4) ----------
+- id: scale
+  term: Scale
+  category: Notes & intervals
+  introducedIn: v3-03
+  deepIn: v3-02
+  aliases: [major scale, minor scale, scale degree, scale degrees]
+  def: >-
+    A fixed set of notes, listed in pitch order, that a piece mostly draws
+    from. The C major scale is the seven white keys from C: C D E F G A B.
+
+- id: key
+  term: Key and tonic
+  category: Harmony & style
+  introducedIn: v3-03
+  deepIn: v3-04
+  aliases: [tonic, home key, in the key of, tonal center, tonality, home chord]
+  def: >-
+    A piece "in C major" mostly uses the notes of the C major scale and treats
+    C as home: the tonic. The tonic chord (C–E–G) is where phrases sound
+    finished. Music can move away from the tonic and back.
+
+- id: dominant
+  term: Dominant
+  category: Harmony & style
+  introducedIn: v5-04
+  deepIn: v3-06
+  aliases: [dominant chord, the dominant, dominant function, leading tone, leading note]
+  def: >-
+    The chord built on the fifth note of the scale (G–B–D in C major), often
+    with an added seventh (G7). It pulls strongly toward the tonic, partly
+    because its B sits a semitone below C (the leading tone).
+
+- id: cadence
+  term: Cadence
+  category: Harmony & style
+  introducedIn: v5-04
+  deepIn: v3-06
+  aliases: [cadence, cadences, authentic cadence, half cadence, deceptive cadence, plagal cadence]
+  def: >-
+    A conventional chord move that ends a phrase, like punctuation. Dominant to
+    tonic (G7→C) is a full stop; stopping on the dominant is a comma (half
+    cadence); dominant to the minor chord on A (deceptive cadence) is a
+    sidestep.
+
+- id: suspension
+  term: Suspension
+  category: Harmony & style
+  introducedIn: v5-04
+  deepIn: v3-08
+  aliases: [suspension, suspensions, sus4, suspended chord, suspended fourth]
+  def: >-
+    A note held over from one chord into the next, where it doesn't belong,
+    before stepping down to a chord tone. Gsus4 (G–C–D) resolving to G (G–B–D)
+    is the classic case: a small delay that adds tension.
+
+- id: modulation
+  term: Modulation (key change)
+  category: Harmony & style
+  introducedIn: v5-04
+  deepIn: v3-06
+  aliases: [key change, key changes, modulates to, modulated to, modulation to, modulating to]
+  def: >-
+    Moving to a new tonic: the music re-centers on a different home note.
+    In pop, a final chorus shifted up a half or whole step is a common way to
+    lift a song's ending.
+
+- id: pedal-point
+  term: Pedal point
+  category: Harmony & style
+  introducedIn: v5-04
+  aliases: [pedal point, pedal note, dominant pedal]
+  def: >-
+    A note held or repeated (usually in the bass) while the harmony changes
+    above it. Sustained on the dominant, it builds expectation for the tonic.
+
+- id: dynamics
+  term: Dynamics
+  category: Form & tension
+  introducedIn: v5-04
+  aliases: [dynamics, crescendo, crescendos, diminuendo, decrescendo]
+  def: >-
+    How loud or soft music is played, and how that changes. A crescendo is a
+    gradual increase in loudness; a diminuendo, a gradual decrease.
+
+- id: texture
+  term: Texture
+  category: Form & tension
+  introducedIn: v5-04
+  deepIn: v5-07
+  aliases: [musical texture, thin texture, thick texture, textural]
+  def: >-
+    How many layers are sounding at once and how they relate: a voice alone
+    is a thin texture; a full band or orchestra, a thick one.
+
+- id: tension
+  term: Musical tension
+  category: Form & tension
+  introducedIn: v5-04
+  aliases: [musical tension, tension and release, harmonic tension, tension curve, tension curves, tension ratings]
+  def: >-
+    The felt sense that music is unstable and going somewhere, and its
+    release when it arrives. Carried by harmony, loudness, pitch height,
+    density, and rhythm, and largely a matter of expectation.
+
+- id: song-sections
+  term: Song sections
+  category: Form & tension
+  introducedIn: v5-04
+  deepIn: v5-05
+  aliases: [verse, verses, chorus, choruses, pre-chorus, bridge section]
+  def: >-
+    The building blocks of a pop song. Verses tell the story with changing
+    words; the chorus repeats the hook; a pre-chorus ramps up into it; a
+    bridge brings contrast before the final choruses.
+
+- id: build-drop
+  term: Build and drop
+  category: Form & tension
+  introducedIn: v5-04
+  aliases: [build-up, buildup, the drop, a drop, riser, risers, breakdown]
+  def: >-
+    The central gesture of electronic dance music. A build stacks up tension
+    (snare rolls, rising sounds, the bass removed); the drop releases it with
+    the full beat and bass line.
+
+- id: habituation
+  term: Habituation
+  category: Hearing
+  introducedIn: v5-04
+  aliases: [habituation, habituate, habituates, habituated]
+  def: >-
+    The fading of a response to a stimulus that keeps repeating unchanged.
+    One reason music needs contrast.
+
+- id: frisson
+  term: Frisson (musical chills)
+  category: Hearing
+  introducedIn: v5-04
+  aliases: [frisson, musical chills, chills]
+  def: >-
+    Goosebumps or a shiver down the spine at a peak moment in music. Often
+    triggered by a sudden change after a build: a new harmony, an entrance, a
+    leap in loudness.
+
+# ---------- auditory scene analysis (v1-04) ----------
+- id: auditory-scene-analysis
+  term: Auditory scene analysis
+  category: Hearing
+  introducedIn: v1-04
+  aliases: [auditory scene analysis, auditory scene, scene analysis]
+  def: >-
+    The brain's job of sorting the single mixed pressure wave that reaches each
+    ear into separate sources: this voice, that guitar, the traffic outside.
+    Term and theory from Albert Bregman (1990).
+
+- id: auditory-stream
+  term: Auditory stream
+  category: Hearing
+  introducedIn: v1-04
+  aliases: [auditory stream, auditory streams, stream segregation, one stream, two streams, streamed, segregate, segregates]
+  def: >-
+    A sequence of sounds heard as coming from one source and belonging
+    together over time, like one melody or one voice. Sounds that are close in
+    pitch, similar in timbre, and not too fast tend to form one stream; otherwise
+    they split (segregate) into several.
+
+- id: grouping
+  term: Grouping cues (Gestalt principles)
+  category: Hearing
+  introducedIn: v1-04
+  aliases: [Gestalt, grouping cue, grouping cues, common fate, good continuation, onset synchrony, old-plus-new]
+  def: >-
+    The rules of thumb the auditory system uses to decide what belongs
+    together: proximity (close in pitch and time), similarity (same timbre),
+    common fate (changing together), good continuation (smooth paths), and
+    shared onsets. Named after the Gestalt psychologists, who described the same
+    rules for vision.
+
+- id: fusion
+  term: Fusion
+  category: Hearing
+  introducedIn: v1-04
+  aliases: [perceptual fusion, harmonic fusion, fusion]
+  def: >-
+    Hearing several simultaneous frequencies as one sound with one pitch and
+    one timbre, rather than as separate tones. Harmonics of one fundamental that
+    start together and change together fuse; a mistuned or early-starting
+    harmonic can pop out.
+
+- id: masking
+  term: Masking
+  category: Hearing
+  introducedIn: v1-04
+  aliases: [masking, masker, masked]
+  def: >-
+    One sound making another harder or impossible to hear. Strongest when the
+    two are close in frequency (within a critical band), and a loud low sound
+    masks higher sounds more than the reverse. Mixing engineers fight it
+    constantly.
+
+- id: implied-polyphony
+  term: Implied polyphony
+  category: Hearing
+  introducedIn: v1-04
+  aliases: [implied polyphony, pseudo-polyphony, compound melody]
+  def: >-
+    A single line of notes that leaps back and forth between registers fast
+    enough to be heard as two or more simultaneous melodies. Bach's solo string
+    music is the classic example.
+
+# ---------- melody (v3-03) ----------
+- id: contour
+  term: Contour
+  category: Melody
+  introducedIn: v3-03
+  aliases: [contour, contours, melodic contour, Parsons code]
+  def: >-
+    The shape of a melody: the pattern of ups, downs, and repeats from note to
+    note, ignoring exactly how big each step is. Listeners remember the contour
+    of a new melody more readily than its exact intervals.
+
+- id: step-leap
+  term: Steps and leaps
+  category: Melody
+  introducedIn: v3-03
+  aliases: [stepwise, conjunct, disjunct, leaps, melodic leap, gap-fill, gap fill, post-skip reversal]
+  def: >-
+    A step is a move to an adjacent scale note (one or two semitones); a leap
+    (or skip) is anything bigger. Most melodies move mostly by step, and after a
+    big leap they tend to turn back.
+
+- id: melodic-expectation
+  term: Melodic expectation
+  category: Melody
+  introducedIn: v3-03
+  aliases: [pitch proximity, regression to the mean, implication-realization, Narmour]
+  def: >-
+    Listeners' moment-to-moment predictions of the next note, shaped by
+    statistical regularities: small intervals are likely, leaps tend to be
+    followed by a turn back, phrases tend to descend at the end and land on the
+    tonic.
+
+- id: motif
+  term: Motif
+  category: Melody
+  introducedIn: v3-03
+  aliases: [motif, motifs, motive, motives, motivic]
+  def: >-
+    A short, recognizable musical idea (a few notes with a characteristic
+    rhythm) that is repeated and varied to build longer music. Beethoven's
+    Fifth opens with the most famous one. In rock and pop a repeated
+    instrumental motif is called a riff.
+
+- id: phrase
+  term: Phrase
+  category: Melody
+  introducedIn: v3-03
+  aliases: [antecedent, consequent, phrase structure, four-bar phrase, eight-bar phrase]
+  def: >-
+    A musical "sentence": a stretch of melody, often four or eight bars, that
+    ends with a sense of arrival (a cadence). Phrases often come in pairs: an
+    antecedent that ends open, answered by a consequent that ends closed.
+
+- id: melodic-sequence
+  term: Sequence
+  category: Melody
+  introducedIn: v3-03
+  aliases: [melodic sequence, melodic sequences]
+  def: >-
+    A melodic figure repeated straight away at a different pitch level,
+    usually stepping down or up each time. A staple of Baroque music and of pop
+    melodies alike.
+
+- id: melodic-transformation
+  term: Transposition, inversion, retrograde
+  category: Melody
+  introducedIn: v3-03
+  aliases: [transposition, transpose, transposed, inversion, retrograde, augmentation, diminution]
+  def: >-
+    Ways of changing a melody while keeping a recognizable relation to it:
+    transposition moves every note by the same interval; inversion turns every
+    interval upside down; retrograde plays it backwards; augmentation and
+    diminution stretch or squeeze its rhythm.
+
+- id: ornament
+  term: Ornament
+  category: Melody
+  introducedIn: v3-03
+  aliases: [ornament, ornaments, ornamentation, ornamented, melisma, melismas, melismatic, grace note, grace notes, mordent, meend, gamak]
+  def: >-
+    Decoration of a melody note: a quick neighboring note (grace note, trill,
+    mordent), a slide between notes, or many notes sung on one syllable
+    (melisma). In some traditions (rāga, maqām, Irish music) ornaments are part
+    of a melody's identity, not optional extras.
+
+# ---------- synthesis (v4-05) ----------
+- id: synthesizer
+  term: Synthesizer
+  category: Synthesis
+  introducedIn: v4-05
+  aliases: [synth, synths, modular synth, modular synthesizer, Moog, Minimoog]
+  def: >-
+    An instrument that generates sound electronically from scratch, by building
+    and shaping waveforms, rather than by recording an acoustic source.
+
+- id: oscillator
+  term: Oscillator
+  category: Synthesis
+  introducedIn: v4-05
+  aliases: [oscillator, oscillators, sawtooth, square wave, square waves, triangle wave, triangle waves, VCO]
+  def: >-
+    The part of a synthesizer that produces a repeating waveform at a chosen
+    frequency. Classic shapes are the sine, triangle, square, and sawtooth, each
+    with a different recipe of harmonics.
+
+- id: filter
+  term: Filter
+  category: Synthesis
+  introducedIn: v4-05
+  aliases: [low-pass, lowpass, high-pass, highpass, cutoff frequency, cutoff, filter sweep, resonant filter, VCF]
+  def: >-
+    A circuit or algorithm that reduces some frequencies and lets others
+    through. A low-pass filter removes harmonics above its cutoff frequency,
+    making the sound darker; resonance boosts the frequencies right at the
+    cutoff.
+
+- id: envelope
+  term: Envelope (ADSR)
+  category: Synthesis
+  introducedIn: v4-05
+  aliases: [ADSR, envelopes, amplitude envelope, filter envelope, envelope generator]
+  def: >-
+    How a sound's loudness (or brightness, or any other setting) changes over
+    the course of a note. Synthesizers describe it with four settings: Attack
+    (time to reach full level), Decay (time to fall to the sustain level),
+    Sustain (the level held while the key is down), and Release (time to fade
+    after the key is let go).
+
+- id: subtractive-synthesis
+  term: Subtractive synthesis
+  category: Synthesis
+  introducedIn: v4-05
+  aliases: [subtractive synthesis, subtractive synth, subtractive]
+  def: >-
+    Start with a waveform rich in harmonics (sawtooth, square), then carve it
+    with a filter, shaping both with envelopes. The method of the Moog and most
+    analog synthesizers.
+
+- id: additive-synthesis
+  term: Additive synthesis
+  category: Synthesis
+  introducedIn: v4-05
+  aliases: [additive synthesis, additive synth]
+  def: >-
+    Build a sound by adding sine waves (partials) together, each with its own
+    frequency and amplitude, and often its own envelope. Fourier's idea, run in
+    reverse.
+
+- id: fm-synthesis
+  term: FM synthesis
+  category: Synthesis
+  introducedIn: v4-05
+  aliases: [FM synthesis, frequency modulation, FM, sideband, sidebands, modulation index, carrier, modulator, DX7]
+  def: >-
+    Make one oscillator (the carrier) wobble in frequency at an audio rate,
+    driven by another (the modulator). The wobbling adds sidebands, new
+    frequencies spaced by the modulator's frequency, so two sine waves can
+    produce a rich spectrum. Invented by John Chowning; made famous by the
+    Yamaha DX7 (1983).
+
+- id: physical-modeling
+  term: Physical modeling
+  category: Synthesis
+  introducedIn: v4-05
+  aliases: [physical modeling, physical modelling, physical model, physical models, Karplus-Strong, Karplus–Strong, waveguide]
+  def: >-
+    Synthesis by simulating the physics of an instrument (a string, a tube,
+    a drumhead) and letting the sound emerge from the simulation.
+
+- id: granular-wavetable
+  term: Granular and wavetable synthesis
+  category: Synthesis
+  introducedIn: v4-05
+  aliases: [granular synthesis, granular, grains, wavetable, wavetables, wavetable synthesis]
+  def: >-
+    Two digital methods. Wavetable synthesis steps or morphs through a stored
+    series of single-cycle waveforms, so the timbre can move. Granular synthesis
+    builds sound from thousands of tiny snippets (grains) of a recording, a few
+    milliseconds each, which can be scattered, stretched, and layered.
+
+- id: lfo
+  term: LFO (low-frequency oscillator)
+  category: Synthesis
+  introducedIn: v4-05
+  aliases: [LFO, LFOs, low-frequency oscillator]
+  def: >-
+    An oscillator running too slowly to hear as a pitch (below about 20 Hz),
+    used to wobble another setting: pitch (vibrato), loudness (tremolo), or
+    filter cutoff.
+

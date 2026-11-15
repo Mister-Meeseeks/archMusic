@@ -51,6 +51,16 @@ const tracks = defineCollection({
     notes: z.string().optional(),
     /** A human has listened and confirmed the track (and cue timestamps) demonstrate the point. */
     listened: z.boolean().default(false),
+    /** Track length in seconds (lets a SongMap draw its timeline before the player loads). */
+    duration: z.union([z.number(), z.string()]).optional(),
+    /** Section map for <SongMap>. Times are "m:ss" (decimals allowed) in the YouTube upload's timeline. */
+    map: z
+      .object({
+        verified: z.boolean().default(false), // a human has checked the timestamps by ear
+        sections: z.array(z.object({ t: z.union([z.number(), z.string()]), label: z.string(), kind: z.string().optional() })),
+        events: z.array(z.object({ t: z.union([z.number(), z.string()]), label: z.string() })).default([]),
+      })
+      .optional(),
   }),
 });
 

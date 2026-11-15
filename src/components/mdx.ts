@@ -18,6 +18,13 @@ import BeatingLab from './embeds/BeatingLab.astro';
 import ChordRoughness from './embeds/ChordRoughness.astro';
 import IntervalExplorer from './embeds/IntervalExplorer.astro';
 import TuningComparator from './embeds/TuningComparator.astro';
+import CadenceLab from './embeds/CadenceLab.astro';
+import BuildLab from './embeds/BuildLab.astro';
+import SongMap from './embeds/SongMap.astro';
+import StreamingLab from './embeds/StreamingLab.astro';
+import FusionLab from './embeds/FusionLab.astro';
+import MelodyLab from './embeds/MelodyLab.astro';
+import SynthLab from './embeds/SynthLab.astro';
 
 export const mdxComponents = {
   Answer,
@@ -37,4 +44,11 @@ export const mdxComponents = {
   ChordRoughness,
   IntervalExplorer,
   TuningComparator,
+  CadenceLab,
+  BuildLab,
+  SongMap,
+  StreamingLab,
+  FusionLab,
+  MelodyLab,
+  SynthLab,
 };

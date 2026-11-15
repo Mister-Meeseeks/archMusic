@@ -31,11 +31,12 @@ The site is private and informal for now. Keep breadcrumbs so it can be cleaned 
 
 - `<Callout kind="verify">` / `kind="scrub"` for anything not yet presentable. These fail a public build.
 - Every recording goes in `src/data/tracks.yaml` with an honest `rights` value. Never invent YouTube or Spotify IDs. Find candidates (e.g. a web search restricted to `open.spotify.com` or `youtube.com`), then confirm each ID with `npm run verify-track -- spotify:<id> youtube:<id>`, which reads the public metadata. Prefer official YouTube uploads ("<Artist> - Topic", VEVO, or the label/orchestra channel) that match the Spotify recording. Pick recordings that clearly demonstrate the point, not just any match. Leave `listened: false` until the owner confirms by ear.
+- Song maps (`<SongMap track=...>`) read a `map:` (sections, events, `verified`) from the track in `tracks.yaml`. Estimated timestamps stay `verified: false` until the owner retimes them by ear (the map's "Retime" panel prints YAML).
 - Run `npm run scrub` for the report.
 
 ## Structure
 
-- `src/lib/`: framework-free logic. `audio.ts` (shared AudioContext, `AdditiveVoice`, one-widget-at-a-time), `dissonance.ts` (Sethares/Plomp–Levelt roughness model, spectra), `tuning.ts`.
+- `src/lib/`: framework-free logic. `audio.ts` (shared AudioContext, `AdditiveVoice`, one-widget-at-a-time), `dissonance.ts` (Sethares/Plomp–Levelt roughness model, spectra), `tuning.ts`, `sequence.ts` (scheduling fixed passages on the audio clock), `spectrum.ts`, `rhythm.ts`.
 - `src/components/widgets/*.tsx`: React widgets. `ui.tsx` holds the shared frame and controls (styles are the `w-` classes in `src/styles/global.css`).
 - `src/components/embeds/*.astro`: thin wrappers that hydrate widgets (`client:visible`).
 - `src/components/mdx.ts`: the registry of components usable in MDX **without imports**. To add a widget, write the `.tsx`, copy a wrapper, and register it here.

@@ -549,3 +549,84 @@ main { padding: 0 1rem 6rem; }
   .w-ladder-row { grid-template-columns: 5.5rem 5.5rem 1fr; }
   .w-ladder-step { display: none; }
 }
+
+/* ---- tension chapter: cadence lab, build lab, song map ---- */
+.chord-box { fill: var(--surface); stroke: var(--rule); stroke-width: 1.5; }
+.chord-box.is-home { stroke: var(--match); }
+.chord-box.is-dom { stroke: var(--tone-b); }
+.chord-box.is-same { stroke-dasharray: 5 3; }
+.chord-box.is-now { fill: color-mix(in srgb, var(--tone-a) 18%, var(--surface)); stroke: var(--tone-a); }
+.chord-name { font: 600 15px var(--sans); fill: var(--ink); }
+.rough-track { fill: none; stroke: var(--rule); stroke-width: 1; }
+.playhead { stroke: var(--ink); stroke-width: 1.5; pointer-events: none; }
+.fill-b { fill: var(--tone-b); }
+.sect-band { fill: color-mix(in srgb, var(--muted) 16%, transparent); stroke: none; }
+.sect-label { fill: var(--ink); pointer-events: none; }
+.sect-groove, .sect-intro, .sect-outro { fill: color-mix(in srgb, var(--muted) 18%, transparent); }
+.sect-build, .sect-prechorus, .sect-bridge { fill: color-mix(in srgb, var(--tone-b) 26%, transparent); }
+.sect-drop, .sect-chorus { fill: color-mix(in srgb, var(--tone-a) 28%, transparent); }
+.sect-verse { fill: color-mix(in srgb, var(--match) 20%, transparent); }
+.sect-solo { fill: color-mix(in srgb, var(--c-check) 22%, transparent); }
+.sect-climax { fill: color-mix(in srgb, var(--rough) 30%, transparent); }
+.sect-band.is-now { stroke: var(--ink); stroke-width: 1.5; }
+.songmap-sect:hover .sect-band { stroke: var(--muted); stroke-width: 1; }
+.lane-fill { fill: color-mix(in srgb, var(--tone-b) 45%, transparent); stroke: var(--tone-b); stroke-width: 1; }
+.lane-cut { fill: color-mix(in srgb, var(--tone-a) 35%, transparent); stroke: var(--tone-a); }
+.lane-gap { fill: var(--ink); stroke: none; }
+.tension-line { fill: none; stroke: var(--rough); stroke-width: 2.2; stroke-linejoin: round; }
+.tension-dot { fill: var(--rough); }
+.songmap-hit { fill: transparent; }
+.songmap-scrub { fill: transparent; }
+.songmap:focus-visible { outline: 2px solid var(--tone-a); outline-offset: 2px; }
+.songmap-time { margin-left: auto; font-variant-numeric: tabular-nums; }
+.songmap-video { aspect-ratio: 16 / 9; max-height: 260px; width: 100%; max-width: 462px; margin: 0.25rem 0 0.5rem; border-radius: 8px; overflow: hidden; background: #000; }
+.songmap-video.is-idle { aspect-ratio: auto; height: 56px; max-width: none; background: var(--bg); border: 1px dashed var(--rule); display: grid; place-items: center; }
+.songmap-video iframe { width: 100%; height: 100%; display: block; border: 0; }
+.songmap-load { font: inherit; font-size: 0.9rem; padding: 0.45rem 0.9rem; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); cursor: pointer; }
+.songmap-load:hover { border-color: var(--ink); }
+.songmap-edit { margin-top: 0.5rem; font-size: 0.85rem; }
+.songmap-edit summary { cursor: pointer; color: var(--muted); }
+.songmap-yaml { font: 12px/1.45 var(--mono); background: var(--bg); border: 1px solid var(--rule); border-radius: 6px; padding: 0.6rem; overflow-x: auto; }
+
+/* ---- scene analysis: streaming and fusion labs ---- */
+.w-axis { stroke: var(--muted); stroke-width: 1; }
+.tone-a { fill: var(--tone-a); }
+.tone-b { fill: var(--tone-b); }
+.tone-n { fill: var(--ink); opacity: 0.75; }
+.tone-a.is-now, .tone-b.is-now, .tone-n.is-now { stroke: var(--ink); stroke-width: 2; opacity: 1; }
+.stream-link { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.stream-a { stroke: var(--tone-a); }
+.stream-b { stroke: var(--tone-b); }
+.region-one { fill: color-mix(in srgb, var(--match) 16%, transparent); }
+.region-two { fill: color-mix(in srgb, var(--tone-b) 16%, transparent); }
+.boundary { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+.map-dot { fill: var(--ink); stroke: var(--surface); stroke-width: 2; }
+.harm-line { stroke: var(--accent); stroke-width: 3; }
+.harm-line.is-k { stroke: var(--tone-b); }
+.harm-time { fill: color-mix(in srgb, var(--accent) 55%, transparent); }
+.harm-time.is-k { fill: var(--tone-b); }
+
+/* ---- melody lab ---- */
+.note-bar { fill: var(--tone-a); }
+.note-bar.is-now { fill: var(--tone-b); }
+.note-ghost { fill: color-mix(in srgb, var(--muted) 28%, transparent); }
+.contour-line { fill: none; stroke: var(--ink); stroke-width: 1.2; opacity: 0.55; }
+.bar-step { fill: var(--tone-a); }
+.bar-leap { fill: var(--tone-b); }
+.bar-repeat { fill: color-mix(in srgb, var(--muted) 45%, transparent); }
+.bar-same { fill: var(--tone-a); }
+.bar-reverse { fill: var(--tone-b); }
+.w-mono { font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.05em; word-break: break-all; }
+.w-mystery { font-weight: 600; }
+
+/* ---- synth lab ---- */
+.synth-canvas { margin: 0.25rem 0 0.5rem; }
+.synth-knobs { display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: 0.2rem 1.4rem; }
+.env-line { fill: none; stroke: var(--tone-b); stroke-width: 2; }
+.synth-keys { position: relative; height: 92px; margin: 0.4rem 0 0.6rem; user-select: none; touch-action: none; }
+.synth-white, .synth-black { position: absolute; top: 0; border-radius: 0 0 6px 6px; cursor: pointer; padding: 0; font: inherit; }
+.synth-white { height: 100%; background: #f6f3ec; border: 1px solid #c9c2b4; display: flex; align-items: flex-end; justify-content: center; }
+.synth-white span { font-size: 0.68rem; color: #6b665d; padding-bottom: 0.3rem; pointer-events: none; }
+.synth-black { height: 58%; background: #1d1b18; border: 1px solid #1d1b18; z-index: 1; }
+.synth-white.is-down { background: color-mix(in srgb, var(--tone-a) 35%, #f6f3ec); }
+.synth-black.is-down { background: var(--tone-a); }

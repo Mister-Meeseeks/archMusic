@@ -1,0 +1,311 @@
+---
+title: "Auditory Scene Analysis: Hearing Instruments, Not a Mass of Frequencies"
+volume: 1
+chapter: 4
+summary: Your ear receives one tangled pressure wave, yet you hear a voice, a bass, and a drummer. How the brain sorts frequencies into sounds and sounds into streams, and how composers, arrangers, and mixing engineers exploit the rules.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [frequency, pitch, sine-wave, waveform, harmonics, spectrum, timbre, formant, cochlea, octave, semitone, interval, frequency-ratio, register, chord, beat, tempo]
+lintIgnore: [fm-synthesis] # only in a reference title
+introduces: [auditory-scene-analysis, fusion, grouping, auditory-stream, implied-polyphony, masking]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts. Two new labs: one for **fusion** (why a dozen sine waves sound like one note) and one for **streaming** (why a sequence of notes splits into separate lines). Both work best on headphones or decent speakers; laptop speakers lose the low harmonics. Then write your version in `src/content/chapters/v1-04-scene-analysis.mdx`.
+
+This chapter answers a question chapter 1.2 left open: *why* we hear a stack of harmonics as one note. It also lays groundwork for melody (chapter 3.3), orchestration (chapter 4.4), and mixing (chapter 4.8).
+</Callout>
+
+## The question
+
+Put on any recording with a band: a voice, a bass, drums, a guitar. Now think about what actually reaches your ear. Not four separate sounds. One pressure wave per ear: a single, jagged line wiggling up and down over time, the sum of everything at once. The voice, the bass, and the drums have been added together into one <Term id="waveform">waveform</Term>, and nothing in that waveform is labeled.
+
+Yet you don't hear a mass of frequencies. You hear a singer, *over* a bass line, *with* a drummer. You can follow any one of them. You'd notice instantly if the bass player stopped.
+
+The psychologist Albert Bregman gave this problem a name, **auditory scene analysis**, and a vivid analogy. Imagine two narrow channels dug from the shore of a lake. A handkerchief floats in each channel, and all you can see is how the two handkerchiefs move. From that alone, you have to work out how many boats are on the lake, where they are, and whether the wind is blowing. It sounds impossible. Your ears, which are in exactly that position, do it continuously and effortlessly.
+
+How? The brain can't *know* which parts of the signal came from which source. It makes **bets**, using rules of thumb that are usually right because of how sound-making objects behave in the world. This chapter is about those rules, and about the musicians who learned to exploit them.
+
+The problem has two halves:
+
+1. **Simultaneous grouping:** at any moment, which of the frequencies present belong together as one sound?
+2. **Sequential grouping:** over time, which sounds belong to the same source, the same "line"?
+
+## One sound from many frequencies
+
+### The puzzle from chapter 1.2
+
+Chapter 1.2 showed that a single sung or played note is a stack of <Term id="harmonics">harmonics</Term>: sine waves at 1×, 2×, 3×... the fundamental frequency. Your <Term id="cochlea">cochlea</Term> pulls those frequencies apart: different places along it respond to different frequencies, so the low harmonics of a note excite separate places. The ear's first move is to take the sound *apart*.
+
+And yet you hear one note, with one pitch and one tone color, not ten pure tones. The brain puts the pieces back together. Hearing a set of simultaneous frequencies as a single sound is called **fusion**.
+
+The reason it fuses is that harmonics of a real source share some telltale features:
+
+- **Harmonicity.** They fit one harmonic series: every frequency is a whole-number multiple of the same fundamental. Two unrelated sources rarely line up like that by chance.
+- **Common onset.** They start at the same moment, because one event (a pluck, a breath) set them all going.
+- **Common fate.** They change together. When a singer's pitch wavers, every harmonic wavers by the same proportion; when the note gets louder, they all get louder.
+
+The brain treats each of these as evidence for "one source." Take the evidence away and the sound comes apart.
+
+<FusionLab />
+
+<Callout kind="try">
+1. Play it untouched. One buzzy note at 200 Hz. Now try to hear the individual harmonics. You probably can't, or only barely.
+2. With harmonic **4** selected, raise **Mistune** slowly. Somewhere around 2–3%, a separate thin tone pops out of the note. Push it to 8% and it's unmistakable. Now go back to 0 and listen again: now that you know where it is, you may be able to hear the 4th harmonic in the untouched tone. (Attention can pull a harmonic out a little; it can't do the full separation that mistuning does.)
+3. Back at 0% mistuning, raise **Start early by** to 100 ms and more. The harmonic is heard as a separate tone at the start, then seems to melt into the note.
+4. Set **Wobble** to **This harmonic**. A wobbling tone separates from a steady one. Then choose **All together**: now the note wobbles as a whole, and it sounds *more* like one thing, not less.
+</Callout>
+
+<Callout kind="check">
+In an opera house, a single unamplified singer can be heard over a full orchestra. Part of the reason is a trained singer's vibrato: a regular wobble in pitch, five or six times a second. How might vibrato help, given what you just heard?
+
+<Answer>
+Common fate. All of the singer's harmonics wobble together, in step with each other and out of step with every instrument in the orchestra. That shared motion binds the voice's harmonics into one object and separates them from everything else. (Operatic voices also have an extra-strong band of energy around 3,000 Hz, called the singer's formant, where the orchestra is weak. That's chapter 4.2.)
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="fusion thresholds">
+Check the mistuning numbers against Moore, Glasberg & Peters (1986): roughly what percentage of mistuning makes a low harmonic heard as a separate tone (and how it depends on duration and which harmonic). Check the onset-asynchrony claims against Darwin & Carlyon (1995): how many milliseconds early a harmonic must start to be heard separately, and to stop contributing to a vowel's identity. Check McAdams (1989) on coherent versus incoherent vibrato.
+</Callout>
+
+### When fusion is the goal
+
+Fusion isn't only something the ear does to natural sounds. Composers create it on purpose, by making separate instruments behave like the harmonics of one source.
+
+The pipe organ has done this for centuries. Some of its stops sound not at the pitch of the key you press but at the pitch of one of its harmonics: an octave up, an octave and a fifth up (the 3rd harmonic), two octaves and a major third up (the 5th harmonic). Pulled together with a normal stop, they don't sound like a chord. They fuse into one new, brighter tone color.
+
+Ravel did the same thing with an orchestra in *Boléro*. In one statement of the tune, a horn plays the melody, a celesta doubles it two and three octaves higher, and two piccolos play it at the pitches of the horn's upper harmonics, so they're not playing in the same key as the horn at all. Played with exactly the same rhythm, starting together, the instruments fuse into something like a strange organ. Most listeners hear one new instrument, not three parallel melodies.
+
+<ListeningCue track="ravel-bolero" start="6:50">
+Around here (an estimate) the horn, celesta, and piccolos enter together. Does it sound like three instruments, or one odd new one? Compare it with the plain solo statements earlier in the piece.
+</ListeningCue>
+
+<Callout kind="verify" title="Boléro and organ stops">
+Confirm that the horn, celesta, and piccolos statement is the 9th of the 18 statements, which octaves the piccolos and celesta play in, and the timestamp in this recording (estimated by proportion, about 43% of the way through). Also check the organ-stop description (quint and tierce mutations).
+</Callout>
+
+## Many sounds into one line: streams
+
+### The gallop
+
+Now the second half of the problem. Notes come one after another. Which ones belong together?
+
+A sequence of sounds that the brain treats as coming from one source is called an **auditory stream**. A melody is a stream; so is one person's voice in a conversation. The clearest way to see how streams form is a deceptively simple pattern studied by the Dutch researcher Leon van Noorden in the 1970s: a high tone (A), a low tone (B), the high tone again, then a gap. A–B–A–rest, over and over.
+
+<StreamingLab />
+
+<Callout kind="try">
+1. Play it with the default settings (3 semitones apart, 8 tones per second). You hear a single line with a lopsided, galloping rhythm: *da-di-da, da-di-da*.
+2. Without stopping, raise **A to B** to 12 semitones (an octave). The gallop falls apart into two separate rhythms: a fast, steady A–A–A–A on top, and a slow B . . B . . underneath, as if played by two instruments. The gallop is gone, even though the sound is exactly the same pattern.
+3. Now go back to about 6 semitones and change **Speed**. Slow (4–5 tones per second): it's a gallop again. Fast (16–20): two streams.
+4. Find a setting in the middle region of the map. Keep listening for twenty or thirty seconds. Most people hear it start as a gallop and then split into two streams. In this middle zone you can also choose: try to hear the gallop, then try to follow only the high tones.
+5. Set A to B back to 0–2 semitones and turn on **Different timbre for B**. Same pitch, different tone color, and the B tones still peel away into their own stream.
+</Callout>
+
+Van Noorden found two boundaries, drawn on the map in the lab:
+
+- Below the lower line (small pitch difference), listeners heard **one stream**, a gallop, no matter how hard they tried to hear two.
+- Above the upper line (big pitch difference, or fast tempo), they heard **two streams** and *could not* hear the gallop, even when they tried.
+- In between, either was possible, depending on what they were listening for. The upper line climbs steeply as the sequence slows down: slow sequences hold together across much bigger jumps.
+
+Two more findings matter for music. First, streaming **builds up**: in the ambiguous zone, the tendency to hear two streams grows over the first several seconds of listening and resets after a pause or a sudden change. Second, once the tones split into two streams, listeners become strangely bad at judging the **timing between them**. Bregman and Campbell found that people could report the order of tones within a stream easily, but not *across* streams.
+
+<Callout kind="check">
+In the two-stream setting, the A and B tones are still interleaved exactly as before. Why might it be hard to tell whether a B tone falls exactly halfway between two A tones, once they've split?
+
+<Answer>
+Because once the brain has assigned them to different sources, it stops treating their relationship as meaningful. Two people talking at once don't coordinate their syllables, so the auditory system doesn't bother computing precise timing across sources. Rhythm is something you hear *within* a stream. That's also why the gallop rhythm vanishes: the gallop exists only if A and B are in the same stream.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="van Noorden and streaming facts">
+The boundaries in the lab are drawn approximately, from memory of van Noorden's (1975) figure: the fission boundary roughly flat at 1–2 semitones; the temporal coherence boundary rising from about 2–3 semitones at fast rates to about 13 semitones at 200 ms between tones. Check against the thesis and redraw if needed. Check the finding that streaming builds up over time (Bregman 1978; Anstis & Saida 1985) and Bregman & Campbell (1971) on order judgments across streams.
+</Callout>
+
+### Two tunes at once
+
+Streams matter because a melody is a stream. If the notes of a tune don't hold together as a stream, you can't hear the tune. W. Jay Dowling showed this in 1973 with an elegant trick: take two familiar tunes and interleave their notes, one from tune 1, then one from tune 2, and so on.
+
+<StreamingLab initialMode="melodies" />
+
+<Callout kind="try">
+1. Play with **Separation** at 0. Both tunes are in the same register. Can you name either one?
+2. Raise the separation a few semitones at a time. At some point, one tune and then the other snaps into focus.
+3. Back to 0, turn on **Different timbres**. Same pitches, but now the two tunes have different tone colors. Does that help as much as pitch separation?
+4. Turn on **Color by tune**. The plot is a visual version of the same thing: once the two tunes are colored differently, your eye groups them too.
+</Callout>
+
+<Callout kind="check">
+What are the two tunes? And here's a subtler question: now that you know, go back to separation 0. Can you hear them now?
+
+<Answer>
+"Twinkle, Twinkle, Little Star" and "Frère Jacques." Dowling found the same thing you may just have noticed: once listeners knew which tune to listen for, they could often pick it out even when the tunes overlapped in pitch. Knowledge and attention help: the brain matches what it hears against stored patterns (Bregman calls these *schemas*). The rules of thumb do the first pass; what you know and what you're listening for refine it.
+</Answer>
+</Callout>
+
+## The grouping rules
+
+Put together, the cues the brain uses look like this:
+
+| Cue | Groups sounds that... | Lab or example |
+|---|---|---|
+| **Proximity** | are close in pitch and close in time | The gallop; the two tunes |
+| **Similarity** | share a tone color | Different timbre for B |
+| **Harmonicity** | fit one harmonic series | Mistuning a harmonic |
+| **Common onset** | start together | Starting a harmonic early |
+| **Common fate** | change together | Wobbling one harmonic versus all of them |
+| **Good continuation** | follow a smooth path | A gliding pitch holds together; a jump breaks it |
+| **Location** | come from the same place | Two speakers, or two ears on headphones |
+
+These are versions of the **Gestalt principles** that early-20th-century psychologists described for vision: things that are close together, similar, or moving together get grouped. The auditory versions come from the same idea, that perception is the brain's best bet about the world. In the world, frequencies from one object really do tend to start together, change together, and fit one harmonic series.
+
+One more rule deserves a name. Bregman called it **old-plus-new**: if a sound continues unchanged and something is added, you hear the original sound carrying on, plus a new sound. It's why a second instrument entering doesn't make you re-hear the first one as a different sound.
+
+Notice that location is near the bottom. You might expect "where it comes from" to be the strongest cue, but it's surprisingly weak for grouping simultaneous frequencies, which makes sense in a world full of echoes from walls. That's one reason a mono recording of a band still sounds like separate instruments.
+
+<Callout kind="verify" title="grouping rules">
+Check the claim that spatial location is a relatively weak cue for simultaneous grouping (Darwin & Carlyon 1995 discuss this), and Bregman's description of the old-plus-new heuristic.
+</Callout>
+
+## Composers using the rules
+
+Long before anyone ran an experiment, composers worked out these rules by ear.
+
+### One instrument, two voices
+
+A violin plays one note at a time. Yet Bach's music for solo violin often sounds like two or three instruments. The trick is proximity: the line jumps back and forth between a high register and a low one, quickly enough that the high notes form one stream and the low notes another. This is called **implied polyphony** (or compound melody): polyphony meaning "several voices," implied because only one is actually being played.
+
+<ListeningCue track="bach-partita3-prelude" start="0:00">
+A single line of fast, even notes. Listen for stretches where it rocks between strings: one note repeating on one string while the other notes move, so you hear a steady pedal tone and a moving melody at the same time. Find a passage where you hear two lines, then try to hear it as one.
+</ListeningCue>
+
+### Two instruments, one melody
+
+Tchaikovsky did the reverse in the last movement of his Sixth Symphony. The opening melody descends smoothly, but no instrument plays it. The first and second violins swap notes, so each section plays a jagged line that jumps up and down. Our ears regroup the notes by proximity, so what we hear is the smooth descending melody that the score never gives to anyone, plus a second smooth line. Diana Deutsch found the same effect in the lab with headphones, the **scale illusion**: alternate the notes of a rising and a falling scale between the two ears, and listeners hear smooth melodies regrouped by pitch, not the jagged sequence each ear actually receives.
+
+<ListeningCue track="tchaik6-finale" start="0:00" end="0:40">
+The opening. Each violin section is jumping between high and low notes; you hear smooth lines instead. On the page, neither section plays the tune.
+</ListeningCue>
+
+<Callout kind="verify" title="Tchaikovsky and Deutsch">
+Confirm the description of the Pathétique finale's opening (first and second violins alternating notes so that neither plays the melody; listeners and even players hear the smooth line), and the setup and result of Deutsch's scale illusion (1975).
+</Callout>
+
+### Interlocking parts
+
+Balinese gamelan takes this further. In the style called *kotekan*, two players each play a part with gaps in it, and the gaps of one are filled by the notes of the other. Neither part makes musical sense alone. Played together, at a speed no single player could manage, they fuse into one dazzling fast melody. Ugandan *amadinda* xylophone music works on the same principle, and the ethnomusicologist Gerhard Kubik described how the combined parts produce "inherent patterns," melodies that no player plays but everyone hears.
+
+<ListeningCue track="gamelan-oleg-kotekan" start="0:00">
+Listen for a shimmering, impossibly fast line from the high metallophones. It's made by two interlocking parts. (Cue time still needs choosing by ear.)
+</ListeningCue>
+
+### The rules of part-writing
+
+The traditional rules for writing music in several independent parts, taught to music students for centuries, turn out to be largely scene-analysis rules. David Huron (2001) showed that most of them follow from one goal: keep each voice perceptually separate.
+
+- **Keep each voice moving by small steps.** Proximity holds each voice together as a stream.
+- **Don't let voices cross.** If the alto goes above the soprano, the ear regroups by pitch and swaps them.
+- **Avoid parallel octaves and fifths** (two voices moving in lockstep an octave or a fifth apart). Those intervals line up with the harmonic series, and voices moving together have common fate, so the two voices fuse into one and the texture loses a part.
+
+The rules were never arbitrary taste. They were a practical theory of hearing, worked out by ear.
+
+<Callout kind="verify" title="Huron 2001">
+Check the summary of Huron's "Tone and voice" (2001): which part-writing rules he derives from which perceptual principles, and whether the parallel-fifths/octaves explanation is his (tonal fusion) argument.
+</Callout>
+
+## Masking and the mix
+
+There's a limit to all this sorting: you can't group what you can't detect. One sound can make another inaudible, which is called **masking**.
+
+Masking is strongest when the two sounds are close in frequency, because they're competing for the same region of the cochlea. It's also lopsided: a loud low sound masks higher sounds much more than a loud high sound masks lower ones. A rumbling bass can bury a guitar's lower notes; a cymbal hardly bothers a bass.
+
+That's why arrangers and mixing engineers think in terms of *frequency space*. Every part needs a region where it isn't drowned out, and much of the craft of arranging is giving each instrument its own register, rhythm, and tone color, so that the listener's scene analysis can do its job. A good arrangement is designed to be easy to unscramble.
+
+Practice hearing out streams on two classic arrangements:
+
+<ListeningCue track="stevie-superstition" start="0:00" end="0:50">
+The parts enter roughly one at a time: drums alone, then a funky keyboard riff on a clavinet, then more clavinet parts, then bass, then horns. Each new part is heard as an addition (old-plus-new). Try to keep following the first clavinet after the others arrive.
+</ListeningCue>
+
+<ListeningCue track="marvin-whats-going-on" start="0:00">
+A dense arrangement: voices, strings, saxophone, congas. Try following only James Jamerson's bass line, all the way through. It's busy and inventive, and it's audible the whole time because it owns the low register.
+</ListeningCue>
+
+<Callout kind="check">
+Why might a mix that sounds clear on good speakers turn muddy on a phone speaker, even though nothing about the arrangement changed?
+
+<Answer>
+A phone speaker barely reproduces the low end, so the bass has to be heard through its higher harmonics, which now overlap with the guitars and keyboards in the same frequency region. Parts that were separated by register now compete in the same space, masking increases, and the cues that kept them apart (register in particular) are weakened. Mixing engineers check mixes on small speakers for exactly this reason.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="masking">
+Check the "upward spread of masking" claim (low frequencies mask higher ones more than the reverse) and the claim that masking is strongest within roughly the same frequency region (chapter 1.5 makes this precise).
+</Callout>
+
+## Attention and knowledge
+
+The grouping rules work automatically, but they don't work alone. In 1953, Colin Cherry studied what he called the **cocktail party problem**: how you can follow one conversation in a noisy room. Attention lets you select one stream and push the others into the background. That's what you were doing when you followed the bass line or the high tones of the gallop.
+
+Knowledge matters too. In Dowling's experiment, knowing which tune to listen for helped people find it. Trained musicians can hear out inner parts that untrained listeners miss, not because their ears are different, but because they know what patterns to look for. This is one reason repeated listening keeps revealing new things in music: each time, you know more of the patterns, and you can hear further into the scene.
+
+## The architecture of a scene
+
+Scene analysis is the first layer of musical structure. Before melody, harmony, or rhythm can mean anything, the brain has to decide what belongs to what. Every melody is a stream that held together; every chord is a set of notes that fused enough to be heard as one thing, but not so much that you lose the notes; every arrangement is a bet on how the listener's ear will sort it.
+
+| Question | The brain's answer | Musical consequence |
+|---|---|---|
+| Which frequencies are one sound? | Harmonic, start together, change together | One note from many harmonics; organ stops and *Boléro*'s fused timbres |
+| Which sounds are one line? | Close in pitch, close in time, similar timbre | Melodies move mostly by small steps (chapter 3.3) |
+| What's the rhythm? | Timing *within* a stream | The gallop disappears when the stream splits |
+| What can I hear at all? | Whatever isn't masked | Arranging and mixing as frequency planning |
+| What do I focus on? | Attention plus learned patterns | Repeated listening reveals more |
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. The problem: one summed waveform per ear, many sources; simultaneous versus sequential grouping.
+2. Fusion: why harmonics of one note are heard as one sound (harmonicity, common onset, common fate), and what makes one pop out.
+3. Streams: the gallop demonstration, its two boundaries, how streaming builds up, and why rhythm is heard within a stream, not across streams.
+4. Interleaved melodies: pitch and timbre separation, and the role of knowing what to listen for.
+5. The grouping cues as Gestalt principles, with old-plus-new, and why location is weaker than expected.
+6. Composers' uses: implied polyphony (Bach), regrouped lines (Tchaikovsky, the scale illusion), interlocking parts (kotekan), fused timbres (*Boléro*), part-writing rules as perceptual rules.
+7. Masking, and why arrangement and mixing are about giving parts their own space.
+
+**Decisions for your rewrite:**
+
+- **The hook.** I used the "one waveform, many sources" framing and Bregman's lake. Alternatives: start with the gallop (you can hear the brain change its mind), or with Tchaikovsky's melody that nobody plays.
+- **Depth on fusion.** This chapter covers it enough to answer chapter 1.2's question. Chapter 1.5 also touches fusion: the old theory that some intervals sound smooth because their notes partly fuse. Decide whether to foreshadow that.
+- **Examples.** Swap in your own: a dense mix you love (Radiohead, Steely Dan, a big band chart), an implied-polyphony passage (Bach's cello suites, a jazz bass solo), or interlocking guitars (Talking Heads, African highlife and soukous guitar).
+
+**Misconceptions to watch for:**
+
+- "The ear receives separate sounds." It receives one sum; separation is inference.
+- "We group by location first." Location helps, but pitch, timing, and harmonicity often dominate.
+- "Scene analysis is passive." Attention and knowledge reshape what you hear.
+- "A melody is a property of the notes." It's a property of the notes *as grouped*. Interleave them with another tune and the melody vanishes.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Bregman, A. S. (1990). *Auditory Scene Analysis: The Perceptual Organization of Sound*. MIT Press.
+- van Noorden, L. P. A. S. (1975). *Temporal coherence in the perception of tone sequences* (Doctoral dissertation). Eindhoven University of Technology.
+- Bregman, A. S., & Campbell, J. (1971). Primary auditory stream segregation and perception of order in rapid sequences of tones. *Journal of Experimental Psychology*, 89(2), 244–249.
+- Bregman, A. S. (1978). Auditory streaming is cumulative. *Journal of Experimental Psychology: Human Perception and Performance*, 4(3), 380–387.
+- Anstis, S., & Saida, S. (1985). Adaptation to auditory streaming of frequency-modulated tones. *Journal of Experimental Psychology: Human Perception and Performance*, 11(3), 257–271.
+- Dowling, W. J. (1973). The perception of interleaved melodies. *Cognitive Psychology*, 5(3), 322–337.
+- Moore, B. C. J., Glasberg, B. R., & Peters, R. W. (1986). Thresholds for hearing mistuned partials as separate tones in harmonic complexes. *Journal of the Acoustical Society of America*, 80(2), 479–483.
+- Darwin, C. J., & Carlyon, R. P. (1995). Auditory grouping. In B. C. J. Moore (Ed.), *Hearing* (pp. 387–424). Academic Press.
+- McAdams, S. (1989). Segregation of concurrent sounds. I: Effects of frequency modulation coherence. *Journal of the Acoustical Society of America*, 86(6), 2148–2159.
+- Deutsch, D. (1975). Two-channel listening to musical scales. *Journal of the Acoustical Society of America*, 57(5), 1156–1160.
+- Huron, D. (2001). Tone and voice: A derivation of the rules of voice-leading from perceptual principles. *Music Perception*, 19(1), 1–64.
+- Kubik, G. (1962). The phenomenon of inherent rhythms in East and Central African instrumental music. *African Music*, 3(1), 33–42.
+- Cherry, E. C. (1953). Some experiments on the recognition of speech, with one and with two ears. *Journal of the Acoustical Society of America*, 25(5), 975–979.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details (volume, pages, year), especially Anstis & Saida 1985, Kubik 1962, and the Darwin & Carlyon chapter's page range.
+</Callout>

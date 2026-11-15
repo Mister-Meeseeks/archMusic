@@ -83,9 +83,10 @@ function env(ctx: AudioContext, t: number, peak: number, decay: number) {
 }
 
 /** Schedule one drum hit at audio-clock time t with velocity 0..1. */
-export function playDrum(id: DrumId, t: number, vel: number) {
+export function playDrum(id: DrumId, t: number, vel: number, dest?: AudioNode) {
   if (vel <= 0) return;
-  const { ctx, out } = getAudio();
+  const { ctx, out: master } = getAudio();
+  const out = dest ?? master;
   t = Math.max(t, ctx.currentTime);
   // Opt-in debug log for timing tests: set window.__archRhythmLog = [] to record hits.
   const log = typeof window !== 'undefined' ? (window as any).__archRhythmLog : null;

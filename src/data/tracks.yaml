@@ -222,3 +222,313 @@
   rights: embed-official
   listened: false
   notes: Opens with the famous solo clarinet trill and glissando. A good, exposed example of the clarinet's tone.
+
+# ---------- Vol V ch. 4: tension and release ----------
+# Section maps: times were estimated from line-level synced-lyric timestamps for
+# the album recordings (lrclib.net; structure only, no lyrics stored) and need
+# checking by ear against the YouTube upload. Use the SongMap's "Retime" panel.
+
+- id: whitney-always
+  title: I Will Always Love You
+  artist: Whitney Houston
+  year: 1992
+  youtube: tP0zj220CbQ        # Whitney Houston - Topic (album audio, 4:32)
+  spotify: 78jW05wuoEYTzhMAKPyX5k  # The Bodyguard - Original Soundtrack Album (4:31)
+  search: Whitney Houston I Will Always Love You Bodyguard
+  rights: embed-official
+  listened: false
+  duration: "4:32"
+  notes: Opens with an unaccompanied voice; the famous pause and single drum hit lead into the final chorus a step higher.
+  map:
+    verified: false
+    sections:
+      - { t: "0:00", label: "Verse 1", kind: verse }
+      - { t: "0:37", label: "Chorus", kind: chorus }
+      - { t: "1:09", label: "Verse 2", kind: verse }
+      - { t: "1:45", label: "Chorus", kind: chorus }
+      - { t: "2:04", label: "Sax solo", kind: solo }
+      - { t: "2:35", label: "Verse 3", kind: verse }
+      - { t: "3:02", label: "Final chorus", kind: climax }
+      - { t: "3:47", label: "Outro", kind: outro }
+    events:
+      - { t: "0:01", label: "Voice alone" }
+      - { t: "3:00", label: "Silence, drum hit, key change" }
+
+- id: beyonce-love-on-top
+  title: Love On Top
+  artist: Beyoncé
+  year: 2011
+  youtube: HzC9X_O7bJQ        # Beyonce VEVO, official audio (4:28)
+  spotify: 34h7O0d0ToOB60zYSFkGKH  # album 4 (4:27)
+  search: Beyonce Love On Top
+  rights: embed-official
+  listened: false
+  duration: "4:28"
+  notes: The last minute and a half repeats the chorus four times, each a half step higher than the last.
+  map:
+    verified: false
+    sections:
+      - { t: "0:00", label: "Intro", kind: intro }
+      - { t: "0:19", label: "Verse 1", kind: verse }
+      - { t: "0:41", label: "Pre-chorus", kind: prechorus }
+      - { t: "1:00", label: "Chorus", kind: chorus }
+      - { t: "1:23", label: "Verse 2", kind: verse }
+      - { t: "2:02", label: "Pre-chorus", kind: prechorus }
+      - { t: "2:22", label: "Chorus", kind: chorus }
+      - { t: "2:45", label: "Bridge", kind: bridge }
+      - { t: "3:03", label: "Chorus", kind: climax }
+      - { t: "3:25", label: "Chorus", kind: climax }
+      - { t: "3:46", label: "Chorus", kind: climax }
+      - { t: "4:05", label: "Chorus", kind: climax }
+    events:
+      - { t: "3:03", label: "key ↑" }
+      - { t: "3:25", label: "key ↑" }
+      - { t: "3:46", label: "key ↑" }
+      - { t: "4:05", label: "key ↑" }
+
+- id: avicii-levels
+  title: Levels
+  artist: Avicii
+  year: 2011
+  youtube: _ovdm2yX4MA        # AviciiOfficialVEVO, official video (radio edit length)
+  spotify: 5UqCQaDshqbIk3pkhy4Pjg  # Levels - Radio Edit, single (3:20)
+  search: Avicii Levels radio edit
+  rights: embed-official
+  listened: false
+  notes: The breakdown with the vocal sample starts around 1:15 in the radio edit; the build and drop follow. Check the video's timing against the audio.
+
+- id: beatles-day-in-the-life
+  title: A Day In The Life
+  artist: The Beatles
+  year: 1967
+  youtube: UYeV7jLBXvA        # The Beatles - Topic, Remastered 2009
+  spotify: 0hKRSZhUGEhKU6aNSPBACZ  # Sgt. Pepper's (Remastered 2009)
+  search: The Beatles A Day In The Life remastered 2009
+  rights: embed-official
+  listened: false
+  notes: Two orchestral rises (from about 1:40 and about 3:45); the second ends in the long final piano chord.
+
+- id: ravel-bolero
+  title: Boléro
+  artist: Berliner Philharmoniker
+  year: null
+  youtube: 3cgsIgYFKWU        # Berliner Philharmoniker - Topic (16:10)
+  spotify: 5iAqc2WlDdes7EbhdUxrIF  # Karajan / Berlin Phil, recorded 1985 (15:50)
+  search: Ravel Bolero Berliner Philharmoniker Karajan
+  rights: embed-official
+  listened: false
+  notes: YouTube and Spotify may be different Berlin recordings. The single key change comes in the last minute; check the cue start.
+
+- id: wagner-tristan-prelude
+  title: Tristan und Isolde, Act I Prelude
+  artist: Berliner Philharmoniker
+  year: null
+  youtube: iTKTV0c7Cno        # Berliner Philharmoniker - Topic (12:19)
+  spotify: 03TfFfReDh8T5Xm1FoC0pS  # Karajan / Berlin Phil, 1958
+  search: Wagner Tristan und Isolde Prelude Berliner Philharmoniker
+  rights: embed-official
+  listened: false
+  notes: The opening phrase and the "Tristan chord" are in the first few seconds.
+
+- id: beethoven5-transition
+  title: Symphony No. 5, transition from the third movement into the finale
+  artist: Ludwig van Beethoven
+  year: 1808
+  youtube: RsxlzEScmKo        # Didier Guigue, two-minute excerpt (unofficial upload)
+  spotify: 4Gjr8yE6t4ecPN27S23jRa  # Karajan / Berlin Phil, 3rd movement (the transition is its last minute)
+  search: Beethoven Symphony 5 transition third fourth movement
+  rights: embed-unofficial
+  listened: false
+  notes: Replace with an official orchestra upload before going public (e.g. a full movements 3–4 video with a timestamp).
+
+# ---------- Vol I ch. 4: auditory scene analysis ----------
+
+- id: tchaik6-finale
+  title: Symphony No. 6 in B minor "Pathétique", Op. 74, IV. Finale (Adagio lamentoso)
+  artist: Pyotr Ilyich Tchaikovsky; Royal Liverpool Philharmonic Orchestra, Vasily Petrenko
+  year: 1893
+  youtube: 6MdFJHvMOPg        # Vasily Petrenko - Topic (The Orchard / Onyx), 11:40
+  spotify: 1QWBzTNBwrNBHE3rGm6Kas  # Tchaikovsky Symphony No.6 'Pathetique', No.4, No.3 'Polish' (2017), 11:39
+  search: Tchaikovsky Symphony 6 Pathetique Finale Adagio lamentoso Petrenko Royal Liverpool
+  rights: embed-official
+  listened: false
+  notes: The opening bars (roughly 0:00-0:30, an estimate) are the passage where the 1st and 2nd violins trade notes of the descending melody, so neither part plays the tune on its own, yet you hear a single smooth line; the same passage returns near the end of the movement. Same recording on YouTube and Spotify. Alternative (Karajan/Berlin Phil 1977 DG, Berliner Philharmoniker - Topic, BZHhkv5umMA, 9:53) has no confirmed matching Spotify track; Spotify 23HgRRO1J6RLJyxk0UBIFT is a Karajan/Berlin 2007 compilation track (10:14), probably a different (EMI) recording.
+
+- id: bach-partita3-prelude
+  title: Violin Partita No. 3 in E major, BWV 1006, I. Preludio
+  artist: Johann Sebastian Bach; Hilary Hahn
+  year: 1997
+  youtube: uju--tMDar8        # Hilary Hahn - Topic (Sony Classical, "Hilary Hahn Plays Bach"), 3:35
+  spotify: 2sqhid2MBYJCZWPrLjsUbP  # Hilary Hahn Plays Bach (1997), 3:34
+  search: Hilary Hahn Bach Partita No. 3 E major Preludio
+  rights: embed-official
+  listened: false
+  notes: A single line of nonstop sixteenth notes that keeps leaping between strings, so it splits into a higher and a lower strand (pseudo-polyphony); listen especially for the bariolage stretches where one repeated open-string note alternates with a moving line. Find cue times by ear. Same recording on both. Alternative is Grumiaux (Philips, early 1960s), YouTube MrioumHEjgM (Arthur Grumiaux - Topic, 3:48, from "101 Bach") and Spotify 3anzrDNu9oU7Is5qoZqJGS (Complete Sonatas & Partitas for Solo Violin, 3:47). Probably the same recording but on a different compilation. A second Hahn Topic upload, AIBOk-Tdofw (3:30), is likely her later recording and doesn't match the Spotify track.
+
+- id: stevie-superstition
+  title: Superstition
+  artist: Stevie Wonder
+  year: 1972
+  youtube: ftdZ363R9kQ        # Stevie Wonder - Topic (UMG, album Talking Book), 4:27
+  spotify: 4N0TP4Rmj6QQezWV88ARNJ  # Talking Book (1972), 4:26
+  search: Stevie Wonder Superstition Talking Book
+  rights: embed-official
+  listened: false
+  notes: The drums play alone for the first few bars, then a clavinet riff enters and more clavinet parts, bass and finally the horns stack up before the vocal, so it's good practice for following one stream at a time. Exact entry times are not sourced; retime by ear. Album version on both (egqv1mtos6A is a second Talking Book Topic upload at 4:28; avoid Spotify 6O7cAQmhxwrnHyfWUDwHW1, the single version).
+
+- id: marvin-whats-going-on
+  title: What's Going On
+  artist: Marvin Gaye
+  year: 1971
+  youtube: xBvnBzjLJsc        # Marvin Gaye - Topic (UMG, from "The Marvin Gaye Collection"), 3:53
+  spotify: 2PR9fRMWxg4oiNnuJd64NX  # What's Going On (1971), 3:53
+  search: Marvin Gaye What's Going On album version
+  rights: embed-official
+  listened: false
+  notes: A dense arrangement (layered vocals, strings, saxophone, congas) over which James Jamerson's busy, syncopated bass line can still be followed throughout, a good test of hearing out the bass stream. The YouTube upload comes from a compilation but has the same length as the album track. Confirm it is the same mix (not the mono single, vC597Ltdowk).
+
+- id: gamelan-oleg-kotekan
+  title: "Gamelan Gong Kebjar: Oleg Tumbelilingan (Bumblebee)"
+  artist: Gamelan Gong Kebyar (Nonesuch Explorer Series)
+  year: null
+  youtube: fjJx2v3Hcf0        # Nonesuch Explorer Series - Topic, 10:06
+  spotify: 04lHieIAV9qKJLCiIpJ745  # Explorer Series: Indonesia - Bali: Golden Rain (2006 reissue), 10:05
+  search: Nonesuch Explorer Bali Golden Rain Oleg Tumbelilingan
+  rights: embed-official
+  listened: false
+  notes: Kebyar uses kotekan, two interlocking parts (polos and sangsih) that combine into one very fast figuration; whether this track has a clear, exposed kotekan passage still needs checking by ear (no cue times sourced). The existing gamelan-kebyar entry (Hudjan Mas, ibJhtEVV4PQ / 4eLZPLvQfu5vVa1K6ouC4y, re-verified) is the other candidate from the same album. No credible label upload of Ugandan amadinda was found; YouTube results were fan or teaching videos only, and the "Amadinda Percussion Group - Topic" uploads are a Hungarian percussion ensemble, not Ugandan music.
+
+# ---------- Vol III ch. 3: melody ----------
+
+- id: beethoven5-mvt1
+  title: "Symphony No. 5 in C minor, Op. 67: I. Allegro con brio"
+  artist: Ludwig van Beethoven; Berlin Philharmonic, Herbert von Karajan
+  year: 1962
+  youtube: 7pxWm5MZKW8        # Herbert von Karajan - Topic, "2024 Remastered, Berlin 1962" (7:16)
+  spotify: 3dKRNpM0fWeMK8oHiI8ZNa  # Karajan A-Z: Beethoven (DG, 2024), "Recorded 1962" (7:18)
+  search: Beethoven Symphony 5 Allegro con brio Karajan Berlin 1962
+  rights: embed-official
+  listened: false
+  notes: >-
+    The short-short-short-long motif opens the piece and drives nearly every bar. Karajan takes the
+    exposition repeat. ESTIMATES (bar-count proportions; tempo assumed constant, fermatas ignored):
+    the development starts around 2:50 (bar 125, after the repeated exposition), the recapitulation
+    begins around 4:20, and the solo oboe cadenza (bar 268) comes around 4:30. Check these by ear
+    (allow about ±10 s).
+
+- id: garland-rainbow
+  title: Over the Rainbow
+  artist: Judy Garland
+  year: 1939
+  youtube: XW5nIlIfR5s        # Judy Garland - Topic (2:46)
+  spotify: 568SEFtDjKr7N2PytpA6D5  # The Wizard of Oz (Original Motion Picture Soundtrack) [Deluxe Edition] (2:45)
+  search: Judy Garland Over the Rainbow Wizard of Oz soundtrack
+  rights: embed-official
+  listened: false
+  notes: >-
+    On "Some-where" the melody leaps up an octave, then fills the gap by stepping back down ("over
+    the rain-bow"). This happens at the first sung line, a few seconds after the short orchestral intro.
+    Alternative official YouTube upload: areSgU0fGp8 (WaterTower Music).
+
+- id: beatles-yesterday
+  title: Yesterday (Remastered 2009)
+  artist: The Beatles
+  year: 1965
+  youtube: NrgmdOz227I        # The Beatles - Topic (2:06)
+  spotify: 3BQHpFgAp4l80e1XslIjNI  # Help! (Remastered 2009) (2:06)
+  search: The Beatles Yesterday Remastered 2009
+  rights: embed-official
+  listened: false
+  notes: The opening verse ("Yesterday, all my troubles...") is a 7-bar phrase where you'd expect 8. Count the bars over the guitar, starting with the first word, in the first ~15 s.
+
+- id: white-stripes-seven-nation
+  title: Seven Nation Army
+  artist: The White Stripes
+  year: 2003
+  youtube: 0J2QdDbelmY        # The White Stripes (official channel), official music video (3:59)
+  spotify: 3dPQuX8Gs42Y7b454ybpMR  # Elephant (3:52)
+  search: The White Stripes Seven Nation Army
+  rights: embed-official
+  listened: false
+  notes: The seven-note riff is played alone (guitar through an octave pedal, so it sounds like a bass) from the first second, then repeated unchanged under the verse. The video edit runs a few seconds longer than the album track.
+
+- id: shankar-jogeshwari-alap
+  title: "Raga Jogeshwari: Alap"
+  artist: Ravi Shankar (sitar)
+  year: 1981
+  youtube: 0SdVJfaYP7I        # Ravi Shankar - Topic (13:44)
+  spotify: 6jCMpgXNqz3haixD4u5ZVi  # Traditional: The Spirit of India (1995 compilation) (13:43)
+  search: Ravi Shankar Raga Jogeshwari Alap
+  rights: embed-official
+  listened: false
+  notes: >-
+    The unmetred ālāp opening unfolds the raga one note at a time, with meend (bends that slide between
+    notes) and gamak (oscillations on a note). Ornament here is part of the melody's identity, not
+    decoration added afterwards. The first two or three minutes are enough. The recording is DG's 1981
+    "Raga Jogeshwari" (year inferred from the 1981 album listing on Spotify; verify). Other verified
+    copies: youtube STSchUyJ8Qw (Topic, 13:41), spotify 2Pc7SEsDp6wRqRmLrOYlbR (2023 compilation).
+
+- id: bach-double-vivace
+  title: "Concerto for 2 Violins in D minor, BWV 1043: I. Vivace"
+  artist: J. S. Bach; Simon Standage, Elizabeth Wilcock, The English Concert, Trevor Pinnock
+  year: null
+  youtube: IHlfdz0q0Cg        # Simon Standage - Topic (3:39)
+  spotify: 68iacIhXlHZ68uxxBkWkiv  # 100 Violin Masterworks (2018 compilation; Archiv recording) (3:39)
+  search: Bach Double Concerto BWV 1043 Vivace Standage Pinnock English Concert
+  rights: embed-official
+  listened: false
+  notes: >-
+    Wikipedia's "Sequence (music)" article uses bars 22–24 of this movement as its example of a melodic
+    sequence: a figure restated at successively different pitch levels. ESTIMATE from proportions: around
+    0:50–1:05 in this recording. The bar count and tempo are assumed, so find it by ear. Baroque
+    sequences are everywhere in this movement's solo episodes. Original recording year not confirmed
+    (Pinnock/English Concert Archiv, c. 1983).
+
+# ---------- Vol IV ch. 5: synthesis ----------
+
+- id: elp-lucky-man
+  title: Lucky Man
+  artist: Emerson, Lake & Palmer
+  year: 1970
+  youtube: yRvljAT4O6Q        # Emerson, Lake and Palmer (official channel), "Official Audio", 4:38
+  spotify: 5f0ix00DiRpjMVhLBIA8ml  # Emerson Lake & Palmer (1970 album), 4:38
+  search: Emerson Lake Palmer Lucky Man
+  rights: embed-official
+  listened: false
+  notes: Keith Emerson's improvised one-take Moog solo in the outro (est. from ~3:30), a single sawtooth-ish voice through the Moog ladder filter with heavy portamento glides between notes.
+
+- id: phuture-acid-tracks
+  title: Acid Tracks
+  artist: Phuture
+  year: 1987
+  youtube: yKHGv6Es610        # Phuture - Topic, 12:20
+  spotify: 2aLXJJ2zOsBJlGTxiG0yMi  # Acid Tracks (single, Trax, 1987), 12:17
+  search: Phuture Acid Tracks
+  rights: embed-official
+  listened: false
+  notes: A looping Roland TB-303 bassline while DJ Pierre slowly sweeps the low-pass cutoff and resonance by hand, so the same notes go from muffled to squelchy and back. This is subtractive synthesis heard as a performance.
+
+- id: dx7-epiano
+  title: Twin Peaks Theme (Instrumental)
+  artist: Angelo Badalamenti
+  year: 1990
+  youtube: Z30zg9a5M5k        # Angelo Badalamenti - Topic, 5:11
+  spotify: 7FO7BolIZsl1o8DDSjeOph  # Soundtrack From Twin Peaks (1990), 5:10
+  search: Angelo Badalamenti Twin Peaks Theme Instrumental
+  rights: embed-official
+  listened: false
+  notes: The slow, chiming electric-piano chords (DX7 E.PIANO 1, an FM patch) carry the harmony under the twangy guitar melody. The patch should be exposed near the start (estimate, ~0:00–0:30); listen for the glassy "tine" attack that softens into a mellow sustain, the FM hallmark.
+
+- id: vangelis-blade-runner
+  title: Blade Runner Blues
+  artist: Vangelis
+  year: 1982
+  youtube: ECYLHiXvrBQ        # Vangelis - Topic, 8:55
+  spotify: 575blCgesVtCu0HEYaIcas  # Blade Runner (Music From The Original Soundtrack), 1994 release, 8:54
+  search: Vangelis Blade Runner Blues
+  rights: embed-official
+  listened: false
+  notes: A slow two-chord improvisation whose harmonica-like lead is a CS-80, bent and swelled with the ribbon and polyphonic aftertouch. Listen for how pressure changes brightness and vibrato note by note. That is subtractive synthesis with expressive control.
+  # Alternative: "Blade Runner (End Titles)": youtube OP63BRzKmB0 (Vangelis - Topic, 4:40) /
+  # spotify 1u1ATklwZesAvq1whHsI8Z (same 1994 album, 4:39), with the big CS-80 brass lead.
+  # "Love Theme" (Topic PKpH8N1Be-o, 6:06) is mainly Dick Morrissey's saxophone, so skip it.
