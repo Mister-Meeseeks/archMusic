@@ -43,6 +43,8 @@ The site is private and informal for now. Keep breadcrumbs so it can be cleaned 
 - `src/components/ui/`: `Callout`, `Answer`, `ListeningCue`, `Term`, `Refresher` (auto-rendered by the chapter layout).
 - `src/data/concepts.yaml` + `src/lib/concepts.ts`: concept registry; `/glossary/` lists it.
 - Design principles for widgets: build reusable labs (each one should serve several chapters), make every visual reflect the actual model, and give each widget a caption saying what you're looking at.
+- Static diagrams are also in the toolbox. Interactive labs and recordings stay the main exhibits, but use a high-quality diagram where a picture explains a concept or shows how things relate better than prose or a lab can (a signal chain, a two-axis map of grouping, how parts of a system connect). Only add one when it earns its place. Build them as theme-aware inline SVG (Astro components in `src/components/figures/`, using the site's CSS tokens) with a caption, not as images.
+- Tables are exhibits too (Modernist Cuisine leans on them). Use `<DataTable title="..." caption="...">` around a Markdown table (blank lines inside) for reference data, comparisons, and chapter summaries.
 
 ## Hosting
 

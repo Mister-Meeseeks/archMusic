@@ -1,0 +1,19 @@
+---
+// Frame for a static diagram (or a table): kicker, title, body, caption.
+// Figures live in src/components/figures/; tables use <DataTable>.
+interface Props {
+  title: string;
+  kicker?: string;
+  caption?: string; // may contain simple HTML
+}
+const { title, kicker = 'Figure', caption } = Astro.props;
+---
+
+<figure class="w-frame fig">
+  <header class="w-head">
+    <span class="w-kicker">{kicker}</span>
+    <span class="w-title">{title}</span>
+  </header>
+  <div class="fig-body"><slot /></div>
+  {caption && <figcaption class="w-caption" set:html={caption} />}
+</figure>

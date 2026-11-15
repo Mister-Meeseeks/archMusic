@@ -1,0 +1,69 @@
+---
+// The major scale as a pattern of steps (2 2 1 2 2 2 1 semitones), shown on
+// a keyboard starting on C and on G. Starting on G, keeping the pattern
+// forces F♯: the only black key in G major.
+import Figure from '../ui/Figure.astro';
+
+const NAMES = ['C', 'C♯', 'D', 'E♭', 'E', 'F', 'F♯', 'G', 'A♭', 'A', 'B♭', 'B'];
+const isBlack = (m: number) => [1, 3, 6, 8, 10].includes(((m % 12) + 12) % 12);
+const KW = 34, KH = 92, BKW = 20, BKH = 56, TOP = 92;
+const PATTERN = [2, 2, 1, 2, 2, 2, 1];
+
+function keyboard(x0: number, startMidi: number, title: string) {
+  // 8 white keys starting from startMidi (a white key)
+  const whites: { m: number; x: number }[] = [];
+  let m = startMidi;
+  while (whites.length < 8) {
+    if (!isBlack(m)) whites.push({ m, x: x0 + whites.length * KW });
+    m++;
+  }
+  const blacks: { m: number; x: number }[] = [];
+  for (let i = 0; i < whites.length - 1; i++) if (whites[i + 1].m - whites[i].m === 2) blacks.push({ m: whites[i].m + 1, x: whites[i].x + KW - BKW / 2 });
+  const scale = [startMidi];
+  for (const s of PATTERN) scale.push(scale[scale.length - 1] + s);
+  const center = (mm: number) => {
+    const w = whites.find((k) => k.m === mm);
+    if (w) return { x: w.x + KW / 2, y: TOP + KH - 16 };
+    const b = blacks.find((k) => k.m === mm)!;
+    return { x: b.x + BKW / 2, y: TOP + BKH - 12 };
+  };
+  const arcs = PATTERN.map((s, i) => {
+    const a = center(scale[i]).x, b = center(scale[i + 1]).x;
+    return { a, b, s, mid: (a + b) / 2 };
+  });
+  return { x0, title, whites, blacks, scale: new Set(scale), center, arcs };
+}
+const kbs = [keyboard(20, 60, 'C major: C D E F G A B C'), keyboard(370, 55, 'G major: G A B C D E F♯ G')];
+---
+
+<Figure
+  title="The major scale is a pattern of steps"
+  caption="A major scale climbs by whole steps (2 semitones) and half steps (1 semitone) in the order 2 2 1 2 2 2 1. Starting on C, that pattern uses only white keys. Start the same pattern on G, and the step from E has to be a whole step, which lands on F♯, not F. Every major scale is the same pattern started on a different note; that's why they all sound alike apart from height."
+>
+  <svg viewBox="0 0 680 210" role="img" aria-label="Two keyboards showing the major scale pattern starting on C and on G">
+    {kbs.map((k) => (
+      <g>
+        <text x={k.x0} y="18" class="fig-t">{k.title}</text>
+        {k.arcs.map((a) => (
+          <g>
+            <path d={`M${a.a},${TOP - 4} Q${a.mid},${TOP - (a.s === 2 ? 44 : 30)} ${a.b},${TOP - 4}`} class={a.s === 1 ? 'fig-sb' : 'fig-thin'} />
+            <text x={a.mid} y={TOP - (a.s === 2 ? 28 : 21)} text-anchor="middle" class={a.s === 1 ? 'fig-t' : 'fig-s'}>{a.s}</text>
+          </g>
+        ))}
+        {k.whites.map((w) => (
+          <g>
+            <rect x={w.x} y={TOP} width={KW} height={KH} rx="3" class={k.scale.has(w.m) ? 'fig-key-on' : 'fig-key-w'} />
+            <text x={w.x + KW / 2} y={TOP + KH - 8} text-anchor="middle" class="fig-keylabel">{NAMES[w.m % 12]}</text>
+          </g>
+        ))}
+        {k.blacks.map((b) => (
+          <g>
+            <rect x={b.x} y={TOP} width={BKW} height={BKH} rx="2" class={k.scale.has(b.m) ? 'fig-key-b fig-key-hot' : 'fig-key-b'} />
+            {k.scale.has(b.m) && <text x={b.x + BKW / 2} y={TOP + BKH - 8} text-anchor="middle" class="fig-keylabel on-black">{NAMES[b.m % 12]}</text>}
+          </g>
+        ))}
+      </g>
+    ))}
+    <text x="20" y="204" class="fig-s">Arc labels: semitones from one scale note to the next. Orange arcs are half steps.</text>
+  </svg>
+</Figure>

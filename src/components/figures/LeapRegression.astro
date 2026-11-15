@@ -1,0 +1,77 @@
+---
+// Why big leaps tend to be followed by a turn back: regression to the mean
+// (von Hippel & Huron 2000). Each panel shows a tune's pitch distribution as
+// a sideways bell (illustrative: a normal distribution over its range), a
+// leap, and how much of the tune's range lies below and above where it lands.
+import Figure from '../ui/Figure.astro';
+
+const r = (v: number) => Math.round(v * 10) / 10;
+// standard normal CDF (Abramowitz–Stegun 7.1.26 via erf)
+function cdf(z: number) {
+  const t = 1 / (1 + 0.3275911 * (Math.abs(z) / Math.SQRT2));
+  const e = 1 - (((((1.061405429 * t - 1.453152027) * t + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t) * Math.exp(-(z * z) / 2);
+  return z >= 0 ? (1 + e) / 2 : (1 - e) / 2;
+}
+const Y0 = 46, Y1 = 206, ZMAX = 2.6;
+const zy = (z: number) => r((Y0 + Y1) / 2 - (z / ZMAX) * ((Y1 - Y0) / 2));
+
+type Panel = { x: number; title: string; before: number[]; land: number; verdict: string };
+const panels: Panel[] = [
+  { x: 10, title: 'A leap toward the edge', before: [-0.2, 0.1, -0.3], land: 1.6, verdict: 'Most notes lie below: likely to turn back' },
+  { x: 350, title: 'A leap across the middle', before: [-1.5, -1.8, -1.6], land: 0.3, verdict: 'Notes on both sides: no strong pull' },
+];
+function bell(px: number, land: number) {
+  const bx = px + 175, bw = 72;
+  const pts: string[] = [];
+  const below: string[] = [];
+  const above: string[] = [];
+  for (let k = 0; k <= 80; k++) {
+    const z = -ZMAX + (k / 80) * 2 * ZMAX;
+    const d = Math.exp(-(z * z) / 2);
+    const p = `${r(bx + d * bw)},${zy(z)}`;
+    pts.push(p);
+    (z <= land ? below : above).push(p);
+  }
+  const area = (ps: string[], z0: number, z1: number) => (ps.length ? `M${bx},${zy(z0)} L${ps.join(' L')} L${bx},${zy(z1)} Z` : '');
+  return {
+    bx,
+    outline: `M${bx},${zy(-ZMAX)} L${pts.join(' L')} L${bx},${zy(ZMAX)}`,
+    below: area(below, -ZMAX, land),
+    above: area(above, land, ZMAX),
+    pBelow: Math.round(cdf(land) * 100),
+  };
+}
+const drawn = panels.map((p) => ({ ...p, b: bell(p.x, p.land) }));
+---
+
+<Figure
+  title="Why leaps turn back"
+  caption="Each tune has a comfortable range, drawn as a sideways bell: most of its notes sit near the middle, fewer near the edges (an idealized shape, for illustration). Left: a big leap from the middle usually lands near an edge, simply because it's big. From there, almost all of the tune's usual notes lie back the way it came, so the next note probably turns back. Right: a leap that crosses the middle lands with notes on both sides, and von Hippel and Huron found that such leaps reverse much less often. Gap-fill may be mostly a side effect of melodies staying in their range."
+>
+  <svg viewBox="0 0 680 250" role="img" aria-label="Two panels showing a melodic leap landing near the edge of a tune's range versus near its middle">
+    <defs>
+      <marker id="lr-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fig-head" />
+      </marker>
+    </defs>
+    {drawn.map((p) => (
+      <g>
+        <text x={p.x + 10} y="22" class="fig-t">{p.title}</text>
+        <line x1={p.x + 10} x2={p.b.bx} y1={zy(0)} y2={zy(0)} class="fig-thin" stroke-dasharray="3 4" />
+        <text x={p.b.bx + 5} y={zy(0) + 15} class="fig-s">middle</text>
+        <path d={p.b.below} class="fig-band" />
+        <path d={p.b.above} style="fill: color-mix(in srgb, var(--tone-b) 14%, transparent)" />
+        <path d={p.b.outline} class="fig-thin" />
+        <line x1={p.x + 135} x2={p.b.bx + 78} y1={zy(p.land)} y2={zy(p.land)} class="fig-thin" />
+        <text x={p.b.bx + 80} y={zy(p.land) - 6} class="fig-s">{100 - p.b.pBelow}% above</text>
+        <text x={p.b.bx + 80} y={zy(p.land) + 14} class="fig-s">{p.b.pBelow}% below</text>
+        {p.before.map((z, i) => (
+          <circle cx={p.x + 30 + i * 28} cy={zy(z)} r="6" class="fig-a" />
+        ))}
+        <line x1={p.x + 86 + 6} y1={zy(p.before[2])} x2={p.x + 135 - 8} y2={zy(p.land) + 6} class="fig-line" marker-end="url(#lr-arrow)" />
+        <circle cx={p.x + 135} cy={zy(p.land)} r="7" class="fig-b" />
+        <text x={p.x + 10} y="236" class="fig-s">{p.verdict}</text>
+      </g>
+    ))}
+  </svg>
+</Figure>

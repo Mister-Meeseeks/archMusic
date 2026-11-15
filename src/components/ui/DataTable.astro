@@ -1,0 +1,23 @@
+---
+// A reference table, styled as an exhibit (in the spirit of Modernist
+// Cuisine's tables). Put a normal Markdown table inside, with blank lines
+// around it:
+//
+//   <DataTable title="Oscillator waveforms" caption="...">
+//
+//   | Wave | Harmonics |
+//   |---|---|
+//   | Sine | 1 only |
+//
+//   </DataTable>
+import Figure from './Figure.astro';
+interface Props {
+  title: string;
+  caption?: string;
+}
+const { title, caption } = Astro.props;
+---
+
+<Figure kicker="Table" title={title} caption={caption}>
+  <div class="data-table"><slot /></div>
+</Figure>

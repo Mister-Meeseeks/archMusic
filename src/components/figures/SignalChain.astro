@@ -1,0 +1,112 @@
+---
+// A subtractive synthesizer and the human voice, drawn the same way: a source
+// rich in harmonics, then a filter that shapes it. The little spectra between
+// the boxes are computed: a 1/n harmonic comb, the same comb through a
+// two-pole low-pass, and the comb weighted by two formant peaks.
+import Figure from '../ui/Figure.astro';
+
+const r = (v: number) => Math.round(v * 10) / 10;
+const N = 12;
+const comb = (weight: (n: number) => number) => Array.from({ length: N }, (_, i) => (1 / (i + 1)) * weight(i + 1));
+const lowpass = (n: number) => 1 / Math.sqrt(1 + Math.pow(n / 4, 4));
+const formants = (n: number) => 0.15 + Math.exp(-((n - 3) ** 2) / 1.6) + 0.8 * Math.exp(-((n - 8) ** 2) / 2.2);
+
+// a spectrum glyph: bars in a w×h box at (x, y top-left)
+function glyph(x: number, y: number, w: number, h: number, amps: number[], ref?: number[], curve?: (n: number) => number, curveMax = 1) {
+  const max = Math.max(...(ref ?? amps));
+  const bw = w / amps.length;
+  const bars = amps.map((a, i) => ({
+    x: r(x + i * bw + bw * 0.25),
+    w: r(bw * 0.5),
+    y: r(y + h - (h * a) / max),
+    h: r((h * a) / max),
+    ghost: ref ? r((h * ref[i]) / max) : 0,
+  }));
+  let path = '';
+  if (curve) {
+    const pts = [];
+    for (let k = 0; k <= 60; k++) {
+      const n = 0.5 + (k / 60) * amps.length;
+      pts.push(`${k ? 'L' : 'M'}${r(x + (n - 0.5) * bw + bw * 0.5 - bw * 0.5)},${r(y + h - (h * Math.min(curve(n), curveMax)) / curveMax)}`);
+    }
+    path = pts.join(' ');
+  }
+  return { bars, path, x, y, w, h };
+}
+
+const saw = comb(() => 1);
+const g1 = glyph(182, 42, 72, 40, saw);
+const g2 = glyph(427, 42, 72, 40, comb(lowpass), saw, lowpass, 1);
+const g3 = glyph(182, 228, 72, 40, saw);
+const g4 = glyph(427, 228, 72, 40, comb(formants).map((a) => a), undefined, formants, 1.15);
+const glyphs = [g1, g2, g3, g4];
+
+const box = (x: number, y: number, title: string, sub: string[], cls = '') => ({ x, y, title, sub, cls });
+const synth = [box(20, 46, 'Oscillator', ['a waveform rich', 'in harmonics'], 'is-a'), box(265, 46, 'Low-pass filter', ['removes harmonics', 'above the cutoff']), box(510, 46, 'Amplifier', ['shapes loudness', 'over time'])];
+const voice = [box(20, 232, 'Vocal folds', ['a buzz rich', 'in harmonics'], 'is-b'), box(265, 232, 'Vocal tract', ['its resonances', '(formants) shape it']), box(510, 232, 'Mouth and lips', ['the sound', 'leaves'])];
+const ctl = [box(20, 150, 'LFO', ['slow wobble: vibrato'], 'is-ctl'), box(265, 150, 'Filter envelope', ['opens, then closes'], 'is-ctl'), box(510, 150, 'Amp envelope', ['loudness shape per note'], 'is-ctl')];
+const BW = 150;
+const BH = 66;
+---
+
+<Figure
+  title="Source and filter: a synthesizer and a voice"
+  caption="Top: the classic subtractive synthesizer. The oscillator supplies every harmonic; the filter carves the upper ones away (gray bars show what was removed; the line is the filter's response); the amplifier shapes the loudness. Dashed boxes are controls that change a setting over time. Bottom: the voice has the same design. The vocal folds supply a buzz, and the vocal tract's resonances boost some harmonics and weaken others, which is what makes one vowel different from another (chapter 1.2)."
+>
+  <svg viewBox="0 0 680 312" role="img" aria-label="Block diagram: oscillator, filter, amplifier with controls; vocal folds, vocal tract, mouth">
+    <defs>
+      <marker id="sc-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fig-head" />
+      </marker>
+      <marker id="sc-arrow-ctl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fig-head is-ctl" />
+      </marker>
+    </defs>
+
+    <text x="20" y="30" class="fig-h">Synthesizer</text>
+    <text x="20" y="218" class="fig-h">Voice</text>
+
+    {[...synth, ...voice].map((b) => (
+      <g>
+        <rect x={b.x} y={b.y} width={BW} height={BH} rx="8" class={`fig-box ${b.cls}`} />
+        <text x={b.x + BW / 2} y={b.y + 22} text-anchor="middle" class="fig-t">{b.title}</text>
+        {b.sub.map((line, i) => (
+          <text x={b.x + BW / 2} y={b.y + 39 + i * 14} text-anchor="middle" class="fig-s">{line}</text>
+        ))}
+      </g>
+    ))}
+    {ctl.map((b) => (
+      <g>
+        <rect x={b.x} y={b.y} width={BW} height={42} rx="8" class="fig-box is-ctl" />
+        <text x={b.x + BW / 2} y={b.y + 18} text-anchor="middle" class="fig-t">{b.title}</text>
+        <text x={b.x + BW / 2} y={b.y + 33} text-anchor="middle" class="fig-s">{b.sub[0]}</text>
+        <line x1={b.x + BW / 2} y1={b.y} x2={b.x + BW / 2} y2={46 + BH + 3} class="fig-line is-ctl" marker-end="url(#sc-arrow-ctl)" />
+      </g>
+    ))}
+
+    {/* signal arrows */}
+    {[98, 284].map((y) => (
+      <g>
+        <line x1={172} y1={y} x2={262} y2={y} class="fig-line" marker-end="url(#sc-arrow)" />
+        <line x1={417} y1={y} x2={507} y2={y} class="fig-line" marker-end="url(#sc-arrow)" />
+      </g>
+    ))}
+
+    {/* spectrum glyphs */}
+    {glyphs.map((g) => (
+      <g>
+        {g.bars.map((b) => (
+          <g>
+            {b.ghost > b.h && <rect x={b.x} y={r(g.y + g.h - b.ghost)} width={b.w} height={r(b.ghost - b.h)} class="fig-bar is-cut" />}
+            <rect x={b.x} y={b.y} width={b.w} height={b.h} class="fig-bar" />
+          </g>
+        ))}
+        {g.path && <path d={g.path} class="fig-thin" />}
+      </g>
+    ))}
+    <text x="218" y="36" text-anchor="middle" class="fig-s">every harmonic</text>
+    <text x="463" y="36" text-anchor="middle" class="fig-s">top carved away</text>
+    <text x="218" y="222" text-anchor="middle" class="fig-s">every harmonic</text>
+    <text x="463" y="222" text-anchor="middle" class="fig-s">formant peaks</text>
+  </svg>
+</Figure>

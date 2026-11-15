@@ -1,0 +1,88 @@
+---
+// The two halves of auditory scene analysis on one time–frequency picture.
+// Two sources (a three-note melody and a held lower note), each a stack of
+// harmonics, overlap in frequency. Grouping down a column is simultaneous
+// grouping (fusion); grouping along a row is sequential grouping (streams).
+// The waveform at the left is the actual sum of every partial drawn.
+import Figure from '../ui/Figure.astro';
+
+const r = (v: number) => Math.round(v * 10) / 10;
+type Note = { t0: number; t1: number; f0: number; src: 'a' | 'b' };
+const notes: Note[] = [
+  { t0: 0.1, t1: 1.1, f0: 1.0, src: 'a' },
+  { t0: 1.3, t1: 2.3, f0: 1.125, src: 'a' },
+  { t0: 2.5, t1: 3.6, f0: 1.335, src: 'a' },
+  { t0: 0.7, t1: 3.3, f0: 0.75, src: 'b' },
+];
+const H = 6; // harmonics per note
+const GX0 = 230, GX1 = 660, GY0 = 34, GY1 = 236;
+const FMIN = 0.65, FMAX = 8.6;
+const tx = (t: number) => r(GX0 + (t / 3.8) * (GX1 - GX0));
+const fy = (f: number) => r(GY1 - (Math.log(f / FMIN) / Math.log(FMAX / FMIN)) * (GY1 - GY0));
+const segs = notes.flatMap((n) =>
+  Array.from({ length: H }, (_, k) => ({ x0: tx(n.t0), x1: tx(n.t1), y: fy(n.f0 * (k + 1)), src: n.src, w: k === 0 ? 4 : 3 - k * 0.3 })),
+);
+
+// summed waveform during the overlap of the first A note and the B note
+const WX0 = 20, WX1 = 180, WY = 118, WA = 34;
+const pts: string[] = [];
+let max = 0;
+const vals: number[] = [];
+for (let i = 0; i <= 320; i++) {
+  const t = (i / 320) * 3; // arbitrary time units: 3 periods of the A note
+  let v = 0;
+  for (const f0 of [1.0, 0.75]) for (let k = 1; k <= H; k++) v += Math.sin(2 * Math.PI * f0 * k * t + k * 0.7) / k;
+  vals.push(v);
+  max = Math.max(max, Math.abs(v));
+}
+vals.forEach((v, i) => pts.push(`${i ? 'L' : 'M'}${r(WX0 + (i / 320) * (WX1 - WX0))},${r(WY - (v / max) * WA)}`));
+const wave = pts.join(' ');
+const a1 = notes[0];
+---
+
+<Figure
+  title="Two grouping problems"
+  caption="Left: what actually reaches one ear, the single summed waveform of everything sounding (here, two sources). Right: the cochlea spreads it out by frequency over time. Each note is a stack of harmonics; the colors show which source each one really came from, but the ear receives no colors. It has to group down each column (which frequencies belong to one sound?) and along time (which sounds form one line?)."
+>
+  <svg viewBox="0 0 680 280" role="img" aria-label="A summed waveform, and a time-frequency grid of two sources' harmonics showing simultaneous and sequential grouping">
+    <defs>
+      <marker id="gg-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fig-head" />
+      </marker>
+    </defs>
+    <text x={WX0} y="40" class="fig-h">What reaches the ear</text>
+    <text x={WX0} y="58" class="fig-s">one pressure wave, no labels</text>
+    <path d={wave} class="fig-line" />
+    <line x1={WX0} x2={WX1} y1={WY + WA + 26} y2={WY + WA + 26} class="fig-thin" />
+    <text x={(WX0 + WX1) / 2} y={WY + WA + 44} text-anchor="middle" class="fig-s">the cochlea splits it by frequency</text>
+    <line x1={WX1 + 4} y1={WY} x2={GX0 - 14} y2={WY} class="fig-line" marker-end="url(#gg-arrow)" />
+
+    {/* axes */}
+    <line x1={GX0} x2={GX1} y1={GY1 + 6} y2={GY1 + 6} class="fig-thin" marker-end="url(#gg-arrow)" />
+    <line x1={GX0 - 6} x2={GX0 - 6} y1={GY1 + 6} y2={GY0 - 10} class="fig-thin" marker-end="url(#gg-arrow)" />
+    <text x={GX1} y={GY1 + 24} text-anchor="end" class="fig-s">time</text>
+    <text x={GX0 - 12} y={GY0 - 14} class="fig-s">frequency</text>
+
+    {segs.map((s) => (
+      <line x1={s.x0} x2={s.x1} y1={s.y} y2={s.y} class={s.src === 'a' ? 'fig-sa' : 'fig-sb'} stroke-width={s.w} stroke-linecap="round" />
+    ))}
+
+    {/* simultaneous: bracket around the first A note's stack */}
+    <rect x={tx(a1.t0) - 6} y={fy(a1.f0 * H) - 8} width={tx(a1.t1) - tx(a1.t0) + 12} height={fy(a1.f0) - fy(a1.f0 * H) + 16} rx="6" class="fig-thin" stroke-dasharray="3 3" />
+    <text x={tx(a1.t0)} y={fy(a1.f0 * H) - 14} class="fig-t">↕ simultaneous: one sound?</text>
+
+    {/* sequential: linking the A fundamentals */}
+    <path
+      d={`M${tx(0.6)},${fy(1.0) + 16} Q${tx(1.8)},${fy(1.1) + 30} ${tx(3.05)},${fy(1.335) + 14}`}
+      class="fig-line"
+      stroke-dasharray="5 4"
+      marker-end="url(#gg-arrow)"
+    />
+    <text x={tx(1.15)} y={GY1 + 24} class="fig-t">↔ sequential: one line?</text>
+
+    <rect x={WX0} y="218" width="9" height="9" class="fig-a" />
+    <text x={WX0 + 14} y="227" class="fig-s">source A: a melody</text>
+    <rect x={WX0} y="234" width="9" height="9" class="fig-b" />
+    <text x={WX0 + 14} y="243" class="fig-s">source B: a held note</text>
+  </svg>
+</Figure>

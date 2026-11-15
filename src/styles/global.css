@@ -630,3 +630,43 @@ main { padding: 0 1rem 6rem; }
 .synth-black { height: 58%; background: #1d1b18; border: 1px solid #1d1b18; z-index: 1; }
 .synth-white.is-down { background: color-mix(in srgb, var(--tone-a) 35%, #f6f3ec); }
 .synth-black.is-down { background: var(--tone-a); }
+
+/* ---- figures and tables ---- */
+.fig { background: var(--surface); }
+.fig-body svg { width: 100%; height: auto; display: block; }
+.fig-box { fill: var(--surface-2); stroke: var(--rule); stroke-width: 1.2; }
+.fig-box.is-a { fill: color-mix(in srgb, var(--tone-a) 12%, var(--surface)); stroke: var(--tone-a); }
+.fig-box.is-b { fill: color-mix(in srgb, var(--tone-b) 12%, var(--surface)); stroke: var(--tone-b); }
+.fig-box.is-ctl { fill: var(--surface); stroke: var(--muted); stroke-dasharray: 4 3; }
+.fig-t { font: 600 13px var(--sans); fill: var(--ink); }
+.fig-s { font: 11.5px var(--sans); fill: var(--muted); }
+.fig-h { font: 600 10.5px var(--sans); fill: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
+.fig-line { fill: none; stroke: var(--ink); stroke-width: 1.4; }
+.fig-line.is-ctl { stroke: var(--muted); stroke-dasharray: 4 3; }
+.fig-thin { fill: none; stroke: var(--muted); stroke-width: 1; }
+.fig-head { fill: var(--ink); }
+.fig-head.is-ctl { fill: var(--muted); }
+.fig-bar { fill: var(--accent); }
+.fig-bar.is-cut { fill: color-mix(in srgb, var(--muted) 30%, transparent); }
+.fig-a { fill: var(--tone-a); }
+.fig-b { fill: var(--tone-b); }
+.fig-sa { stroke: var(--tone-a); stroke-width: 2; fill: none; }
+.fig-sb { stroke: var(--tone-b); stroke-width: 2; fill: none; }
+.fig-band { fill: color-mix(in srgb, var(--tone-a) 8%, transparent); }
+.fig-key-w { fill: #f6f3ec; stroke: #a8a091; stroke-width: 1; }
+.fig-key-b { fill: #1d1b18; }
+.fig-key-on { fill: color-mix(in srgb, var(--tone-a) 45%, #f6f3ec); stroke: #a8a091; }
+.fig-key-hot { fill: color-mix(in srgb, var(--tone-b) 70%, #f6f3ec); stroke: #a8a091; }
+.fig-key-b.fig-key-hot { fill: var(--tone-b); }
+.fig-keylabel { font: 600 11px var(--sans); fill: #1d1b18; }
+.fig-keylabel.on-black { fill: #fff; }
+
+.data-table { overflow-x: auto; }
+.prose .data-table table { margin: 0; font-size: 0.86rem; }
+.data-table thead th {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted); background: var(--surface-2); border-bottom: 1px solid var(--rule);
+}
+.data-table tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--surface-2) 45%, transparent); }
+.data-table td:first-child { font-weight: 600; white-space: nowrap; }
+.data-table td, .data-table th { padding: 0.45em 0.7em; }

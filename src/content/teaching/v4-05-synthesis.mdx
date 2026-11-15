@@ -23,6 +23,8 @@ Turn that around. If timbre *is* a spectrum changing over time, then to make any
 
 The problem is that a realistic spectrum is enormously complicated: dozens of harmonics, each with its own strength, each changing on its own schedule. Nobody can turn a hundred knobs at once. So every method of synthesis is a trade: a small number of controls that move the spectrum in useful, musical ways.
 
+<DataTable title="Strategies of synthesis">
+
 | Method | The strategy |
 |---|---|
 | **Additive** | Specify every harmonic directly |
@@ -30,6 +32,8 @@ The problem is that a realistic spectrum is enormously complicated: dozens of ha
 | **FM** | Make two simple waves interact to generate many harmonics |
 | **Physical modeling** | Simulate the instrument and let the spectrum emerge |
 | **Wavetable and granular** | Step through stored waveforms, or rebuild sound from tiny fragments |
+
+</DataTable>
 
 ## Additive synthesis: build it from sine waves
 
@@ -53,15 +57,24 @@ The breakthrough for musicians came from the opposite direction. Instead of buil
 
 A subtractive synthesizer has three basic parts, connected in a chain:
 
-1. **The oscillator** makes a repeating waveform at the pitch you play. The classic shapes each have a fixed recipe of harmonics:
-   - **Sine**: the fundamental only.
-   - **Triangle**: odd harmonics only, fading fast (1, 1/9, 1/25...). Soft, a little hollow.
-   - **Square wave**: odd harmonics only, fading slowly (1, 1/3, 1/5...). Hollow and reedy.
-   - **Sawtooth**: every harmonic (1, 1/2, 1/3...). Bright and buzzy, the richest starting point.
+1. **The oscillator** makes a repeating waveform at the pitch you play. The classic shapes each have a fixed recipe of harmonics (see the table below).
 2. **The filter** removes part of the spectrum. The most important kind is the **low-pass** filter: it lets frequencies below its **cutoff frequency** through and increasingly suppresses those above. Lower the cutoff and the sound gets darker, as harmonics are carved away from the top. Most filters also have a **resonance** control, which boosts the harmonics right at the cutoff, adding a nasal, vowel-like peak.
 3. **The amplifier** controls loudness over time.
 
+<DataTable title="Oscillator waveforms" caption="The four classic waveforms and their harmonic recipes. &ldquo;Strength of harmonic n&rdquo; is its amplitude relative to the fundamental; the fast 1/n² fall-off is why a triangle sounds nearly as soft as a sine.">
+
+| Waveform | Harmonics present | Strength of harmonic *n* | Sound | Typical uses |
+|---|---|---|---|---|
+| Sine | Fundamental only | (none) | Pure, featureless | Sub-bass, test tones, FM building block |
+| Triangle | Odd only (1, 3, 5...) | 1/*n*² | Soft, slightly hollow | Gentle leads, flutes |
+| Square | Odd only (1, 3, 5...) | 1/*n* | Hollow, reedy, clarinet-like | Leads, video-game sounds, woodwinds |
+| Sawtooth | All (1, 2, 3...) | 1/*n* | Bright, buzzy | Brass, strings, basses, pads: the default starting point |
+
+</DataTable>
+
 This is the same arrangement as the human voice. Chapter 1.2 showed that the vocal folds produce a buzz rich in harmonics, and the vocal tract shapes it, its <Term id="resonance">resonances</Term> creating the peaks called <Term id="formant">formants</Term>. A subtractive synth is a source and a filter, just like a singer. A resonant filter swept slowly even sounds like a voice saying "wow."
+
+<SignalChain />
 
 <SynthLab presets={['sine', 'saw', 'dark', 'pluck', 'brass', 'acid', 'pad']} methods={['subtractive']} title="A subtractive synthesizer" />
 
@@ -228,6 +241,8 @@ Before synthesizers, timbre came with the instrument. A composer could choose a 
 
 Combine that with the sequencer from chapter 2.5, and you get the foundations of electronic music: patterns played with machine precision, by sounds built from scratch, shaped in real time by a performer turning knobs. "I Feel Love" is the founding document, and it gets its own chapter in the Atlas.
 
+<DataTable title="Synthesis methods compared">
+
 | Method | You control | Good at | Hard to do | Classic instrument | Hear it |
 |---|---|---|---|---|---|
 | **Additive** | Every harmonic's level | Steady tones; precise spectra | Sounds that change over time | Hammond organ | Harmonic builder lab |
@@ -236,6 +251,8 @@ Combine that with the sequencer from chapter 2.5, and you get the foundations of
 | **Physical modeling** | The instrument's physics | Realistic, expressive acoustic behavior | Sounds with no physical source | Yamaha VL1; software instruments | Plucked string lab |
 | **Wavetable** | Which waveforms, how fast you move between them | Evolving timbres | Natural sounds | PPG Wave; modern software | |
 | **Granular** | Grain size, density, position | Textures, time-stretching | Clear pitched tones | Software | |
+
+</DataTable>
 
 ---
 
