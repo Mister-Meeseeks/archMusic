@@ -1,0 +1,73 @@
+---
+// A "hear it in context" card for a commercial recording.
+// Usage in MDX:
+//   <ListeningCue track="nirvana-teen-spirit" start="0:00" end="0:25">
+//     What to listen for...
+//   </ListeningCue>
+// Track metadata lives in src/data/tracks.yaml.
+import { getEntry } from 'astro:content';
+
+interface Props {
+  track: string;
+  start?: string; // "m:ss"
+  end?: string;
+}
+const { track, start, end } = Astro.props;
+const entry = await getEntry('tracks', track);
+if (!entry) throw new Error(`ListeningCue: unknown track "${track}". Add it to src/data/tracks.yaml.`);
+const t = entry.data;
+
+const toSec = (s?: string) => {
+  if (!s) return undefined;
+  const parts = s.split(':').map(Number);
+  return parts.reduce((acc, p) => acc * 60 + p, 0);
+};
+const s = toSec(start);
+const e = toSec(end);
+const q = encodeURIComponent(t.search);
+const ytSearch = `https://www.youtube.com/results?search_query=${q}`;
+const spSearch = `https://open.spotify.com/search/${q}`;
+const ytWatch = t.youtube ? `https://www.youtube.com/watch?v=${t.youtube}${s ? `&t=${s}s` : ''}` : null;
+const params = new URLSearchParams({ autoplay: '1', rel: '0' });
+if (s) params.set('start', String(s));
+if (e) params.set('end', String(e));
+const embed = t.youtube ? `https://www.youtube-nocookie.com/embed/${t.youtube}?${params}` : null;
+const range = start ? (end ? `${start}–${end}` : `from ${start}`) : null;
+---
+
+<aside class="cue">
+  <div class="cue-head">
+    <span class="cue-icon">Listen</span>
+    <span class="cue-title">{t.title}</span>
+    <span class="cue-meta">{t.artist}{t.year ? `, ${t.year}` : ''}{range ? ` · ${range}` : ''}</span>
+  </div>
+  <div class="cue-body"><slot /></div>
+  <div class="cue-slot"></div>
+  <div class="cue-links">
+    {embed && <button type="button" class="cue-play" data-embed={embed}>▶ Play excerpt here</button>}
+    {ytWatch ? <a href={ytWatch} target="_blank" rel="noopener">YouTube ↗</a> : <a href={ytSearch} target="_blank" rel="noopener">Find on YouTube ↗</a>}
+    {t.spotify ? (
+      <a href={`https://open.spotify.com/track/${t.spotify}`} target="_blank" rel="noopener">Spotify ↗</a>
+    ) : (
+      <a href={spSearch} target="_blank" rel="noopener">Find on Spotify ↗</a>
+    )}
+  </div>
+</aside>
+
+<script>
+  // Click-to-load: don't load YouTube iframes until asked.
+  document.addEventListener('click', (ev) => {
+    const btn = (ev.target as HTMLElement).closest<HTMLButtonElement>('.cue-play');
+    if (!btn) return;
+    const cue = btn.closest('.cue')!;
+    const slot = cue.querySelector<HTMLElement>('.cue-slot')!;
+    const iframe = document.createElement('iframe');
+    iframe.className = 'cue-embed';
+    iframe.src = btn.dataset.embed!;
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.title = 'Listening excerpt';
+    slot.replaceChildren(iframe);
+    btn.remove();
+  });
+</script>

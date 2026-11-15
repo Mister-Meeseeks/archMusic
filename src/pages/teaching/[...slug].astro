@@ -1,0 +1,26 @@
+---
+import { getCollection, render } from 'astro:content';
+import Chapter from '../../layouts/Chapter.astro';
+import { mdxComponents } from '../../components/mdx';
+
+export async function getStaticPaths() {
+  // Teaching drafts are never part of a public build.
+  if (import.meta.env.PUBLIC_SITE === '1') return [];
+  const teaching = await getCollection('teaching');
+  const mine = await getCollection('chapters');
+  return teaching.map((entry) => {
+    const sib = mine.find((c) => c.data.volume === entry.data.volume && c.data.chapter === entry.data.chapter);
+    return {
+      params: { slug: entry.id },
+      props: { entry, sibling: sib && sib.data.status !== 'not-started' ? `/chapters/${sib.id}/` : undefined },
+    };
+  });
+}
+
+const { entry, sibling } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Chapter {...entry.data} kind="teaching" sibling={sibling}>
+  <Content components={mdxComponents} />
+</Chapter>

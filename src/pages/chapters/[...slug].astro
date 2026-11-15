@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from 'astro:content';
+import Chapter from '../../layouts/Chapter.astro';
+import { mdxComponents } from '../../components/mdx';
+
+export async function getStaticPaths() {
+  const isPublic = import.meta.env.PUBLIC_SITE === '1';
+  const mine = await getCollection('chapters', (c) => (isPublic ? c.data.status === 'public-ready' : true));
+  const teaching = isPublic ? [] : await getCollection('teaching');
+  return mine.map((entry) => {
+    const sib = teaching.find((t) => t.data.volume === entry.data.volume && t.data.chapter === entry.data.chapter);
+    return { params: { slug: entry.id }, props: { entry, sibling: sib ? `/teaching/${sib.id}/` : undefined } };
+  });
+}
+
+const { entry, sibling } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Chapter {...entry.data} kind="chapter" sibling={sibling}>
+  <Content components={mdxComponents} />
+</Chapter>

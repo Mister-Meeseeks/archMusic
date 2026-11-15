@@ -1,0 +1,46 @@
+---
+import Base from './Base.astro';
+import { volumeLabel } from '../data/outline';
+import Refresher from '../components/ui/Refresher.astro';
+
+interface Props {
+  title: string;
+  volume: number;
+  chapter: number;
+  summary: string;
+  status: string;
+  kind: 'teaching' | 'chapter';
+  /** Link to the other version (teaching <-> yours), if it exists. */
+  sibling?: string;
+  assumes?: string[];
+}
+const { title, volume, chapter, summary, status, kind, sibling, assumes = [] } = Astro.props;
+---
+
+<Base title={title} description={summary}>
+  <header class="ch-head">
+    <div class="ch-kicker">{volumeLabel(volume)} · Chapter {chapter}</div>
+    <h1 class="ch-title">{title}</h1>
+    <p class="ch-summary">{summary}</p>
+    {
+      kind === 'teaching' && (
+        <div class="status-banner">
+          <strong>Teaching draft.</strong> Claude wrote this to teach you the material. It's source material for your
+          own rewrite and is never published.{' '}
+          {sibling ? <a href={sibling}>Your version →</a> : <span class="muted">You haven't started your version yet.</span>}
+        </div>
+      )
+    }
+    {
+      kind === 'chapter' && status !== 'public-ready' && (
+        <div class="status-banner">
+          <strong>Status: {status}.</strong> {sibling && <a href={sibling}>Teaching draft →</a>}
+        </div>
+      )
+    }
+  </header>
+  <article class="prose">
+    <Refresher ids={assumes} where={`${volumeLabel(volume)} ch. ${chapter}`} />
+    <slot />
+  </article>
+</Base>

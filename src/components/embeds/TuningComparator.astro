@@ -1,0 +1,7 @@
+---
+// MDX-facing wrapper: hydrates the React widget when it scrolls into view.
+import Widget from '../widgets/TuningComparator.tsx';
+const props = Astro.props;
+---
+
+<Widget client:visible {...props} />

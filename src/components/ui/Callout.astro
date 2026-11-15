@@ -1,0 +1,33 @@
+---
+// Callout boxes.
+//   note     aside / context
+//   try      instructions for a widget ("drag the slider to...")
+//   check    check-your-understanding; put the answer in <Answer> (collapsible)
+//   verify   BREADCRUMB: a claim to fact-check before going public
+//   scrub    BREADCRUMB: something to fix before going public (rights, tone, etc.)
+//   rewrite  teaching drafts only: notes for your rewrite
+//
+// In a public build (PUBLIC_SITE=1), `verify` and `scrub` fail the build,
+// so nothing flagged can slip out.
+interface Props {
+  kind?: 'note' | 'try' | 'check' | 'verify' | 'scrub' | 'rewrite';
+  title?: string;
+}
+const { kind = 'note', title } = Astro.props;
+const LABELS: Record<string, string> = {
+  note: 'Note',
+  try: 'Try this',
+  check: 'Check yourself',
+  verify: 'Verify before public',
+  scrub: 'Scrub before public',
+  rewrite: 'For your rewrite',
+};
+if (import.meta.env.PUBLIC_SITE === '1' && (kind === 'verify' || kind === 'scrub')) {
+  throw new Error(`Unresolved <Callout kind="${kind}"> in ${Astro.url.pathname}: "${title ?? ''}". Resolve it before a public build.`);
+}
+---
+
+<aside class:list={['callout', kind]}>
+  <span class="callout-label">{LABELS[kind]}{title ? ` · ${title}` : ''}</span>
+  <slot />
+</aside>

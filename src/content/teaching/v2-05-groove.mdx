@@ -1,0 +1,303 @@
+---
+title: Swing, Microtiming, and Groove
+volume: 2
+chapter: 5
+summary: Why some rhythms make you move. Syncopation, swing, and the tiny timing deviations musicians call "feel," and what experiments say about which of them actually creates groove.
+status: teaching-draft
+updated: 2026-11-14
+assumes: [beat, tempo, meter, subdivision, backbeat, syncopation, chord, predictive-processing, consonance]
+introduces: [drum-kit, sequencer, groove, swing, microtiming, quantize, ghost-note, entrainment]
+lintIgnore: [frequency-ratio] # "ratio" here is the swing ratio (long:short), not a frequency ratio
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as chapter 1.5. Play every lab, preferably on headphones or speakers with some bass so the kick drum comes through. Answer the check questions, and do the experiment in step 2 *before* reading the explanation after it. Then write your version in `src/content/chapters/v2-05-groove.mdx`. The rewrite notes at the end list what your version should be able to explain.
+</Callout>
+
+## The question
+
+Some music makes you move almost involuntarily: a head nod, a tapping foot, an urge to get up. Other music, often just as "good," doesn't. Music psychologists call this **groove** and define it narrowly as *the pleasurable urge to move to music*. Listeners agree on it to a striking degree. In one large study, people with very different musical backgrounds largely agreed on which tracks grooved and which didn't (Janata, Tomic & Haberman, 2012).
+
+Musicians have a theory about where groove comes from, usually summed up as **feel**. Great drummers play a little behind the beat, or a little ahead of it. Jazz swings. Drum machines are "stiff" because they're too perfect. On this view, groove lives in tiny departures from metronomic time.
+
+Hold onto that theory, because this chapter tests it. And keep one fact in mind while you do: some of the most danceable records ever made run on machines with perfect timing.
+
+We'll take groove apart in four layers:
+
+1. **The pattern:** which positions in the bar get notes.
+2. **Swing:** how the grid itself is bent.
+3. **Microtiming:** how individual instruments lean against the grid.
+4. **The body:** why any of this makes you move.
+
+## Step 1: The grid
+
+First, the instruments. A standard **drum kit** has four main voices for our purposes:
+
+- The **kick** (bass drum): the low thump, played with a foot pedal.
+- The **snare**: the sharp crack, usually on the backbeat (beats 2 and 4).
+- The **hi-hat**: a pair of small cymbals that ticks out steady time.
+- The **ride**: a large cymbal for longer, ringing time-keeping patterns, the heart of jazz drumming.
+
+Next, the grid. A **drum machine** or **step sequencer** divides one bar of 4/4 into sixteen equal steps, four per beat. Each step is a sixteenth note, counted "**1** e & a **2** e & a **3** e & a **4** e & a." The lab below works the same way.
+
+<GrooveLab preset="rock" presets={['rock', 'four', 'funk']} controls={['presets', 'tempo']} title="The sixteen-step grid" />
+
+<Callout kind="try">
+1. Play the **basic rock beat**. Kick on 1 and 3 (plus one extra on the "&" of 3), snare on 2 and 4, hi-hat on every eighth note. Probably the most-played pattern in popular music.
+2. Click the two snare cells to turn them off. The music is suddenly unanchored. Those two hits, the **backbeat**, carry most of the rock feel.
+3. Switch to **four-on-the-floor**: the kick on every beat, the hi-hat in between. That's disco and house.
+4. Switch to **funk with ghost notes**. The pale cells on the snare row are **ghost notes**: very soft hits between the main accents, more felt than heard. Turn them off (click until they're empty) and listen to the groove thin out. Turn them back on.
+</Callout>
+
+The timing map under the grid is boring for now: every dot sits exactly on a grid line. That's what **quantized** timing looks like: every note snapped to the nearest step, which is what drum machines do by default. Keep an eye on the map as we go. It's about to get more interesting.
+
+<Callout kind="check">
+In the grid, which steps are the backbeat? And why does the funk pattern's kick on the "&" of 2 feel like it pulls forward?
+
+<Answer>
+The backbeat is beats 2 and 4: steps 5 and 13, the columns labeled **2** and **4**. The kick on the "&" of 2 is a strong sound on a weak position, followed by nothing on the next beat. That's a small syncopation, which is the subject of the next step.
+</Answer>
+</Callout>
+
+## Step 2: Syncopation and the sweet spot
+
+**Syncopation** means putting notes on weak positions in the bar and leaving the strong positions empty, so the rhythm pulls against the beat. (Chapter 2.3 covers it properly; here we need a way to measure it.)
+
+### Measuring syncopation
+
+The standard approach, from Christopher Longuet-Higgins and C. S. Lee (1984), starts by giving every position in the bar a **metrical weight**:
+
+| Position | Weight |
+|---|---|
+| Downbeat (beat 1) | 0 |
+| Beat 3 (the half bar) | −1 |
+| Beats 2 and 4 | −2 |
+| Eighth-note offbeats (the "&"s) | −3 |
+| Sixteenth-note positions (the "e"s and "a"s) | −4 |
+
+A **syncopation** happens when a note on a weak position is followed by *silence* on a stronger one. Its size is the difference in weight. A kick on the "a" of beat 4 (weight −4) followed by silence on the next downbeat (weight 0) scores 0 − (−4) = **4**. Add up every syncopation in the pattern and you have its score.
+
+The labs use a simplified version of this, applied to the kick and snare together. The hi-hat stays steady in every pattern. Witek and colleagues used a more elaborate version that accounts for how different drums interact.
+
+### The finding
+
+In 2014, Maria Witek and colleagues ran an online study using funk drum breaks with different amounts of syncopation. Participants rated how much each break made them want to move and how much pleasure it gave them. The result was an **inverted U**:
+
+- Breaks with **little** syncopation scored low.
+- Breaks with **a lot** of syncopation also scored low.
+- Breaks with **medium** syncopation scored highest on both wanting to move and pleasure.
+
+The effect was strongest in people who enjoy dancing. Before reading why, try it on yourself.
+
+<GrooveComplexity />
+
+<Callout kind="try">
+Play each pattern for a few bars and rate it *before* revealing the scores. Then reveal and see where your ratings fall. This isn't science: it's one listener, a handful of patterns, synthesized drums, and no bass line. But many people find their favorites land in the middle.
+</Callout>
+
+### Why a sweet spot?
+
+The leading explanation comes from **predictive processing**, the idea that the brain constantly predicts what comes next and learns from the mismatch. Peter Vuust and Maria Witek (2014) applied it to groove:
+
+- The meter is a **prediction**. Once you've locked onto a beat, you expect notes in the strong positions.
+- A syncopation is a **prediction error**: a note where you didn't expect one, and silence where you did.
+- With **too little** syncopation, nothing ever surprises you, so there's nothing to engage with.
+- With **too much**, you lose the beat altogether. With no meter left there's nothing for the rhythm to deviate *from*, and the patterns turn into noise.
+- At **medium** syncopation, the beat survives but is constantly challenged. Witek (2017) argues that your body steps in to "fill in" the missing beats, which is part of why you move.
+
+That explanation is a good fit, but treat it as a well-supported theory rather than settled fact.
+
+One more wrinkle: rhythm isn't the only ingredient. Matthews and colleagues (2019) found that **harmonic complexity** (how complex the chords are) also affects groove ratings, and that it interacts with rhythmic complexity.
+
+<Callout kind="verify" title="Matthews et al. 2019 details">
+Check the specific result: which combination of rhythmic and harmonic complexity produced the highest groove ratings. The paper is open access in PLOS ONE.
+</Callout>
+
+<ListeningCue track="meters-cissy-strut" start="0:00" end="0:45">
+New Orleans funk, with Zigaboo Modeliste on drums. The hi-hat stays steady while the kick and snare keep landing just off the strong positions and leaving the downbeats exposed. That's medium syncopation: the beat never disappears, but it's constantly being pulled at.
+</ListeningCue>
+
+## Step 3: Swing, or bending the grid
+
+So far every pattern has used straight sixteenths: four equal steps per beat. **Swing** changes that. Notes are played in long-short pairs: the first note of each pair is stretched and the second is squeezed.
+
+There are two common ways to describe how much swing:
+
+- **Swing percentage**: the share of the pair taken by the first note. 50% is straight. 67% is **triplet swing**: the first note takes two-thirds of the pair, as if the beat were divided into triplets and the middle one left out. 75% is a hard, dotted feel.
+- **Swing ratio**: long to short. 50% is 1:1, 67% is 2:1, and 75% is 3:1.
+
+What gets swung depends on the style. Jazz swings **eighth notes**. Funk, hip-hop, and house swing **sixteenth notes**. Drum machines adopted swing as a single knob. Roger Linn's drum machines, and later the Akai MPC he co-designed, offered swing settings from 50% to 75%. The MPC's swing became part of the sound of hip-hop.
+
+<Callout kind="verify" title="drum-machine swing history">
+Confirm the attribution of swing quantization to Roger Linn's machines (the LM-1 and LinnDrum, then the Akai MPC) and the 50–75% range. Roger Linn has discussed this in interviews.
+</Callout>
+
+<GrooveLab preset="jazz" presets={['jazz', 'shuffle']} controls={['presets', 'tempo', 'swing']} title="Swing" />
+
+<Callout kind="try">
+1. Play the **jazz ride pattern** and drag **Swing** from 50% up to 75%. Watch the timing map: the ride's offbeat notes (the "&"s) slide later, toward the next beat. At 50% the pattern sounds like a march. Somewhere around 60–67% it starts to swing.
+2. Raise the tempo to 200 BPM and try 67% again. At fast tempos, heavy swing starts to sound lumpy. Bring it down toward 55–60% and it flows again.
+3. Still on the jazz pattern, switch **Swing what** to **sixteenth notes** and move the slider. The *sound* doesn't change. The orange arrows on the timing map still move, but they point at empty slots: every ride note is on a beat or an "&", and sixteenth swing moves only the "e"s and "a"s in between. Swing only affects notes on the positions it bends.
+4. Switch to the **half-time shuffle**. Here the *sixteenths* are swung at a triplet feel, and the snare lands only on beat 3, so the groove feels half as fast as the tempo. Set the swing to 50% and the shuffle collapses into a stiff straight-sixteenth beat.
+</Callout>
+
+That second experiment points to a real finding. When Anders Friberg and Andreas Sundström (2002) measured jazz drummers' ride cymbal patterns, the swing ratio **changed with tempo**. It was as high as about **3.5:1** at slow tempos and approached **1:1** (even) at fast tempos. The textbook 2:1 "triplet feel" appeared only around one particular tempo. Soloists also swung less than the drummers behind them, especially at slow tempos. So "swing = triplets" is a convenient way of writing it down, not a description of what players actually do.
+
+<ListeningCue track="miles-so-what" start="1:30" end="2:30">
+Listen past the trumpet to Jimmy Cobb's ride cymbal: *ding, ding-a, ding, ding-a*. That's the spang-a-lang pattern from the lab, with the "a" notes landing late. Try to hear how long the long note is relative to the short one. At this relaxed medium tempo it's not quite a mechanical triplet.
+</ListeningCue>
+
+<ListeningCue track="toto-rosanna" start="0:00" end="0:40">
+Jeff Porcaro's half-time shuffle, among the most studied grooves in pop drumming. The hi-hat and ghost notes are triplet-swung sixteenths, and the big snare lands on beat 3. Compare it with the lab's shuffle preset.
+</ListeningCue>
+
+<Callout kind="check">
+Why does a funk pattern full of sixteenth notes change a lot under sixteenth swing, while a rock beat with only eighth-note hi-hats doesn't change at all?
+
+<Answer>
+Sixteenth swing moves only the in-between positions (the "e"s and "a"s). A rock beat with eighth-note hi-hats has nothing there, so there's nothing to move. To swing it you'd have to swing the eighth notes instead, which moves the "&"s. A pattern's *subdivision* determines which kind of swing it can have.
+</Answer>
+</Callout>
+
+<Callout kind="check">
+At 50% swing, what's the swing ratio? At 75%? And at 120 BPM with straight sixteenths, how long is each sixteenth?
+
+<Answer>
+50% is 1:1 (straight), and 75% is 3:1 (the first note is three times as long as the second). At 120 BPM a beat lasts 500 ms, so each sixteenth is 125 ms. The timing map shows these numbers.
+</Answer>
+</Callout>
+
+## Step 4: Microtiming, or leaning on the beat
+
+Swing bends the whole grid evenly. **Microtiming** is subtler: small, consistent timing offsets for particular instruments, typically somewhere around 10 to 40 milliseconds. A snare played consistently a little late makes a groove sound **laid back**. A hi-hat played a little early makes it sound **pushing**, urgent, on top of the beat. These offsets are small enough that most listeners don't hear a mistake. They hear a *character*.
+
+<GrooveLab preset="laidback" presets={['laidback', 'rock']} controls={['presets', 'tempo', 'offsets', 'humanize']} title="Microtiming" />
+
+<Callout kind="try">
+1. Play the **laid-back neo-soul** pattern. The snare is set 28 ms late and the kick 8 ms early. Find the snare dots on the timing map: they sit just *after* the grid lines for beats 2 and 4.
+2. Drag the snare back to **on the grid** and listen. It isn't worse, exactly, but it's more upright and less lazy. Now try 40 ms late. At some point "laid back" turns into "sloppy." Where does it cross over for you?
+3. Switch to the **basic rock beat** and push the hi-hat 15 ms early. Does it sound more urgent?
+4. Set **Humanize** to around 10 ms. That adds random scatter to every hit, like a real (imperfect) drummer. Compare it with consistent offsets: random scatter tends to sound sloppy, while consistent offsets sound like a choice.
+</Callout>
+
+That last contrast matters. Microtiming in the musicians' sense is *systematic*. It's a consistent relationship between parts, not random error.
+
+Two recordings are the touchstones for this kind of feel:
+
+**J Dilla.** The Detroit producer programmed drums on an MPC without snapping everything to the grid, and set different instruments to different degrees of swing. Kicks and snares drift against the hi-hat, sometimes early, sometimes late. Dan Charnas's book *Dilla Time* (2022) describes the result as straight and swung feels happening at once, and traces its influence through hip-hop, neo-soul, and jazz.
+
+<ListeningCue track="slum-village-fall-in-love" start="0:00" end="0:45">
+Listen to the kick and snare against the hi-hat. They don't sit where a quantized drum machine would put them, yet the groove is completely solid. Try nodding along and notice where your head lands.
+</ListeningCue>
+
+**D'Angelo's *Voodoo*** (2000). Questlove on drums and Pino Palladino on bass play famously far behind the beat, in a deliberate imitation of Dilla's programming. The musicologist Anne Danielsen analyzed "Left & Right" and argued that its parts imply several slightly different versions of where the beat is, all at once. On her account the beat isn't a point in time but a zone with *width*, which she calls a **beat bin**.
+
+<ListeningCue track="dangelo-left-and-right">
+Try to tap along exactly on the beat. It's harder than usual, because the drums, bass, and vocals each seem to put it in a slightly different place. That's the "wide beat" Danielsen describes.
+</ListeningCue>
+
+<Callout kind="verify" title="Dilla and Danielsen claims">
+Before going public, check: (1) the Dilla programming details (no quantization, per-instrument swing) against Charnas's *Dilla Time*; (2) Danielsen's analysis of "Left & Right" and the term "beat bin". I believe the analysis is in her edited volume *Musical Rhythm in the Age of Digital Reproduction* (2010), but I couldn't find it online. (3) That the *Voodoo* players were explicitly imitating Dilla, which is widely reported, including by Questlove.
+</Callout>
+
+## Step 5: Does feel make the groove? The experiments
+
+Now back to the musicians' theory. Its best-known academic form is Charles Keil's idea of **participatory discrepancies** (1987): music grooves *because* musicians are slightly out of sync with each other. The small frictions between parts are what draw listeners in.
+
+It's an appealing idea, and it matches how many players describe their experience. It has also been tested quite directly, by taking grooves and varying their microtiming:
+
+- **Davies, Madison, Silva & Gouyon (2013)** added microtiming deviations to drum and bass grooves. Groove ratings did *not* go up, and larger deviations brought them down.
+- **Frühauf, Kopiez & Platz (2013)** shifted snare and kick timing in a rock pattern. The perfectly quantized version was rated best, and early shifts were rated worse than late ones.
+- **Senn, Kilchenmann, von Georgi & Bullerjahn (2016)** used real recordings of expert swing and funk rhythm sections. The original microtiming and a fully quantized version were rated *equally* groovy. Exaggerated microtiming was rated lower.
+- **Madison et al. (2011)** found that groove ratings across many tracks went with **event density, beat salience, and syncopation**, not with the amount of microtiming.
+
+So the evidence doesn't support the strong version of the theory. Perfectly quantized music grooves at least as well, and the urge to move seems to come mainly from **the pattern**: syncopation, how busy the rhythm is, and how clearly the beat comes through.
+
+That doesn't make microtiming irrelevant:
+
+- These experiments mostly measure listeners' ratings of short excerpts. Feel may matter more for *players*, and for long-term engagement, than a rating scale can capture.
+- Microtiming clearly shapes **style and character**. Laid-back versus pushing, a Dilla beat versus a drum machine: these sound different even if they groove equally.
+- Expert listeners may respond differently. Kilchenmann and Senn (2015) found that microtiming affected how musically trained listeners *moved*, even when it didn't change their ratings much.
+
+<Callout kind="verify" title="microtiming studies">
+I've summarized these from secondary descriptions (a 2016 review and the papers' abstracts). Before going public, read at least Davies et al. (2013) and Senn et al. (2016) directly and check that the summaries are fair, especially the "early worse than late" result.
+</Callout>
+
+<ListeningCue track="donna-summer-i-feel-love" start="0:00" end="0:45">
+Giorgio Moroder built this almost entirely from sequenced synthesizers, so the timing is as exact as the technology of 1977 allowed. It's also one of the most influential dance records ever made. Groove without human microtiming: the pattern (that pulsing, syncopated sequencer line) does the work.
+</ListeningCue>
+
+## Step 6: Why the body?
+
+The final layer is the most basic: why should rhythm make us *move* at all?
+
+Part of the answer is **entrainment**: the tendency of a rhythmic system to lock its timing to an external rhythm. Two pendulum clocks on the same wall drift into sync. You start tapping along without deciding to. Humans are unusually good at this. We can find a beat in complex music and synchronize to it, across a wide range of tempos, which few other animals can do.
+
+Brain imaging shows how close the connection between hearing rhythm and moving really is. Listening to rhythms with a clear beat activates motor areas of the brain (including the basal ganglia and supplementary motor area) even when people are lying perfectly still (Grahn & Brett, 2007). Hearing a beat is, in part, preparing to move to it.
+
+Put that together with step 2 and you have a plausible story. A groove sets up a beat your motor system locks onto, then syncopation leaves gaps in it, and your body fills them. Chapter 2.7 covers entrainment and synchronization in depth.
+
+## The layers together
+
+| Layer | What it is | What the evidence says |
+|---|---|---|
+| **Pattern** | Which positions get notes: syncopation, density, ghost notes | The main driver of groove. Medium syncopation is the sweet spot. |
+| **Swing** | Bending the grid into long-short pairs | Defines style. Real players' swing ratios change with tempo. |
+| **Microtiming** | Consistent offsets between instruments | Shapes feel and character. Doesn't raise groove ratings in experiments. |
+| **Body** | Entrainment and motor involvement | Why rhythm makes us move at all. |
+
+This mirrors chapter 1.5. There, "dissonance" turned out to be several different things stacked on top of each other: physics, perception, learned preference. Here, "groove" splits the same way, and the folk explanation (feel) turns out to describe a real layer, just not the one that does most of the work.
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. What groove means in the research sense, and how listeners agree about it.
+2. How a sixteen-step grid represents a bar, and what kick, snare, hi-hat, ghost notes, and the backbeat each contribute.
+3. How syncopation is measured (metrical weights, note-then-silence) and the inverted-U finding, with the predictive-processing explanation.
+4. What swing is in percentage and ratio terms, eighth versus sixteenth swing, and why "swing = triplets" is only approximately true.
+5. The difference between systematic microtiming and random timing error.
+6. What the microtiming experiments found, and why that doesn't make feel irrelevant.
+7. Why rhythm engages the body: entrainment and motor areas.
+
+**Decisions for your rewrite:**
+
+- **The hook.** I opened with the definition. Stronger options: open on *I Feel Love* and the paradox it poses, or ask the reader to do the step-2 experiment first and explain afterward.
+- **The musicians' theory.** I set "feel" up as the thing to test. Make sure your version is fair to musicians. Their experience of feel is real even if it isn't what drives listeners' groove ratings.
+- **Labs.** Three groove labs plus the experiment may be one too many. The microtiming lab and the experiment are the most distinctive.
+- **Your examples.** Swap in grooves you love. Good candidates: a Purdie shuffle, a Stewart Copeland hi-hat part, a house track with heavy MPC swing.
+
+**Misconceptions to watch for:**
+
+- "Groove means playing off the beat." Mostly it comes from *where* notes go, not from imprecise timing.
+- "Drum machines can't groove." *I Feel Love*, house music, and a great deal of hip-hop say otherwise.
+- "Swing is triplets." Only around one tempo. Real swing ratios vary.
+- "More syncopation, more groove." Only up to a point.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Janata, P., Tomic, S. T., & Haberman, J. M. (2012). Sensorimotor coupling in music and the psychology of the groove. *Journal of Experimental Psychology: General*, 141(1), 54–75.
+- Madison, G. (2006). Experiencing groove induced by music: Consistency and phenomenology. *Music Perception*, 24(2), 201–208.
+- Longuet-Higgins, H. C., & Lee, C. S. (1984). The rhythmic interpretation of monophonic music. *Music Perception*, 1(4), 424–441.
+- Witek, M. A. G., Clarke, E. F., Wallentin, M., Kringelbach, M. L., & Vuust, P. (2014). Syncopation, body-movement and pleasure in groove music. *PLOS ONE*, 9(4), e94446.
+- Vuust, P., & Witek, M. A. G. (2014). Rhythmic complexity and predictive coding: A novel approach to modeling rhythm and meter perception in music. *Frontiers in Psychology*, 5, 1111.
+- Witek, M. A. G. (2017). Filling in: Syncopation, pleasure and distributed embodiment in groove. *Music Analysis*, 36(1), 138–160.
+- Matthews, T. E., Witek, M. A. G., Heggli, O. A., Penhune, V. B., & Vuust, P. (2019). The sensation of groove is affected by the interaction of rhythmic and harmonic complexity. *PLOS ONE*, 14(1), e0204539.
+- Friberg, A., & Sundström, A. (2002). Swing ratios and ensemble timing in jazz performance: Evidence for a common rhythmic pattern. *Music Perception*, 19(3), 333–349.
+- Keil, C. (1987). Participatory discrepancies and the power of music. *Cultural Anthropology*, 2(3), 275–283.
+- Davies, M., Madison, G., Silva, P., & Gouyon, F. (2013). The effect of microtiming deviations on the perception and performance of groove. *Music Perception*, 30(5), 497–510.
+- Frühauf, J., Kopiez, R., & Platz, F. (2013). Music on the timing grid: The influence of microtiming on the perceived groove quality of a simple drum pattern performance. *Musicae Scientiae*, 17(2), 246–260.
+- Senn, O., Kilchenmann, L., von Georgi, R., & Bullerjahn, C. (2016). The effect of expert performance microtiming on listeners' experience of groove in swing or funk music. *Frontiers in Psychology*, 7, 1487.
+- Kilchenmann, L., & Senn, O. (2015). Microtiming in swing and funk affects the body movement behavior of music expert listeners. *Frontiers in Psychology*, 6, 1232.
+- Madison, G., Gouyon, F., Ullén, F., & Hörnström, K. (2011). Modeling the tendency for music to induce movement in humans. *Journal of Experimental Psychology: Human Perception and Performance*, 37(5), 1578–1594.
+- Grahn, J. A., & Brett, M. (2007). Rhythm and beat perception in motor areas of the brain. *Journal of Cognitive Neuroscience*, 19(5), 893–906.
+- Danielsen, A. (Ed.) (2010). *Musical Rhythm in the Age of Digital Reproduction*. Ashgate.
+- Charnas, D. (2022). *Dilla Time: The Life and Afterlife of J Dilla, the Hip-Hop Producer Who Reinvented Rhythm*. MCD / Farrar, Straus and Giroux.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check page ranges and author lists against the papers. I'm confident in the papers and their main findings; less so in every page range.
+</Callout>

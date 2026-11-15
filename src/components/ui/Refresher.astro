@@ -1,0 +1,37 @@
+---
+// "Quick refresher" box, rendered automatically at the top of a chapter
+// from its `assumes:` frontmatter. Collapsed by default, with the term list
+// visible so a reader can tell at a glance whether they need it.
+import { conceptHref, getConcepts } from '../../lib/concepts';
+
+interface Props {
+  ids: string[];
+  where: string;
+}
+const { ids, where } = Astro.props;
+const concepts = await getConcepts(ids, where);
+const items = await Promise.all(concepts.map(async (c) => ({ c, ...(await conceptHref(c)) })));
+---
+
+{
+  items.length > 0 && (
+    <details class="refresher">
+      <summary>
+        <span class="refresher-label">Quick refresher</span>
+        <span class="refresher-terms">
+          This chapter assumes: {items.map((i) => i.c.data.term.replace(/ \(.*\)$/, '')).join(' · ')}
+        </span>
+      </summary>
+      <dl>
+        {items.map(({ c, href, label }) => (
+          <div class="refresher-item" id={`ref-${c.id}`}>
+            <dt>{c.data.term}</dt>
+            <dd>
+              {c.data.def} <a href={href}>{label === 'glossary' ? 'Glossary →' : `More in ${label} →`}</a>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </details>
+  )
+}

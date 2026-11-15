@@ -1,0 +1,20 @@
+---
+// Inline term with a hover/tap definition from the concept registry.
+//   <Term id="octave" />              -> shows the registry's term name
+//   <Term id="octave">octaves</Term>  -> shows your wording
+// Use it where a reader might have lost track of a term, e.g. one that is
+// assumed (introduced in an earlier chapter) and turns up deep in the text.
+import { conceptHref, getConcepts } from '../../lib/concepts';
+
+interface Props {
+  id: string;
+}
+const [c] = await getConcepts([Astro.props.id], 'Term');
+const { href, label } = await conceptHref(c);
+---
+
+<span class="term" tabindex="0"
+  ><span class="term-word"><slot>{c.data.term}</slot></span><span class="term-pop" role="tooltip"
+    ><strong>{c.data.term}.</strong> {c.data.def} <a href={href}>More in {label} →</a></span
+  ></span
+>

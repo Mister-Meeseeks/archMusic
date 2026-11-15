@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { OUTLINE, volumeLabel } from '../data/outline';
+
+const isPublic = import.meta.env.PUBLIC_SITE === '1';
+const teaching = isPublic ? [] : await getCollection('teaching');
+const mine = await getCollection('chapters', (c) => (isPublic ? c.data.status === 'public-ready' : true));
+
+const find = <T extends { data: { volume: number; chapter: number } }>(list: T[], v: number, c: number) =>
+  list.find((e) => e.data.volume === v && e.data.chapter === c);
+---
+
+<Base title="The Architecture of Music">
+  <header class="ch-head">
+    <div class="ch-kicker">A first-principles guide</div>
+    <h1 class="ch-title">The Architecture of Music</h1>
+    <p class="ch-summary">Sound, perception, structure, and culture, from Bach to funk to modular synths.</p>
+    {
+      !isPublic && (
+        <div class="status-banner">
+          <span class="badge teaching">teaching</span> Claude’s explainer draft &nbsp;·&nbsp;
+          <span class="badge mine">yours</span> your rewrite &nbsp;·&nbsp; <span class="badge todo">planned</span> not
+          started
+        </div>
+      )
+    }
+  </header>
+
+  <div class="toc">
+    {
+      OUTLINE.map((vol) => (
+        <section class="toc-vol">
+          <h2>
+            {volumeLabel(vol.n)}
+            {vol.n > 0 && vol.n < 7 && <>: {vol.title}</>}
+          </h2>
+          <p>{vol.blurb}</p>
+          <ol class="toc-list">
+            {vol.chapters.map((title, i) => {
+              const n = i + 1;
+              const t = find(teaching, vol.n, n);
+              const m = find(mine, vol.n, n);
+              const started = m && m.data.status !== 'not-started';
+              return (
+                <li>
+                  <span class="toc-num">
+                    {vol.n === 0 || vol.n === 7 ? '' : `${vol.n}.${n}`}
+                  </span>
+                  <span class="toc-title">{started ? <a href={`/chapters/${m.id}/`}>{m.data.title}</a> : title}</span>
+                  <span class="toc-links">
+                    {t && (
+                      <a href={`/teaching/${t.id}/`} class="badge teaching">
+                        teaching
+                      </a>
+                    )}
+                    {started && (
+                      <a href={`/chapters/${m.id}/`} class="badge mine">
+                        yours · {m.data.status}
+                      </a>
+                    )}
+                    {!t && !started && !isPublic && <span class="badge todo">planned</span>}
+                  </span>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      ))
+    }
+  </div>
+</Base>

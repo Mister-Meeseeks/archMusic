@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { chapterLabel } from '../data/outline';
+import { conceptHref } from '../lib/concepts';
+
+const all = await getCollection('concepts');
+const ORDER = ['Sound', 'Hearing', 'Notes & intervals', 'Chords', 'Harmony & style', 'Tuning', 'Consonance', 'Rhythm'];
+const rank = (c: string) => (ORDER.includes(c) ? ORDER.indexOf(c) : ORDER.length);
+const categories = [...new Set(all.map((c) => c.data.category))].sort((a, b) => rank(a) - rank(b));
+const hrefs = new Map(await Promise.all(all.map(async (c) => [c.id, await conceptHref(c)] as const)));
+---
+
+<Base title="Glossary" description="Every term the book relies on, and where it's introduced.">
+  <header class="ch-head">
+    <div class="ch-kicker">Reference</div>
+    <h1 class="ch-title">Glossary</h1>
+    <p class="ch-summary">Every term the book relies on, with where it's introduced and where it's covered in depth.</p>
+  </header>
+  <article class="prose glossary">
+    {
+      categories.map((cat) => (
+        <section>
+          <h2>{cat}</h2>
+          <dl>
+            {all
+              .filter((c) => c.data.category === cat)
+              .map((c) => {
+                const h = hrefs.get(c.id)!;
+                return (
+                  <div class="gloss-item" id={c.id}>
+                    <dt>{c.data.term}</dt>
+                    <dd>
+                      {c.data.def}
+                      <span class="gloss-where muted">
+                        {' '}
+                        Introduced in{' '}
+                        {h.label === 'glossary' ? chapterLabel(c.data.introducedIn) : <a href={h.href}>{h.label}</a>}
+                        {c.data.deepIn && <>; in depth in {chapterLabel(c.data.deepIn)}</>}.
+                      </span>
+                    </dd>
+                  </div>
+                );
+              })}
+          </dl>
+        </section>
+      ))
+    }
+  </article>
+</Base>

@@ -1,0 +1,506 @@
+# Concept registry: every term the book relies on, and where it's introduced.
+#
+#   introducedIn  chapter id prefix (v<volume>-<chapter>) where a reader first
+#                 learns it. v0-02 = the Overture's "Toolkit" primer.
+#   deepIn        (optional) where it gets full treatment
+#   aliases       words/phrases the lint (npm run concepts) looks for in chapter
+#                 text. Plain words match whole words, case-insensitive. Keep
+#                 them specific: avoid words with everyday meanings.
+#
+# Chapters declare `assumes:` (needs prior knowledge → shown in the chapter's
+# refresher box) and `introduces:` (teaches it here) in frontmatter.
+
+# ---------- sound ----------
+- id: frequency
+  term: Frequency (Hz)
+  category: Sound
+  introducedIn: v0-02
+  deepIn: v1-01
+  aliases: [frequency, frequencies, Hz, hertz]
+  def: >-
+    How many times per second a vibration repeats, measured in hertz (Hz).
+    Higher frequency is heard as higher pitch. The A that orchestras tune to
+    is 440 Hz; human hearing spans roughly 20 to 20,000 Hz.
+
+- id: pitch
+  term: Pitch
+  category: Sound
+  introducedIn: v0-02
+  deepIn: v1-03
+  aliases: [pitch, pitches]
+  def: >-
+    How high or low a note sounds. Pitch is mostly determined by frequency,
+    but it is a perception, not a physical measurement.
+
+- id: sine-wave
+  term: Sine wave (pure tone)
+  category: Sound
+  introducedIn: v1-01
+  aliases: [sine wave, sine waves, sine, pure tone, pure tones]
+  def: >-
+    The simplest possible sound: a single frequency with nothing else in it.
+    It sounds like a tuning fork or a soft whistle. Every other sound can be
+    built by adding sine waves together.
+
+- id: harmonics
+  term: Harmonics (partials, overtones)
+  category: Sound
+  introducedIn: v1-02
+  aliases: [harmonics, partial, partials, overtone, overtones, fundamental, harmonic series]
+  def: >-
+    A note played on a real instrument contains its main frequency (the
+    fundamental) plus fainter frequencies at whole-number multiples of it:
+    2×, 3×, 4×, and so on (the harmonic series). They blend into one
+    perceived note and give it its tone color.
+
+- id: timbre
+  term: Timbre
+  category: Sound
+  introducedIn: v1-02
+  deepIn: v4-01
+  aliases: [timbre, timbres]
+  def: >-
+    Tone color: what makes a violin and a flute sound different playing the
+    same note at the same loudness. It depends largely on which harmonics are
+    present and how they change over time.
+
+- id: cochlea
+  term: Cochlea
+  category: Hearing
+  introducedIn: v1-03
+  aliases: [cochlea, basilar membrane]
+  def: >-
+    The snail-shaped organ of the inner ear that turns vibration into nerve
+    signals. Its basilar membrane sorts frequencies by position: high at one
+    end, low at the other.
+
+# ---------- the toolkit: notes and intervals ----------
+- id: note-names
+  term: Note names, sharps and flats
+  category: Notes & intervals
+  introducedIn: v0-02
+  aliases: ['♯', '♭']
+  def: >-
+    Western music names pitches with the letters A to G (the white keys on a
+    piano). A black key is named as a sharp (♯, one step up) of the note below
+    it or a flat (♭, one step down) of the note above it, so C♯ and D♭ are the
+    same key.
+
+- id: octave
+  term: Octave
+  category: Notes & intervals
+  introducedIn: v0-02
+  deepIn: v3-01
+  aliases: [octave, octaves]
+  def: >-
+    Two notes where one has exactly twice the frequency of the other (for
+    example 220 Hz and 440 Hz). They sound so alike that they share a letter
+    name. The piano's pattern of keys repeats every octave.
+
+- id: semitone
+  term: Semitone (half step)
+  category: Notes & intervals
+  introducedIn: v0-02
+  aliases: [semitone, semitones, half step, half steps]
+  def: >-
+    The smallest step on a piano: from one key to the very next, white or
+    black. An octave is 12 semitones.
+
+- id: middle-c
+  term: Middle C and octave numbers
+  category: Notes & intervals
+  introducedIn: v0-02
+  aliases: [middle C, C2, C3, C4, C5, A4]
+  def: >-
+    Middle C is the C near the center of the piano, about 261.6 Hz.
+    Octave numbers count up from each C: middle C is C4, the C an octave
+    below it is C3, and so on. The orchestra's tuning A (440 Hz) is A4.
+
+- id: interval
+  term: Interval
+  category: Notes & intervals
+  introducedIn: v0-02
+  deepIn: v3-01
+  aliases: [interval, intervals, minor second, major second, minor third, major third, perfect fourth, perfect fifth, tritone, minor sixth, major sixth, minor seventh, major seventh, seconds, thirds, fourths, fifths, tenths]
+  def: >-
+    The distance between two pitches. Named by size in semitones: minor 2nd
+    (1), major 2nd (2), minor 3rd (3), major 3rd (4), perfect 4th (5),
+    tritone (6), perfect 5th (7), minor 6th (8), major 6th (9), minor 7th
+    (10), major 7th (11), octave (12). Larger intervals continue the count:
+    a 10th is a 3rd plus an octave.
+
+- id: frequency-ratio
+  term: Frequency ratio
+  category: Notes & intervals
+  introducedIn: v0-02
+  deepIn: v3-01
+  aliases: [ratio, ratios]
+  def: >-
+    An interval can be described by the ratio of its two frequencies. An
+    octave is 2:1, a perfect fifth about 3:2, a perfect fourth about 4:3.
+    The same interval always has the same ratio, at any pitch.
+
+- id: cents
+  term: Cents
+  category: Notes & intervals
+  introducedIn: v0-02
+  deepIn: v3-01
+  aliases: [cents, '¢']
+  def: >-
+    A fine-grained unit of interval size: 100 cents is one semitone and 1,200
+    cents is an octave. Used for measuring small tuning differences. Most
+    people start to notice a mistuning somewhere around 5–10 cents.
+
+- id: register
+  term: Register
+  category: Notes & intervals
+  introducedIn: v0-02
+  aliases: [register, registers]
+  def: >-
+    How high or low a passage sits in the overall pitch range. A low register
+    is the bass range.
+
+# ---------- chords ----------
+- id: chord
+  term: Chord and triad
+  category: Chords
+  introducedIn: v0-02
+  deepIn: v3-05
+  aliases: [chord, chords, triad, triads]
+  def: >-
+    Three or more notes sounding together. A triad is three notes stacked in
+    thirds: a root, a third above it, and a fifth above it (C–E–G).
+
+- id: root
+  term: Root
+  category: Chords
+  introducedIn: v0-02
+  aliases: [root, roots]
+  def: >-
+    The note a chord is built on and named after: C is the root of C–E–G.
+
+- id: major-minor
+  term: Major and minor triads
+  category: Chords
+  introducedIn: v0-02
+  deepIn: v3-05
+  aliases: [major triad, minor triad, major chord, minor chord, major and minor]
+  def: >-
+    A major triad is a root plus a major third plus a perfect fifth (C–E–G),
+    usually heard as bright and stable. A minor triad lowers the third by a
+    semitone (C–E♭–G) and is usually heard as darker.
+
+- id: voicing
+  term: Voicing (close and open)
+  category: Chords
+  introducedIn: v1-05
+  deepIn: v3-05
+  aliases: [voicing, voicings]
+  def: >-
+    How a chord's notes are arranged: which octave each one is in and which
+    is lowest. A close voicing packs the notes within an octave; an open
+    voicing spreads them out.
+
+- id: dominant-seventh
+  term: Dominant seventh chord
+  category: Chords
+  introducedIn: v1-05
+  deepIn: v3-06
+  aliases: [dominant seventh, dominant 7th, V7]
+  def: >-
+    A major triad with a minor seventh added above the root (G–B–D–F). In
+    classical and much popular music it strongly "wants" to move to the chord
+    a fifth below it (G7 → C).
+
+- id: extensions
+  term: Chord extensions (9ths, 11ths, 13ths)
+  category: Chords
+  introducedIn: v1-05
+  deepIn: v3-07
+  aliases: [ninths, elevenths, thirteenths]
+  def: >-
+    Notes stacked above a chord's seventh, continuing in thirds. The 9th is
+    the 2nd an octave up, the 13th the 6th an octave up. Common in jazz as
+    added color.
+
+- id: power-chord
+  term: Power chord
+  category: Chords
+  introducedIn: v1-05
+  deepIn: v4-06
+  aliases: [power chord, power chords]
+  def: >-
+    A root and a fifth, often with the octave added, and no third. The staple
+    of distorted rock guitar.
+
+- id: cluster
+  term: Tone cluster
+  category: Chords
+  introducedIn: v1-05
+  aliases: [cluster, clusters]
+  def: >-
+    A chord made of adjacent notes, such as C–C♯–D, all sounding together.
+
+# ---------- harmony & style ----------
+- id: resolution
+  term: Resolution
+  category: Harmony & style
+  introducedIn: v1-05
+  deepIn: v3-06
+  aliases: [resolve, resolves, resolved, resolution, unresolved]
+  def: >-
+    Moving from a tense or unstable sound to a stable one, as when G7 moves to
+    C. The ear hears it as release or arrival.
+
+- id: common-practice
+  term: Common practice
+  category: Harmony & style
+  introducedIn: v1-05
+  deepIn: v3-06
+  aliases: [common practice, common-practice]
+  def: >-
+    The shared harmonic conventions of European art music from roughly 1650
+    to 1900 (Bach to Brahms). Still the basis of most textbook music theory.
+
+- id: counterpoint
+  term: Counterpoint
+  category: Harmony & style
+  introducedIn: v1-05
+  deepIn: v3-08
+  aliases: [counterpoint]
+  def: >-
+    Music made of two or more independent melodies sounding at once, and the
+    rules for combining them.
+
+# ---------- tuning ----------
+- id: equal-temperament
+  term: Equal temperament (12-TET)
+  category: Tuning
+  introducedIn: v0-02
+  deepIn: v3-02
+  aliases: [equal temperament, equal-tempered, 12-TET, 12-tone equal]
+  def: >-
+    The modern standard tuning: the octave is divided into 12 exactly equal
+    semitones. Every key works equally well, at the cost of most intervals
+    being slightly off their pure ratios.
+
+- id: just-intonation
+  term: Just intonation
+  category: Tuning
+  introducedIn: v1-05
+  deepIn: v3-02
+  aliases: [just intonation, just third]
+  def: >-
+    Tuning intervals to exact small-number ratios (3:2 fifths, 5:4 thirds) so
+    their harmonics line up. Very pure, but on a fixed-pitch instrument it
+    can't work in every key at once.
+
+- id: pythagorean-tuning
+  term: Pythagorean tuning
+  category: Tuning
+  introducedIn: v1-05
+  deepIn: v3-02
+  aliases: [Pythagorean tuning, Pythagorean third]
+  def: >-
+    A tuning built entirely from stacked pure 3:2 fifths. Its fifths and
+    fourths are pure and its thirds are wide and rough. It was the basis of
+    medieval European music theory.
+
+# ---------- consonance (introduced in 1.5) ----------
+- id: beats
+  term: Beats (acoustic beating)
+  category: Consonance
+  introducedIn: v1-05
+  # Not plain "beats": that collides with the rhythmic beat.
+  aliases: [beating, beat rate, beats per second]
+  def: >-
+    A regular pulsing in loudness when two close frequencies sound together.
+    The number of pulses per second equals the difference between the two
+    frequencies.
+
+- id: roughness
+  term: Roughness
+  category: Consonance
+  introducedIn: v1-05
+  aliases: [roughness]
+  def: >-
+    The buzzy, grainy sensation produced when two frequencies are close
+    together but too far apart to be heard as slow beats. The core of sensory
+    dissonance.
+
+- id: critical-band
+  term: Critical band
+  category: Consonance
+  introducedIn: v1-05
+  aliases: [critical band, critical bands, critical bandwidth, ERB]
+  def: >-
+    The range of frequencies that excite the same region of the inner ear.
+    Tones within one critical band interact (beats, roughness); tones further
+    apart are heard as separate.
+
+- id: consonance
+  term: Consonance and dissonance
+  category: Consonance
+  introducedIn: v1-05
+  aliases: [consonance, consonant, dissonance, dissonant, dissonances]
+  def: >-
+    Loosely, how smooth and stable (consonant) or tense and clashing
+    (dissonant) a combination of notes sounds. Chapter 1.5 shows that this is
+    really several different things.
+
+# ---------- rhythm: toolkit ----------
+- id: beat
+  term: Beat
+  category: Rhythm
+  introducedIn: v0-02
+  deepIn: v2-02
+  aliases: [beat, on the beat, offbeat, offbeats]
+  def: >-
+    The steady pulse you tap your foot to. Beats are counted ("1, 2, 3, 4") and
+    are the main reference points of musical time.
+
+- id: tempo
+  term: Tempo (BPM)
+  category: Rhythm
+  introducedIn: v0-02
+  deepIn: v2-01
+  aliases: [tempo, tempos, tempi, BPM]
+  def: >-
+    How fast the beat goes, measured in beats per minute (BPM). 60 BPM is one
+    beat per second; most dance music sits around 100–130 BPM.
+
+- id: meter
+  term: Meter, bars, and 4/4
+  category: Rhythm
+  introducedIn: v0-02
+  deepIn: v2-01
+  aliases: [meter, time signature, '4/4', downbeat, downbeats]
+  def: >-
+    Beats are grouped into repeating units called bars (or measures). In 4/4,
+    the most common meter in popular music, each bar has four beats, and the
+    first beat of each bar (the downbeat) is the strongest.
+
+- id: subdivision
+  term: Subdivision (eighths, sixteenths, triplets)
+  category: Rhythm
+  introducedIn: v0-02
+  deepIn: v2-03
+  aliases: [subdivision, subdivisions, eighth notes, sixteenth notes, eighth-note, sixteenth-note, eighths, sixteenths, triplet, triplets]
+  def: >-
+    Splitting each beat into smaller, equal parts: two eighth notes per beat
+    (counted "1 &"), four sixteenth notes ("1 e & a"), or three triplets.
+
+# ---------- rhythm: Vol II ----------
+- id: backbeat
+  term: Backbeat
+  category: Rhythm
+  introducedIn: v2-03
+  aliases: [backbeat, backbeats]
+  def: >-
+    Accents on beats 2 and 4 of a 4/4 bar, usually played on the snare drum.
+    The defining rhythmic feature of rock, R&B, and most pop since the 1950s.
+
+- id: syncopation
+  term: Syncopation
+  category: Rhythm
+  introducedIn: v2-03
+  aliases: [syncopation, syncopated, syncopations]
+  def: >-
+    Accenting or placing notes where the meter says it's weak, and leaving the
+    strong positions empty, so the rhythm pulls against the beat. A note
+    just before the downbeat, followed by silence on the downbeat, is the
+    classic example.
+
+- id: drum-kit
+  term: Drum kit (kick, snare, hi-hat, ride)
+  category: Rhythm
+  introducedIn: v2-05
+  deepIn: v4-01
+  aliases: [kick drum, snare, hi-hat, ride cymbal]
+  def: >-
+    The standard pop and jazz drum set. The kick (bass drum) is the low thump,
+    played with a foot pedal. The snare is the sharp crack, usually on the
+    backbeat. The hi-hat is a pair of small cymbals that keeps steady time
+    (closed: a tight "tss"). The ride is a large cymbal for longer, ringing
+    time-keeping patterns, central in jazz.
+
+- id: sequencer
+  term: Drum machine and step sequencer
+  category: Rhythm
+  introducedIn: v2-05
+  deepIn: v4-06
+  aliases: [drum machine, drum machines, sequencer, sequencers, step sequencer]
+  def: >-
+    A device or program that plays a stored pattern on a grid of steps
+    (typically 16 per bar), with machine-exact timing unless told otherwise.
+
+- id: groove
+  term: Groove
+  category: Rhythm
+  introducedIn: v2-05
+  aliases: [groove, grooves, groovy]
+  def: >-
+    In music psychology, the pleasurable urge to move to music. More loosely,
+    the rhythmic feel of a performance.
+
+- id: swing
+  term: Swing and shuffle
+  category: Rhythm
+  introducedIn: v2-05
+  deepIn: v2-06
+  aliases: [swing, swung, swing ratio, shuffle]
+  def: >-
+    Playing pairs of notes long-short instead of evenly. The degree of swing
+    is often given as a ratio (2:1 = triplet swing) or a percentage of the
+    pair taken by the first note (50% = straight, 67% = triplet). A shuffle
+    is a strongly swung groove.
+
+- id: microtiming
+  term: Microtiming
+  category: Rhythm
+  introducedIn: v2-05
+  aliases: [microtiming, microrhythm, microrhythms, laid back, laid-back]
+  def: >-
+    Small, systematic timing deviations from the metronomic grid, typically
+    10–50 milliseconds, such as a snare consistently played slightly late
+    ("laid back") or a hi-hat slightly early ("pushing").
+
+- id: quantize
+  term: Quantization
+  category: Rhythm
+  introducedIn: v2-05
+  aliases: [quantize, quantized, quantizing, quantization]
+  def: >-
+    Snapping recorded notes to the nearest grid position, removing timing
+    deviations. Standard in drum machines and digital audio workstations.
+
+- id: ghost-note
+  term: Ghost note
+  category: Rhythm
+  introducedIn: v2-05
+  aliases: [ghost note, ghost notes]
+  def: >-
+    A very soft note, usually on the snare, played between the main accents.
+    Felt more than heard, it fills in the subdivision.
+
+- id: entrainment
+  term: Entrainment
+  category: Rhythm
+  introducedIn: v2-05
+  deepIn: v2-07
+  aliases: [entrainment, entrain, entrains]
+  def: >-
+    The tendency of a rhythmic system (a body, a brain, or two players) to
+    lock its timing to an external rhythm, as when you start tapping along
+    without meaning to.
+
+- id: predictive-processing
+  term: Predictive processing
+  category: Hearing
+  introducedIn: v1-06
+  aliases: [predictive processing, predictive coding, prediction error, prediction errors]
+  def: >-
+    The theory that the brain constantly predicts incoming sensations and
+    learns from the mismatch (prediction error). In music, a leading
+    explanation for why expectations, and their violations, feel the way
+    they do.

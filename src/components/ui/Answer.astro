@@ -1,0 +1,12 @@
+---
+// Collapsible answer, for use inside <Callout kind="check">.
+interface Props {
+  label?: string;
+}
+const { label = 'Show answer' } = Astro.props;
+---
+
+<details>
+  <summary>{label}</summary>
+  <slot />
+</details>
