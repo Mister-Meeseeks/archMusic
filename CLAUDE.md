@@ -44,6 +44,11 @@ The site is private and informal for now. Keep breadcrumbs so it can be cleaned 
 - `src/data/concepts.yaml` + `src/lib/concepts.ts`: concept registry; `/glossary/` lists it.
 - Design principles for widgets: build reusable labs (each one should serve several chapters), make every visual reflect the actual model, and give each widget a caption saying what you're looking at.
 
+## Hosting
+
+- Every push to `main` deploys to GitHub Pages (`.github/workflows/deploy.yml`), at https://mister-meeseeks.github.io/archMusic/. The repo and site are public. The deploy uses the private build, so teaching drafts are included.
+- The site lives under a sub-path there, so internal links must go through `url()` from `src/lib/url.ts` (e.g. `href={url('/glossary/')}`). In MDX, use relative links (`../../glossary/`).
+
 ## Commands
 
 - `npm run dev`: dev server. For agents: `npx astro dev --background`, then manage it with `astro dev stop|status|logs`.
