@@ -1,3 +1,4 @@
+import { url } from './url';
 // Server-side helpers for the concept registry (used by Term, Refresher, glossary).
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { chapterKey, chapterLabel } from '../data/outline';
@@ -13,13 +14,13 @@ export async function conceptHref(c: Concept): Promise<{ href: string; label: st
     isPublic() ? e.data.status === 'public-ready' : e.data.status !== 'not-started',
   );
   const hit = mine.find((e) => chapterKey(e.data.volume, e.data.chapter) === key);
-  if (hit) return { href: `/chapters/${hit.id}/`, label: chapterLabel(key) };
+  if (hit) return { href: url(`/chapters/${hit.id}/`), label: chapterLabel(key) };
   if (!isPublic()) {
     const teaching = await getCollection('teaching');
     const t = teaching.find((e) => chapterKey(e.data.volume, e.data.chapter) === key);
-    if (t) return { href: `/teaching/${t.id}/`, label: chapterLabel(key) };
+    if (t) return { href: url(`/teaching/${t.id}/`), label: chapterLabel(key) };
   }
-  return { href: `/glossary/#${c.id}`, label: 'glossary' };
+  return { href: url(`/glossary/#${c.id}`), label: 'glossary' };
 }
 
 export async function getConcepts(ids: string[], where: string): Promise<Concept[]> {

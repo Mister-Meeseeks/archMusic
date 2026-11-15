@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { OUTLINE, volumeLabel } from '../data/outline';
@@ -47,15 +48,15 @@ const find = <T extends { data: { volume: number; chapter: number } }>(list: T[]
                   <span class="toc-num">
                     {vol.n === 0 || vol.n === 7 ? '' : `${vol.n}.${n}`}
                   </span>
-                  <span class="toc-title">{started ? <a href={`/chapters/${m.id}/`}>{m.data.title}</a> : title}</span>
+                  <span class="toc-title">{started ? <a href={url(`/chapters/${m.id}/`)}>{m.data.title}</a> : title}</span>
                   <span class="toc-links">
                     {t && (
-                      <a href={`/teaching/${t.id}/`} class="badge teaching">
+                      <a href={url(`/teaching/${t.id}/`)} class="badge teaching">
                         teaching
                       </a>
                     )}
                     {started && (
-                      <a href={`/chapters/${m.id}/`} class="badge mine">
+                      <a href={url(`/chapters/${m.id}/`)} class="badge mine">
                         yours · {m.data.status}
                       </a>
                     )}

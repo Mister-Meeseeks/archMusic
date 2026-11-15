@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/url';
 import { getCollection, render } from 'astro:content';
 import Chapter from '../../layouts/Chapter.astro';
 import { mdxComponents } from '../../components/mdx';
@@ -9,7 +10,7 @@ export async function getStaticPaths() {
   const teaching = isPublic ? [] : await getCollection('teaching');
   return mine.map((entry) => {
     const sib = teaching.find((t) => t.data.volume === entry.data.volume && t.data.chapter === entry.data.chapter);
-    return { params: { slug: entry.id }, props: { entry, sibling: sib ? `/teaching/${sib.id}/` : undefined } };
+    return { params: { slug: entry.id }, props: { entry, sibling: sib ? url(`/teaching/${sib.id}/`) : undefined } };
   });
 }
 

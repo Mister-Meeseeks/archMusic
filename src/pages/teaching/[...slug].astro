@@ -1,4 +1,5 @@
 ---
+import { url } from '../../lib/url';
 import { getCollection, render } from 'astro:content';
 import Chapter from '../../layouts/Chapter.astro';
 import { mdxComponents } from '../../components/mdx';
@@ -12,7 +13,7 @@ export async function getStaticPaths() {
     const sib = mine.find((c) => c.data.volume === entry.data.volume && c.data.chapter === entry.data.chapter);
     return {
       params: { slug: entry.id },
-      props: { entry, sibling: sib && sib.data.status !== 'not-started' ? `/chapters/${sib.id}/` : undefined },
+      props: { entry, sibling: sib && sib.data.status !== 'not-started' ? url(`/chapters/${sib.id}/`) : undefined },
     };
   });
 }
