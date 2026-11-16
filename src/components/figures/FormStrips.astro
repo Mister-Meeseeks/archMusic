@@ -1,0 +1,119 @@
+---
+// The standard forms side by side, each drawn as a strip of sections.
+// Lengths are proportional within a row (in bars, or seconds for Bohemian
+// Rhapsody); every row is stretched to the same width, so compare shapes, not
+// absolute lengths. Colors are letters: the same letter (same color) means the
+// same material returning. Gray is framing (intro, outro, interludes). The
+// sonata row has a second line underneath: how far the music is from its home key.
+import Figure from '../ui/Figure.astro';
+
+const r = (v: number) => Math.round(v * 10) / 10;
+type Sec = { n: number; label: string; k: string };
+type Row = { name: string; ex: string; secs: Sec[]; keys?: { n: number; away: number; label?: string }[] };
+const S = (n: number, label: string, k: string): Sec => ({ n, label, k });
+
+const rows: Row[] = [
+  {
+    name: 'Strophic',
+    ex: 'hymns, folk ballads',
+    secs: [S(16, 'A', 'a'), S(4, '', 'x'), S(16, 'A', 'a'), S(4, '', 'x'), S(16, 'A', 'a'), S(4, '', 'x')],
+  },
+  {
+    name: 'Verse–chorus',
+    ex: 'most pop since the 1960s',
+    secs: [S(16, 'Verse', 'a'), S(8, 'Pre', 'c'), S(16, 'Chorus', 'b'), S(16, 'Verse', 'a'), S(8, 'Pre', 'c'), S(16, 'Chorus', 'b'), S(8, 'Bridge', 'd'), S(16, 'Chorus', 'b')],
+  },
+  {
+    name: '32-bar song (AABA)',
+    ex: 'Tin Pan Alley, jazz standards',
+    secs: [S(8, 'A', 'a'), S(8, 'A', 'a'), S(8, 'B', 'b'), S(8, 'A', 'a')],
+  },
+  {
+    name: '12-bar blues',
+    ex: 'blues, early rock and roll',
+    secs: [S(12, 'intro', 'x'), S(12, '12 bars', 'a'), S(12, '12', 'a'), S(12, '12', 'a'), S(12, '12', 'a'), S(12, 'solo', 'a'), S(12, 'solo', 'a'), S(12, '12', 'a'), S(12, '12', 'a')],
+  },
+  {
+    name: 'Rondo',
+    ex: 'classical finales, "Für Elise"',
+    secs: [S(16, 'A', 'a'), S(16, 'B', 'b'), S(16, 'A', 'a'), S(24, 'C', 'c'), S(16, 'A', 'a')],
+  },
+  {
+    name: 'Sonata form',
+    ex: 'Beethoven 5, first movement',
+    secs: [S(58, 'Theme 1', 'a'), S(66, 'Theme 2', 'b'), S(123, 'Development', 'c'), S(55, 'Theme 1', 'a'), S(71, 'Theme 2', 'b'), S(129, 'Coda', 'x')],
+    keys: [
+      { n: 58, away: 0, label: 'home' },
+      { n: 66, away: 1, label: 'new key' },
+      { n: 123, away: 2, label: 'many keys' },
+      { n: 126, away: 0, label: 'home' },
+      { n: 129, away: 0 },
+    ],
+  },
+  {
+    name: 'Through-composed',
+    ex: '"Bohemian Rhapsody"',
+    secs: [S(49, 'A', 'a'), S(106, 'B', 'b'), S(28, 'C', 'c'), S(64, 'D', 'd'), S(48, 'E', 'e'), S(59, 'F', 'f')],
+  },
+];
+
+const X0 = 200, X1 = 668, BAR_H = 24, ROW = 46, TOP = 14;
+let y = TOP;
+const laid = rows.map((row) => {
+  const total = row.secs.reduce((a, s) => a + s.n, 0);
+  const sx = (X1 - X0) / total;
+  let x = X0;
+  const blocks = row.secs.map((s) => {
+    const b = { x: r(x), w: r(s.n * sx), label: s.label, k: s.k };
+    x += s.n * sx;
+    return b;
+  });
+  let keyPath = '';
+  const keyLabels: { x: number; y: number; t: string }[] = [];
+  const y0 = y;
+  if (row.keys) {
+    const ky = (away: number) => y0 + BAR_H + 10 + (2 - away) * 6;
+    let kx = X0;
+    const pts: string[] = [];
+    for (const k of row.keys) {
+      pts.push(`${r(kx)},${ky(k.away)}`, `${r(kx + k.n * sx)},${ky(k.away)}`);
+      if (k.label) keyLabels.push({ x: r(kx + 3), y: ky(k.away) + 12, t: k.label });
+      kx += k.n * sx;
+    }
+    keyPath = 'M' + pts.join(' L');
+  }
+  const out = { ...row, y: y0, blocks, keyPath, keyLabels, repeatX: row.keys ? r(X0 + 124 * sx) : null };
+  y += ROW + (row.keys ? 26 : 0);
+  return out;
+});
+const H = y + 4;
+---
+
+<Figure
+  title="The common forms at a glance"
+  caption="Each strip is one piece or template, read left to right. Same color means the same music coming back; gray is framing (intros, interludes, codas). Lengths are proportional within a strip but every strip is stretched to the same width, so compare shapes, not lengths. In the blues every block is the same 12 bars, varied by new words or a solo. Under sonata form, the thin line tracks the key: home, a new key for theme 2, many keys in the development, then home for <em>both</em> themes in the recapitulation. (The ‖ marks where Beethoven's exposition repeats; the repeat isn't drawn.)"
+>
+  <svg viewBox={`0 0 680 ${H}`} role="img" aria-label="Section strips for strophic, verse-chorus, AABA, 12-bar blues, rondo, sonata, and through-composed forms">
+    {laid.map((row) => (
+      <g>
+        <text x="10" y={row.y + 11} class="fig-t">{row.name}</text>
+        <text x="10" y={row.y + 26} class="fig-s">{row.ex}</text>
+        {row.blocks.map((b) => (
+          <g>
+            <rect x={b.x} y={row.y} width={b.w} height={BAR_H} rx="3" class={`fig-sec is-${b.k}`} />
+            {b.label && b.w > b.label.length * 5.2 + 1 && (
+              <text x={r(b.x + b.w / 2)} y={row.y + 16} text-anchor="middle" class={b.w > b.label.length * 6.2 + 4 ? 'fig-sec-l' : 'fig-sec-l is-tight'}>{b.label}</text>
+            )}
+          </g>
+        ))}
+        {row.keyPath && <path d={row.keyPath} class="fig-line" />}
+        {row.keyLabels.map((l) => (
+          <text x={l.x} y={l.y} class="fig-s">{l.t}</text>
+        ))}
+        {row.repeatX && (
+          <text x={row.repeatX} y={row.y - 3} text-anchor="middle" class="fig-t">‖</text>
+        )}
+      </g>
+    ))}
+  </svg>
+</Figure>

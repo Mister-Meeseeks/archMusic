@@ -1,0 +1,316 @@
+---
+title: "Functional Harmony: Why Chords Go Where They Go"
+volume: 3
+chapter: 6
+summary: Why G7 wants to go to C. Chords sort into three families (home, away, and the pull back), progressions trace a path around the circle of fifths, and cadences punctuate phrases. Then the same system bent by the blues, rock, and the pop loop, and the evidence that "function" lives in listeners' heads.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [frequency, pitch, harmonics, note-names, octave, semitone, interval, chord, root, major-minor, scale, key, tonic, mode, tonal-hierarchy, parallel-key, drone, dominant-seventh, resolution, consonance, roughness, common-practice, diatonic-chords, chord-quality, roman-numerals, chord-symbol, seventh-chord, chord-inversion, voicing, voice-leading, phrase, motif, predictive-processing, beat, tempo]
+lintIgnore: [counterpoint, spectrum, pentatonic] # only in reference titles
+introduces: [harmonic-function, dominant, leading-tone, cadence, circle-of-fifths, secondary-dominant, modulation, borrowed-chord, harmonic-loop, harmonic-rhythm]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts. One new lab, the **progression lab**: build a chord progression from Roman-numeral buttons colored by function, hear it in four voices, and watch its roots move around the circle of fifths. There's also one figure, a map of how chords flow in a major key. Then write your version in `src/content/chapters/v3-06-function.mdx`.
+
+Chapter 3.5 was about the inside of chords. This chapter is about the *grammar between* them: why some chords sound like arrivals and others like departures. It builds on chapter 3.4 (what makes a note feel like home) and is the chapter that chapter 5.4 (tension) and chapter 5.5 (form) quietly lean on. Those chapters introduced the dominant and the cadence in a hurry; this is the proper treatment.
+</Callout>
+
+## The question
+
+Play G7 on a piano and stop. Almost anyone raised on Western music, trained or not, feels that something is missing. Play C next and the feeling goes away. Nothing about G7 is broken. It isn't especially rough (chapter 1.5 showed that a G7 voiced well is milder than plenty of chords that sound perfectly settled). Yet it *points*.
+
+The idea that chords have jobs in a key, that some are home, some are departures, and some are the road back, is called **harmonic function**. It's the central idea of Western harmony from about 1650 to 1900, it still runs most film music, hymns, jazz standards, and a good share of pop, and it's what most people mean when they say a song "resolves."
+
+This chapter asks three questions:
+
+1. **What are the jobs?** Which chords are stable, which push, and why.
+2. **Where does the push come from?** Part acoustics, part voice leading, and a lot of habit.
+3. **How universal is it?** Rock, blues, and the modern pop loop bend the rules, and the experimental evidence suggests function is something listeners learn.
+
+## Home, away, and the pull back
+
+### Three families
+
+Chapter 3.5 built seven <Term id="diatonic-chords">chords from the C major scale</Term> and named them with <Term id="roman-numerals">Roman numerals</Term>: I, ii, iii, IV, V, vi, vii°. In music of the common practice they don't behave like seven equals. They fall into three families:
+
+- **Tonic.** I is home: the chord a piece starts from and ends on. vi (and, more weakly, iii) can stand in for it, because they share two of its three notes. A minor (A C E) contains C and E; so does C major (C E G).
+- **Dominant.** V (and V7, and vii°) is the chord of maximum pull toward home. It's the road back.
+- **Predominant.** IV and ii are the chords that lead *to* the dominant. They move away from home without yet pulling back. (The older name for IV is the *subdominant*, and you'll see "subdominant function" used to mean the whole family.)
+
+The most common shape of a phrase runs through all three in order:
+
+**Tonic → Predominant → Dominant → Tonic**
+
+Call it the **phrase model**: away from home, through a gathering pull, back. I–IV–V–I is the plainest version; I–vi–ii–V–I is the jazz-standard and doo-wop version; a Bach chorale phrase or a Mozart theme is usually an elaboration of the same plan.
+
+<HarmonicMap />
+
+<DataTable title="The three functions in a major key" caption="Function is a role, not a chord: vi can act as a tonic stand-in after V, but as a predominant-ish stepping stone in I–vi–ii–V.">
+
+| Function | Main chords (C major) | What it does | Feels like |
+|---|---|---|---|
+| **Tonic** | I (C); also vi (Am), iii (Em) | Stability; where phrases begin and end | Home |
+| **Predominant** | IV (F), ii (Dm, Dm7) | Leaves home, sets up the dominant | Setting out |
+| **Dominant** | V (G), V7 (G7), vii° (B°) | Pulls hard toward I | The road back |
+
+</DataTable>
+
+### Why the dominant pulls
+
+There are three overlapping explanations. None is enough on its own.
+
+**1. The leading tone.** G7 contains B, the seventh note of the scale, a semitone below C. A note a semitone from the tonic, inside the chord that most often precedes the tonic, has a strong tendency to rise into it. That note is called the **leading tone**. Melodies everywhere tend to settle by step onto stable notes (chapter 3.3), and the leading tone is the closest neighbor home has.
+
+**2. The tritone squeezes inward.** G7 also contains F. B and F are a <Term id="interval">tritone</Term> apart, the interval that splits the octave exactly in half and the only one in the major scale that is neither a perfect nor a major/minor third-or-sixth relative of the tonic triad. In the move to C, B rises a semitone to C and F falls a semitone to E. Both notes of the most unstable interval in the key resolve by the smallest possible step into the two most stable notes of the tonic chord. Chapter 3.5's voice-leading lab shows the same move: two voices, two semitones.
+
+**3. The bass falls a fifth.** G down to C is a fifth (or up a fourth). Root motion by a falling fifth is the most common root motion in tonal music by a wide margin. The eighteenth-century theorist Jean-Philippe Rameau built a whole theory on it. He noted that G is the third harmonic of C (chapter 1.2), so moving from G to C is, in his picture, returning to the note that generates the other. That's a historical explanation, not a proven one, but the statistic it explains is real.
+
+And over all three: **habit.** Dominant-to-tonic is the most common way to end a phrase in several centuries of music. Your expectations were trained on that history (chapter 1.6), and expectation is what turns a chord into a question.
+
+<Callout kind="check">
+In G major, which chord is the dominant, and which note is the leading tone? What does the dominant seventh chord's tritone resolve to?
+
+<Answer>
+The dominant is the chord on the fifth note of G major: D (D F♯ A), or D7 with C added. The leading tone is F♯, a semitone below G. In D7, the tritone is F♯–C. F♯ rises to G and C falls to B, landing on the root and third of G major (G B D).
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="dominant mechanics and Rameau">
+Check: the tritone's resolution description (B→C, F→E) and the claim that root motion by falling fifth is the most common in common-practice music (corpus figures: Rohrmeier & Cross 2008 on Bach chorales; Tymoczko's work on root-motion statistics). Rameau's argument from the harmonic series: check how he actually framed it (*Traité de l'harmonie*, 1722; *Génération harmonique*, 1737) so the summary isn't a caricature. The phrase "the only interval in the major scale that is neither..." in point 2 is clumsy; reword, and check that the tritone is the only one between scale notes (it is: F–B), but don't overclaim.
+</Callout>
+
+## Building progressions
+
+The lab has twelve presets and a palette of sixteen chords. Each chord card is colored by function, and the circle on the left shows where each chord's root sits among the twelve notes arranged a fifth apart (the circle of fifths, explained properly below). For now, notice one thing: falling-fifth moves are short **counterclockwise** steps and are drawn in green.
+
+<ProgressionLab />
+
+<Callout kind="try">
+1. Play **I IV V7 I**. Watch the colors: tonic, predominant, dominant, tonic. Now press **Undo** to remove the final I, and add **vi** in its place: you've built a deceptive cadence.
+2. Play **I vi ii V7 I**. From A minor on, each root falls a fifth: A, D, G, C. On the circle the path walks steadily counterclockwise into C.
+3. Play **Round the circle**. Seven root moves, all falling fifths (one of them, F to B, is a diminished fifth, the only way to stay inside the key). This is the backbone of a huge amount of Baroque music, and of jazz standards.
+4. Build your own: start with **I**, add any predominant, any dominant, then **I**. Then try putting the dominant *before* the predominant (I V IV I). Does it still sound like a phrase? (Hold that thought for the section on rock.)
+5. Clear the progression and try to write something that never touches a dominant-family chord. How does it end?
+</Callout>
+
+## Cadences: the punctuation of phrases
+
+A **cadence** is a conventional chord move that ends a phrase. Chapter 5.4 introduced the idea as punctuation; here is the full set. The names come from classical theory, but every one of them is everywhere in popular music.
+
+<DataTable title="Cadences" caption="Strength is about how final the ending feels, not how loud or rough it is. In the strongest authentic cadence, both chords are in root position and the melody lands on the tonic note.">
+
+| Cadence | Chords (C major) | Punctuation | Where you hear it |
+|---|---|---|---|
+| **Authentic** | V(7) → I (G7 → C) | Full stop | The last bars of almost any classical piece; the ends of hymns and jazz standards |
+| **Half** | Ends on V (… → G) | Comma or question mark | The middle of a two-phrase tune, where the first phrase "asks" and the second "answers" |
+| **Plagal** | IV → I (F → C) | A softer full stop, an "Amen" | The "Amen" at the end of hymns; very common in rock and gospel |
+| **Deceptive** | V → vi (G → Am) | A sidestep: the period becomes a comma | Delaying an ending; the expected home is swapped for a near neighbor |
+| **♭VII → I** (rock) | B♭ → C | A full stop without a dominant | The endings of rock songs (see below) |
+
+</DataTable>
+
+The half cadence makes the most sense alongside chapter 3.3's antecedent and consequent phrases: a first phrase that ends on V sounds like a question, and a second phrase that ends V–I answers it. Most of the tunes you know with a two-part "question and answer" shape work this way.
+
+<ListeningCue track="bach-passion-chorale" start="0:00" end="1:00">
+A Bach chorale is a string of short phrases, each ending at a pause (a fermata in the score). Each pause is a cadence. Listen for which pauses feel final (authentic: V–I) and which feel like commas (half cadences, ending on V). The last one is the most final of all.
+</ListeningCue>
+
+<ListeningCue track="handel-hallelujah" start="3:15">
+The end of Handel's "Hallelujah." After a dramatic silence, the choir sings one slow, broad final "Hal-le-lu-jah" on IV → I: a plagal cadence, the "Amen" ending, used here as a grand seal after the many authentic cadences before it.
+</ListeningCue>
+
+<ListeningCue track="beatles-let-it-be" start="0:00" end="0:50">
+The piano opening runs C–G–Am–F, then C–G–F–C. That second line ends on F → C: IV → I, a plagal cadence. The song's sung title lines end the same way, on F to C. A rock-era ballad built almost entirely on plagal endings.
+</ListeningCue>
+
+<Callout kind="verify" title="cadence examples">
+Check by ear and against a score: which Bach chorale phrases end on V (half cadences) in this harmonization of "O Haupt voll Blut und Wunden" (BWV 244 no. 54); the final cadence of the "Hallelujah" (IV–I after the general pause; the cue time is an estimate); the "Let It Be" chords (C–G–Am–F, C–G–F–C), and whether the sung title lines also end F–C.
+</Callout>
+
+## The circle of fifths
+
+Arrange the twelve notes so that each is a fifth above the last: C, G, D, A, E, B, F♯, D♭, A♭, E♭, B♭, F, and back to C. That loop is the **circle of fifths**. It does two jobs.
+
+**Keys.** Neighboring notes on the circle are neighboring keys. C major and G major share six of their seven notes (G major swaps F for F♯). Each step clockwise adds a sharp; each step counterclockwise adds a flat. The seven roots of C major's chords sit together on one stretch of the circle, from F to B. Moving to a key next door on the circle is easy and smooth; moving to the far side is a jolt.
+
+**Root motion.** Progressions in the common practice mostly move their roots *counterclockwise*, one step at a time: a falling fifth. iii → vi → ii → V → I is the whole C major stretch of the circle walked backwards, ending at home. The jazz turnaround (I–vi–ii–V), the "Autumn Leaves" sequence, and long Baroque sequences (chapter 3.3) are all this same walk. Because each chord is the dominant of the next, or close to it, the chain builds momentum: every arrival is also a departure.
+
+<ListeningCue track="sinatra-fly-me" start="0:00" end="0:35">
+"Fly Me to the Moon" is a textbook circle-of-fifths tune. In the common lead-sheet key the chords run Am – Dm – G – C – F – B(ø) – E – Am: every root falls a fifth, walking counterclockwise all the way round, with one diminished fifth (F to B) to stay inside the key. Listen to how the melody steps down a scale while the harmony falls in fifths underneath it.
+</ListeningCue>
+
+<Callout kind="verify" title="Fly Me to the Moon">
+Confirm the progression (Am7–Dm7–G7–Cmaj7–Fmaj7–Bm7♭5–E7–Am7 in A minor) and the key of the Sinatra/Basie recording, which may be in a different key. Also check "Autumn Leaves" as a ii–V chain example.
+</Callout>
+
+## Borrowing the pull: secondary dominants
+
+If G7 pulls to C because it's C's dominant, any major chord can be given its own dominant. D7 is the dominant of G. E7 is the dominant of A minor. Slip D7 in before G and, for a moment, G sounds like a temporary home that you are about to arrive at.
+
+These borrowed dominants are **secondary dominants**, written V/V ("five of five": D7 in C), V/vi (E7), V/ii (A7), and so on. They bring in notes from outside the key (D7's F♯, E7's G♯), and each one has its own leading tone into its target. Making a chord other than I feel briefly like home this way is called **tonicization**.
+
+Chain several and you get the ragtime and barbershop progression E7 → A7 → D7 → G7 → C (try the **Ragtime chain** preset): each chord is the dominant of the next, so the pull never lets up until the final C.
+
+<ListeningCue track="beatles-yesterday" start="0:00" end="0:20">
+"Yesterday" is in F. The second and third chords of the tune are Em7 → A7, and then the music lands on D minor: A7 is V/vi, the dominant of D minor, borrowed to make vi a brief destination. That's where the melody's "all my troubles seemed so far away" begins to sag. Then B♭ → C7 → F brings it home.
+</ListeningCue>
+
+<Callout kind="verify" title="Yesterday chords">
+Confirm the opening progression (F – Em7 – A7 – Dm – Dm/C – B♭ – C7 – F) and that the recording sounds in F (McCartney's guitar is tuned down a whole step).
+</Callout>
+
+## Changing key: modulation
+
+Tonicization is a visit. **Modulation** is a move: the music settles in a new key, with its own cadences, long enough that the old tonic stops feeling like home.
+
+The smoothest way to modulate uses a **pivot chord**, a chord that belongs to both keys. A minor is vi in C major and ii in G major. So C – Am – D7 – G starts in C, reinterprets A minor as G's predominant, and lands on G through G's own dominant (D7). The ear is moved before it notices. Neighboring keys on the circle share most of their chords, which is why moves to the next key along are the most common modulations. The dominant key (C to G) is the classic move, and the next-door minor key (C major to A minor, which uses the same seven notes) is another.
+
+Modulation is the engine of large forms. Chapter 5.5 shows how the largest classical forms are built on a move to a second key and back; chapter 5.4 shows the pop version, a final shift up a step to lift a song's ending.
+
+<Callout kind="check">
+In the lab, build C – Am – V/V (D7) – V (G) and stop. Does it sound like it ended at home, or away from home? What would you need to add to make G sound like the *new* home rather than C's dominant?
+
+<Answer>
+It usually sounds like a half cadence in C: ending on G after D7 points at G, but G is still heard as C's dominant. To make G the new home it needs to be confirmed: a full cadence in G (for example Am – D7 – G again, or C – D7 – G with the new key's characteristic F♯ repeated), more time spent in G, and a melody that settles on G. One arrival is a tonicization; a confirmed one, several bars long, is a modulation. There's no exact line between them.
+</Answer>
+</Callout>
+
+## How fast the chords change
+
+The rate at which chords change is the **harmonic rhythm**. It's a separate dial from tempo. A hymn may change chord on every beat; a funk tune may sit on one chord for a minute. A common way to drive into a cadence is to speed the harmonic rhythm up: one chord per bar, then two, then one per beat, then a long tonic. The slowing that follows the arrival is part of what makes the arrival feel final.
+
+## Function in popular music
+
+Everything so far is the common-practice system. Popular music grew from it, but also from the blues, folk, gospel, and modal traditions that never followed it strictly. Several habits stand out.
+
+### The blues: sevenths that stay put
+
+In classical harmony a dominant seventh chord is unstable; it exists to resolve. In the blues, *every* chord can be a dominant seventh: I7, IV7, and V7. The C7 at the start of a blues in C is home, not a pointer to F. The minor seventh in the chord is part of the music's color, closer to the "blue" notes of the melody than to a question needing an answer. The I–IV–V skeleton is still there, and the turn from V back to I still sounds like a return, but the dominant seventh has been redefined.
+
+<ListeningCue track="berry-johnny-b-goode" start="0:17" end="0:34">
+The first sung section of "Johnny B. Goode." Three chords, I, IV, and V, each colored by the guitar and piano. Listen at the very start of the section: the home chord already has its bluesy seventh, and nobody expects it to resolve anywhere.
+</ListeningCue>
+
+### Rock: IV before V, and the ♭VII
+
+Trevor de Clercq and David Temperley analyzed the chords of 100 rock songs from *Rolling Stone*'s list of the greatest of all time. Their corpus departs from the common-practice picture in several ways. IV is more common than V. Moves from IV to I are about as common as V to I. Moves from V to IV, which classical theory treats as "backwards," are routine. And the chord on the flattened seventh degree, **♭VII** (B♭ in C), is a staple.
+
+♭VII isn't in the C major scale. It comes from the Mixolydian <Term id="mode">mode</Term> (chapter 3.4), the major scale with a lowered seventh, or from C minor. A chord brought in from a parallel mode or key while staying in the original key is a **borrowed chord**, and the practice is called **modal mixture**. The ♭VII → IV → I progression is rock's own cadence. Every root falls a fourth (B♭ → F → C), which is the same as rising a fifth: on the circle it walks *clockwise* into home, the mirror image of the classical falling fifths. (The plagal IV → I makes the same clockwise step.) It reaches home without a dominant chord or a leading tone at all. Compare the **I ♭VII IV I** and **Round the circle** presets in the lab and watch which way the arrows turn.
+
+<ListeningCue track="beatles-hey-jude" start="4:00" end="4:40">
+The long "na na na" ending of "Hey Jude" (in F) loops F – E♭ – B♭ – F: I – ♭VII – IV – I, for about four minutes. It feels completely settled, yet there isn't a dominant chord in sight.
+</ListeningCue>
+
+<ListeningCue track="skynyrd-sweet-home" start="0:00" end="0:30">
+"Sweet Home Alabama" loops three chords, D – C – G, for almost the whole song. Is it I – ♭VII – IV in D, or V – IV – I in G? Musicians still argue about it, and both hearings are available to you. Try hearing D as home for a few cycles, then G. A loop with no cadence leaves the choice of home open.
+</ListeningCue>
+
+<Callout kind="verify" title="rock harmony claims">
+De Clercq &amp; Temperley 2011: check the exact corpus (100 songs from *Rolling Stone*'s "500 Greatest Songs of All Time", 1950s–1990s) and each comparative claim (IV vs V frequency; IV–I vs V–I; V–IV; ♭VII). Hey Jude: confirm the ending's chords and its start time (estimated 4:00 in the 7:06 recording). Sweet Home Alabama: confirm D–C–G and find a published source discussing the ambiguity (Temperley's *The Musical Language of Rock*, 2018, or an article on "Mixolydian vs. V–IV–I" readings) rather than relying on lore.
+</Callout>
+
+### The loop
+
+From the 1990s onward, a large share of pop is built on a **chord loop**: a four-chord pattern that repeats for most of the song, I–V–vi–IV being the most famous. A loop has no first or last chord, so the phrase model's beginning and end disappear. The V in I–V–vi–IV usually goes to vi, not I; the IV goes back to I, plagally. Some analysts argue that in many loops the chords barely have functions at all: the sense of home is carried by the melody, the bass, and which chord the loop seems to start on, not by a dominant pulling to a tonic. Others hear the old functions still operating in softened form. The same four chords rotated (vi–IV–I–V) can even make A minor sound like home.
+
+Try the **I V vi IV loop** preset. Then build the rotation **vi IV I V** and play it a few times. Where is home?
+
+### Borrowed color
+
+Besides ♭VII, rock and film music often borrow **iv** (F minor in C major) and **♭VI** (A♭). IV turning into iv lowers one note by a semitone (A to A♭), a small, bittersweet darkening that's often described as nostalgic. Try the **Borrowed from minor** preset.
+
+<DataTable title="Common progressions and what they do" caption="All in C major. Function labels are the classical ones; popular styles often weaken or ignore them.">
+
+| Progression | Chords | Functions | Character | Typical home |
+|---|---|---|---|---|
+| I–IV–V–I | C F G C | T PD D T | The plain phrase model | Hymns, folk, early rock and roll |
+| I–vi–ii–V | C Am Dm G | T T PD D | Falling fifths from vi; loops back to I | Doo-wop, jazz standards ("rhythm changes") |
+| ii–V–I | Dm7 G7 Cmaj7 | PD D T | The core cadence of jazz | Jazz |
+| I–V–vi–IV | C G Am F | T D T PD (weakened) | A loop with no cadence | Pop since the 1990s |
+| I–♭VII–IV–I | C B♭ F C | Borrowed; plagal ending | Home without a dominant | Rock |
+| E7–A7–D7–G7–C | III7 VI7 II7 V7 I | Chain of secondary dominants | Unrelenting pull home | Ragtime, barbershop, jazz |
+
+</DataTable>
+
+## Is function real?
+
+Is "dominant pulls to tonic" a fact about sound, or a convention? The evidence points mostly to convention, learned very well.
+
+- **People learn it without lessons.** In harmonic priming experiments, a target chord is identified faster, and judged in tune more readily, when the chords before it make it the expected next chord. Listeners with no musical training show the effect too (Bharucha and Stoeckig 1986; many follow-ups by Tillmann, Bigand, and colleagues). Brain-response studies find a distinct response to an out-of-place chord, again in nonmusicians (Koelsch and colleagues, 2000).
+- **The expectations match the statistics.** Computer models that do nothing but absorb chord sequences from a large corpus develop expectations very like listeners'. That's consistent with function being a learned summary of what usually comes next: the predictive picture of chapter 1.6.
+- **It isn't universal.** Raga, maqam, and gamelan (chapter 3.10) organize pitch around other principles: a drone, characteristic melodic phrases, interlocking cycles. They have no dominant–tonic engine. Even within Western music the blues and rock have rewritten parts of the system.
+- **The physics helps, but doesn't decide.** The leading tone's semitone step and the tritone's inward squeeze give the dominant a strong voice-leading pull, and fifth relationships are acoustically close (chapter 1.2). Those properties probably explain why this system rather than some other became the one people learned. They don't make it inevitable.
+
+The honest summary is that function is a *schema*: a set of expectations, built from exposure, partly grounded in acoustics and voice leading, that composers can satisfy, delay, or deny. Chapter 5.4 is about what happens when they do.
+
+<Callout kind="verify" title="experimental evidence">
+Check: Bharucha &amp; Stoeckig 1986 (task and result: faster in-tune/out-of-tune judgments for related targets); whether nonmusicians showed the effect in that paper or in follow-ups (Tillmann, Bigand); Koelsch et al. 2000 (ERAN, nonmusicians); the self-organizing model of Tillmann, Bharucha &amp; Bigand 2000. Don't overstate how closely models match listeners.
+</Callout>
+
+## Function at a glance
+
+<DataTable title="Function at a glance">
+
+| Idea | In one line | Lab preset |
+|---|---|---|
+| Three families | Tonic is home, predominant sets out, dominant pulls back | I IV V7 I |
+| Why V pulls | Leading tone up, tritone inward, bass down a fifth, plus habit | I IV V7 I |
+| Cadences | Phrase endings: authentic, half, plagal, deceptive | Half cadence, Deceptive, Plagal |
+| Circle of fifths | Keys next door share six notes; roots mostly fall a fifth | Round the circle |
+| Secondary dominants | Any chord can have its own V | Secondary dominants, Ragtime chain |
+| Modulation | Settling in a new key, often through a pivot chord | (build C Am D7 G) |
+| Popular music | Blues sevenths, rock's ♭VII and IV–I, the loop | I ♭VII IV I, I V vi IV loop, I V IV I |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. The three functions (tonic, predominant, dominant), which chords belong to each in a major key, and the T–PD–D–T phrase model.
+2. Why the dominant pulls toward the tonic: leading tone, the tritone's resolution, the falling-fifth bass, and learned habit. Which of these is strongest is your call.
+3. The four classical cadences plus the rock ♭VII–I, as punctuation.
+4. The circle of fifths, both as a map of keys and as the path of root motion.
+5. Secondary dominants and tonicization; modulation and the pivot chord; harmonic rhythm.
+6. How the blues, rock, and the pop loop reshape function, with evidence (de Clercq and Temperley).
+7. Why function is best understood as a learned schema, and what the priming experiments show.
+
+**Decisions for your rewrite:**
+
+- **The hook.** I started with the unfinished G7. Alternatives: start with "Sweet Home Alabama" (where's home?), or with the deceptive cadence, which demonstrates function by violating it.
+- **How much classical vocabulary.** Authentic/plagal/half/deceptive is standard and useful. I left out the finer distinctions (perfect vs imperfect authentic cadences, the Phrygian half cadence, the cadential 6/4) and Riemann's theory of function. Decide whether your readers need any of them.
+- **Rock and pop balance.** This draft gives about a third of the chapter to popular music. You might fold the rock material into chapter 3.7 (extended and modal harmony) instead, or expand it into its own section with more songs.
+- **The figure.** The harmonic map is a simplification (iii is rare; vii° and V7 overlap). Decide whether to keep it as a map of habits or replace it with something more literal, such as the lab's circle.
+
+**Misconceptions to watch for:**
+
+- "Dissonant chords are dominants." Function isn't roughness. A dominant triad (G B D) is as smooth as the tonic; a C major seventh chord is rougher than G7 in many voicings but is a tonic.
+- "Function is a property of the chord." It's a property of the chord *in a key*. C major is I in C, IV in G, and V in F.
+- "The circle of fifths is a rule." It's a map and a statistic.
+- "Pop is harmonically simple, so it has nothing to say about function." The ♭VII cadence and the loop are different systems, not lesser versions of the classical one.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Rameau, J.-P. (1722). *Traité de l'harmonie réduite à ses principes naturels*. Paris: Ballard.
+- Riemann, H. (1893). *Vereinfachte Harmonielehre, oder die Lehre von den tonalen Funktionen der Akkorde*. London: Augener.
+- Kostka, S., Payne, D., & Almén, B. (2018). *Tonal Harmony* (8th ed.). McGraw-Hill.
+- Caplin, W. E. (1998). *Classical Form: A Theory of Formal Functions for the Instrumental Music of Haydn, Mozart, and Beethoven*. Oxford University Press.
+- Rohrmeier, M., & Cross, I. (2008). Statistical properties of tonal harmony in Bach's chorales. In *Proceedings of the 10th International Conference on Music Perception and Cognition* (pp. 619–627).
+- Tymoczko, D. (2011). *A Geometry of Music: Harmony and Counterpoint in the Extended Common Practice*. Oxford University Press.
+- de Clercq, T., & Temperley, D. (2011). A corpus analysis of rock harmony. *Popular Music*, 30(1), 47–70.
+- Temperley, D. (2018). *The Musical Language of Rock*. Oxford University Press.
+- Moore, A. F. (1995). The so-called "flattened seventh" in rock. *Popular Music*, 14(2), 185–201.
+- Biamonte, N. (2010). Triadic modal and pentatonic patterns in rock music. *Music Theory Spectrum*, 32(2), 95–110.
+- Bharucha, J. J., & Stoeckig, K. (1986). Reaction time and musical expectancy: Priming of chords. *Journal of Experimental Psychology: Human Perception and Performance*, 12(4), 403–410.
+- Tillmann, B., Bharucha, J. J., & Bigand, E. (2000). Implicit learning of tonality: A self-organizing approach. *Psychological Review*, 107(4), 885–913.
+- Koelsch, S., Gunter, T., Friederici, A. D., & Schröger, E. (2000). Brain indices of music processing: "Nonmusicians" are musical. *Journal of Cognitive Neuroscience*, 12(3), 520–541.
+- Huron, D. (2006). *Sweet Anticipation: Music and the Psychology of Expectation*. MIT Press.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details, especially the Rohrmeier &amp; Cross proceedings pages, the Riemann title and publisher, and the edition and co-authors of Kostka &amp; Payne.
+</Callout>

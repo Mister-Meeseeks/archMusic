@@ -81,6 +81,14 @@ export const SYNTH_PRESETS: Preset[] = [
     p: { method: 'subtractive', wave: 'sawtooth', detune: 0, cutoff: 320, resonance: 14, envAmount: 3, filterDecay: 0.22, attack: 0.003, decay: 0.25, sustain: 0.5, release: 0.06 },
     pattern: true,
   },
+  // v7-01
+  {
+    id: 'seqbass',
+    label: 'Sequencer bass',
+    blurb: 'A sawtooth through a resonant low-pass whose envelope snaps open and shut on every note: a short, punchy, octave-bouncing bass of the kind early sequencers made famous.',
+    p: { method: 'subtractive', wave: 'sawtooth', detune: 0, cutoff: 260, resonance: 4, envAmount: 3.2, filterDecay: 0.11, attack: 0.002, decay: 0.16, sustain: 0.35, release: 0.05 },
+    pattern: true,
+  },
   {
     id: 'pad',
     label: 'Pad',

@@ -1,0 +1,369 @@
+---
+title: "Form: Verse-Chorus, Blues, Sonata, Rondo, Through-Composed"
+volume: 5
+chapter: 5
+summary: How a piece is laid out over minutes. Form as a pattern of sameness and difference, the cues that tell you a new section has started, and the classic plans (strophic, verse-chorus, AABA, the 12-bar blues, rondo, sonata, through-composed) as different strategies for balancing repetition against contrast.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [roman-numerals, phrase, motif, melodic-transformation, step-leap, note-names, octave, interval, resolution, groove, scale, key, tonic, relative-key, dominant, cadence, modulation, pedal-point, chord, root, major-minor, song-sections, tension, texture, dynamics, habituation, build-drop, register, timbre, beat, meter, tempo]
+introduces: [musical-form, ternary-form, strophic, aaba-form, twelve-bar-blues, rondo, sonata-form, through-composed, coda]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts. This one is built around **song maps**: seven recordings, each with its sections laid out on a timeline. Click a section to jump there. Listen to each map with the labels in view at least once; form is much easier to hear when you know what to wait for. All the section times are my estimates (from synced-lyric timestamps, or from bar counts for the instrumental pieces) and need checking by ear with each map's "Retime" panel. Then write your version in `src/content/chapters/v5-05-form.mdx`.
+
+Chapter 5.4 introduced the pop song sections (verse, chorus, bridge) as tools for building tension. This chapter steps back and asks what a *form* is in general, then walks through the plans that dominate Western music, classical and popular. It uses the Roman-numeral chord names (I, IV, V) from chapter 3.5 to describe the blues.
+</Callout>
+
+## The question
+
+Put on a song you've never heard. Within a minute, you can usually tell when the chorus has arrived. By the second time through, you can feel it coming. Two minutes in, you sense that a bridge is due, and when the last chorus hits, you know the song is nearly over, though nobody told you its length.
+
+You're tracking the song's **form**: its large-scale plan, which sections it has, in what order, and which ones come back. Melody and rhythm work over seconds. Form works over minutes, which is far beyond what you can hold in mind at once. So form is mostly a matter of memory and recognition: knowing that *this* is the music you heard a minute ago, or that it isn't.
+
+Every form solves the same problem in a different way. Repetition makes music easy to follow, to remember, and to anticipate. But exact repetition, held long enough, stops registering (that's habituation, from chapter 5.4). Contrast renews attention, but contrast alone, with nothing returning, is hard to follow. Each of the forms in this chapter is a particular balance between the two.
+
+## Sameness and difference
+
+### Letters
+
+The standard notation for form is letters. Label the first section **A**. If the next section is new, it's **B**; if it's the same music again, it's **A** again. A varied return is marked with a prime: **A′** ("A prime").
+
+So a song that goes "tune, same tune, different tune, first tune again" is **A A B A**. A song that keeps bringing the same section back between new ones is **A B A C A**. The letters only record sameness and difference; they say nothing about content. That's their power: two pieces that sound nothing alike can share a plan.
+
+Deciding what counts as "the same" takes judgment. A pop chorus repeated with a key change is the same section, varied. The second verse of a song has new words over the same music: same letter or not? It depends on what you're tracking. Analysts often use names (Verse, Chorus) for songs and letters for everything else, and the choice is part of the analysis.
+
+### Levels
+
+Form is hierarchical, like the levels of a melody in chapter 3.3:
+
+- A **motif** lasts a second or two.
+- Motifs build **phrases** of a few seconds, often four or eight bars.
+- Phrases build **sections** of fifteen seconds to a minute or more.
+- Sections build the **piece**.
+
+Letters work at every level. The A section of a song might itself be an a a b a of phrases (lower case is often used for the smaller level). And at each level, recognition does the work: you hear a section as a return because you recognize its first phrase, often its first bar.
+
+<FormStrips />
+
+## What marks a boundary
+
+How do you know a new section has started? Not from one cue, but from several changing at once:
+
+<DataTable title="Cues that mark a section boundary" caption="Listeners hear a strong boundary when several of these change together, and a weak one when only one does.">
+
+| Cue | What changes | Example |
+|---|---|---|
+| Cadence | The previous section closes with a full stop (or a half stop) | A verse ending on the tonic chord |
+| Texture | Instruments enter or drop out | Drums kick in at the chorus |
+| Dynamics | A step up or down in loudness | Quiet verse, loud chorus |
+| Register | The melody moves higher or lower | Chorus melodies often sit higher than verses |
+| Rhythm | A fill, a break, or a change of pattern | A drum fill in the last bar before the chorus |
+| Words | New words versus repeated words | The chorus repeats the title |
+| Key | A new tonic | The second theme of a sonata; the last chorus a step up |
+| Repetition itself | You recognize the start of something you've heard | The first notes of the chorus, the second time |
+
+</DataTable>
+
+The last cue is different from the others. The first seven are contrasts you can hear the first time through. The last only works on a return. That's why form becomes clearer on repeated listening: the first time, you hear changes; the second time, you hear *returns*.
+
+Researchers have asked listeners to press a button whenever they hear a section boundary. Agreement is high, between listeners and between musicians and non-musicians, especially for the big boundaries. Changes in instrumentation and loudness are among the strongest cues.
+
+<Callout kind="verify" title="boundary perception">
+Check the claims about boundary perception: Clarke & Krumhansl (1990) on segmenting Mozart and Stockhausen; Bruderer, McKinney & Kohlrausch (2009) on structural boundaries in popular music (which cues dominated; the agreement between musicians and non-musicians). Is "instrumentation and loudness are among the strongest cues" a fair summary?
+</Callout>
+
+## Strophic form and the refrain
+
+The simplest plan for a song is to sing every verse to the same tune: **A A A**. This is **strophic** form (a *strophe* is a verse of a poem). It's the form of most hymns, folk ballads, and nursery songs. All the novelty comes from the words; the music is a container you know by the second verse.
+
+Many strophic songs end each verse with a **refrain**: a line or two of fixed words and music that returns every time. The refrain gives the listener something to join in on and a landmark at the end of every verse. Bob Dylan's "Blowin' in the Wind" is a clear example: three verses of questions, each closed by the same answer, with harmonica breaks between them.
+
+<SongMap track="dylan-blowin" />
+
+<Callout kind="try">
+Click each verse in turn and listen to its first few seconds. The music is identical; only the words change. Then compare the end of each verse: the refrain is the same words *and* the same music.
+</Callout>
+
+A **chorus** is what you get when a refrain grows into its own section, with its own tune, often its own chords, and usually more energy than the verse. The difference between a refrain and a chorus is a matter of degree, and it's the hinge between strophic form and the verse-chorus form of modern pop.
+
+## Verse–chorus form
+
+Chapter 5.4 introduced the sections of a pop song. Here they are as a form. The core is an alternation, **verse–chorus–verse–chorus**, usually extended:
+
+- **Intro.** Establishes the groove, sometimes the hook.
+- **Verse.** Same music, new words each time. Tells the story; usually lower energy and lower in register.
+- **Pre-chorus.** A short ramp (often four or eight bars) that builds toward the chorus, often by holding back the tonic chord.
+- **Chorus.** Same music and same words each time, usually including the title. The peak, and the part you remember.
+- **Bridge.** Once, after the second chorus: new music, often new chords, to freshen the ear before the final choruses.
+- **Outro.** The ending: a fade, a vamp on the chorus, or a final cadence.
+
+The plan is a cycle of tension and release at the scale of a minute: verse (low), pre-chorus (rising), chorus (high). Then it does it again, so the second chorus is both a release and a return. The bridge exists because a third identical cycle would start to habituate. It's contrast placed exactly where the ear needs it.
+
+<SongMap track="mj-billie-jean" prompt="Listen through the first chorus. Then jump to Verse 2 and notice how quickly you know where you are." />
+
+<Callout kind="check">
+"Billie Jean" has no bridge in the usual sense. What does it use instead to break the cycle before the final choruses?
+
+<Answer>
+An instrumental break: after the chorus is sung twice in a row, the voice drops out and the groove carries on without it for a few bars. It does the bridge's job of contrast by *subtraction*: the same groove, minus the voice. When the voice returns, the chorus sounds fresh again. (Check the exact timing on the map.)
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="Billie Jean section times">
+The Billie Jean map is estimated from synced-lyric timestamps for the 4:54 album version. Confirm the section starts, whether the 3:05 chorus is a full repeat, and what happens in the break (my labels may be wrong in the last minute and a half).
+</Callout>
+
+Verse–chorus form took over popular music in the 1960s. Before that, popular songs mostly followed a different plan.
+
+## The 32-bar song: AABA
+
+From the 1920s to the 1950s, the songs of Tin Pan Alley (New York's songwriting industry), Broadway, and Hollywood mostly followed one template: four sections of eight bars each, **A A B A**. This is **32-bar song form**, the form of most of the Great American Songbook and most jazz standards.
+
+- The first **A** states the tune.
+- The second **A** repeats it (often with a different ending, closing on the tonic).
+- **B**, the **bridge** (also called the *release*, or in Britain the *middle eight*), contrasts: new melody, new chords, often a move toward another key.
+- The final **A** returns, and the return is the point. After eight bars away, the tune sounds like coming home.
+
+Notice the proportions: three-quarters statement, one-quarter departure. There's no separate chorus; the title usually sits in the A sections, often at the start or end of each one.
+
+"Over the Rainbow" is a textbook case. Listen for the octave leap at the start of each A (the one chapter 3.3 used as its gap-fill example). It tells you the A section is back.
+
+<SongMap track="garland-rainbow" />
+
+<Callout kind="try">
+Jump between the three A sections and the B. How long is each? (They should be about the same, eight bars each.) Then jump to the final A just after the bridge ends. Does it feel like a return home?
+</Callout>
+
+A confusing point of vocabulary: in the Tin Pan Alley era, a song's **verse** was an optional introductory section, sung once, often half-spoken, and its **chorus** (or *refrain*) was the whole 32-bar AABA. The film version of "Over the Rainbow" leaves its verse out. Jazz musicians kept this usage: a "chorus" is one time through the whole tune, and a soloist "takes three choruses." The same word means a section of a song in pop and the whole tune in jazz.
+
+The Beatles straddle the two eras. Many of their early songs are AABA with a middle eight; later ones mix in verse-chorus designs. "Yesterday" (chapter 3.3's seven-bar phrase) is A A B A B A, an AABA that brings the bridge back.
+
+<Callout kind="verify" title="AABA details">
+Check: the 32-bar form's dominance from roughly the 1920s to the 1950s (Forte 1995; Covach 2005); the Tin Pan Alley meaning of "verse" and "chorus/refrain"; that the film omits the verse of "Over the Rainbow"; that "Yesterday" is usually analyzed as A A B A B A; and the shift from AABA to verse-chorus in the 1960s.
+</Callout>
+
+## The 12-bar blues
+
+### Chords by number
+
+The blues is defined by a chord pattern, and the same pattern turns up in every key, so it's described with the <Term id="roman-numerals">Roman numerals</Term> of chapter 3.5. Three chords do almost all the work:
+
+- **I**, the chord on the tonic. In C major, C.
+- **IV**, the chord on the fourth degree. In C, F.
+- **V**, the chord on the fifth degree, the dominant. In C, G.
+
+So "I–IV–V" means C, F, G in C major, and B♭, E♭, F in B♭ major. The pattern is the same; only the starting note changes.
+
+### The pattern
+
+The **12-bar blues** is a cycle of twelve bars, repeated for the whole piece. In its basic form:
+
+<DataTable title="The 12-bar blues" caption="One chord per bar, read across, then down. The three rows of four bars line up with the three lines of a typical blues verse: a line (bars 1–4), the same line again over a new chord (5–8), and an answering line that resolves (9–12). Common variants: IV in bar 2 (the &quot;quick change&quot;), and V in bar 12 (a &quot;turnaround&quot; that pulls back to the top).">
+
+| | 1st bar | 2nd bar | 3rd bar | 4th bar |
+|---|---|---|---|---|
+| Bars 1–4 | I | I | I | I |
+| Bars 5–8 | IV | IV | I | I |
+| Bars 9–12 | V | IV | I | I |
+
+</DataTable>
+
+The shape is a small tension curve. Four bars at home. A move to IV, a mild departure, then home. Then the dominant, the strongest pull, and home again. The lyrics often follow an **AAB** pattern that fits the chords: a line is sung, then repeated over the IV chord (giving the singer time to come up with the answer, and the listener time to anticipate it), then answered with a new line that rhymes and closes.
+
+Each time through the twelve bars is called a **chorus**, like the jazz usage. The whole piece is chorus after chorus of the same cycle. What changes from one to the next is the words, the solo, the intensity, and the instruments. It's the strophic principle again, with a fixed harmonic container.
+
+The 12-bar blues came out of African American music in the American South in the early twentieth century, and it became the skeleton of rhythm and blues, rock and roll, and a whole branch of jazz. Chuck Berry's "Johnny B. Goode" is one of the purest examples: every section of the song, including the guitar intro and the solo, is exactly one 12-bar chorus.
+
+<SongMap track="berry-johnny-b-goode" prompt="Every block on this map is the same twelve bars. Count along: four beats per bar, twelve bars per block." />
+
+<Callout kind="try">
+Pick any block and count bars with the downbeats: "**one** two three four, **two** two three four..." up to twelve. You should arrive at the start of the next block. Then listen for the chord changes: the first move (to IV) comes at bar 5, the dominant at bar 9.
+</Callout>
+
+<Callout kind="check">
+If every chorus of a blues has the same twelve bars and the same chords, what keeps a five-minute blues from habituating?
+
+<Answer>
+Everything *except* the form: new words in each verse, different soloists, different intensity (a solo can build over several choruses), the call-and-response between the voice and an instrument, and the small variations each player brings. The fixed cycle is what makes that variation easy to hear and easy for musicians to coordinate on without a score: everyone knows where they are. Improvisation over a fixed form is the same strategy in jazz.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="blues facts">
+Check: the "basic" 12-bar pattern and the named variants (quick change, turnaround); the AAB lyric pattern as typical (Titon 1977); the origins claim (early twentieth century, the American South) and how much earlier blues used other lengths (8 and 16 bars, irregular lengths in early country blues); that "Johnny B. Goode" is a 12-bar blues in B♭ and that every section is one chorus (including the intro).
+</Callout>
+
+## Ternary form and rondo
+
+Classical music has its own versions of statement and return. The most basic is **ternary form**, **A B A**: a section, a contrast, and the first section again. A minuet with its trio (the dance, a contrasting dance, then the first dance again) is ternary, and so are many arias and short piano pieces. **Binary form**, **A B** (each half often repeated), is its simpler cousin, common in Baroque dances.
+
+Extend ternary form by bringing A back again after a second contrast and you get a **rondo**: **A B A C A**, or longer schemes like A B A C A B A. The main section, the *refrain* of the rondo, keeps returning between contrasting *episodes*. It's the classical cousin of the pop chorus: a familiar landmark you keep coming back to, with the episodes supplying variety. Rondos were the standard choice for the cheerful final movements of classical sonatas and concertos.
+
+Beethoven's "Für Elise" (officially a bagatelle, a short piano piece) is a small rondo. Its A section, with the famous two-note rocking figure, comes back three times. The episodes are sharply different: B is in a major key and lighter, while C is stormy, over a low note repeated in the bass (a pedal point).
+
+<SongMap track="beethoven-fur-elise" />
+
+<Callout kind="verify" title="Für Elise map and form">
+The section times are rough estimates from bar counts; find the three returns of the A theme by ear and retime them. Check that "Für Elise" is usually analyzed as a five-part rondo (A B A C A), that B is in F major and C works over a pedal A, and the DG "Piano Book" (2019) recording details.
+</Callout>
+
+## Sonata form
+
+### A drama of keys
+
+The most prestigious form in classical music is **sonata form**, the plan of most first movements of classical symphonies, sonatas, string quartets, and concertos from about 1750 to 1900. (The name is confusing: a *sonata* is a whole multi-movement piece; *sonata form* is the plan of one movement, usually the first.)
+
+Where the forms so far are about sections returning, sonata form is about **keys**. Its drama is a conflict between two keys and its resolution:
+
+1. **Exposition.** A **first theme** in the home key. A transition that modulates. A **second theme** in a new key, with a different character. A closing section confirms the new key. In a major-key piece the new key is usually the dominant (the key of V). In a minor-key piece it's usually the **relative major**: the major key that uses the same notes as the home minor key (for C minor, E♭ major). The exposition is usually repeated, so you hear the whole conflict twice.
+2. **Development.** The themes are broken into motifs, transformed, recombined, and passed through many keys, often quickly. This is the most unstable part, the long-range tension of the movement. It usually ends on a long dominant (often over a pedal point) that makes the return feel inevitable.
+3. **Recapitulation.** The first theme returns in the home key. Then the crucial change: the second theme returns *also in the home key*. The conflict of the exposition is resolved: everything that was away is brought home.
+4. **Coda.** An optional ending section (Italian for "tail") that confirms the home key. In Beethoven, codas can be long enough to work as a second development.
+
+The underlying logic is the cadence logic of chapter 5.4 stretched over ten minutes. Leaving the home key creates tension; the return resolves it. The recapitulation is a cadence the size of a movement.
+
+### Beethoven's Fifth
+
+The first movement of Beethoven's Fifth Symphony is a compact, ferocious example, and you already know its motif from chapter 3.3. The first theme, in C minor, is built almost entirely out of the four-note motif. A horn call then announces the second theme, in E♭ major (the relative major): smoother and more lyrical, though the motif keeps knocking in the bass. In the recapitulation, the second theme comes back in C *major*, and the coda has to fight its way back to C minor.
+
+<SongMap track="beethoven5-mvt1" prompt="Listen to the exposition, then jump to the recapitulation. Listen for the same horn call introducing the second theme, and what key it lands in." />
+
+<Callout kind="try">
+1. Play the exposition through to the horn call. Notice the change of character when the second theme arrives.
+2. Jump to the recapitulation. About half a minute in, a solo oboe stops the music with a short, free, slow passage that isn't in the exposition. Why might Beethoven interrupt the return here?
+3. Jump to the second theme in the recapitulation. It's the same theme as before, but listen for the brighter color of the major key.
+</Callout>
+
+<Callout kind="check">
+Why does the recapitulation bring the second theme back in the home key instead of in its original key?
+
+<Answer>
+Because the form's drama is the conflict of keys. In the exposition, the second theme *is* the departure: the music has moved away from home. If it returned in the same key, the movement would end with the conflict unresolved. Bringing it home transforms it from opponent to part of the home world, which is what makes the recapitulation feel like a resolution and not just a repeat.
+</Answer>
+</Callout>
+
+### Can listeners hear it?
+
+Here the science gets uncomfortable. Sonata form's key plan works over many minutes, and there is good evidence that most listeners don't track keys that long. In a classic experiment, Nicholas Cook played listeners pieces that either ended in their home key or in a different one. Listeners (including music students) barely noticed the difference unless the piece was short, around a minute. Other studies have scrambled the sections of classical movements and found that listeners rated the scrambled versions about as highly as the originals.
+
+What listeners clearly do hear is the local level: themes, their characters, returns of recognizable material, the instability of the development and the sense of arrival at the recapitulation (which is marked by many cues at once, not just key). So sonata form may work less as a plan you hear and more as a plan that shapes how the music moves from moment to moment, and as a framework for listeners and composers who know it well.
+
+A historical caution, too: the textbook outline of sonata form was written down by theorists in the 1830s and 1840s (Adolf Bernhard Marx gave it its name), describing what Haydn, Mozart, and Beethoven had already done. Those composers didn't follow a template; they worked with a set of expectations, and much of the interest of each piece is where it departs from them. Modern theory (Hepokoski and Darcy's *Elements of Sonata Theory*) describes sonata form exactly that way: as a set of norms that each piece plays against.
+
+<Callout kind="verify" title="sonata form claims">
+Check: the Beethoven 5 details (second theme in E♭ major introduced by the horn; recapitulation's second theme in C major; the oboe passage at bar 268; the coda's length); the map times, all estimated from bar counts; Cook (1987) on large-scale tonal closure (what durations, who the listeners were); Karno & Konečni (1992) and Tillmann & Bigand (1996) on scrambled movements; A. B. Marx naming sonata form (and dates); the "set of norms" summary of Hepokoski & Darcy (2006).
+</Callout>
+
+## Through-composed form
+
+At the opposite extreme from strophic form is music that keeps moving on: **through-composed** form, A B C D... with no whole sections returning. The term comes from song: Schubert's "Erlkönig" sets a ballad as one continuous drama, with new music as the story unfolds, where a strophic setting would repeat a tune for every verse.
+
+Without returning sections, what holds the piece together? Smaller things: recurring motifs, a consistent sound, a key plan, and, in songs, the story. Through-composition fits music whose job is to follow a narrative: opera, film scores, and story songs.
+
+Queen's "Bohemian Rhapsody" is the famous rock example: an a cappella introduction, a piano ballad, a guitar solo, a mock-operatic section, a hard-rock section, and a quiet outro. Six sections in six styles, and almost nothing returns. Almost: the outro brings back the ballad's piano and mood, a faint frame around the whole.
+
+<SongMap track="queen-bohemian-rhapsody" />
+
+<Callout kind="check">
+"Bohemian Rhapsody" has no chorus and no returning sections, yet it was a huge hit and most people can sing much of it. Using this chapter's ideas, why doesn't it fall apart?
+
+<Answer>
+Several reasons. Each section is internally repetitive and easy to follow; the contrast is between sections, not within them. The story (a confession, a trial, a defiant outburst, resignation) gives the sequence a logic, which is the through-composed principle. The contrasts are extreme and clearly marked, so the boundaries are unmistakable. The outro returns to the ballad's world, giving a sense of closure. And it rewards repeated listening: the form is hard to predict the first time, and becomes a sequence of anticipated landmarks once learned.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="through-composed examples">
+Check that "Erlkönig" is the standard example of a through-composed song (and Schubert's dates, 1815); the Bohemian Rhapsody section times (estimated from the album version; the video may be offset by a few seconds) and section labels.
+</Callout>
+
+## Why forms look like this
+
+### Repetition is the default
+
+Western classical analysis has tended to treat repetition as the easy part and development as the art. But repetition is overwhelmingly common in music, across all styles and cultures. David Huron estimated that in a large sample of music, the great majority of passages lasting more than a few seconds recur somewhere in the same piece. Elizabeth Margulis's book *On Repeat* argues that repetition is what makes sound musical in the first place: repeat a spoken phrase enough and it starts to sound like song.
+
+Repetition does several jobs at once. It lets you **learn** a piece while you hear it, so the later parts can play on expectations the earlier parts set up. It lets you **anticipate**, and accurate anticipation is pleasurable. It invites you to **participate**: to sing along, dance, or play. And it makes **variation** audible: you can only notice what changed in the third verse because the first two set the baseline.
+
+### Each form is a strategy
+
+Seen that way, each form is a different answer to the question of how much to repeat, and when to contrast:
+
+<DataTable title="Common forms compared" caption="&quot;Unit&quot; is the chunk the form is built from. Most real pieces bend these templates; the templates are a set of expectations to play against.">
+
+| Form | Letters | Unit | What returns | What contrasts | Typical home |
+|---|---|---|---|---|---|
+| Strophic | A A A | The verse | All the music | The words | Hymns, folk ballads |
+| Verse–chorus | V C V C B C | Verse plus chorus | Chorus (music and words); verse music | Verse words; the bridge | Pop since the 1960s |
+| 32-bar song | A A B A | 8-bar section | The A tune | The bridge | Broadway, jazz standards |
+| 12-bar blues | A A A... | 12-bar chord cycle | The whole cycle | Words, solos, intensity | Blues, early rock and roll |
+| Ternary | A B A | Section | A, once | B | Minuets, arias |
+| Rondo | A B A C A | Section | A, repeatedly | Each episode | Classical finales |
+| Sonata form | Exposition, development, recapitulation | Theme and key | Both themes, now in the home key | Keys; the development | Classical first movements |
+| Through-composed | A B C D... | Section | Motifs, not sections | Everything | Opera, film, story songs |
+
+</DataTable>
+
+Two strategies show up again and again. One is **alternation with return**: a home section and departures from it (verse-chorus, AABA, rondo). The other is a **fixed cycle with varied surface** (strophic, blues), which is also the basis of much music outside the European tradition: a gamelan piece cycles through a gong pattern, and a lot of West African, Cuban, and electronic dance music is built on loops that repeat while the layers on top change. Chapter 5.6 takes up cyclic and process forms.
+
+Some traditions organize a performance not around returns at all but around a gradual process. A Hindustani rāga performance typically begins with a slow, unmetered exploration of the rāga (the ālāp, which chapter 3.3 sampled), then adds a pulse, then speeds up, and only then brings in the drums and a composed melody. The form is a trajectory, increasing density and speed, more like the build of chapter 5.4 than like letters.
+
+<Callout kind="verify" title="repetition claims">
+Check Huron's estimate of how much music repeats (where it's stated, what the sample and threshold were; *Sweet Anticipation*, 2006, ch. 13?); Margulis (2014) and the speech-to-song illusion (Deutsch, Henthorn & Lapidis 2011); the outline of a Hindustani performance (ālāp, jor, jhālā, then the composition with tabla), which varies by genre and performer.
+</Callout>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. What form is: the plan of sameness and difference over minutes, recorded with letters; why it depends on memory and recognition.
+2. The cues that mark a section boundary, and why repeated listening makes form clearer (returns versus changes).
+3. Strophic form and the refrain, and how a refrain grows into a chorus.
+4. Verse–chorus form: what each section does, and the tension cycle it creates.
+5. The 32-bar AABA form, the bridge, and the vocabulary clash (verse, chorus) between eras and between pop and jazz.
+6. The 12-bar blues pattern in Roman numerals, the AAB lyric, and "chorus" as one time through.
+7. Ternary form and rondo as classical forms of return.
+8. Sonata form as a drama of keys; why the second theme comes home in the recapitulation; the evidence that listeners don't track keys over long spans.
+9. Through-composed form and what holds it together.
+10. Why repetition dominates music, and each form as a strategy for balancing repetition against contrast.
+
+**Decisions for your rewrite:**
+
+- **Order.** I went roughly from simple to complex, mixing pop and classical. Alternatives: historical (strophic → AABA → verse-chorus), or two halves (songs, then instrumental forms).
+- **How much sonata form.** It could easily fill a chapter. Decide whether to keep the evidence section ("Can listeners hear it?") here or move it to chapter 5.3 (novelty and attention).
+- **Examples.** Map a song you know well. Pick one, write its letter scheme from memory, then check it against the recording. Good candidates: a song with a pre-chorus and a strong bridge (Taylor Swift, ABBA, Motown), a jazz standard on an AABA chorus (a "rhythm changes" tune), a blues that bends the 12-bar pattern (John Lee Hooker), a rondo finale (Mozart, Haydn).
+- **Hip-hop and EDM.** I gave EDM's build-and-drop to chapter 5.4 and left out hip-hop's verse-and-hook form (verses of often 16 bars). Decide whether they belong here.
+
+**Misconceptions to watch for:**
+
+- "Form is a template composers fill in." The templates were mostly written down after the fact; the interest is often in the departures.
+- "The letters describe what the music sounds like." They record only sameness and difference.
+- "A chorus is always a section of a song." In blues and jazz, a chorus is one time through the whole form.
+- "Listeners hear sonata form's key plan." Most probably don't over long spans; they hear themes, returns, and stability versus instability.
+- "Repetition is a lack of ideas." It's the main way music becomes followable, memorable, and participatory.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Caplin, W. E. (1998). *Classical Form: A Theory of Formal Functions for the Instrumental Music of Haydn, Mozart, and Beethoven*. Oxford University Press.
+- Hepokoski, J., & Darcy, W. (2006). *Elements of Sonata Theory: Norms, Types, and Deformations in the Late-Eighteenth-Century Sonata*. Oxford University Press.
+- Rosen, C. (1988). *Sonata Forms* (Rev. ed.). W. W. Norton.
+- Covach, J. (2005). Form in rock music: A primer. In D. Stein (Ed.), *Engaging Music: Essays in Music Analysis* (pp. 65–76). Oxford University Press.
+- Summach, J. (2011). The structure, function, and genesis of the prechorus. *Music Theory Online*, 17(3).
+- Forte, A. (1995). *The American Popular Ballad of the Golden Era, 1924–1950*. Princeton University Press.
+- Titon, J. T. (1977). *Early Downhome Blues: A Musical and Cultural Analysis*. University of Illinois Press.
+- Clarke, E. F., & Krumhansl, C. L. (1990). Perceiving musical time. *Music Perception*, 7(3), 213–251.
+- Bruderer, M. J., McKinney, M. F., & Kohlrausch, A. (2009). The perception of structural boundaries in melody lines of Western popular music. *Musicae Scientiae*, 13(2), 273–313.
+- Cook, N. (1987). The perception of large-scale tonal closure. *Music Perception*, 5(2), 197–205.
+- Karno, M., & Konečni, V. J. (1992). The effects of structural interventions in the first movement of Mozart's Symphony in G minor, K. 550, on aesthetic preference. *Music Perception*, 10(1), 63–72.
+- Tillmann, B., & Bigand, E. (1996). Does formal musical structure affect perception of musical expressiveness? *Psychology of Music*, 24(1), 3–17.
+- Huron, D. (2006). *Sweet Anticipation: Music and the Psychology of Expectation*. MIT Press.
+- Margulis, E. H. (2014). *On Repeat: How Music Plays the Mind*. Oxford University Press.
+- Deutsch, D., Henthorn, T., & Lapidis, R. (2011). Illusory transformation from speech to song. *Journal of the Acoustical Society of America*, 129(4), 2245–2252.
+- Snyder, B. (2000). *Music and Memory: An Introduction*. MIT Press.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details, especially the Bruderer et al. title (I'm unsure whether the 2009 paper is about melody lines or full polyphonic recordings; there's a related 2006 conference paper), the Clarke & Krumhansl page range, and the Covach page range.
+</Callout>

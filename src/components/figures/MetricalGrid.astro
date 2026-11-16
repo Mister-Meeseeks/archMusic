@@ -1,0 +1,64 @@
+---
+// The metrical hierarchy of one 4/4 bar as a dot grid (after Lerdahl &
+// Jackendoff 1983): each level is a steady pulse, and a position's strength
+// is how many levels have a beat there. Below it, the son clave: two of the
+// four beats fall on silence, and listeners feel them anyway.
+import Figure from '../ui/Figure.astro';
+
+const N = 16;
+const X0 = 190, X1 = 660;
+const cw = (X1 - X0) / N;
+const cx = (i: number) => Math.round((X0 + (i + 0.5) * cw) * 10) / 10;
+const levels = [
+  { every: 16, label: 'Bar', sub: 'whole note' },
+  { every: 8, label: 'Half bar', sub: 'half notes' },
+  { every: 4, label: 'Beat', sub: 'quarter notes' },
+  { every: 2, label: 'Eighths', sub: '' },
+  { every: 1, label: 'Sixteenths', sub: '' },
+];
+const Y0 = 44, DY = 22;
+const ly = (k: number) => Y0 + k * DY;
+const COUNT = ['1', 'e', '&', 'a', '2', 'e', '&', 'a', '3', 'e', '&', 'a', '4', 'e', '&', 'a'];
+const CLAVE = [0, 3, 6, 10, 12];
+const CY = 196;
+---
+
+<Figure
+  title="The metrical grid of a 4/4 bar"
+  caption="Meter as a stack of steady pulses. Each row is one level, and each level's beats fall on beats of the level below. A position's strength is how many levels share it (the height of its column): the downbeat is strongest, then beat 3, then beats 2 and 4, then the '&amp;'s, then the sixteenths. Bottom: the son clave. Its five strokes hit only two of the four beats; on beats 2 and 3 there is silence, yet a listener who has found the meter still feels them."
+>
+  <svg viewBox="0 0 680 250" role="img" aria-label="Dot grid of the metrical levels of a 4/4 bar, with the son clave below">
+    {Array.from({ length: N }, (_, i) => (
+      <rect x={X0 + i * cw + 2} y={Y0 - 14} width={cw - 4} height={ly(4) - Y0 + 28} rx="4" class={i % 4 === 0 ? 'fig-band' : ''} fill="transparent" />
+    ))}
+    {levels.map((l, k) => (
+      <g>
+        <text x="20" y={ly(k) + 4} class="fig-t">{l.label}</text>
+        {l.sub && <text x="100" y={ly(k) + 4} class="fig-s">{l.sub}</text>}
+        <line x1={X0} x2={X1} y1={ly(k)} y2={ly(k)} class="fig-thin" stroke-dasharray="1 5" />
+        {Array.from({ length: N / l.every }, (_, j) => (
+          <circle cx={cx(j * l.every)} cy={ly(k)} r={k < 3 ? 5.5 : 4} class="fig-a" />
+        ))}
+      </g>
+    ))}
+    {COUNT.map((c, i) => (
+      <text x={cx(i)} y={ly(4) + 30} text-anchor="middle" class={i % 4 === 0 ? 'fig-t' : 'fig-s'}>{c}</text>
+    ))}
+    <text x="20" y={ly(4) + 30} class="fig-s">counted</text>
+
+    <text x="20" y={CY + 4} class="fig-t">Son clave</text>
+    <line x1={X0} x2={X1} y1={CY} y2={CY} class="fig-thin" />
+    {Array.from({ length: N }, (_, i) =>
+      CLAVE.includes(i) ? (
+        <circle cx={cx(i)} cy={CY} r="7" class="fig-b" />
+      ) : i % 4 === 0 ? (
+        <circle cx={cx(i)} cy={CY} r="8" class="fig-sb" stroke-dasharray="3 3" />
+      ) : (
+        <circle cx={cx(i)} cy={CY} r="1.6" class="fig-head" />
+      ),
+    )}
+    <text x={cx(4)} y={CY + 30} text-anchor="middle" class="fig-s">beat 2: silence</text>
+    <text x={cx(8)} y={CY + 30} text-anchor="middle" class="fig-s">beat 3: silence</text>
+    <text x={X1} y={CY + 46} text-anchor="end" class="fig-s">dashed rings: beats felt but not played</text>
+  </svg>
+</Figure>

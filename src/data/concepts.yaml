@@ -74,6 +74,131 @@
     signals. Its basilar membrane sorts frequencies by position: high at one
     end, low at the other.
 
+# ---------- v1-03: from ear to percept ----------
+- id: hair-cell
+  term: Hair cells
+  category: Hearing
+  introducedIn: v1-03
+  aliases: [hair cell, hair cells, inner hair cells, outer hair cells]
+  def: >-
+    The sensory cells along the basilar membrane. Inner hair cells turn its
+    motion into nerve signals; outer hair cells amplify faint vibrations and
+    sharpen the cochlea's frequency tuning. Loud sound damages them, and they
+    do not grow back.
+
+- id: place-coding
+  term: Place coding (place theory)
+  category: Hearing
+  introducedIn: v1-03
+  aliases: [place theory, place coding, place code, tonotopic, tonotopy]
+  def: >-
+    The idea that the ear signals frequency by *where* along the basilar
+    membrane the vibration peaks: each nerve fiber reports on its own spot.
+
+- id: temporal-coding
+  term: Temporal coding (phase locking)
+  category: Hearing
+  introducedIn: v1-03
+  aliases: [temporal theory, temporal coding, timing code, phase locking, phase-locking, phase-locked]
+  def: >-
+    The idea that the ear also signals frequency by *when* nerve fibers fire:
+    they tend to fire at the same point in each cycle of the wave, so the
+    timing of the spikes carries the period. Works well up to roughly 4–5 kHz.
+
+- id: missing-fundamental
+  term: Missing fundamental (residue pitch)
+  category: Hearing
+  introducedIn: v1-03
+  aliases: [missing fundamental, missing-fundamental, residue pitch, virtual pitch, phantom fundamental]
+  def: >-
+    Hearing a harmonic tone's pitch at its fundamental even when the
+    fundamental itself is absent. The remaining harmonics are still spaced
+    at the fundamental's frequency and the waveform still repeats at its
+    period, and the brain reports that.
+
+- id: jnd
+  term: Just-noticeable difference (JND)
+  category: Hearing
+  introducedIn: v1-03
+  aliases: [just-noticeable difference, just noticeable difference, JND, JNDs, difference limen]
+  def: >-
+    The smallest change a listener can reliably detect. For the pitch of a
+    mid-range tone it's a few cents; for loudness, around 1 dB.
+
+- id: octave-equivalence
+  term: Octave equivalence and pitch class
+  category: Hearing
+  introducedIn: v1-03
+  aliases: [octave equivalence, pitch class, pitch classes, pitch-class, chroma]
+  def: >-
+    Notes an octave apart sound like "the same note, higher," which is why
+    they share a name. All the C's form one pitch class. Pitch has two
+    dimensions: height (how high) and chroma (which note name).
+
+- id: shepard-tone
+  term: Shepard tone
+  category: Hearing
+  introducedIn: v1-03
+  aliases: [Shepard tone, Shepard tones, Shepard scale, Shepard–Risset glissando]
+  def: >-
+    A tone made of one note in many octaves at once, with the top and bottom
+    octaves faded out. Stepping it up a scale seems to rise forever, because
+    chroma keeps climbing while height never gets anywhere.
+
+- id: decibel
+  term: Decibel (dB)
+  category: Hearing
+  introducedIn: v1-03
+  aliases: [decibel, decibels, dB, dB SPL]
+  def: >-
+    A logarithmic unit for comparing levels. Every 10 dB is ten times the
+    power; every 20 dB is ten times the pressure. Sound pressure level (dB
+    SPL) measures against the faintest audible pressure, so 0 dB SPL is
+    roughly the threshold of hearing and 120 dB is painfully loud.
+
+- id: equal-loudness
+  term: Equal-loudness contours (phons)
+  category: Hearing
+  introducedIn: v1-03
+  aliases: [equal-loudness, equal loudness, phon, phons, Fletcher–Munson, Fletcher-Munson]
+  def: >-
+    Curves that join pure tones of different frequencies that sound equally
+    loud. The ear is most sensitive around 2–5 kHz and much less sensitive in
+    the bass, especially at low levels. A tone's loudness level in phons is
+    the dB level of a 1 kHz tone that sounds as loud.
+
+- id: spectral-centroid
+  term: Spectral centroid (brightness)
+  category: Hearing
+  introducedIn: v1-03
+  aliases: [spectral centroid, spectral centroids]
+  def: >-
+    The balance point of a spectrum: the amplitude-weighted average frequency
+    of its partials. The single best physical predictor of how bright a
+    timbre sounds.
+
+- id: attack-transient
+  term: Attack transient
+  category: Hearing
+  introducedIn: v1-03
+  aliases: [attack transient, attack transients, onset transient, onset transients]
+  def: >-
+    The brief, often noisy and irregular start of a note (a bow's scrape, a
+    pluck's click, a breath's chiff) before it settles into a steady tone.
+    It carries much of an instrument's identity.
+
+- id: timbre-space
+  term: Timbre space
+  category: Hearing
+  introducedIn: v1-03
+  aliases: [timbre space, timbre spaces, multidimensional scaling]
+  def: >-
+    A map built from listeners' similarity ratings of instrument sounds, in
+    which similar timbres sit close together. Its main axes usually line up
+    with spectral centroid, attack time, and how the spectrum changes over a
+    note.
+# ---------- end v1-03 ----------
+
 # ---------- the toolkit: notes and intervals ----------
 - id: note-names
   term: Note names, sharps and flats
@@ -121,7 +246,7 @@
   category: Notes & intervals
   introducedIn: v0-02
   deepIn: v3-01
-  aliases: [interval, intervals, minor second, major second, minor third, major third, perfect fourth, perfect fifth, tritone, minor sixth, major sixth, minor seventh, major seventh, seconds, thirds, fourths, fifths, tenths]
+  aliases: [interval, intervals, minor second, major second, minor third, major third, perfect fourth, perfect fifth, tritone, minor sixth, major sixth, minor seventh, major seventh, thirds, fourths, fifths, tenths]
   def: >-
     The distance between two pitches. Named by size in semitones: minor 2nd
     (1), major 2nd (2), minor 3rd (3), major 3rd (4), perfect 4th (5),
@@ -331,7 +456,8 @@
 - id: critical-band
   term: Critical band
   category: Consonance
-  introducedIn: v1-05
+  introducedIn: v1-03 # v1-03 moved this earlier; v1-05 treats it in depth
+  deepIn: v1-05
   aliases: [critical band, critical bands, critical bandwidth, ERB]
   def: >-
     The range of frequencies that excite the same region of the inner ear.
@@ -391,19 +517,83 @@
     (counted "1 &"), four sixteenth notes ("1 e & a"), or three triplets.
 
 # ---------- rhythm: Vol II ----------
+# v2-02: beat induction
+- id: beat-induction
+  term: Beat induction
+  category: Rhythm
+  introducedIn: v2-02
+  aliases: [beat induction, induce a beat, induces a beat, beat finding]
+  def: >-
+    The listener's (or brain's) act of finding a steady beat in a rhythm,
+    including beats that fall on silence. The beat is inferred, not played.
+
+- id: tactus
+  term: Tactus
+  category: Rhythm
+  introducedIn: v2-02
+  aliases: [tactus]
+  def: >-
+    The level of the metrical hierarchy that listeners feel as "the beat" and
+    tap to, usually the one closest to about 600 ms between beats.
+
+- id: metrical-hierarchy
+  term: Metrical hierarchy (metrical grid)
+  category: Rhythm
+  introducedIn: v2-02
+  aliases: [metrical hierarchy, metrical grid, metrical level, metrical levels, metrical weight, metrical weights]
+  def: >-
+    Meter as a stack of steady pulses at different speeds (sixteenths,
+    eighths, beats, half bars, bars), each fitting inside the next. A
+    position is strong when many levels have a beat there.
+
+- id: subjective-rhythmization
+  term: Subjective rhythmization
+  category: Rhythm
+  introducedIn: v2-02
+  aliases: [subjective rhythmization, tick-tock effect]
+  def: >-
+    Hearing identical, evenly spaced clicks as grouped (in twos, threes, or
+    fours, with an accent at the start of each group) although nothing in
+    the sound changes.
+
+- id: hemiola
+  term: Hemiola
+  category: Rhythm
+  introducedIn: v2-02
+  deepIn: v2-04
+  aliases: [hemiola, hemiolas]
+  def: >-
+    Regrouping six equal pulses from two groups of three into three groups
+    of two (or the reverse), as in alternating bars of 6/8 and 3/4.
+
+- id: clave
+  term: Clave and tresillo
+  category: Rhythm
+  introducedIn: v2-02
+  deepIn: v2-06
+  aliases: [clave, son clave, rumba clave, tresillo]
+  def: >-
+    The tresillo is a 3 + 3 + 2 grouping of eight pulses, heard across Latin
+    American and African-American music. The son clave adds a second half:
+    five strokes over a 16-pulse cycle (3 + 3 + 4 + 2 + 4), the timeline that
+    organizes Cuban son and salsa.
+
 - id: backbeat
   term: Backbeat
   category: Rhythm
   introducedIn: v2-03
   aliases: [backbeat, backbeats]
   def: >-
-    Accents on beats 2 and 4 of a 4/4 bar, usually played on the snare drum.
-    The defining rhythmic feature of rock, R&B, and most pop since the 1950s.
+    Accents on beats 2 and 4 of a 4/4 bar, usually played on the snare drum
+    (or clapped). The metrically weaker beats get the loudest hit, while the
+    kick and bass hold 1 and 3. The defining rhythmic feature of rock, R&B,
+    and most pop since the 1950s, with roots in gospel and jump blues.
 
 - id: syncopation
   term: Syncopation
   category: Rhythm
-  introducedIn: v2-03
+  introducedIn: v2-02 # v2-02: was v2-03; felt against the meter
+  deepIn: v2-03
   aliases: [syncopation, syncopated, syncopations]
   def: >-
     Accenting or placing notes where the meter says it's weak, and leaving the
@@ -414,7 +604,7 @@
 - id: drum-kit
   term: Drum kit (kick, snare, hi-hat, ride)
   category: Rhythm
-  introducedIn: v2-05
+  introducedIn: v2-03 # v2-03: was v2-05; the backbeat needs the snare
   deepIn: v4-01
   aliases: [kick drum, snare, hi-hat, ride cymbal]
   def: >-
@@ -446,8 +636,8 @@
 - id: swing
   term: Swing and shuffle
   category: Rhythm
-  introducedIn: v2-05
-  deepIn: v2-06
+  introducedIn: v2-03 # v2-03: was v2-05; the shuffle as a triplet feel
+  deepIn: v2-05
   aliases: [swing, swung, swing ratio, shuffle]
   def: >-
     Playing pairs of notes long-short instead of evenly. The degree of swing
@@ -486,7 +676,7 @@
 - id: entrainment
   term: Entrainment
   category: Rhythm
-  introducedIn: v2-05
+  introducedIn: v2-02 # v2-02: was v2-05
   deepIn: v2-07
   aliases: [entrainment, entrain, entrains]
   def: >-
@@ -503,7 +693,104 @@
     The theory that the brain constantly predicts incoming sensations and
     learns from the mismatch (prediction error). In music, a leading
     explanation for why expectations, and their violations, feel the way
-    they do.
+    they do. How strongly an error counts depends on how confident the
+    prediction was.
+
+# ---------- v1-06: attention, memory, expectation, emotion ----------
+- id: statistical-learning
+  term: Statistical learning
+  category: Hearing
+  introducedIn: v1-06
+  aliases: [statistical learning, transitional probability, transitional probabilities]
+  def: >-
+    Picking up, without trying, how often things happen and what tends to
+    follow what (transitional probabilities), just from exposure. How
+    listeners absorb the patterns of a musical style, and how infants find
+    word boundaries in speech.
+
+- id: expectation-types
+  term: Schematic, veridical, and dynamic expectations
+  category: Hearing
+  introducedIn: v1-06
+  aliases: [schematic expectation, schematic expectations, veridical expectation, veridical expectations, veridical memory, dynamic expectation, dynamic expectations]
+  def: >-
+    Huron's three sources of musical prediction. Schematic expectations come
+    from a style in general (what usually happens in tonal melodies);
+    veridical ones from memory of this particular piece; dynamic ones from
+    what has happened so far in this hearing. They can disagree, which is
+    why a known surprise can still surprise.
+
+- id: itpra
+  term: ITPRA
+  category: Hearing
+  introducedIn: v1-06
+  deepIn: v5-04
+  aliases: [ITPRA]
+  def: >-
+    David Huron's five-part model of responses around an expected event:
+    Imagination and Tension before it; Prediction (a reward for guessing
+    right), Reaction (fast, automatic), and Appraisal (slower, conscious)
+    after it.
+
+- id: surprisal
+  term: Surprisal (information content)
+  category: Hearing
+  introducedIn: v1-06
+  aliases: [surprisal, information content]
+  def: >-
+    How unexpected an event is, measured as minus the base-2 logarithm of
+    its probability, in bits: a 50% event carries 1 bit, a 25% event 2 bits,
+    a 1-in-8 event 3 bits. Used by computer models of melodic expectation
+    such as IDyOM.
+
+- id: echoic-memory
+  term: Echoic memory
+  category: Hearing
+  introducedIn: v1-06
+  aliases: [echoic memory, auditory sensory memory]
+  def: >-
+    A brief, detailed trace of what you just heard, lasting up to a few
+    seconds, before most of it is lost or recoded into short-term memory.
+
+- id: short-term-memory
+  term: Short-term memory
+  category: Hearing
+  introducedIn: v1-06
+  aliases: [short-term memory, working memory]
+  def: >-
+    The small amount you can hold in mind at once, for a few seconds
+    without rehearsal. In music it sets the span of the "present": roughly a
+    phrase. Grouping notes into larger units (chunking) stretches it.
+
+- id: chunking
+  term: Chunking
+  category: Hearing
+  introducedIn: v1-06
+  aliases: [chunking]
+  def: >-
+    Grouping several items into one familiar unit (a motif, a riff, a chord
+    pattern), so that memory holds one chunk rather than many separate notes.
+
+- id: mere-exposure
+  term: Mere-exposure effect
+  category: Hearing
+  introducedIn: v1-06
+  aliases: [mere exposure, mere-exposure, exposure effect]
+  def: >-
+    The tendency to like things more simply because they are familiar. In
+    music, liking often rises with repeated listening, then levels off or
+    falls once a piece becomes too predictable.
+
+- id: emotion-mechanisms
+  term: Mechanisms of musical emotion (BRECVEMA)
+  category: Hearing
+  introducedIn: v1-06
+  aliases: [BRECVEMA, emotional contagion, evaluative conditioning, brain stem reflex]
+  def: >-
+    Juslin's list of routes by which music can induce emotion, among them
+    brain stem reflexes, rhythmic entrainment, evaluative conditioning,
+    emotional contagion, visual imagery, episodic memory, musical
+    expectancy, and aesthetic judgment. Different routes can act at once.
 
 # ---------- sound: Vol I ch. 1-2 ----------
 - id: waveform
@@ -525,6 +812,103 @@
     Where a wave is in its cycle at a given moment. Two waves of the same
     frequency can be in phase (peaks together, reinforcing) or out of phase
     (peaks against troughs, cancelling).
+
+# v1-01: vibrations and waves
+- id: sound-wave
+  term: Sound wave (pressure wave)
+  category: Sound
+  introducedIn: v1-01
+  aliases: [sound wave, sound waves, pressure wave, pressure waves, sound pressure, rarefaction, rarefactions]
+  def: >-
+    Sound travelling through air: a pattern of slightly squeezed regions
+    (compressions) and slightly stretched regions (rarefactions) that moves
+    outward from a vibrating object. The air itself only jiggles back and
+    forth in place; the pattern is what travels.
+
+- id: simple-harmonic-motion
+  term: Simple harmonic motion
+  category: Sound
+  introducedIn: v1-01
+  aliases: [simple harmonic motion]
+  def: >-
+    The back-and-forth motion of anything with mass and springiness (a weight
+    on a spring, a pendulum, a tuning fork's prong) when it is disturbed and
+    let go. Plotted over time, it traces a sine wave.
+
+- id: amplitude
+  term: Amplitude
+  category: Sound
+  introducedIn: v1-01
+  deepIn: v1-03
+  aliases: [amplitude, amplitudes]
+  def: >-
+    The size of a vibration: how far a string swings, or how much the air
+    pressure rises and falls. Bigger amplitude generally sounds louder, but
+    loudness is a perception and depends on frequency too (chapter 1.3).
+
+- id: period
+  term: Period
+  category: Sound
+  introducedIn: v1-01
+  aliases: [its period, one period, the period of, period of the wave, period of a wave]
+  def: >-
+    The time one cycle of a vibration takes. It is one divided by the
+    frequency: a 100 Hz tone has a period of 10 milliseconds.
+
+- id: wavelength
+  term: Wavelength
+  category: Sound
+  introducedIn: v1-01
+  aliases: [wavelength, wavelengths]
+  def: >-
+    The distance in space between one compression of a sound wave and the
+    next: the speed of sound divided by the frequency. About 1.3 m for
+    middle C, about 17 m at the bottom of hearing, about 2 cm at the top.
+
+- id: speed-of-sound
+  term: Speed of sound
+  category: Sound
+  introducedIn: v1-01
+  aliases: [speed of sound]
+  def: >-
+    How fast a sound wave travels: about 343 meters per second in room-
+    temperature air (roughly a kilometer every three seconds), faster in
+    warm air, much faster in water and solids. All frequencies travel at the
+    same speed.
+
+- id: interference
+  term: Interference (superposition)
+  category: Sound
+  introducedIn: v1-01
+  aliases: [interference, superposition, constructive interference, destructive interference, phase cancellation, cancel each other]
+  def: >-
+    When waves overlap, their pressures simply add (superposition). Peaks
+    meeting peaks reinforce (constructive interference); peaks meeting troughs
+    cancel (destructive interference). Noise-cancelling headphones work this
+    way.
+
+- id: polarity
+  term: Polarity
+  category: Sound
+  introducedIn: v1-01
+  deepIn: v4-08
+  aliases: [polarity]
+  def: >-
+    Which way a signal pushes: flipping polarity turns every peak into a
+    trough. Played alone, a flipped signal sounds the same; mixed with the
+    unflipped original, the two cancel.
+
+- id: room-modes
+  term: Room modes
+  category: Sound
+  introducedIn: v1-01
+  deepIn: v4-07
+  aliases: [room mode, room modes]
+  def: >-
+    Frequencies whose wavelengths fit a room's dimensions, so reflections
+    pile up into standing waves. They make some bass notes boom and others
+    vanish depending on where you sit.
+# end v1-01
 
 - id: standing-wave
   term: Standing wave and modes
@@ -608,18 +992,29 @@
   category: Harmony & style
   introducedIn: v3-03
   deepIn: v3-04
-  aliases: [tonic, home key, in the key of, tonal center, tonality, home chord]
+  aliases: [home key, in the key of, home chord]
   def: >-
     A piece "in C major" mostly uses the notes of the C major scale and treats
     C as home: the tonic. The tonic chord (C–E–G) is where phrases sound
     finished. Music can move away from the tonic and back.
 
+# v3-04: tonic split out of `key` so later chapters can assume it by id.
+- id: tonic
+  term: Tonic (tonal center)
+  category: Harmony & style
+  introducedIn: v3-03
+  deepIn: v3-04
+  aliases: [tonic, tonal center, tonal centers, tonal centre, tonality, home note]
+  def: >-
+    The note that sounds like home in a passage: where melodies come to rest
+    and phrases sound finished. In C major the tonic is C. Which note is home
+    is something listeners infer from context, not a property of the notes alone.
+
 - id: dominant
   term: Dominant
   category: Harmony & style
-  introducedIn: v5-04
-  deepIn: v3-06
-  aliases: [dominant chord, the dominant, dominant function, leading tone, leading note]
+  introducedIn: v3-06 # v3-06: was v5-04
+  aliases: [dominant chord, the dominant]
   def: >-
     The chord built on the fifth note of the scale (G–B–D in C major), often
     with an added seventh (G7). It pulls strongly toward the tonic, partly
@@ -628,8 +1023,7 @@
 - id: cadence
   term: Cadence
   category: Harmony & style
-  introducedIn: v5-04
-  deepIn: v3-06
+  introducedIn: v3-06 # v3-06: was v5-04
   aliases: [cadence, cadences, authentic cadence, half cadence, deceptive cadence, plagal cadence]
   def: >-
     A conventional chord move that ends a phrase, like punctuation. Dominant to
@@ -651,9 +1045,9 @@
 - id: modulation
   term: Modulation (key change)
   category: Harmony & style
-  introducedIn: v5-04
-  deepIn: v3-06
-  aliases: [key change, key changes, modulates to, modulated to, modulation to, modulating to]
+  introducedIn: v3-06 # v3-06: was v5-04
+  deepIn: v5-05
+  aliases: [key change, key changes, modulates to, modulated to, modulation to, modulating to, pivot chord]
   def: >-
     Moving to a new tonic: the music re-centers on a different home note.
     In pop, a final chorus shifted up a half or whole step is a common way to
@@ -662,7 +1056,8 @@
 - id: pedal-point
   term: Pedal point
   category: Harmony & style
-  introducedIn: v5-04
+  introducedIn: v3-04 # v3-04: moved earlier (was v5-04)
+  deepIn: v5-04
   aliases: [pedal point, pedal note, dominant pedal]
   def: >-
     A note held or repeated (usually in the bass) while the harmony changes
@@ -680,7 +1075,7 @@
 - id: texture
   term: Texture
   category: Form & tension
-  introducedIn: v5-04
+  introducedIn: v3-08 # v3-08: was v5-04; the four textures are taught there
   deepIn: v5-07
   aliases: [musical texture, thin texture, thick texture, textural]
   def: >-
@@ -721,7 +1116,8 @@
 - id: habituation
   term: Habituation
   category: Hearing
-  introducedIn: v5-04
+  introducedIn: v1-06 # v1-06: was v5-04
+  deepIn: v5-04
   aliases: [habituation, habituate, habituates, habituated]
   def: >-
     The fading of a response to a stimulus that keeps repeating unchanged.
@@ -730,12 +1126,114 @@
 - id: frisson
   term: Frisson (musical chills)
   category: Hearing
-  introducedIn: v5-04
+  introducedIn: v1-06 # v1-06: was v5-04
+  deepIn: v5-04
   aliases: [frisson, musical chills, chills]
   def: >-
     Goosebumps or a shiver down the spine at a peak moment in music. Often
     triggered by a sudden change after a build: a new harmony, an entrance, a
     leap in loudness.
+
+# ---------- form (v5-05) ----------
+- id: musical-form
+  term: Form
+  category: Form & tension
+  introducedIn: v5-05
+  aliases: [musical form, letter scheme, formal sections, formal plan, formal boundary, formal boundaries]
+  def: >-
+    The large-scale plan of a piece: which sections it has, in what order, and
+    which ones return. Usually written with letters (A B A), where the same
+    letter means the same music coming back and a prime (A′) means a varied return.
+
+- id: ternary-form
+  term: Binary and ternary form
+  category: Form & tension
+  introducedIn: v5-05
+  aliases: [ternary form, binary form, ABA form, da capo, minuet and trio]
+  def: >-
+    Two basic plans. Binary form is two sections, A B, often each repeated.
+    Ternary form is A B A: a statement, a contrast, and a return.
+
+- id: strophic
+  term: Strophic form and refrain
+  category: Form & tension
+  introducedIn: v5-05
+  aliases: [strophic, strophe, strophes, refrain, refrains]
+  def: >-
+    Strophic form repeats the same music for every verse (strophe) of the
+    words: A A A. A refrain is a line or two of fixed words and music that ends
+    each verse. A chorus is a refrain that has grown into a section of its own.
+
+- id: aaba-form
+  term: 32-bar song form (AABA)
+  category: Form & tension
+  introducedIn: v5-05
+  aliases: [AABA, 32-bar song form, 32-bar form, thirty-two-bar, middle eight]
+  def: >-
+    The standard plan of Tin Pan Alley and Broadway songs and many jazz
+    standards: four 8-bar sections, A A B A. The B section is called the
+    bridge (or release, or middle eight).
+
+- id: twelve-bar-blues
+  term: 12-bar blues
+  category: Form & tension
+  introducedIn: v5-05
+  aliases: [12-bar blues, twelve-bar blues, 12-bar, twelve-bar, blues progression]
+  def: >-
+    A 12-bar chord cycle, in its basic version I I I I, IV IV I I, V IV I I,
+    repeated as the unit of the whole piece. Each time through is called a
+    chorus. Blues lyrics often follow an AAB pattern: a line, the line again,
+    and an answering line.
+
+- id: rondo
+  term: Rondo
+  category: Form & tension
+  introducedIn: v5-05
+  aliases: [rondo, rondos, rondo form]
+  def: >-
+    A form in which a main section keeps returning between contrasting
+    episodes: A B A C A (or longer). Common in the last movements of classical
+    sonatas, concertos, and symphonies.
+
+- id: sonata-form
+  term: Sonata form
+  category: Form & tension
+  introducedIn: v5-05
+  aliases: [sonata form, sonata-form, exposition, expositions, recapitulation, recapitulations, retransition, first theme, second theme]
+  def: >-
+    The main plan for first movements in the classical era. The exposition
+    presents a first theme in the home key and a second theme in a new key; the
+    development moves through many keys and works the themes over; the
+    recapitulation brings both themes back in the home key. Often a coda follows.
+
+- id: relative-key
+  term: Relative major and minor
+  category: Harmony & style
+  introducedIn: v3-04 # v3-04: moved earlier (was v5-05)
+  deepIn: v5-05
+  aliases: [relative major, relative minor, relative key]
+  def: >-
+    A major key and a minor key that use the same notes, with different tonics.
+    C minor's relative major is E♭ major; A minor's is C major.
+
+- id: through-composed
+  term: Through-composed
+  category: Form & tension
+  introducedIn: v5-05
+  aliases: [through-composed, through composed, durchkomponiert]
+  def: >-
+    Music that keeps moving to new material instead of bringing whole sections
+    back: A B C D... Unity comes from smaller things (motifs, a key plan, a
+    story) rather than from returning sections.
+
+- id: coda
+  term: Coda
+  category: Form & tension
+  introducedIn: v5-05
+  aliases: [coda, codas]
+  def: >-
+    Italian for "tail": a closing section added after the main form is complete,
+    confirming the ending. The classical equivalent of an outro.
 
 # ---------- auditory scene analysis (v1-04) ----------
 - id: auditory-scene-analysis
@@ -992,4 +1490,570 @@
     An oscillator running too slowly to hear as a pitch (below about 20 Hz),
     used to wobble another setting: pitch (vibrato), loudness (tremolo), or
     filter cutoff.
+
+
+# ---------- v4-08: Mixing and mastering ----------
+- id: mixing
+  term: Mixing
+  category: Production
+  introducedIn: v4-08
+  aliases: [mixing desk, mixing desks, mixing console, mixdown, mix engineer, mix engineers]
+  def: >-
+    Combining the recorded or synthesized parts of a piece into one finished
+    stereo track. The engineer sets each part's level, its place between the
+    speakers, its tone (EQ), and its sense of distance (reverb). Then the parts
+    are processed together. Mixing decides what the listener can hear, and how
+    clearly.
+
+- id: eq
+  term: EQ (equalization)
+  category: Production
+  introducedIn: v4-08
+  aliases: [EQ, EQs, EQed, EQ'd, equalization, equalisation, equalizer, equaliser, low cut, low-cut, high cut, high-cut]
+  def: >-
+    Filters used to shape a recorded part's tone: boosting or cutting a range
+    of frequencies, or removing everything below (a low cut) or above (a high
+    cut) some point. It is the same physics as a synthesizer's filter. In a mix,
+    though, EQ is mostly used to stop parts from masking each other.
+
+- id: compressor
+  term: Compression (dynamic range)
+  category: Production
+  introducedIn: v4-08
+  aliases: [compressor, compressors, compressed dynamics, dynamic range compression, bus compression, gain reduction, limiter, limiters, limiting]
+  def: >-
+    Automatic turning-down of loud moments. Above a threshold level, a
+    compressor reduces the excess by a ratio (at 4:1, 4 dB over comes out as 1
+    dB over). Attack and release set how quickly it reacts and lets go. A
+    limiter is a compressor with a very high ratio, used as a ceiling. Not to be
+    confused with the compressions of a sound wave.
+
+- id: reverb
+  term: Reverb
+  category: Production
+  introducedIn: v4-08 # chapter 4.7 (recording and space) will treat it in depth
+  aliases: [reverb, reverbs, reverberation, reverberant, plate reverb, spring reverb]
+  def: >-
+    The dense wash of reflections a sound makes in a room after the direct sound
+    stops. In a mix it is usually added artificially (by an echo chamber, a metal
+    plate, a spring, or a digital model). More reverb relative to the direct
+    sound makes a part seem further away.
+
+- id: sidechain
+  term: Sidechain ducking
+  category: Production
+  introducedIn: v4-08
+  aliases: [sidechain, sidechains, side-chain, sidechained, sidechaining, ducking]
+  def: >-
+    Letting one part control the processing of another. Typically the kick drum
+    triggers a compressor on the bass or the whole mix, which "ducks" out of the
+    kick's way on every beat. Exaggerated, the ducking becomes an audible
+    pumping, a signature sound of French house and EDM.
+
+- id: headroom
+  term: Headroom and clipping
+  category: Production
+  introducedIn: v4-08
+  aliases: [headroom, clipping, digital clipping, 0 dBFS, dBFS]
+  def: >-
+    A digital recording has a hard ceiling (0 dBFS, "decibels relative to full
+    scale"). A signal pushed past it is clipped: its peaks are sliced flat, which
+    sounds like harsh distortion. Headroom is the gap between a mix's peaks and
+    that ceiling.
+
+- id: crest-factor
+  term: Crest factor
+  category: Production
+  introducedIn: v4-08
+  aliases: [crest factor, peak-to-average ratio, peak-to-average]
+  def: >-
+    The difference, in decibels, between a signal's peaks and its average
+    level. Drum hits and dynamic playing give a high crest factor. Heavy
+    compression and limiting shrink it, so the waveform looks like a solid
+    block.
+
+- id: mastering
+  term: Mastering
+  category: Production
+  introducedIn: v4-08
+  aliases: [mastering, mastering engineer, mastering engineers, remaster, remastered, remastering]
+  def: >-
+    The last stage before release. A mastering engineer adjusts the finished
+    stereo mix as a whole (overall EQ, compression, limiting to set the final
+    loudness), matches the tracks of an album to one another, and prepares the
+    files for each format.
+
+- id: loudness-normalization
+  term: Loudness war and loudness normalization
+  category: Production
+  introducedIn: v4-08
+  aliases: [loudness war, loudness wars, loudness normalization, loudness normalisation, LUFS, LKFS]
+  def: >-
+    From the 1990s, records were mastered ever louder with heavy limiting, on
+    the theory that louder sounds better: the loudness war. Streaming services
+    now measure each track's average loudness (in LUFS, a frequency-weighted
+    average) and turn loud tracks down to a common target. That removes most
+    of the reward for squashing a master.
+
+# ---------- Atlas: I Feel Love (v7-01) ----------
+# Production terms the Atlas needs before Vol IV's recording chapters exist.
+# When 4.6/4.7 are written, move introducedIn there and add them to v7-01's assumes.
+# v4-08: delay-effect, stereo-panning, multitrack-recording now introduced in v4-08 (mixing).
+- id: delay-effect
+  term: Delay (echo effect)
+  category: Production
+  introducedIn: v4-08 # v4-08: moved from v7-01
+  aliases: [delay effect, delay effects, tape delay, echo effect, delayed copy]
+  def: >-
+    An effect that records a sound and plays it back a fixed time later, mixed
+    with the original. A single repeat set to a note value (say, a sixteenth)
+    turns into rhythm: the echoes land on the grid.
+
+- id: stereo-panning
+  term: Stereo and panning
+  category: Production
+  introducedIn: v4-08 # v4-08: moved from v7-01
+  aliases: [stereo, panning, panned, pan position, hard left, hard right, stereo image, stereo width] # v4-08: + stereo image/width
+  def: >-
+    Stereo recordings have two channels, one per speaker or ear. Panning places
+    a sound between them: all left, all right, or anywhere in between, so it
+    seems to come from that direction.
+
+- id: click-track
+  term: Click track (sync track)
+  category: Production
+  introducedIn: v7-01
+  aliases: [click track, click tracks, sync track, sync pulse]
+  def: >-
+    A steady electronic pulse recorded alongside the music, so that players or
+    machines can lock to exactly the same tempo. In early electronic studios a
+    pulse recorded on one tape track drove the sequencer each time it played.
+
+- id: multitrack-recording
+  term: Multitrack recording
+  category: Production
+  introducedIn: v4-08 # v4-08: moved from v7-01
+  aliases: [multitrack, multi-track, multitrack recording, overdub, overdubs, overdubbed, overdubbing]
+  def: >-
+    Recording each part onto its own track of the same tape (or file), so parts
+    can be added one at a time (overdubbing) and balanced later in the mix.
+
+- id: head-voice
+  term: Head voice and chest voice
+  category: Sound
+  introducedIn: v7-01
+  aliases: [head voice, chest voice, falsetto]
+  def: >-
+    Two ways of using the vocal folds. Chest voice, the normal speaking
+    register, is full and strong; head voice, higher up, is lighter, with fewer
+    strong upper harmonics. Falsetto is a still lighter head-voice sound.
+
+# ---------- v3-05: vertical harmony ----------
+- id: diatonic-chords
+  term: Diatonic chords (chords from a scale)
+  category: Chords
+  introducedIn: v3-05
+  deepIn: v3-06
+  aliases: [diatonic, diatonic chord, diatonic chords, stacked thirds, stacking thirds, stack of thirds, tertian]
+  def: >-
+    The chords you get by stacking thirds using only the notes of one scale:
+    start on any scale note and take every other note. In a major key this
+    gives three major triads (I, IV, V), three minor (ii, iii, vi), and one
+    diminished (vii°).
+
+- id: chord-quality
+  term: Chord quality (major, minor, diminished, augmented)
+  category: Chords
+  introducedIn: v3-05
+  aliases: [diminished, augmented, diminished triad, augmented triad, chord quality, chord qualities]
+  def: >-
+    The type of a chord, set by the sizes of its stacked thirds. Major: major
+    third then minor third. Minor: minor then major. Diminished: two minor
+    thirds (its fifth is a tritone). Augmented: two major thirds.
+
+- id: roman-numerals
+  term: Roman numerals
+  category: Chords
+  introducedIn: v3-05
+  deepIn: v3-06
+  aliases: [Roman numeral, Roman numerals]
+  def: >-
+    Names for chords by the scale degree of their root, so the same label works
+    in any key: I is the chord on the first degree, V on the fifth. Capitals
+    for major chords, lower case for minor, ° for diminished.
+
+- id: chord-inversion
+  term: Inversion (of a chord)
+  category: Chords
+  introducedIn: v3-05
+  aliases: [root position, first inversion, second inversion, third inversion, slash chord, slash chords]
+  def: >-
+    Which chord tone is in the bass. Root position has the root lowest; first
+    inversion the third; second inversion the fifth. A slash chord symbol like
+    C/E means a C chord with E in the bass. Not the same as melodic inversion
+    (flipping a melody upside down).
+
+- id: seventh-chord
+  term: Seventh chords
+  category: Chords
+  introducedIn: v3-05
+  aliases: [seventh chords, major seventh chord, minor seventh chord, half-diminished, diminished seventh, maj7]
+  def: >-
+    A triad with one more third stacked on top, adding a seventh above the
+    root. The common types: major seventh (Cmaj7), dominant seventh (C7), minor
+    seventh (Cm7), half-diminished (Cm7♭5), and diminished seventh (C°7).
+
+- id: chord-symbol
+  term: Chord symbols and lead sheets
+  category: Chords
+  introducedIn: v3-05
+  aliases: [chord symbol, chord symbols, lead sheet, lead sheets]
+  def: >-
+    Shorthand names for chords written above a melody: a root letter plus a
+    suffix for the quality (C, Cm, C7, Cmaj7, C°). A lead sheet is a melody with
+    chord symbols, the standard score in jazz and pop; the player chooses the
+    voicing.
+
+- id: voice-leading
+  term: Voice leading
+  category: Chords
+  introducedIn: v3-05
+  deepIn: v3-08
+  aliases: [voice leading, common tone, common tones, contrary motion, oblique motion, similar motion, parallel motion, parallel fifths, voice crossing]
+  def: >-
+    How the individual notes of one chord move to the notes of the next, heard
+    as separate lines (voices). Good voice leading keeps common tones, moves the
+    other voices by small steps, and avoids parallel fifths and octaves, which
+    make two voices fuse into one.
+
+- id: quartal
+  term: Quartal harmony
+  category: Chords
+  introducedIn: v3-05
+  aliases: [quartal, quartal harmony, stacked fourths]
+  def: >-
+    Chords built by stacking fourths instead of thirds. Open and ambiguous, with
+    no clear major or minor quality; a signature of modal jazz from the late
+    1950s on.
+
+# ---------- v3-06: functional harmony ----------
+- id: harmonic-function
+  term: Harmonic function (tonic, predominant, dominant)
+  category: Harmony & style
+  introducedIn: v3-06
+  aliases: [harmonic function, harmonic functions, tonic function, predominant, pre-dominant, subdominant, phrase model]
+  def: >-
+    The job a chord does in a key, which falls into three families. Tonic
+    chords (I, and often vi) are stable: home. Predominant chords (IV, ii) lead
+    away from home toward the dominant. Dominant chords (V, V7, vii°) pull back
+    to the tonic. A typical phrase runs tonic, predominant, dominant, tonic.
+
+- id: leading-tone
+  term: Leading tone
+  category: Harmony & style
+  introducedIn: v3-06
+  aliases: [leading tone, leading tones, leading note, leading-tone]
+  def: >-
+    The seventh note of the major scale (B in C major), a semitone below the
+    tonic. It sits in the dominant chord and tends to rise to the tonic, which
+    is a large part of why the dominant pulls toward home.
+
+- id: circle-of-fifths
+  term: Circle of fifths
+  category: Harmony & style
+  introducedIn: v3-06
+  aliases: [circle of fifths, cycle of fifths, falling fifths, descending fifths, root motion]
+  def: >-
+    The twelve notes arranged so that neighbors are a fifth apart (C G D A E B
+    F♯ D♭ A♭ E♭ B♭ F, and back to C). Neighboring keys share six of their
+    seven notes. In tonal harmony, chord roots most often fall by a fifth, one
+    step around the circle toward the tonic (D→G→C).
+
+- id: secondary-dominant
+  term: Secondary dominant
+  category: Harmony & style
+  introducedIn: v3-06
+  aliases: [secondary dominant, secondary dominants, applied dominant, applied dominants, tonicization, tonicize, tonicizes, tonicized]
+  def: >-
+    A dominant chord borrowed to point at a chord other than the tonic. In C
+    major, D7 is the dominant of G (written V/V) and E7 the dominant of A minor
+    (V/vi). Briefly treating a chord as a temporary home this way is called
+    tonicization.
+
+- id: borrowed-chord
+  term: Borrowed chord (modal mixture)
+  category: Harmony & style
+  introducedIn: v3-06
+  aliases: [borrowed chord, borrowed chords, modal mixture]
+  def: >-
+    A chord taken from the parallel minor key or a neighboring mode while
+    staying in a major key: in C major, F minor (iv), A♭ (♭VI), or B♭ (♭VII).
+    Rock leans heavily on ♭VII.
+
+- id: harmonic-loop
+  term: Chord loop
+  category: Harmony & style
+  introducedIn: v3-06
+  aliases: [chord loop, chord loops, harmonic loop, harmonic loops]
+  def: >-
+    A short progression repeated over and over (I–V–vi–IV, for example) instead
+    of one that drives toward a cadence. Common in pop since the 1990s; the
+    chords' functions can blur, because the loop has no beginning or end.
+
+- id: harmonic-rhythm
+  term: Harmonic rhythm
+  category: Harmony & style
+  introducedIn: v3-06
+  aliases: [harmonic rhythm]
+  def: >-
+    How often the chords change. A speeding-up harmonic rhythm (one chord per
+    bar, then two) is a common way to push toward a cadence.
+
+# ---------- v2-03: subdivision, accent, grouping ----------
+
+- id: note-values
+  term: Note values (whole, half, quarter...)
+  category: Rhythm
+  introducedIn: v2-03
+  aliases: [crotchet, crotchets, quaver, quavers, semiquaver, semiquavers, minim, minims, dotted note, dotted notes, dotted quarter, dotted rhythm, dotted rhythms]
+  def: >-
+    The names for durations: a whole note splits into two halves, four
+    quarters, eight eighths, sixteen sixteenths. In 4/4 the beat is a quarter
+    note. A dot adds half the value again (a dotted quarter lasts three
+    eighths). British names: semibreve, minim, crotchet, quaver, semiquaver.
+
+- id: tuplet
+  term: Tuplets (triplets against duple time)
+  category: Rhythm
+  introducedIn: v2-03
+  aliases: [tuplet, tuplets, quintuplet, quintuplets, duplet, duplets, triplet feel]
+  def: >-
+    Squeezing an "irregular" number of equal notes into a span the meter
+    normally divides differently: three in the time of two (a triplet), five
+    in the time of four (a quintuplet), two in the time of three (a duplet).
+
+- id: half-time-feel
+  term: Half-time and double-time feel
+  category: Rhythm
+  introducedIn: v2-03
+  aliases: [half-time, double-time, half-time feel, double-time feel]
+  def: >-
+    Changing which pulse feels like the beat without changing the tempo of the
+    underlying grid. In half-time the backbeat moves from beats 2 and 4 to
+    beat 3, so the music feels half as fast; in double-time it lands on every
+    off-beat eighth, so it feels twice as fast.
+
+- id: accent
+  term: Accent (dynamic, agogic, tonal, metrical)
+  category: Rhythm
+  introducedIn: v2-03
+  aliases: [dynamic accent, dynamic accents, agogic accent, agogic accents, tonal accent, tonal accents, metrical accent, metrical accents, phenomenal accent, phenomenal accents]
+  def: >-
+    Anything that makes one note stand out from its neighbors: being louder
+    (dynamic), longer (agogic), higher or after a leap (tonal), on a chord
+    change, or in a new instrument. These "phenomenal" accents are in the
+    sound; a metrical accent is the strength a position has in the listener's
+    meter, whether or not anything is played there.
+
+- id: rhythmic-anticipation
+  term: Anticipation (a pushed note)
+  category: Rhythm
+  introducedIn: v2-03
+  aliases: [rhythmic anticipation, rhythmic anticipations, pushed note, pushed notes, pushed beat, pushed beats, pushed chord, pushed chords]
+  def: >-
+    A note or chord that arrives a sixteenth or eighth before the strong beat
+    it belongs to and is held through it. The most common syncopation in pop
+    and rock: the listener hears it as the on-beat note, early.
+
+- id: rhythmic-grouping
+  term: Rhythmic grouping
+  category: Rhythm
+  introducedIn: v2-03
+  aliases: [rhythmic grouping, grouping structure, grouping structures]
+  def: >-
+    How notes are heard as belonging together in units (motives, phrases,
+    sections), separate from the meter. Groups can start and end anywhere in
+    the bar; meter says which positions are strong, grouping says which notes
+    go together.
+
+- id: anacrusis
+  term: Pickup (anacrusis)
+  category: Rhythm
+  introducedIn: v2-03
+  aliases: [anacrusis, anacruses, pickup note, pickup notes, pickup beat, pickup bar]
+  def: >-
+    One or more notes before the first downbeat of a phrase, as in the
+    "Happy" of "Happy Birthday". The phrase starts before the bar does.
+
+- id: additive-meter
+  term: Additive meter
+  category: Rhythm
+  introducedIn: v2-03
+  aliases: [additive meter, additive meters, additive rhythm, additive rhythms, aksak, odd meter, odd meters, asymmetric meter, asymmetric meters]
+  def: >-
+    A meter whose beats are unequal groups of a fast pulse, such as 7/8 as
+    2 + 2 + 3 or 5/4 as 3 + 2, common in Balkan, Turkish, and Indian music and
+    in progressive rock and jazz. Distinct from a 3 + 3 + 2 rhythm played over
+    an even 4/4 beat.
+
+# ---------- v3-08: counterpoint and texture ----------
+# Bare "polyphony" and "polyphonic" are deliberately not aliases of
+# polyphony: earlier chapters use them loosely ("European polyphony") and
+# synth chapters use "polyphonic" for instruments that play chords.
+
+- id: monophony
+  term: Monophony
+  category: Form & tension
+  introducedIn: v3-08
+  aliases: [monophony, monophonic texture]
+  def: >-
+    A texture with a single melodic line and nothing else: a chant, a solo
+    folk song, a crowd singing one tune in unison or octaves.
+
+- id: heterophony
+  term: Heterophony
+  category: Form & tension
+  introducedIn: v3-08
+  aliases: [heterophony, heterophonic]
+  def: >-
+    Several performers playing or singing the same tune at the same time, each
+    decorating or varying it in their own way, so the versions rub against each
+    other. Central to gamelan, Arabic and Turkish ensembles, and Irish sessions.
+
+- id: homophony
+  term: Homophony
+  category: Form & tension
+  introducedIn: v3-08
+  aliases: [homophony, homophonic]
+  def: >-
+    A texture where one line leads and the other parts move with it as chords,
+    mostly in the same rhythm: a hymn, a barbershop quartet, or (loosely) any
+    melody with chordal accompaniment.
+
+- id: polyphony
+  term: Polyphony
+  category: Form & tension
+  introducedIn: v3-08
+  aliases: [polyphonic texture, polyphonic textures, contrapuntal texture]
+  def: >-
+    A texture of two or more independent lines, each with its own contour and
+    rhythm, that the ear can follow separately. Writing it is counterpoint.
+
+- id: species-counterpoint
+  term: Species counterpoint
+  category: Harmony & style
+  introducedIn: v3-08
+  aliases: [species counterpoint, first species, second species, third species, fourth species, fifth species]
+  def: >-
+    A graded method for learning counterpoint, codified by Johann Joseph Fux in
+    1725: write a line against a given cantus firmus, first note against note
+    (first species), then two notes, four notes, syncopated notes, and finally
+    free rhythms (fifth species).
+
+- id: cantus-firmus
+  term: Cantus firmus
+  category: Harmony & style
+  introducedIn: v3-08
+  aliases: [cantus firmus, cantus firmi]
+  def: >-
+    "Fixed song": a given melody, usually in long even notes, against which
+    other voices are written. Medieval and Renaissance composers built whole
+    masses on borrowed chant or song tunes this way; species counterpoint uses
+    one as the exercise's starting point.
+
+- id: imitation
+  term: Imitation
+  category: Harmony & style
+  introducedIn: v3-08
+  aliases: [imitative, in imitation, imitative counterpoint, point of imitation, points of imitation]
+  def: >-
+    One voice repeats a figure just played by another, while the first voice
+    carries on with something else. The basic device of Renaissance vocal
+    polyphony, fugue, and call-and-answer textures.
+
+- id: canon
+  term: Canon and round
+  category: Harmony & style
+  introducedIn: v3-08
+  aliases: [canons, a canon, in canon, strict canon, a round, rounds]
+  def: >-
+    Strict imitation: a whole melody is sung or played against delayed copies
+    of itself. A round is a canon at the same pitch that can loop back to the
+    start indefinitely ("Frère Jacques", "Row, Row, Row Your Boat"). Canons can
+    also enter at other intervals or with the follower inverted.
+
+- id: fugue
+  term: Fugue
+  category: Harmony & style
+  introducedIn: v3-08
+  aliases: [fugue, fugues, fugal, countersubject, fugue subject]
+  def: >-
+    A piece (or procedure) built from imitation of one short theme, the
+    subject. Voices enter one at a time with it, alternately on the home key's
+    tonic and its fifth (the answer); later the subject returns in different
+    keys and voices, separated by freer episodes.
+
+- id: invertible-counterpoint
+  term: Invertible counterpoint
+  category: Harmony & style
+  introducedIn: v3-08
+  aliases: [invertible counterpoint, double counterpoint]
+  def: >-
+    Two lines written so that either one can go on top: swap them (usually by
+    moving one an octave) and the combination still works. Fugue composers rely
+    on it so a subject and its countermelody can be reused in any arrangement.
+
+# ---------- v3-04: tonal centers, modes, and pitch hierarchies ----------
+- id: tonal-hierarchy
+  term: Tonal hierarchy
+  category: Harmony & style
+  introducedIn: v3-04
+  aliases: [tonal hierarchy, tonal hierarchies, probe tone, probe tones, probe-tone, key profile, key profiles, key-finding]
+  def: >-
+    The ranking of notes by how stable they sound in a key. In the probe-tone
+    experiments, listeners rate the tonic as fitting best, then the fifth and
+    third, then the other scale notes, then the notes outside the scale. The
+    ranking mirrors how often and how long each note occurs in the music
+    listeners know, and it differs between musical cultures.
+
+- id: mode
+  term: Modes (Dorian, Mixolydian, and the rest)
+  category: Harmony & style
+  introducedIn: v3-04
+  aliases: [Dorian, Mixolydian, Lydian, Phrygian, Aeolian, Ionian, Locrian, church modes, modal]
+  def: >-
+    The seven scales you get by keeping the white keys and choosing a
+    different one as home. Ionian is the major scale, Aeolian the natural
+    minor; Dorian is minor with a raised 6th, Mixolydian major with a lowered
+    7th, Lydian major with a raised 4th, Phrygian minor with a lowered 2nd.
+
+- id: parallel-key
+  term: Parallel major and minor
+  category: Harmony & style
+  introducedIn: v3-04
+  aliases: [parallel major, parallel minor, parallel key, parallel keys, parallel mode, parallel modes]
+  def: >-
+    A major key and a minor key (or any two modes) on the same tonic, such as
+    C major and C minor. They share home but differ in some notes. Compare the
+    relative major and minor, which share notes but not home.
+
+- id: drone
+  term: Drone
+  category: Harmony & style
+  introducedIn: v3-04
+  aliases: [drone, drones]
+  def: >-
+    A note (often with its fifth) sustained for a whole piece or section, as
+    under an Indian raga or from a bagpipe's drone pipes. It names home
+    constantly, so every other note is heard against it.
+
+- id: pentatonic
+  term: Pentatonic scale
+  category: Notes & intervals
+  introducedIn: v3-04 # v3-02 (why scales exist) may take this over once written
+  aliases: [pentatonic, pentatonic scale, pentatonic scales]
+  def: >-
+    A five-note scale. The common one is the black keys, or C D E G A: the
+    major scale without its two half steps. It turns up in folk music
+    worldwide, in blues and rock (the minor pentatonic), and in East Asian music.
 

@@ -1,0 +1,347 @@
+---
+title: "Tonal Centers, Modes, and Pitch Hierarchies"
+volume: 3
+chapter: 4
+summary: Why one note sounds like home. The cues listeners use to find a tonal center, the probe-tone experiments that measured the hierarchy of notes in a key, how much of it is learned, and the modes, drones, and pentatonic scales that put home in different places.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [frequency, pitch, harmonics, note-names, octave, octave-equivalence, semitone, interval, frequency-ratio, register, timbre, chord, root, major-minor, scale, key, tonic, step-leap, melodic-expectation, phrase, consonance, resolution, predictive-processing, statistical-learning, short-term-memory, beat, tempo, groove]
+lintIgnore: [diatonic-chords] # only in a reference title
+introduces: [tonal-hierarchy, mode, relative-key, parallel-key, drone, pedal-point, pentatonic]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts. One new lab with three parts: **Probe tones** (you rate how well notes fit a key, then compare with published results), **Key finding** (a computer guesses the key of a tune by counting), and **Modes** (the same notes with a different home, over a drone). Do the probe-tone experiment *before* reading the section about its results; it only works if you don't know the answer. Then write your version in `src/content/chapters/v3-04-tonality.mdx`.
+
+Chapter 3.3 introduced scales, keys, and the tonic in a few paragraphs. This chapter asks what "home" actually is, and then moves it around.
+</Callout>
+
+## The question
+
+Play the white keys of a piano, any order, any rhythm, for a minute. Which note is home?
+
+There's no answer in the notes. The seven white keys are the C major scale, but they are also the A minor scale, and five other scales besides, depending on which one you treat as home. A melody on the white keys that keeps returning to C, rests on C, and ends on C sounds like C major. The same keys, circling around A and ending on A, sound like A minor: same notes, darker mood. Circle around D instead and you get something that is neither, a sound you know from "Scarborough Fair," Santana, and Miles Davis.
+
+So the <Term id="tonic">tonic</Term> is not a property of a set of notes. It's something your brain *infers* from how the notes are used, and once inferred, it reorganizes everything: each note becomes stable or unstable, near home or far from it. This chapter is about that inference and the structure it creates. Four ideas:
+
+1. **Home is inferred** from repetition, duration, position, the bass, and a few telltale intervals.
+2. **The notes of a key form a hierarchy**, which listeners can rate with surprising consistency, and which largely mirrors how often each note occurs.
+3. **Much of the hierarchy is learned**, from exposure, which is why it differs between musical cultures and why a computer can approximate it by counting.
+4. **Moving home within the same notes gives the modes**, each with its own color, and drones and pedal points are the most direct ways to say where home is.
+
+## What makes a note sound like home
+
+### The cues
+
+Composers and improvisers establish a tonic with a handful of devices, mostly without thinking about it. Researchers have tested each one:
+
+- **Repetition and duration.** The note heard most often, and held longest, is a strong candidate. Melodies spend a lot of time on their tonic.
+- **Position.** First and last notes matter, last most of all: chapter 3.3 showed that tunes overwhelmingly end on the tonic. Notes on strong beats count more than notes between beats.
+- **The bass.** The lowest note carries more weight than the others. A held low note is the bluntest way to name home, which is why drones work (below).
+- **The tonic chord.** The major or minor chord built on the tonic, sounded at the start and end, confirms it.
+- **Telltale intervals.** Some intervals occur in only one or two places in a scale. In the major scale, the two half steps (E–F and B–C) and the one tritone (F–B) pin down where you are. Hearing B go up a half step to C points at C as home in a way that, say, D going to E does not. This is the *rare-interval* idea of Brown and Butler.
+
+None of these is decisive alone, and they can conflict. A well-made tune lines them up: "Twinkle, Twinkle" starts on C, ends on C, sits on C and G, and outlines the C major chord in its first leap. A tune that keeps them in conflict sounds ambiguous, which can be a feature.
+
+<Callout kind="verify" title="cues to the tonic">
+Check the rare-interval hypothesis (Brown & Butler 1981; Butler 1989; Brown, Butler & Jones 1994) and the evidence for duration, first and last notes, and metrical position as cues (e.g. Smith & Schmuckler 2004 on duration and frequency).
+</Callout>
+
+### Measuring the hierarchy: probe tones
+
+In 1979 and 1982, Carol Krumhansl and her colleagues found a way to ask listeners about home without using any music theory vocabulary. Play a short passage that sets up a key, such as a chord progression or a scale. Then play one single tone, the *probe*. Ask: on a scale of 1 to 7, how well does this tone fit? Repeat for all twelve notes, in many keys, with many listeners.
+
+Try it yourself before reading on. Rate every note at least once in C major; the rating buttons appear after each tone.
+
+<ModeLab initialMode="probe" modes={['probe']} />
+
+<Callout kind="try">
+1. Press **Start**, listen to the four chords and the tone, and rate it. Then **Next tone**, until you've rated all twelve. Go with your first impression; there are no wrong answers.
+2. Now turn on **Show the published ratings** and compare. Look at the shape, not the exact heights: which notes did you rate highest, and which lowest?
+3. Switch to **C minor** and repeat. Which notes changed most?
+</Callout>
+
+What Krumhansl and Kessler (1982) found, averaged over their listeners, is a clear **tonal hierarchy**:
+
+<DataTable title="The tonal hierarchy in C major and C minor" caption="Average probe-tone ratings (1 = fits very badly, 7 = fits very well) from Krumhansl and Kessler (1982), for each note after a passage in C. Scale notes are in bold.">
+
+| Note | C | C♯/D♭ | D | E♭ | E | F | F♯ | G | A♭ | A | B♭ | B |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **C major** | **6.35** | 2.23 | **3.48** | 2.33 | **4.38** | **4.09** | 2.52 | **5.19** | 2.39 | **3.66** | 2.29 | **2.88** |
+| **C minor** | **6.33** | 2.68 | **3.52** | **5.38** | 2.60 | **3.53** | 2.54 | **4.75** | **3.98** | 2.69 | **3.34** | 3.17 |
+
+</DataTable>
+
+Read it as levels:
+
+1. **The tonic** (C) fits best, by a wide margin.
+2. **The fifth** (G) comes next, then **the third** (E in major, E♭ in minor). Together with the tonic these are the notes of the tonic chord.
+3. **The other scale notes** come next.
+4. **The five notes outside the scale** fit worst.
+
+This is the hierarchy every chapter on harmony builds on: once a key is established, every note has a *place*, closer to home or farther from it. Chapter 3.3's observation that melodies end on the tonic, and that a phrase stopping on degree 2 sounds like a question, are both consequences of it.
+
+<Callout kind="check">
+In the C major row, B (degree 7) gets one of the *lowest* ratings among scale notes, 2.88, even though it's a semitone from home and sounds like it "wants" to go there. How can a note fit badly and pull strongly at the same time?
+
+<Answer>
+The probe-tone task asks how well a note fits as an *ending*, more or less: how stable it is. B is unstable, which is exactly why it pulls. An unstable note near a very stable one sounds like it should move there. Stability and pull are two sides of the same hierarchy: the lower a note's rating, the more it sounds like it is on its way somewhere, and when a stable note is a half step away, the direction is obvious. Chapter 3.6 makes this pull the engine of Western harmony.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="probe-tone details">
+Check the profile values above against Krumhansl & Kessler (1982) as tabulated in Krumhansl (1990, Table 2.1), the listeners (musically trained, I believe), the context passages used, and that the probes were Shepard-like tones (to blur the octave). Also check the 1979 Krumhansl & Shepard paper as the first probe-tone study.
+</Callout>
+
+### Where the hierarchy comes from
+
+Two explanations compete, and both are partly right.
+
+**Statistics.** The hierarchy matches how often each note actually occurs in Western tonal music. Krumhansl compared her profiles with note counts from pieces by Schubert, Mozart, and others, and the correlation was very high: the tonic is the most common note, then the fifth and third, and so on. On this view, listeners learn the hierarchy the way they learn the vocabulary of a language, by absorbing what usually happens. That is the <Term id="statistical-learning">statistical learning</Term> idea, applied to pitch.
+
+**Acoustics.** The tonic, fifth, and third are also the notes most closely related through the harmonic series (chapter 1.2): the fifth and the third are low harmonics of the tonic. So the hierarchy might partly follow from consonance, which is shared by all listeners, rather than from exposure. Models of the auditory system that know nothing about music can reproduce some of the probe-tone results from the sound alone. Leman (2000) argued that much of a probe-tone rating can be explained by short-term memory: how much the probe resembles what was *just played*. That's a more deflationary story: listeners may be matching the probe to the recent sound rather than consulting a learned, abstract key.
+
+The evidence that learning matters a lot:
+
+- **Other cultures, other hierarchies.** Castellano, Bharucha, and Krumhansl (1984) played North Indian rāgs to Indian and Western listeners. Both groups produced hierarchies that followed which notes the passages emphasized, but only the Indian listeners' ratings also reflected the rāg's traditional structure beyond the passage itself. Studies with Balinese music found similar patterns (Kessler, Hansen & Shepard, 1984).
+- **New scales, learned in minutes.** Loui, Wessel, and Hudson Kam (2010) built melodies from a scale unrelated to any existing musical system. After half an hour of listening, people's ratings of new melodies followed the frequencies of the notes they had heard.
+- **Children.** Young children's sense of key develops gradually through the early school years, in step with their exposure to music.
+
+The fair summary: some notes are acoustically privileged, which may be why the fifth and the octave turn up in so many cultures' scales, and experience builds a detailed, culture-specific hierarchy on top.
+
+<Callout kind="verify" title="where the hierarchy comes from">
+Check: the correlation between the K–K profiles and note counts (Krumhansl 1990, ch. 3, and the composers counted); Leman 2000 (*Music Perception* 17(4)) on short-term memory models of probe-tone ratings; Castellano, Bharucha & Krumhansl 1984 (what exactly differed between the Indian and Western listeners); Kessler, Hansen & Shepard 1984 on Balinese music; Loui, Wessel & Hudson Kam 2010 (the Bohlen–Pierce scale, exposure time); and the developmental claims (e.g. Trainor & Trehub 1994; Corrigall & Trainor's work).
+</Callout>
+
+### Teaching a computer to find the key
+
+If the hierarchy mostly mirrors how often notes occur, a computer should be able to find the key just by counting. Krumhansl and Schmuckler's **key-finding** method does exactly that: add up how long each of the twelve pitch classes sounds in a passage, then compare the result with the probe-tone profile of each of the 24 major and minor keys. The key whose profile matches best wins.
+
+<ModeLab initialMode="keyfind" modes={['keyfind']} />
+
+<Callout kind="try">
+1. Start with **Twinkle, Twinkle** and **Happy Birthday**. The method gets both right, confidently.
+2. Try **Mary Had a Little Lamb** and **Jingle Bells**. The method says E minor. Look at the bars: both tunes spend most of their time on E, so by the numbers, E looks like home. You hear C major because both tunes *end* on C, and because of the order of the notes, which the method ignores.
+3. Try **Beethoven 5**. Only four different pitches, so the evidence is thin and the method's guesses are all weak.
+4. Try **Drunken Sailor**, a sea shanty in D Dorian (next section). The method only knows major and minor, so it has no right answer available.
+</Callout>
+
+Counting gets surprisingly far, and its failures are instructive. Listeners use *order* and *position* as well as totals: the last note, the notes on strong beats, the rare intervals. Later key-finding models (Temperley's, for instance) add some of this and do better. And all of these models are built for one tradition's two kinds of key. Which brings us to the modes.
+
+<Callout kind="verify" title="key finding">
+Check the description of the Krumhansl–Schmuckler algorithm (Krumhansl 1990, ch. 4) and Temperley's improvements (Temperley 1999; *Music and Probability*, 2007). The lab's tunes are simplified transcriptions; check Drunken Sailor's notes.
+</Callout>
+
+## Same notes, different home: the modes
+
+### The white-key experiment
+
+Go back to the opening question. Take the seven white keys and choose each one in turn as home. You get seven different scales, called the **modes**. Each has the same notes, but the half steps fall in different places relative to home, and so each sounds different.
+
+<ModeLab initialMode="modes" modes={['modes']} mode="ionian" />
+
+<Callout kind="try">
+1. With **Same notes, new home** selected, play **A tune** in **Ionian** (C to C). It's an ordinary major-key tune.
+2. While it plays, click **Aeolian** (A to A). The drone drops to A, the same phrase now uses only the white keys from A, and it turns into a minor-key tune.
+3. Click through the rest. Listen for the orange key: the note that gives each mode its particular color.
+4. Turn the drone off and switch modes again. Without the drone, the difference is much weaker, because nothing is telling your ear where home is except the tune itself.
+</Callout>
+
+The names are borrowed from ancient Greek, by way of medieval church music, and don't mean what the Greeks meant by them. Two of the modes you already know: **Ionian** is the major scale, and **Aeolian** is the natural minor scale. The others are best understood as major or minor with one or two notes changed:
+
+<ModeLadder />
+
+<DataTable title="The seven modes" caption="Ordered from brightest to darkest. 'White keys' gives the mode when it uses only the white keys. 'Compared with major' lists the degrees that differ from the major scale on the same tonic. Examples are commonly cited; check each by ear.">
+
+| Mode | White keys | Compared with major | Color | Where you hear it |
+|---|---|---|---|---|
+| **Lydian** | F to F | ♯4 | Bright, floating, dreamy | The Simpsons theme; much film music |
+| **Ionian** (major) | C to C | none | Bright, settled | Most of the songs you know |
+| **Mixolydian** | G to G | ♭7 | Major but loose, bluesy | "Norwegian Wood"; a great deal of rock and folk |
+| **Dorian** | D to D | ♭3, ♭7 | Minor but not sad; cool | "Scarborough Fair"; "Oye Como Va"; "So What" |
+| **Aeolian** (natural minor) | A to A | ♭3, ♭6, ♭7 | Minor, darker | "All Along the Watchtower" |
+| **Phrygian** | E to E | ♭2, ♭3, ♭6, ♭7 | Dark, exotic to Western ears | Flamenco; metal riffs |
+| **Locrian** | B to B | ♭2, ♭3, ♭5, ♭6, ♭7 | Unstable: home has no perfect fifth | Rare as a home key |
+
+</DataTable>
+
+Read the table, or the ladder figure, from top to bottom: each mode lowers exactly one more note. That ordering is a useful way to hear them. Lydian is major with an extra-bright raised 4th; Locrian is so dark that its home note can barely hold, because the fifth above it is a tritone, not a perfect fifth, so the chord built on home (B–D–F) is neither major nor minor but an unstable, clashing one.
+
+<Callout kind="check">
+Using the hierarchy from the probe-tone section: why might Locrian be so rarely used as a real home, even in traditions that use the other six modes freely?
+
+<Answer>
+In the hierarchy, the most stable notes after the tonic are the fifth and the third, and together they form the tonic chord. Locrian has no perfect fifth above its tonic (B to F is a tritone), so the chord built on its tonic (B–D–F) is neither major nor minor but a rough, unstable one. The second most important support for home is missing. Listeners tend to hear a passage on the white keys centered on B as being "really" in C or E, with B as a temporary resting point. Locrian passages exist, especially in metal and jazz, but usually over a held bass note that insists on home.
+</Answer>
+</Callout>
+
+### Same home, different notes: relative and parallel
+
+There are two ways to compare scales, and the vocabulary for them is worth getting straight.
+
+- **Relative** major and minor share *notes* but not *home*. C major and A minor both use the white keys. Every major key has a **relative minor** three semitones below its tonic, and vice versa.
+- **Parallel** major and minor share *home* but not *notes*. C major and C minor both have C as tonic, but C minor lowers the 3rd, 6th, and 7th.
+
+The white-key experiment above compared relative modes. For hearing a mode's *character*, the parallel comparison is usually clearer: keep home fixed and change only the notes, so you hear exactly what the altered note does.
+
+<ModeLab initialMode="modes" modes={['modes']} compare="parallel" mode="dorian" />
+
+<Callout kind="try">
+1. Play **The scale** with **Dorian** selected (home on C, so C D E♭ F G A B♭). Then click **Aeolian**. The only change is A becoming A♭. Hear how the A♭ darkens the minor sound and the A lifts it.
+2. Go from **Ionian** to **Mixolydian**: only B becomes B♭. The scale loses its upward lean into home.
+3. From **Ionian** to **Lydian**: only F becomes F♯. It sounds slightly suspended, as if not quite on the ground.
+</Callout>
+
+Songs move between parallel modes freely. Rock in particular borrows the lowered 7th and 3rd from the parallel minor while keeping a major tonic chord, which is why so much rock sounds neither purely major nor purely minor. "Norwegian Wood" sets a Mixolydian opening section against a middle section that shifts toward the parallel minor.
+
+<Callout kind="verify" title="relative and parallel">
+Check the description of "Norwegian Wood" (Mixolydian opening on E; the minor-leaning bridge), and the general claim about rock's use of ♭7 and ♭3 (e.g. Temperley's "The melodic-harmonic 'divorce' in rock" and Biamonte's "Triadic modal and pentatonic patterns in rock music").
+</Callout>
+
+### Listening to the modes
+
+<ListeningCue track="sg-scarborough-canticle" start="0:00" end="0:40">
+**Dorian.** A traditional English ballad. The tune is minor, but listen for the raised 6th (on "rosemary" in the first line). Natural minor would have a lower, sadder note there. It's the Dorian 6th that gives the tune its open, unresolved sound.
+</ListeningCue>
+
+<ListeningCue track="santana-oye-como-va" start="0:00" end="0:45">
+**Dorian, as a groove.** Two chords alternate for almost the whole song: A minor (with an added 7th) and D (with extensions). The D chord contains F♯, the Dorian raised 6th of A. In natural minor that chord would be D minor. Listen for how cool rather than sad the minor sounds.
+</ListeningCue>
+
+<ListeningCue track="beatles-norwegian-wood" start="0:00" end="0:30">
+**Mixolydian.** The sitar and guitar melody is major, but its 7th is lowered: D natural over an E home, where E major would have D♯. Notice that the tune never leans hard into home from below.
+</ListeningCue>
+
+<ListeningCue track="elfman-simpsons-theme" start="0:00" end="0:15">
+**Lydian.** The opening phrase climbs through the raised 4th. Hear how the melody sounds slightly airborne, cartoonish, bright beyond major.
+</ListeningCue>
+
+<ListeningCue track="paco-entre-dos-aguas" start="0:00" end="1:00">
+**Phrygian.** Flamenco harmony is built around the descending chord pattern A minor, G, F, E, often called the Andalusian progression, with E as home. The F-to-E half step, the lowered 2nd above home, is the Phrygian signature.
+</ListeningCue>
+
+<ListeningCue track="hendrix-watchtower" start="0:00" end="0:30">
+**Aeolian.** Three chords cycle through the whole song: C♯ minor, B, A. That's pure natural minor: no raised 7th, no chord that leans hard into home. The cycle feels like it could turn forever, and it does.
+</ListeningCue>
+
+<ListeningCue track="miles-so-what" start="0:00" end="1:30">
+**Dorian, as a whole style.** On *Kind of Blue* (1959), Miles Davis built tunes on a single mode held for many bars, rather than on fast-moving chords. "So What" sits in D Dorian for sixteen bars, moves up a half step to E♭ Dorian for eight, and comes back. This approach, called *modal jazz*, gave soloists room to explore a mode's colors instead of racing through changes.
+</ListeningCue>
+
+<Callout kind="verify" title="mode examples">
+Check each example's mode and key by ear and against an analysis: Scarborough Fair (Dorian; the note on "rosemary"; Martin Carthy's arrangement as the source); Oye Como Va (A Dorian; Am7–D9; Tito Puente's 1963 original); Norwegian Wood (E Mixolydian); The Simpsons theme (C Lydian is the common description; check the recording's key); Entre dos aguas (Phrygian on E? check the actual key and whether "Phrygian" or "Andalusian/flamenco mode" is the better description); All Along the Watchtower (C♯ minor? Hendrix's guitar is tuned down a half step, so check); So What (sixteen bars of D Dorian, eight of E♭ Dorian, eight of D Dorian).
+</Callout>
+
+### A short history of the modes
+
+Medieval church music classified chants into eight modes, by their final note and range. In 1547 the theorist Heinrich Glarean added Ionian and Aeolian, which was a description of what musicians were already doing. Over the next century and a half, European music came to rely on just those two, major and minor, mainly because they suit harmony built on chords and the strong pull toward home that chapter 3.6 describes.
+
+The other modes never disappeared. They survived in folk music (much English, Irish, and Scottish folk song is Dorian or Mixolydian), came back into concert music with composers like Debussy and Vaughan Williams, became the basis of modal jazz, and are everywhere in rock, film, and video-game music. Today a film composer reaches for Lydian to make something sound wondrous, and a metal guitarist reaches for Phrygian to make it sound menacing, as deliberately as a painter picks a color.
+
+<Callout kind="verify" title="history">
+Check the medieval eight-mode system (finals and ranges; authentic and plagal), Glarean's *Dodecachordon* (1547) and the twelve modes, the dates for the consolidation of major and minor, and the claims about English/Irish/Scottish folk song modes and Lydian in film scoring.
+</Callout>
+
+## Saying where home is: drones and pedal points
+
+### The drone
+
+The most direct way to establish home is to sound it continuously. A **drone** is a note, usually with its fifth, held under an entire piece or section. Every other note is then heard *against* it, as a specific distance from home, and the mode becomes unmistakable. (You heard this in the Modes lab: turning the drone off weakened the difference between modes.)
+
+Drones are among the oldest and most widespread musical devices: bagpipes have drone pipes; the Indian *tanpura* surrounds every performance of classical Indian music with a shimmering drone on the home note (*sa*) and usually the fifth (*pa*); medieval organum, Appalachian dulcimers, and the hurdy-gurdy all have them.
+
+<ListeningCue track="shankar-jogeshwari-alap" start="0:00" end="2:00">
+The opening of a rāg performance, the *ālāp*, introduces the rāg's notes one at a time over the tanpura drone, with no beat. Listen to how each new note sounds like a specific color against the unchanging home note, and how certain notes are returned to and dwelt on. A rāg is more than a scale: it specifies which notes are important, which phrases are characteristic, and how notes are approached. In probe-tone terms, it specifies a hierarchy.
+</ListeningCue>
+
+<Callout kind="verify" title="drones and rāg">
+Check: the tanpura's tuning (usually *pa* and *sa*, sometimes *ma* or *ni*), and the description of *vādī* and *samvādī* if you add them (the rāg's most important and second-most important notes). Chapter 3.10 will go deeper into rāg.
+</Callout>
+
+### The pedal point
+
+A **pedal point** is the same idea used temporarily. A note is held or repeated in the bass while the harmony above it moves, including through chords that don't contain it. The name comes from the organ, where a player can hold a low note with a foot. A pedal on the tonic, especially at the start or end of a piece, nails down home while the music above wanders. Pop and rock use the same device whenever the bass stays on one note under changing chords, and electronic dance music often holds a single bass note for many bars.
+
+Chapter 5.4 uses pedal points the other way round: held on a note *other* than the tonic, they build expectation for home.
+
+## The pentatonic scale
+
+Not every scale has seven notes. The most widespread alternative has five: the **pentatonic scale**. Play only the black keys of a piano and you are playing one. On C, it's C D E G A: the major scale with its two half steps removed (F and B).
+
+With no half steps, the pentatonic scale has no notes that lean hard into a neighbor. That has two consequences:
+
+- **It's hard to play a wrong note.** Any combination sounds reasonable, which is why improvising on the black keys sounds fine and why pentatonic tunes are so singable. "Amazing Grace" and "Auld Lang Syne" are pentatonic.
+- **Home is set by the tune, not the scale.** The same five notes can center on C (major pentatonic) or on A (A C D E G, the **minor pentatonic**). The minor pentatonic is the backbone of blues and rock guitar soloing.
+
+Pentatonic scales appear in folk and traditional music across much of the world, from Scotland to West Africa to East Asia, though often tuned differently from the piano's. Chapter 3.2 asks why five- and seven-note scales turn up so widely.
+
+<Callout kind="verify" title="pentatonic">
+Check that "Amazing Grace" (as usually sung) and "Auld Lang Syne" are pentatonic, and the claims about where pentatonic scales occur. Be careful with "universal": the claim is that they are widespread, not that every culture uses them.
+</Callout>
+
+## How strong is home?
+
+The hierarchy can be strong or weak. A Bach chorale or a pop ballad establishes its key within a few seconds and never lets you forget it. A modal jazz solo, a raga, or a drone-based piece holds home steady while making the other notes vivid. Some music deliberately keeps home uncertain: an ambiguous melody, a pentatonic vamp that could be on either of two notes. Some twentieth-century composers abandoned the tonic altogether, writing music in which no note is home; chapter 3.9 asks what listeners hear in it.
+
+Even within one piece, home can move. That's the subject of chapter 3.6.
+
+<DataTable title="What makes a note home" caption="The cues listeners use, and the musical devices that exploit them.">
+
+| Cue | What it means | Device that exploits it |
+|---|---|---|
+| Frequency and duration | The note heard most, and longest | Melodies that circle and rest on home |
+| Position | First and especially last notes; strong beats | Ending on the tonic |
+| The bass | The lowest note weighs most | Drones, pedal points, the bass line |
+| The tonic chord | Tonic, third, and fifth together | Opening and closing on the home chord |
+| Rare intervals | Half steps and the tritone locate you in the scale | The half step into home |
+| Learned hierarchy | Your culture's statistics, absorbed by listening | Every familiar style; and the surprise when a style uses another |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. Why the tonic is inferred, not given: the same notes can have different homes. The cues listeners use.
+2. The probe-tone method and the tonal hierarchy: tonic, then fifth and third, then the other scale notes, then non-scale notes. Why low ratings mean instability and pull, not "wrong."
+3. Where the hierarchy comes from: statistics of the music you know, acoustics (the harmonic series), short-term memory. The cross-cultural and new-scale learning evidence.
+4. Key finding by counting, and why it fails on some simple tunes (order and position matter).
+5. The seven modes as one set of notes with seven homes; their order from bright to dark; the color note of each; relative versus parallel.
+6. Drones and pedal points as the most direct ways of naming home.
+7. The pentatonic scale: why it has no strong pulls, and why it turns up so widely.
+
+**Decisions for your rewrite:**
+
+- **Order.** I put the probe tones before the modes so the hierarchy is in place when the modes move home around. The alternative is to open with the white-key experiment (more immediately musical) and treat the probe tones as the explanation.
+- **How much history.** I kept the history of the modes short. If you find it interesting, there is a lot more (the Greek names' confusing transfer to medieval chant; the eight-mode system).
+- **Examples.** These lean on well-known recordings. Swap in modal music you know: Irish fiddle tunes, Indian film songs, video-game scores, your favorite metal riff.
+- **Numbers or not.** The probe-tone table may be more detail than your reader wants. The lab carries the same information; the table could go in a side note.
+
+**Misconceptions to watch for:**
+
+- "C major and A minor are different notes." Same notes, different home: that's the whole point of relative keys.
+- "Minor means sad." Dorian is minor and often sounds cool or bright; mood depends on tempo, register, timbre, and context too.
+- "The tonal hierarchy is universal." The tonic-and-fifth part may be widely shared; the detail is learned.
+- "Modes are exotic." Two of them are major and minor, and the others are in a lot of the music you already know.
+- "A low probe-tone rating means a bad note." It means an unstable note, which is what makes melody move.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Krumhansl, C. L., & Shepard, R. N. (1979). Quantification of the hierarchy of tonal functions within a diatonic context. *Journal of Experimental Psychology: Human Perception and Performance*, 5(4), 579–594.
+- Krumhansl, C. L., & Kessler, E. J. (1982). Tracing the dynamic changes in perceived tonal organization in a spatial representation of musical keys. *Psychological Review*, 89(4), 334–368.
+- Krumhansl, C. L. (1990). *Cognitive Foundations of Musical Pitch*. Oxford University Press.
+- Castellano, M. A., Bharucha, J. J., & Krumhansl, C. L. (1984). Tonal hierarchies in the music of North India. *Journal of Experimental Psychology: General*, 113(3), 394–412.
+- Kessler, E. J., Hansen, C., & Shepard, R. N. (1984). Tonal schemata in the perception of music in Bali and in the West. *Music Perception*, 2(2), 131–165.
+- Brown, H., Butler, D., & Jones, M. R. (1994). Musical and temporal influences on key discovery. *Music Perception*, 11(4), 371–407.
+- Leman, M. (2000). An auditory model of the role of short-term memory in probe-tone ratings. *Music Perception*, 17(4), 481–509.
+- Loui, P., Wessel, D. L., & Hudson Kam, C. L. (2010). Humans rapidly learn grammatical structure in a new musical scale. *Music Perception*, 27(5), 377–388.
+- Temperley, D. (2007). *Music and Probability*. MIT Press.
+- Huron, D. (2006). *Sweet Anticipation: Music and the Psychology of Expectation*. MIT Press.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details (volume, pages, year), especially Krumhansl & Shepard 1979, Brown, Butler & Jones 1994, and Loui et al. 2010.
+</Callout>

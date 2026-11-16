@@ -1,0 +1,350 @@
+---
+title: "Subdivision, Syncopation, Accent, and Grouping"
+volume: 2
+chapter: 3
+summary: A meter is only a grid of strong and weak positions. What brings it to life is what happens on and between the beats. How beats are divided, which notes stand out and why, how notes group into units that ignore the bar lines, and how pushing a note ahead of its beat makes a rhythm pull.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [beat, tempo, meter, subdivision, beat-induction, tactus, subjective-rhythmization, metrical-hierarchy, syncopation, clave, hemiola, entrainment, pitch, register, chord, timbre, auditory-stream]
+lintIgnore: [spectrum, groove] # only in reference titles (Music Theory Spectrum; Witek et al.)
+introduces: [note-values, tuplet, swing, half-time-feel, drum-kit, backbeat, accent, rhythmic-grouping, anacrusis, additive-meter, rhythmic-anticipation]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts. There is one new lab with two halves: **Accents** (an even stream of tones you can group with louder, longer, or higher notes, with or without a beat underneath) and **Pushed notes** (a familiar tune over a drum loop, where you can click any note to move it ahead of its beat). Headphones or speakers with some bass help, so the kick drum comes through. Then write your version in `src/content/chapters/v2-03-syncopation.mdx`.
+
+Chapter 2.2 built the meter: the beat you infer, the hierarchy of strong and weak positions, and syncopation as a note that contradicts the meter in your head. This chapter fills the grid in. It also takes over two jobs from chapter 2.5: it introduces the drum kit and the shuffle, because you can't talk about the backbeat or triplet feel without them.
+</Callout>
+
+## The question
+
+Sing "Mary Had a Little Lamb" with every syllable squarely on a beat. It's correct, and it's a nursery rhyme. Now sing it the way a pop singer might, letting a couple of syllables land a hair early, just before the beat they belong to, and holding them through it. Nothing about the tune has changed: same notes, same order, same tempo. Yet the second version leans forward. It has somewhere to go.
+
+Chapter 2.2 showed that a beat isn't in the sound. It's a grid of expectation that your brain lays over the sound and keeps running. This chapter is about everything that happens *on* that grid: how the space between beats gets divided, which notes stand out and why, how notes gather into groups that ignore the bar lines, and how a note that arrives early can make a whole band feel urgent.
+
+There are four ideas, and they are worth keeping separate because musicians and textbooks often blur them:
+
+1. **Subdivision:** how each beat is split into smaller, faster pulses.
+2. **Accent:** what makes one note stand out from its neighbors.
+3. **Grouping:** which notes belong together as a unit.
+4. **Syncopation:** what happens when accents and groups pull against the meter.
+
+## Dividing the beat
+
+### Twos and threes
+
+The Toolkit introduced the basic divisions: two eighth notes per beat ("1 &"), four sixteenths ("1 e & a"), or three triplets ("1 trip let"). Chapter 2.2 gave the names for meters that divide the beat in two (simple meters such as 4/4) and in three (compound meters such as 6/8 and 12/8).
+
+The names come from a family of durations called **note values**. A whole note divides into two half notes, four quarter notes, eight eighths, and sixteen sixteenths. In 4/4, the beat is a quarter note, so "eighth" and "sixteenth" mean half and a quarter of a beat. A **dot** after a note adds half its value again: a dotted quarter lasts three eighths, which is exactly one beat of 6/8. British musicians use an older set of names, which you'll meet in many books and scores.
+
+<DataTable title="Note values" caption="Durations in 4/4, where the beat is a quarter note. The British names are standard in the UK and much of the Commonwealth.">
+
+| American name | British name | Beats in 4/4 | Per bar of 4/4 |
+|---|---|---|---|
+| Whole note | Semibreve | 4 | 1 |
+| Half note | Minim | 2 | 2 |
+| Quarter note | Crotchet | 1 | 4 |
+| Eighth note | Quaver | ½ | 8 |
+| Sixteenth note | Semiquaver | ¼ | 16 |
+| Dotted quarter | Dotted crotchet | 1½ | (one beat of 6/8) |
+| Eighth-note triplet | Quaver triplet | ⅓ each | 12 |
+
+</DataTable>
+
+A meter commits to one kind of division, but music doesn't have to obey it. Squeezing three equal notes into the time of two is a **triplet**, and the general name for any such squeeze (five in the time of four, two in the time of three) is a **tuplet**. A tuplet is a local contradiction of the subdivision, the way a syncopation is a local contradiction of the beat. A run of quarter-note triplets in 4/4 (three evenly spaced notes across two beats) floats over the bar, which is why singers and rappers use them to sound unhurried against a busy drum part.
+
+<Callout kind="verify" title="note values and tuplets">
+Check the British names and that "dotted crotchet" is the standard name for the 6/8 beat. Check the claim that quarter-note triplets are a recognized device in hip-hop vocal flows (the so-called "triplet flow," associated with Migos around 2013); find a source before keeping it.
+</Callout>
+
+### The shuffle
+
+Between straight eighths and triplets lies one of the most important feels in popular music. In a **shuffle**, each beat is heard in three (as triplets) but only the first and third parts are played: a long note and then a short one, *DAH-da DAH-da*. Musicians usually write it as plain eighth notes with an instruction to "swing" them, because writing every beat as a triplet with a tie is unreadable. **Swing**, in general, means playing pairs of notes long-short instead of even. A shuffle is swing at roughly the triplet proportion (the long note gets two-thirds of the beat, the short note one-third), played with enough weight that the long-short pattern drives the whole band.
+
+Chapter 2.5 takes swing apart in detail: how long the long note really is (often not exactly two-thirds), and why that matters. Here the point is that the shuffle is a *subdivision*: the band is dividing each beat in three, even though the meter on paper says four beats of two.
+
+<ListeningCue track="srv-pride-and-joy" start="0:00" end="0:40">
+A Texas shuffle. Count "1 trip let, 2 trip let" and notice that the guitar plays on the "1" and "let" of each beat, skipping "trip." The drums and bass lock to the same long-short pattern.
+</ListeningCue>
+
+### Half-time and double-time
+
+Chapter 2.2 showed that the beat a listener taps (the tactus) is a choice among several levels of the metrical hierarchy, usually the one closest to about 600 ms. Drummers exploit this. Keep every note on the same grid, at the same tempo, but move the loudest snare hit, and listeners will move their beat with it:
+
+- In a normal rock beat, the snare lands on beats 2 and 4.
+- In **half-time feel**, it lands only on beat 3. Every bar now has one big hit instead of two, and the music feels half as fast, though the hi-hat keeps ticking at the same speed.
+- In **double-time feel**, the snare lands on the "&" between every beat, twice as often as normal. The music feels twice as fast.
+
+The tempo marking doesn't change in either case. What changes is which level of the hierarchy feels like the beat.
+
+<SyncopationLab modes={['push']} presets={['square']} controls={['feel', 'shuffle', 'tempo']} title="Feel: one tune, three speeds" />
+
+<Callout kind="try">
+1. Play the tune with the feel on **Normal**. Tap your foot. Most people tap on every beat: four taps per bar.
+2. Switch to **Half-time** without stopping. The tune is identical and the grid hasn't moved, but the music sinks. Did your foot slow down to two taps per bar?
+3. Switch to **Double-time**. The hi-hat now ticks every sixteenth and the snare hits every "&". The tune seems to sit on top of a faster song.
+4. Back on **Normal**, switch the eighths to **Shuffle**. The hi-hat goes long-short. The tune itself is all on the beat, so it barely changes, but the feel underneath turns from rock to blues.
+</Callout>
+
+<ListeningCue track="toto-rosanna" start="0:00" end="0:40">
+Jeff Porcaro's "half-time shuffle": a shuffle subdivision under a half-time backbeat, with the snare landing on beat 3. The hi-hat and quiet in-between notes keep the fast triplet grid busy while the big hit comes only once a bar. Tap the beat and decide which speed you chose.
+</ListeningCue>
+
+<Callout kind="check">
+A song is marked at 140 BPM. Two listeners tap along, one at 140 and one at 70. Is one of them wrong? What might the drummer be doing that makes 70 natural?
+
+<Answer>
+Neither is wrong. Both are tapping a level of the same metrical hierarchy (chapter 2.2). A half-time feel, with the snare on beat 3 only, makes the slower level stand out, so a 70-tap feels natural. The tempo marking says how fast the grid is; it doesn't decide which level listeners feel as the beat.
+</Answer>
+</Callout>
+
+## The backbeat
+
+### Strong beats, loud beats
+
+The metrical hierarchy of 4/4 says beat 1 is strongest, beat 3 next, and beats 2 and 4 weaker. Yet in nearly every rock, R&B, soul, funk, and pop song since the mid-1950s, the *loudest* sound in the bar, the crack of the snare drum, lands on beats 2 and 4. This is the **backbeat**.
+
+First, the instrument. A standard **drum kit** has four main voices for our purposes. The **kick**, or bass drum, is the low thump played with a foot pedal. The **snare** is the sharp crack: a drum with wires stretched under its bottom head that rattle when it's struck. The **hi-hat** is a pair of small cymbals that ticks out steady time. The **ride** is a large cymbal used for longer, ringing time-keeping patterns, the heart of jazz drumming.
+
+The backbeat looks like a contradiction: the loudest hits on the metrically weak beats. Why doesn't it flip the meter, so we hear beat 2 as the downbeat? Because the other parts hold the frame. The kick drum and the bass usually land on 1 (and often 3), the chords tend to change on 1, and the stressed words of a line tend to land on strong beats. The meter is established by all of those together, and the snare is heard as a loud event on a weak beat. That tension between metrical strength and loudness is part of what gives the backbeat its push: each snare hit answers the beat before it.
+
+<SyncopationLab modes={['push']} presets={['square']} controls={['snare', 'tempo']} title="Where the snare goes" />
+
+<Callout kind="try">
+1. Play with the snare on **2 and 4**. A plain rock beat under the tune.
+2. Switch the snare to **1 and 3**. The kick and snare now hit together on the strong beats. Many listeners describe the result as a march or a polka: square, heavy, more "oom-pah" than rock.
+3. Switch the snare **Off**. The tune and kick are still there, but the pulse loses its spring.
+</Callout>
+
+### Where it came from
+
+The backbeat grew out of African American music. Congregations in many Black churches clap on 2 and 4, and jump-blues and rhythm-and-blues bands of the 1940s stressed those beats. In the 1950s, New Orleans session drummers, especially Earl Palmer on records by Little Richard and Fats Domino, made a hard, loud snare backbeat central to the new rock and roll. From there it went everywhere: Motown, soul, rock, and nearly all later pop.
+
+The contrast with older popular styles is easiest to hear in how audiences clap. Ask a crowd raised on rock to clap along and many will find 2 and 4; ask a crowd raised on marches and older dance music and many will clap on 1 and 3. Musicians have long joked about it, and the joke is about the backbeat.
+
+<ListeningCue track="little-richard-long-tall-sally" start="0:00" end="0:40">
+Listen for the snare: loud, steady, every beat 2 and 4, under Little Richard's shouted vocal and pounding piano. Then clap along and see where your hands land.
+</ListeningCue>
+
+<Callout kind="verify" title="backbeat history">
+Check: gospel congregational clapping on 2 and 4; the role of 1940s jump blues (Louis Jordan) and of Earl Palmer, including whether Palmer played on "Long Tall Sally" and his own account of where his backbeat came from (Palmer's oral history; Tony Scherman's 1999 biography *Backbeat*). Check Tamlyn (1998), the main scholarly history of the snare backbeat. The "clap on 1 and 3" contrast is folklore; the well-known Harry Connick Jr. concert clip (an audience clapping on 1 and 3) may be a usable example if it's an official upload. Don't present any of this as more than a broad picture without sources.
+</Callout>
+
+## What makes a note stand out
+
+### Kinds of accent
+
+An **accent** is anything that makes one note stand out from its neighbors. That definition is deliberately broad, because notes can stand out in many ways:
+
+<DataTable title="Kinds of accent" caption="The first five are in the sound itself (Lerdahl and Jackendoff call these phenomenal accents). The last is in the listener's head.">
+
+| Accent | What stands out | Example |
+|---|---|---|
+| Dynamic | A louder note | The snare backbeat; a pianist leaning on one note |
+| Agogic | A longer note | A held note in a run of short ones |
+| Tonal (melodic) | A higher note, or one after a big jump | The top note of a tune's line |
+| Harmonic | A note where the chord changes | The bass note at each chord change |
+| Timbral | A new or brighter sound | A cymbal crash; a horn section entering |
+| Metrical | A strong position in the meter | Beat 1, even when nothing is played there |
+
+</DataTable>
+
+The word *agogic* comes from the German theorist Hugo Riemann, who used it for expressive stretching of time; today it usually just means "accent by length." Fred Lerdahl and Ray Jackendoff's theory of tonal music (1983) gives the most useful split: **phenomenal accents** are events in the sound (the first five rows), and the **metrical accent** is the strength a position has in your meter. Phenomenal accents are the evidence your brain uses to find the meter (chapter 2.2). Once it has found one, the metrical accents are its prediction, and the rhythm can either confirm or contradict it.
+
+<Callout kind="verify" title="accent terminology">
+Check Riemann's coinage of "agogic" (*Musikalische Dynamik und Agogik*, 1884) and how its meaning narrowed. Check Lerdahl and Jackendoff's three kinds of accent (phenomenal, structural, metrical) and their definitions; I've left out "structural accent" (accents at the start and end of a phrase, caused by the harmony) to keep the table simple.
+</Callout>
+
+### Accents make groups
+
+Here is the experiment behind all of this. Take a stream of identical tones, evenly spaced. Chapter 2.2 showed that you will hear groups in it anyway (subjective rhythmization). Now make every third tone stand out, by any of the means in the table. The stream snaps into groups of three, each starting on an accent. Make every fourth tone stand out and you hear groups of four.
+
+Accents and grouping go together in a particular way. A louder or higher note tends to start a group, and a longer note tends to end one. The psychologists' version, going back to Thaddeus Bolton in 1894 and Herbert Woodrow in the 1900s: alternate loud and soft tones and listeners hear loud-soft pairs (loud first); alternate long and short tones and listeners hear short-long pairs (long last). That's the *iambic/trochaic law*, named after poetic feet. It also varies with the language you grew up speaking, which suggests it is partly learned.
+
+<SyncopationLab modes={['accents']} groupings={['4444', '332', '3333']} title="Accents and grouping" />
+
+<Callout kind="try">
+1. Play **4 + 4 + 4 + 4** with the accent set to **None**. You're hearing identical tones; any grouping is your own (chapter 2.2). Switch to **Louder** and groups of four appear.
+2. Try **Higher**, then **Longer**. All three make groups. Which one makes them clearest for you? With **Longer**, do the long tones seem to start the groups or end them?
+3. Turn the beat to **Steady**. Each group starts on a beat drum: the accents confirm the meter.
+4. Switch to **3 + 3 + 2** with the beat still on. Two of the three groups in each bar start on a beat, but the middle one starts between beats, and the beat that follows it passes with no accent. The groups cut across the meter, and the result is the tresillo from chapter 2.2: a syncopation made of accents alone, without moving a single note.
+5. Try **3 + 3 + 3 + 3**. Groups of three against a beat every two: the hemiola again.
+</Callout>
+
+<Callout kind="verify" title="iambic/trochaic law">
+Check Bolton (1894) and Woodrow (1909, 1911) and the exact statement of the iambic/trochaic law. Check the cross-linguistic result (Iversen, Patel & Ohgushi 2008: English and Japanese listeners grouped long-short alternations differently). The lab's "Longer" accent is made by holding a tone and cutting the others short, not by changing the spacing; state that in your version if you use the lab to illustrate the law.
+</Callout>
+
+## Grouping is not meter
+
+### Two structures at once
+
+It's tempting to think a rhythm has one organization: the bars. But the notes of a tune also fall into units that belong together, the musical equivalents of words and phrases. This is **rhythmic grouping**. Lerdahl and Jackendoff's central claim about rhythm is that grouping and meter are *separate structures*, heard at the same time, and they don't have to line up.
+
+The simplest evidence is a tune you already know.
+
+<GroupingMeter />
+
+"Happy Birthday" doesn't start on beat 1. "Hap-py" comes first, on the last beat of a bar before the song's first full bar; the first strong beat is "birth." Notes before the first downbeat are a **pickup**, or **anacrusis** (from the Greek for "upbeat"). Pickups are everywhere: "The Star-Spangled Banner" ("O say") and many hymns and folk songs start with one. So does almost every line of English song, because English sentences often begin with unstressed words ("the," "a," "I," "and") and a singer naturally puts the first stressed syllable on the beat.
+
+Grouping boundaries are made by the same cues that make auditory streams (chapter 1.4) and accents: a longer note or a rest at the end of a group, a change of register, a new instrument, a new line of lyrics. The meter is made by the regularity of strong events. Because the two are separate, a phrase can start anywhere in the bar, and composers use that freedom constantly. A phrase that starts *after* the downbeat sounds hesitant or conversational; one that starts with a pickup leans into its first strong beat.
+
+<Callout kind="check">
+In "Happy Birthday," which syllable carries the first metrical accent, and which carries the first phenomenal accent? Are they the same?
+
+<Answer>
+The first metrical accent (a downbeat) is "birth." The first phenomenal accents come from length and pitch: "Hap" is longer than "py," and "birth" is higher than both. So "birth" carries both kinds, and that's part of why it feels like the arrival point. "Hap" starts the group but sits on a weak beat: it's a pickup.
+</Answer>
+</Callout>
+
+### Additive rhythms and additive meters
+
+The 3 + 3 + 2 grouping from the lab deserves a closer look, because it shows up across the world's music and all over modern pop. In Cuban and Afro-Caribbean music it's the tresillo, the first half of the clave (chapter 2.2). In early rock and roll it's the Bo Diddley beat's opening. In recent pop, many riffs and keyboard parts are grouped 3 + 3 + 2 over a plain four-beat drum part. The rhythm is built by *adding* unequal groups (3 + 3 + 2) rather than by *dividing* the bar into equal halves and quarters, while the meter underneath stays divisive and even. The interest comes from the mismatch.
+
+<ListeningCue track="sheeran-shape-of-you" start="0:00" end="0:30">
+The opening riff, before the drums. Count fast eighths "1 2 3, 1 2 3, 1 2" and you'll find the riff's notes on the 1s. When the beat comes in, the riff keeps its 3 + 3 + 2 grouping against the even pulse.
+</ListeningCue>
+
+In some traditions, though, the groups *are* the beat. In much Balkan, Turkish, and Greek music, a bar of seven fast pulses is felt as three beats of unequal length, 2 + 2 + 3, and dancers step on each one. Chapter 2.2 described Hannon and Trehub's finding that Bulgarian and Macedonian adults hear such meters as easily as North Americans hear 4/4. These are **additive meters**: the beat itself is uneven, short-short-long. Jazz and rock borrowed the idea: Dave Brubeck's "Take Five" is in 5/4, played as 3 + 2.
+
+<SyncopationLab modes={['accents']} grouping="223" groupings={['223', '332', '33334']} title="Additive rhythm or additive meter?" />
+
+<Callout kind="try">
+1. Play **2 + 2 + 3** with the beat on **Steady**. A steady beat every two eighths doesn't fit: it lines up with the first three groups, then drifts off them for the next three.
+2. Switch the beat to **On each group**. Now the beat is uneven (short, short, long) and it feels right. That's an additive meter.
+3. Switch to **3 + 3 + 2** and try both beats. "On each group" works here too, but so does **Steady**, and the steady beat is the one most pop listeners will hear: an even meter with a syncopated rhythm on top.
+4. Try **3 + 3 + 3 + 3 + 4** with a steady beat. The groups of three slide across the beat and the group of four brings them home. Musicians call a long pattern like this, deliberately misaligned with the bar until it lines up again, a *cross-rhythm*; chapter 2.4 takes it further.
+</Callout>
+
+<ListeningCue track="brubeck-take-five" start="0:00" end="0:45">
+Count five beats per bar, "1 2 3 4 5." Listen to the piano: its chords split each bar into 3 + 2, a long group and a short one. The drums keep a swinging pattern across the whole bar.
+</ListeningCue>
+
+<Callout kind="verify" title="additive rhythm examples">
+Check the etymology of *anacrusis* (Greek *anákrousis*, a striking up, a prelude). Check the 3 + 3 + 2 grouping of the "Shape of You" riff and the cue time (the official video has an intro). Check the Bo Diddley beat as 3 + 3 + 4 + 2 + 4 (it's often described as clave-like; get the exact pattern). Check Brubeck's piano vamp as 3 + 2 and whether the drums swing. For the theory, check London (2012) on additive versus divisive meters, and the term *aksak* ("limping") for Balkan and Turkish additive meters.
+</Callout>
+
+## Syncopation in depth
+
+### Pushing a note
+
+Chapter 2.2 defined syncopation as notes on weak positions with strong positions left empty, so the rhythm pulls against the meter. In popular music, the most common syncopation by far has a specific shape: a note that belongs on a strong beat arrives a little *early*, a sixteenth or an eighth before it, and is held through the beat. Musicians call this a push or an **anticipation**: the singer "pushes" the word, the band "pushes" the chord change.
+
+David Temperley (1999) argued that this is how listeners understand most syncopation in rock. When a note arrives just before the beat and the beat itself passes in silence, we don't hear a new rhythm with a note on the "&". We hear the ordinary on-beat rhythm, with one note displaced early. The lab draws exactly that: a dashed outline at the beat where the note "belongs," and the real note just before it.
+
+<SyncopationLab modes={['push']} preset="pop" title="Pushing the beat" />
+
+<Callout kind="try">
+1. Play **On the beat**. The nursery rhyme, square.
+2. Switch to **Two pushes**. The notes on beat 3 of the first bar and on the next downbeat now arrive an eighth early. Hear how the tune leans forward. The red rings mark the strong positions that now pass in silence; the score counts how much the rhythm pulls against the meter.
+3. Click the other notes to make your own pattern. Each click pushes a note a sixteenth earlier, then an eighth, then puts it back. Which pushes sound natural and which sound like mistakes? (Pushing the very first note moves it into the end of the previous loop: an anticipated downbeat.)
+4. Try **Everything early**. Every note is pushed, the score is high, and the tune fights the drums all the way through.
+5. Now turn **Drums and bass** off. Does the tune still sound pushed? For many listeners it doesn't: with nothing else marking the beat, your brain finds a new meter that fits the tune (chapter 2.2), and the "pushed" notes are now on the beat. Syncopation needs a meter to pull against.
+</Callout>
+
+<Callout kind="check">
+In the lab, pushing the note on beat 3 by an eighth raises the score, but pushing the note on beat 2 by the same amount raises it less. Why?
+
+<Answer>
+The score measures how strong the silent position is compared with the note's new position. Beat 3 is the half bar, the second-strongest position, so leaving it silent is a bigger contradiction of the meter than leaving beat 2 silent. A push across a strong beat pulls harder than a push across a weak one.
+</Answer>
+</Callout>
+
+### Measuring it
+
+The lab's score is a simplified version of a measure published by Christopher Longuet-Higgins and C. S. Lee in 1984, which chapter 2.5 uses to describe experiments on why some music makes people want to move. Each position in the bar gets a weight from the metrical hierarchy: the downbeat highest, then beat 3, then beats 2 and 4, then the "&"s, then the sixteenths. A syncopation is a note followed by silence on a stronger position, and it scores the difference in weight. Add them up and you have a number for how much a rhythm pulls against its meter.
+
+It's crude. It ignores loudness, pitch, the other instruments, and the style's conventions. But it predicts listeners' judgments of syncopation fairly well, and it lets researchers ask questions like the one in chapter 2.5: how much syncopation makes people want to move? (The answer turns out to be "a medium amount.")
+
+David Huron and Ann Ommen (2006) used a related approach to measure a historical change. Analyzing American popular music from 1890 to 1939, they found that syncopation grew steadily more common, and that the kinds of syncopation became more varied, as ragtime gave way to jazz-age song.
+
+<Callout kind="verify" title="syncopation measures">
+Check Longuet-Higgins and Lee (1984) and whether the lab's simplification (rhythm.ts) matches their definition closely enough to call it "their measure." Check Temperley (1999) on syncopation in rock as displacement, and the claim that anticipation is the most common type. Check Huron and Ommen (2006): the date range, the corpus, and the main findings.
+</Callout>
+
+### Other kinds of syncopation
+
+Anticipation is the commonest, but not the only kind:
+
+- **Delay.** A note arrives late, after its beat. Singers do it for a lazy, behind-the-beat effect. It's rarer as a written syncopation than as a matter of feel (chapter 2.5).
+- **Off-beat streams.** A whole part plays only on the "&"s: the reggae guitar "skank," the open hi-hat in disco and house. Every note is on a weak position, but because the pattern is so regular it doesn't confuse the meter; it hangs off it.
+- **Cross-accents.** Accents placed in a repeating pattern that doesn't match the meter, like the groups of three over a beat of two in the lab. The tresillo is the most famous example.
+
+Each kind pulls against the meter differently, but all of them depend on the listener holding the meter steady. That's why syncopated music usually has a part that doesn't syncopate: the kick on 1, the steady hi-hat, the bass on the downbeat. The plain part makes the fancy part audible.
+
+<ListeningCue track="stevie-superstition" start="0:00" end="0:30">
+The drums start alone and lay down a clear beat. Then the clavinet riff enters, full of sixteenth-note pushes and gaps on the strong beats. Try tapping the beat once the riff is in; the drums are what let you keep it.
+</ListeningCue>
+
+<Callout kind="check">
+A reggae guitarist plays only on the "&"s, every bar, for a whole song. A jazz soloist plays a phrase that starts on the "&" of 4 and ties over into the next bar. Which is more syncopated, by the measure above? Which feels more syncopated?
+
+<Answer>
+By the measure, the reggae part scores higher over the song, because every note is followed by a silent beat. But it rarely *feels* very syncopated, because the pattern is completely regular: your brain predicts it after a bar or two, and it hangs off the beat without threatening it. The soloist's single anticipation is surprising and pulls hard against the downbeat. The measure counts conflicts with the meter; it doesn't model what you've learned to expect from the pattern itself. That gap is one reason the measure is only a rough guide.
+</Answer>
+</Callout>
+
+## The layers of a rhythm
+
+<DataTable title="The layers of a rhythm" caption="Five things that are easy to blur together. Each one can change without the others.">
+
+| Layer | Question it answers | Made by | Example |
+|---|---|---|---|
+| Meter | Which positions are strong? | Regular accents, inferred by the listener (chapter 2.2) | 4/4: beat 1 strongest |
+| Subdivision | How is each beat divided? | The fastest steady part (hi-hat, guitar, shaker) | Straight eighths, a shuffle, sixteenths |
+| Accent | Which notes stand out? | Loudness, length, pitch, harmony, timbre | The snare backbeat |
+| Grouping | Which notes belong together? | Accents, rests, long notes, new lines of lyrics | "Happy Birthday" starting on a pickup |
+| Syncopation | Where does the rhythm pull against the meter? | Accents and notes on weak positions, silence on strong ones | A pushed chord change |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. Subdivision: twos and threes, note values (both naming systems), tuplets as local contradictions, the shuffle as a triplet subdivision of a four-beat bar.
+2. Half-time and double-time: same grid, same tempo, a different level felt as the beat, because of where the snare goes.
+3. The backbeat: the drum kit, why the loudest hit on the weakest beats doesn't flip the meter, and a sketch of its history.
+4. Accents: the kinds, phenomenal versus metrical, and how accents create groups (loud starts a group, long ends one).
+5. Grouping versus meter: two separate structures, pickups, and why phrases can start anywhere.
+6. Additive rhythms over an even meter (3 + 3 + 2) versus additive meters (2 + 2 + 3 as the beat itself).
+7. Syncopation in depth: anticipation as the main kind, how it's measured, other kinds, and why syncopation needs a steady part to pull against.
+
+**Decisions for your rewrite:**
+
+- **The opening.** I used singing a nursery rhyme square and then pushed. Alternatives: start with the backbeat (clap on 1 and 3, then on 2 and 4), or with "Happy Birthday" and its pickup.
+- **How much notation.** This draft avoids staff notation entirely and uses counting ("1 e & a") and grids. If you want to introduce note symbols, this is the natural chapter, but it adds weight.
+- **Overlap with chapter 2.5.** Both chapters now explain the syncopation measure; 2.5 has the weights table. Decide where the full treatment lives and make the other one point to it. The drum kit and the shuffle moved here from 2.5, so 2.5's text that introduces them can shrink to a reminder.
+- **Examples.** Swap in your own: a pop song you know with pushed syllables, a half-time section in metal or trap, a 7/8 song you like (Pink Floyd's "Money" is in 7/4).
+
+**Misconceptions to watch for:**
+
+- "Syncopation is just playing off the beat." It's playing against a meter the listener is holding. Without the meter, there's nothing to syncopate against.
+- "The backbeat is the strong beat." It's the loudest beat, on the metrically weak positions.
+- "A phrase starts at the beginning of a bar." Grouping and meter are separate; pickups are normal.
+- "A shuffle is a different tempo." It's a different subdivision of the same beat.
+- "7/8 is 4/4 with a beat missing." In an additive meter, the uneven beat is the meter.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Bolton, T. L. (1894). Rhythm. *American Journal of Psychology*, 6(2), 145–238.
+- Cooper, G., & Meyer, L. B. (1960). *The Rhythmic Structure of Music*. University of Chicago Press.
+- Huron, D., & Ommen, A. (2006). An empirical study of syncopation in American popular music, 1890–1939. *Music Theory Spectrum*, 28(2), 211–231.
+- Iversen, J. R., Patel, A. D., & Ohgushi, K. (2008). Perception of rhythmic grouping depends on auditory experience. *Journal of the Acoustical Society of America*, 124(4), 2263–2271.
+- Lerdahl, F., & Jackendoff, R. (1983). *A Generative Theory of Tonal Music*. MIT Press.
+- London, J. (2012). *Hearing in Time: Psychological Aspects of Musical Meter* (2nd ed.). Oxford University Press.
+- Longuet-Higgins, H. C., & Lee, C. S. (1984). The rhythmic interpretation of monophonic music. *Music Perception*, 1(4), 424–441.
+- Scherman, T. (1999). *Backbeat: Earl Palmer's Story*. Smithsonian Institution Press.
+- Tamlyn, G. N. (1998). *The Big Beat: Origins and Development of Snare Backbeat and Other Accompanimental Rhythms in Rock'n'Roll* (Doctoral dissertation). University of Liverpool.
+- Temperley, D. (1999). Syncopation in rock: A perceptual perspective. *Popular Music*, 18(1), 19–40.
+- Toussaint, G. T. (2013). *The Geometry of Musical Rhythm*. CRC Press.
+- Witek, M. A. G., Clarke, E. F., Wallentin, M., Kringelbach, M. L., & Vuust, P. (2014). Syncopation, body-movement and pleasure in groove music. *PLoS ONE*, 9(4), e94446.
+- Woodrow, H. (1909). A quantitative study of rhythm. *Archives of Psychology*, 14, 1–66.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details, especially Bolton 1894 (pages), Woodrow 1909 (series and pages), Iversen et al. 2008 (pages), and the Tamlyn dissertation's title and university.
+</Callout>

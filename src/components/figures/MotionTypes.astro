@@ -1,0 +1,58 @@
+---
+// The four ways two voices can move relative to each other, ordered from
+// least to most independent-sounding. Each panel is two notes in each of two
+// voices; the interval between the voices is labeled before and after.
+import Figure from '../ui/Figure.astro';
+
+const r = (v: number) => Math.round(v * 10) / 10;
+const NAMES = ['unison', 'm2', 'M2', 'm3', 'M3', 'P4', 'TT', 'P5', 'm6', 'M6', 'm7', 'M7', 'octave'];
+type Panel = { title: string; sub: string[]; lo: [number, number]; hi: [number, number] };
+const panels: Panel[] = [
+  { title: 'Parallel', sub: ['same direction,', 'same interval'], lo: [60, 62], hi: [67, 69] },
+  { title: 'Similar', sub: ['same direction,', 'interval changes'], lo: [60, 62], hi: [64, 69] },
+  { title: 'Oblique', sub: ['one voice holds,', 'the other moves'], lo: [60, 60], hi: [64, 65] },
+  { title: 'Contrary', sub: ['opposite', 'directions'], lo: [64, 60], hi: [67, 72] },
+];
+const PW = 165;
+const Y0 = 66, Y1 = 154, LO = 58, HI = 74;
+const y = (m: number) => r(Y1 - ((m - LO) / (HI - LO)) * (Y1 - Y0));
+const drawn = panels.map((p, i) => {
+  const x = 6 + i * PW;
+  const xa = x + 40, xb = x + 120;
+  return { ...p, x, xa, xb, iv: [NAMES[p.hi[0] - p.lo[0]], NAMES[p.hi[1] - p.lo[1]]] };
+});
+---
+
+<Figure
+  title="Four kinds of motion"
+  caption="Two voices, two notes each (time runs left to right). <strong>Parallel</strong> motion keeps the same interval, so the voices move as a block; when that interval is a fifth or an octave, the two voices tend to fuse into one (chapter 1.4), which is why traditional part-writing forbids parallel fifths and octaves. <strong>Contrary</strong> motion is the most independent: the ear can't mistake two lines heading in opposite directions for one. Real music mixes all four."
+>
+  <svg viewBox="0 0 680 218" role="img" aria-label="Parallel, similar, oblique, and contrary motion between two voices">
+    <defs>
+      <marker id="mt-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fig-head" />
+      </marker>
+    </defs>
+    {drawn.map((p) => (
+      <g>
+        <text x={p.x + 80} y="20" text-anchor="middle" class="fig-t">{p.title}</text>
+        {p.sub.map((line, i) => <text x={p.x + 80} y={36 + i * 14} text-anchor="middle" class="fig-s">{line}</text>)}
+        {[0, 1, 2, 3, 4].map((k) => (
+          <line x1={p.x + 20} x2={p.x + 140} y1={r(Y0 + (k * (Y1 - Y0)) / 4)} y2={r(Y0 + (k * (Y1 - Y0)) / 4)} class="fig-thin" stroke-opacity="0.35" />
+        ))}
+        <line x1={p.xa} x2={p.xb} y1={y(p.hi[0])} y2={y(p.hi[1])} class="fig-sa" />
+        <line x1={p.xa} x2={p.xb} y1={y(p.lo[0])} y2={y(p.lo[1])} class="fig-sb" />
+        {[0, 1].map((k) => (
+          <g>
+            <circle cx={k ? p.xb : p.xa} cy={y(p.hi[k])} r="6.5" class="fig-a" />
+            <circle cx={k ? p.xb : p.xa} cy={y(p.lo[k])} r="6.5" class="fig-b" />
+            <text x={k ? p.xb : p.xa} y="174" text-anchor="middle" class="fig-s">{p.iv[k]}</text>
+          </g>
+        ))}
+      </g>
+    ))}
+    <line x1="40" x2="640" y1="198" y2="198" class="fig-line" marker-end="url(#mt-arrow)" />
+    <text x="40" y="214" class="fig-s">voices sound less independent</text>
+    <text x="640" y="214" text-anchor="end" class="fig-s">more independent</text>
+  </svg>
+</Figure>

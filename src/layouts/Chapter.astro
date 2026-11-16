@@ -19,7 +19,7 @@ const { title, volume, chapter, summary, status, kind, sibling, assumes = [] } =
 
 <Base title={title} description={summary}>
   <header class="ch-head">
-    <div class="ch-kicker">{volumeLabel(volume)} · Chapter {chapter}</div>
+    <div class="ch-kicker">{volume === 7 ? `The Musical Atlas · Case study ${chapter}` : `${volumeLabel(volume)} · Chapter ${chapter}`}</div>
     <h1 class="ch-title">{title}</h1>
     <p class="ch-summary">{summary}</p>
     {
@@ -40,7 +40,7 @@ const { title, volume, chapter, summary, status, kind, sibling, assumes = [] } =
     }
   </header>
   <article class="prose">
-    <Refresher ids={assumes} where={`${volumeLabel(volume)} ch. ${chapter}`} />
+    <Refresher ids={assumes} where={volume === 7 ? `Atlas case study ${chapter}` : `${volumeLabel(volume)} ch. ${chapter}`} />
     <slot />
   </article>
 </Base>

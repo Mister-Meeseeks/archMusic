@@ -1,0 +1,346 @@
+---
+title: "Mixing and Mastering as Composition"
+volume: 4
+chapter: 8
+summary: The same recorded parts can become very different records. How mixing places every part on a stage (high or low, left or right, near or far), how compression reshapes loudness from moment to moment, why records got louder until streaming services turned them down, and how dub, the Wall of Sound, and bedroom pop made the mixing desk into a composer's instrument.
+status: teaching-draft
+updated: 2026-11-15
+lintIgnore: [frequency-ratio, contour] # a compressor's "ratio"; "equal-loudness contours"
+assumes: [waveform, frequency, pitch, harmonics, spectrum, timbre, register, decibel, equal-loudness, critical-band, masking, auditory-scene-analysis, auditory-stream, fusion, grouping, filter, envelope, synthesizer, sequencer, beat, tempo, chord, drum-kit]
+introduces: [multitrack-recording, mixing, eq, stereo-panning, reverb, delay-effect, compressor, sidechain, headroom, crest-factor, mastering, loudness-normalization]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the others. The main exhibit is a **small mixing desk**: four synthesized parts (drums, bass, chords, lead) looping through real channel strips, with a live spectrum of every part and a map of where each one sits. It appears three times, set up for different sections. Use headphones, or at least speakers with some bass: half of this chapter is about the low end, and laptop speakers hide it. Then write your version in `src/content/chapters/v4-08-mixing.mdx`.
+
+This chapter leans on chapter 1.4 (masking and streams) and chapter 1.3 (decibels and equal loudness). It also borrows the filter from chapter 4.5. It skips ahead of chapters 4.6 and 4.7 (sampling and effects; recording and space), so it introduces echo, reverb, and stereo itself, briefly. Those chapters can go deeper.
+</Callout>
+
+## The question
+
+Give two engineers the same recording session: every instrument captured on its own track, the same performances, the same song. They can hand back records that sound like different bands. In one, the bass is a warm cushion and the voice is an intimate whisper in your ear. In the other, the drums hit like a wall and the voice is a distant figure in a hall. Neither engineer changed a note.
+
+That's the subject of this chapter. **Mixing** is everything that happens between "the parts are recorded" and "the record is finished": how loud each part is, where it sits between the speakers, which of its frequencies survive, how near or far it seems, and how the loudness of the whole thing moves from moment to moment. **Mastering** is the final polish on the finished mix.
+
+These used to be thought of as technical jobs, done after the "real" music was written. This chapter argues that they're composition by other means. Chapter 1.4 showed that what a listener hears in a piece depends on how their brain sorts the sound into streams, and that arrangers write to steer that sorting. A mix is the final, most detailed layer of that steering. Whole genres (dub, house, most modern pop) are defined as much by their mixes as by their notes.
+
+## What makes mixing possible
+
+### Multitrack recording
+
+Until the 1950s there was nothing to mix after the fact. A band played into one or a few microphones, and the balance was set by where the players stood. If the trumpet was too loud, the trumpeter took a step back and everyone played the song again.
+
+**Multitrack recording** changed that. Each part is recorded onto its own track of the same tape (later, the same computer file), so it can be adjusted, replaced, or added to separately. The guitarist Les Paul pioneered layering parts one at a time, which is called *overdubbing*. Ampex built him one of the first 8-track machines in the late 1950s. The Beatles made *Sgt. Pepper* (1967) on four-track machines, bouncing several tracks down onto one to free up space. By the mid-1970s, 24-track tape was standard. Today a laptop records as many tracks as you like.
+
+The consequence: the balance of a record is no longer decided at the performance. It's decided later, at the **mixing desk** (the console where every track gets its own channel strip of controls), and it can be decided over days, by someone who wasn't at the session.
+
+### Stereo
+
+Most records since the late 1960s are **stereo**: two channels, one per speaker or ear. Stereo gives the mixing engineer a second dimension to work in. **Panning** sends a part more to one channel than the other, so it seems to come from that direction. A part sent equally to both channels seems to come from a point between the speakers. Nothing actually plays from there; this is called the *phantom center*.
+
+<Callout kind="verify" title="multitrack history">
+Les Paul's overdubbing (sound-on-sound in the late 1940s, then the Ampex 8-track, often dated 1957); *Sgt. Pepper* on four-track machines with bouncing; 24-track standard by the mid-1970s. Check dates against a recording history (e.g. Horning 2013 or Zak 2001).
+</Callout>
+
+## The mix as a stage
+
+Engineers often describe a mix as a stage with three dimensions:
+
+1. **Height: frequency.** Low parts at the bottom, high ones at the top. Every part occupies a band of frequencies, not just its notes: a bass note's harmonics extend far above its fundamental.
+2. **Width: left to right.** Where each part is panned.
+3. **Depth: front to back.** How near or far each part seems, set by its level, its brightness, and how much reverb it has relative to its direct sound.
+
+The metaphor is loose but useful, because each dimension gives parts a way to stay apart. Chapter 1.4 showed why parts need to stay apart. Two sounds that overlap in frequency, start together, and come from the same place are exactly what the auditory system fuses into one, or what lets the louder one mask the quieter. A good mix gives each part at least one dimension in which it stands alone.
+
+<MixLab modes={['mix']} />
+
+<Callout kind="try">
+1. Play the **Unmixed** setting. All four parts are at about the same level, all in the middle, all full range. Listen for the lead melody. It's there (solo it with **S** to check) but it's hard to follow. Look at the spectrum: the chords (purple) cover almost everything, including the space where the bass (blue) and the lead (orange) live.
+2. Switch to **Carved** and back a few times. Nothing about the notes changed. List what did change, using the strips.
+3. Starting from **Unmixed**, fix it yourself, one move at a time. First raise the chords' **Low cut** to about 300 Hz. Listen to the bass. Then move the chords left and the lead right. Then bring the lead up. Which single move helped most?
+4. Solo the chords in the **Carved** setting. Heard alone, the chords now sound thin and wrong, but in the mix they sound fine. Engineers learn not to judge a part on its own.
+</Callout>
+
+## Height: frequency and EQ
+
+### Carving space
+
+The most common problem in a mix is masking: a louder part hides a quieter one in the same frequency range. Chapter 1.4 explained why. The ear analyzes sound in critical bands, and within a band a louder sound swamps a quieter one. Two parts competing for the same band don't add up to a richer sound. They add up to *mud*: a thick, indistinct low middle where nothing is clear.
+
+The tool for this is **EQ** (equalization). These are filters, the same physics as the synthesizer filter of chapter 4.5, but used for a different purpose. A synthesist filters to create a timbre. A mixing engineer mostly filters to make room. The two basic moves:
+
+- **Low cut** (also called a high-pass filter): remove everything below some frequency. A guitar or a pad rarely needs anything below 100–300 Hz in a full band mix, and what's there competes with the bass and kick.
+- **High cut** (low-pass): remove everything above some frequency. Taking the top off a bass or a background part leaves the upper range clear for the voice and cymbals. It also pushes the part back, as the section on depth explains.
+
+Real equalizers also have *bands*, bell-shaped boosts or cuts around a chosen frequency, so the engineer can scoop a little of the low middle out of a guitar where it overlaps the voice, or lift a vocal's presence. The lab keeps just the two cuts, which do most of the work.
+
+The general rule is to cut more than you boost. A part that seems too quiet is often being masked, and removing what masks it works better than turning it up. Turning everything up is the road to the loudness war, later in this chapter.
+
+<DataTable title="Where things live in a mix" caption="Rough ranges, in round numbers; every source and every engineer differs. The descriptions in the last two columns (mud, honky, boxy, air) are studio slang, worth knowing because engineers use them constantly.">
+
+| Range | What lives there | Too much sounds | Too little sounds |
+|---|---|---|---|
+| 20–60 Hz (sub-bass) | Kick drum's thump, the lowest synth bass | Rumbling, boomy; uses up level you can't hear on small speakers | Thin on big speakers (often inaudible on small ones) |
+| 60–250 Hz (bass) | Bass fundamentals, the body of kick and low piano | Boomy, bloated | Weak, no weight |
+| 250–500 Hz (low mids) | Lower harmonics of almost everything | *Mud*: cloudy, boxy | Hollow |
+| 500 Hz–2 kHz (mids) | The core of voices, guitars, keys, snare | Honky, nasal | Distant, scooped |
+| 2–5 kHz (upper mids) | Consonants, attack, *presence*; where the ear is most sensitive (chapter 1.3) | Harsh, fatiguing | Dull, buried |
+| 5–10 kHz (highs) | Cymbals, sibilance ("s" sounds), brightness | Sharp, hissy | Dark, muffled |
+| 10–20 kHz ("air") | Shimmer, breath, room sound | Brittle | Closed-in |
+
+</DataTable>
+
+<Callout kind="check" title="Why not just turn the lead up?">
+In the **Unmixed** setting, the lead is hard to hear. Raising its fader to +6 dB helps, but **Carved** sounds clearer with the lead barely louder. Why?
+
+<Answer>
+Because the problem was masking, not level. The chords' energy sat in the same frequency range as the lead, and in the same place (the center). Turning the lead up makes it win the competition, but everything gets louder and denser, and the chords still cloud it. Carving gives the lead its own space instead: the chords lose the low end that clashed with the bass, move away from the lead, and step back with reverb. With no competitor in its band and position, the lead is heard at a modest level.
+</Answer>
+</Callout>
+
+## Width: left and right
+
+### Panning conventions
+
+Most pop and rock mixes follow a convention that has been stable for decades. The kick drum, the bass, the snare, and the lead vocal sit in the center. Everything else spreads out to the sides: guitars and keyboards, backing vocals, percussion, doubled parts split hard left and right.
+
+There are acoustic and practical reasons for the center:
+
+- **Low frequencies carry most of a mix's energy.** Sharing them equally between both speakers splits the work.
+- **We barely localize low frequencies.** Below a few hundred Hz, a sound's waves are much longer than the head is wide, so the cues the brain uses to place a sound are weak. Panning a bass line hard left mostly makes the mix lopsided.
+- **The lead voice is the focus**, so it gets the most prominent spot.
+- **Vinyl.** Low frequencies that differ strongly between the two channels make the needle move up and down as well as side to side, which can make it jump out of the track. Cutting engineers kept the bass centered.
+
+Early stereo had no conventions yet. Many 1960s stereo mixes (including some of the Beatles' early albums) put the band in one speaker and the vocals in the other. This happened partly because the recordings were made on two- and four-track machines with parts already combined, and partly because stereo was an afterthought: the mono mix was the one the band cared about. On headphones those mixes can sound bizarre.
+
+Panning also helps scene analysis. Chapter 1.4 noted that location is a weaker grouping cue than pitch or timing. But it's not nothing. In a dense mix, two similar guitars panned apart are much easier to follow as two parts than the same guitars in the middle.
+
+**Stereo width** is the overall spread of a mix. A mix with everything in the center sounds narrow, almost mono. A mix with parts spread to the edges, or with reverb and doubled parts that differ between the channels, sounds wide.
+
+<Callout kind="verify" title="panning">
+The vinyl-cutting reason for centered bass (vertical stylus motion; elliptical equalizers in cutting lathes). The Beatles' early stereo mixes with vocals and band split (e.g. the stereo *Please Please Me*, a two-track recording). Localization cues at low frequencies (interaural time and level differences; see Blauert 1997).
+</Callout>
+
+## Depth: near and far
+
+How does a recording make one part sound near and another far, when both come out of the same speakers? It borrows the cues the ear uses in real rooms:
+
+- **Level.** Far things are quieter. The weakest cue on its own, because a quiet sound could just be a quiet source.
+- **Brightness.** Air absorbs high frequencies more than low ones over distance, and close sounds have crisp transients. So a dull part with soft edges seems further away. That's another reason a high cut pushes a part back.
+- **Reverb.** In a room, you hear a sound's direct path first and then a dense wash of reflections from the walls: **reverb** (reverberation). A nearby source is dominated by the direct sound. A distant one is dominated by the reflections. So the ratio of reverb to direct sound reads as distance.
+
+Recording engineers add reverb artificially. Early studios built *echo chambers*, tiled rooms with a speaker at one end and a microphone at the other. Later came vibrating steel *plates*, *springs* (the sound of a guitar amp's reverb, and of dub), and digital models of rooms. Reverb makes a part seem further away, and it also blurs its edges and smears its notes together, which can either glue a mix together or wash it out.
+
+A **delay** (an echo effect) is a single repeat, or a series of them, a fixed time later. A short delay thickens a part. A long one, timed to the beat (say, a sixteenth note), turns into rhythm. The Atlas entry on *I Feel Love* shows an echo filling in a bass line. A delay that is quieter and duller on each repeat also reads as space.
+
+<Callout kind="try">
+In the lab above, choose **Near and far**. The lead is loud, bright and dry. The chords are quiet, dull and drenched in reverb. The drums sit somewhere between. Now take the lead's reverb up to 80% and its high cut down to about 2 kHz. Where did it go?
+</Callout>
+
+## Loudness over time: compression
+
+### What a compressor does
+
+Every part of a mix has a loudness that moves from moment to moment: a singer's soft words and loud ones, a drum's sharp hit and quieter decay. The range between them is the part's *dynamic range*. A **compressor** is an automatic hand on the fader. When the signal rises above a set **threshold**, the compressor turns it down, by an amount set by the **ratio**. At 4:1, a signal that goes 8 dB over the threshold comes out only 2 dB over. Below the threshold it does nothing. Then the whole result is turned up (*make-up gain*), so quiet moments end up louder relative to the loud ones.
+
+A compressor can't react instantly, and the speed at which it does is musical. **Attack** is how fast it clamps down. **Release** is how fast it lets go.
+
+<CompressorCurve />
+
+<DataTable title="The compressor's controls" caption="Typical settings vary enormously; these are starting points engineers often quote, in round numbers.">
+
+| Control | What it sets | Low setting | High setting |
+|---|---|---|---|
+| Threshold | The level where compression begins | Most of the signal is compressed | Only the loudest peaks are touched |
+| Ratio | How strongly the excess is reduced | 1.5:1–2:1, gentle, transparent | 10:1 and up, a hard ceiling (a *limiter*) |
+| Attack | How fast it clamps down | Under 1 ms: catches every transient, softens hits | 10–30 ms: lets each hit's front edge through, adding *punch* |
+| Release | How fast it lets go | Fast: lifts quiet tails, can *pump* audibly | Slow: smooth, but can hold the level down between hits |
+| Make-up gain | How much the result is turned back up | — | — |
+
+</DataTable>
+
+### What compression is for
+
+Engineers use compressors for very different reasons:
+
+- **Evenness.** A singer who moves toward and away from the microphone, or a bass player whose notes vary in strength, becomes steady, so the part stays audible without riding the fader.
+- **Punch.** A slow attack lets the first few milliseconds of each drum hit through untouched and then clamps down on what follows. The attack stands out against a tamer body.
+- **Sustain.** Compressing a decaying note turns its tail up, so a guitar note seems to ring longer.
+- **Glue.** Gentle compression on the whole mix (the *mix bus*) makes all the parts respond to the same peaks together, which many engineers hear as cohesion.
+- **Character.** Classic hardware compressors (the Teletronix LA-2A, the Universal Audio 1176, the Fairchild 670) color the sound in their own ways, and engineers choose them like instruments.
+
+### Sidechain ducking and the pump
+
+A compressor normally listens to the signal it's compressing. But it can be told to listen to a different signal. This is called the **sidechain**. The classic use is practical: let the kick drum trigger a compressor on the bass, so the bass dips for a split second on every kick and the two stop masking each other. Radio uses the same trick, *ducking*, to lower the music whenever the presenter speaks.
+
+Push it far enough and the effect becomes audible: the whole mix dips on every beat and swells back up between them, breathing in time. In French house in the late 1990s and the EDM that followed, that **pumping** stopped being a side effect to hide and became the point. It's a rhythm made by a mixing device.
+
+<MixLab modes={['mix']} preset="pump" />
+
+<Callout kind="try">
+1. Play **Pumping**. Pull **Kick ducks the rest** to *off*, then bring it back up to 85%. Listen to the chords: they now swell between kicks.
+2. Try about 30%. This is the practical use: the kick and bass get out of each other's way, and you barely notice the ducking as an effect.
+3. Watch **Gain reduction** while you lower the **Compressor threshold**. That's the bus compressor working on the whole mix, separately from the ducking.
+</Callout>
+
+<ListeningCue track="prydz-call-on-me" start="0:00" end="1:00">
+The textbook pumping record. The looped vocal (borrowed from Steve Winwood's "Valerie") and the synths drop on every kick and swell back between them, so the whole track breathes on the beat.
+</ListeningCue>
+
+<Callout kind="verify" title="compression and sidechain">
+The compressor models named (LA-2A, 1176, Fairchild 670) and their dates. Typical attack/release ranges in the table. The radio "ducking" usage. French house pumping (Daft Punk; Stardust's "Music Sounds Better With You," 1998) and "Call On Me" (2004) as the canonical example; confirm by ear how much of "Call On Me"'s pumping is sidechain compression versus programmed volume shaping.
+</Callout>
+
+## Mastering and the loudness war
+
+### The last stage
+
+Once the mix is finished, it's still not a record. **Mastering** is a final stage, traditionally done by a different engineer with fresh ears and very accurate speakers. The mastering engineer adjusts the finished stereo mix as a whole: a touch of overall EQ, gentle compression, and a **limiter** (a compressor with a ratio so high nothing gets past its threshold) to set the final loudness. They also make an album's tracks match in level and tone, set the gaps between them, and prepare a version for each format: vinyl, CD, streaming.
+
+### Headroom, clipping, and crest factor
+
+Digital audio has a hard ceiling. Every sample is a number, and there's a largest number the format can store, called 0 **dBFS** (decibels relative to full scale). A signal pushed past it doesn't get louder. Its peaks are sliced flat (**clipping**), which sounds like a harsh crackle. **Headroom** is the space left between a mix's peaks and that ceiling.
+
+A natural recording has peaks far above its average level: a snare hit can be 15–20 dB above the average of the music around it. The difference between peak and average is the **crest factor**. Because the peaks hit the ceiling first, a recording with a high crest factor can't be made very loud on average. To make it louder, you have to shave the peaks, which is what a limiter does.
+
+### The loudness war
+
+Chapter 1.3 explained why louder sounds better, at least at first. The ear's equal-loudness contours mean a louder playback has more apparent bass and treble, and in a side-by-side comparison the louder version usually wins. In radio, jukeboxes, and record-company listening sessions, a louder master seemed to have an edge.
+
+From the early 1990s, digital limiters made it possible to raise a master's average level a long way without clipping. Each new record was mastered a little louder than the last, and the average loudness of popular CDs rose by roughly 10 dB or more over two decades. The cost was the crest factor. Drums lost their attack, quiet passages vanished, and dense mixes became a fatiguing, unchanging wall. On a waveform display, a heavily limited master looks like a solid brick. Pushed far enough, masters clipped.
+
+Metallica's *Death Magnetic* (2008) became the emblem. Fans heard audible distortion and found that the versions of the same songs in the game *Guitar Hero III* had been mastered with much more dynamic range. Petitions and press coverage followed.
+
+<ListeningCue track="metallica-day-never-comes" start="0:00" end="1:30">
+From *Death Magnetic*. The quiet intro is fine. Listen to what happens when the full band enters: everything sits at one level, and the drums have little snap. If your streaming app lets you turn off "normalize volume," compare the two settings.
+</ListeningCue>
+
+### How streaming ended it (mostly)
+
+The war's logic depends on listeners comparing tracks at the same volume setting, so louder wins. Streaming services broke that by **loudness normalization**. They measure each track's average loudness and turn it up or down to a common target before playing it.
+
+The measure is the **LUFS** (loudness units relative to full scale), defined by the broadcasting standard ITU-R BS.1770. It's an average of the signal's level, filtered first so that it weighs frequencies roughly as the ear does. Spotify's default target is about −14 LUFS, and other services use similar figures. A track mastered to −8 LUFS gets turned down about 6 dB. All the limiting that made it loud is still there, but now it buys nothing, and the squashed track simply sounds flatter than its neighbors at the same loudness.
+
+Many engineers now master for dynamic range again. Others still master loud, for clubs, for DJs, or because the dense sound has become a genre aesthetic.
+
+<MixLab modes={['master']} initialMode="master" preset="carved" />
+
+<Callout kind="try">
+1. Play, and watch the envelope strip: you can see each kick and the gaps between them. Note the **Crest factor**.
+2. Turn your volume down a little first. Raise **Master loudness** in steps to +18 dB. It gets louder, and at first, maybe better. Watch the envelope flatten into a block and the crest factor fall. At the top, listen for the kick losing its attack, and for crunchy distortion.
+3. Now turn on **Loudness normalization**. The lab measures the average level and turns the whole thing down to a fixed target. Compare +0 dB and +18 dB again. Which sounds better now, and why?
+</Callout>
+
+<Callout kind="check" title="Why did normalization end the war?">
+Before normalization, mastering louder had a payoff. What exactly did normalization take away, and why does a squashed master now sound *worse* than a dynamic one, not just the same?
+
+<Answer>
+The payoff was being louder than the track before it, because louder initially sounds better (fuller bass and treble, per the equal-loudness contours). Normalization plays every track at the same average loudness, so that advantage disappears. What's left is the cost: with its peaks shaved, a squashed master at the same average loudness has weaker drum hits and less contrast than a dynamic master, whose peaks still rise above the average. At equal loudness, the dynamic one sounds punchier.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="loudness war and normalization">
+The size of the rise in CD loudness (Vickers 2010 and Deruty & Tardieu 2014 give measurements; "about 10 dB" is a rough summary). *Death Magnetic*'s clipping and the *Guitar Hero III* versions. The ITU-R BS.1770 definition of LUFS (K-weighting) and EBU R128 (−23 LUFS for broadcast). Spotify's −14 LUFS default target and its "Loud" (−11) and "Quiet" (−19) settings; YouTube's and Apple Music's targets (Apple often quoted at −16). Targets change; check the services' current documentation.
+</Callout>
+
+## The mix as composition
+
+So far, mixing has sounded like making the parts clear. But some of the most influential records in popular music were made by people who treated the mixing desk as an instrument and the mix as the composition.
+
+### The Wall of Sound
+
+Phil Spector's productions of the early 1960s went the opposite way from clarity. He packed a small Los Angeles studio (Gold Star) with musicians doubling the same parts: several guitars, pianos, and basses playing in unison, plus percussion. He fed the result into the studio's echo chambers until it fused into one dense, roaring mass, his "Wall of Sound." Individual instruments are hard to pick out by design. It's fusion (chapter 1.4) used on purpose: many sources, made to sound like one huge source. Spector cared about the mono mix, built for AM radio and jukeboxes.
+
+<ListeningCue track="ronettes-be-my-baby" start="0:00" end="1:00">
+After the famous drum intro, try to count the instruments behind Ronnie Spector's voice. You'll hear the mass, the castanets, a rumble of low pianos and basses, but rarely a single instrument you can follow.
+</ListeningCue>
+
+### Dub
+
+In Jamaica in the late 1960s and 1970s, the B-side of a reggae single was often a *version*: the same recording with the vocal mostly removed. Engineers such as King Tubby (Osbourne Ruddock) and producers such as Lee "Scratch" Perry turned versions into a new art form, **dub**. Working live at the mixing desk, they rebuilt a song while it played. Instruments were muted and slammed back in, a single snare hit was thrown into a long echo or a crashing spring reverb, and fragments of the vocal floated in and out. The bass and drums stayed as a heavy foundation. Each dub was a performance of the mix itself. Dub's techniques (echo and reverb as rhythmic instruments, the drop-out, the bass-heavy foundation) passed into hip-hop, drum and bass, dubstep, and much of electronic music.
+
+<ListeningCue track="tubby-rockers-uptown" start="0:00">
+A dub of Jacob Miller's "Baby I Love You So," produced by Augustus Pablo and mixed by King Tubby. Listen for parts disappearing and returning, the vocal surviving only as fragments, and the echo and reverb thrown onto single moments.
+</ListeningCue>
+
+### The studio as a compositional tool
+
+In a 1979 lecture titled "The Studio as Compositional Tool," Brian Eno argued that multitrack recording had turned the studio into an instrument. A composer could now work like a painter, adding, removing, and treating layers over time, without a finished score and without musicians who could play the whole piece. Much of the music since works this way. In electronic dance music, producing, arranging, and mixing are one activity. The Atlas entry on *I Feel Love* shows an echo and a sequencer writing a bass part that nobody played.
+
+### Close and quiet
+
+A modern example runs against the loudness war. Billie Eilish and her brother Finneas O'Connell made her debut album largely in his bedroom. Its signature is intimacy: a soft, breathy voice recorded very close to the microphone, so you hear lips and breath, as if she's beside your ear. Under it are huge, deep bass and sparse arrangements with lots of empty space. Here the mix is the emotional content. "Near" is not a technical setting but the feeling of the record.
+
+<ListeningCue track="billie-bad-guy" start="0:00" end="1:00">
+Listen for distance: the voice is right at your ear, quiet and dry, with every breath audible, while the bass is enormous. Few parts are playing, and each has its own space.
+</ListeningCue>
+
+<Callout kind="verify" title="mix as composition">
+Wall of Sound details (Gold Star Studios, the echo chambers, doubled instruments, the "Back to Mono" slogan, Hal Blaine's drum intro on "Be My Baby"). "King Tubby Meets Rockers Uptown" as a dub of Jacob Miller's "Baby I Love You So" and who mixed what. Dub's history (versions on B-sides; Ruddock's custom console; Lee Perry's Black Ark). Eno's lecture (1979; published in *Down Beat*, 1983). Billie Eilish's recording circumstances and who mixed the album (Rob Kinelski is usually credited).
+</Callout>
+
+## The architecture of a mix
+
+<DataTable title="The mix at a glance">
+
+| Dimension | Tools | What it solves | Perceptual basis |
+|---|---|---|---|
+| Height (frequency) | EQ: low cut, high cut, bands | Masking; mud | Critical bands and masking (chapter 1.4) |
+| Width (left–right) | Panning, stereo width | Similar parts colliding; focus | Location as a (weak) grouping cue |
+| Depth (near–far) | Level, brightness, reverb, delay | Foreground versus background | Real-room distance cues |
+| Time (loudness over time) | Compression, sidechain, limiting | Uneven parts; punch; glue; pumping | Loudness perception (chapter 1.3) |
+| The whole record | Mastering, loudness normalization | Consistency; translation across systems | Louder seems better, until levels are matched |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. Why multitrack recording made mixing a separate stage, and what a mixing desk does.
+2. The mix as a stage: frequency, left–right, and depth, and why giving each part its own space works (masking and grouping from chapter 1.4).
+3. EQ as a mixing tool (low cut, high cut, cut before you boost) and how it differs in purpose from a synthesizer's filter.
+4. Panning conventions and their reasons; phantom center; stereo width.
+5. The depth cues (level, brightness, reverb-to-direct ratio) and what reverb and delay are.
+6. How a compressor works (threshold, ratio, attack, release, make-up gain), what it's used for, and sidechain ducking as both a fix and a sound.
+7. Mastering; headroom, clipping and crest factor; the loudness war and why loudness normalization defused it.
+8. At least two traditions where the mix is the composition (Wall of Sound, dub, studio-as-instrument, bedroom intimacy).
+
+**Decisions for your rewrite:**
+
+- **The hook.** I opened with two engineers and one session. Alternatives: start with dub (a mix you can hear being made), or with the loudness war (a story with villains and a happy ending).
+- **How technical to get.** This draft explains compressors in some detail because they're invisible otherwise. You could cut the controls table and keep only the uses, leaving the details to the lab.
+- **Examples.** Swap in mixes you know well: a wide, spacious record (Steely Dan, Pink Floyd), a dry and close one (much of 1970s soul), a modern maximalist one (hyperpop, or the brick-walled rock of the mid-2000s). Comparing two mixes of the same song (an original and a remix or remaster) is the most direct demonstration if you can find a pair with official uploads.
+- **Overlap with chapters 4.6 and 4.7.** This chapter introduces reverb, delay and stereo briefly. Decide what stays here and what moves when those chapters are written.
+
+**Misconceptions to watch for:**
+
+- "Mixing is just setting levels." Levels are one dimension of four.
+- "If a part is hard to hear, turn it up." Usually something is masking it.
+- "EQ makes things sound better." In a mix, it mostly makes room. Soloed, a well-carved part often sounds bad.
+- "Compression makes things louder." It makes them *less dynamic*. The make-up gain makes them louder.
+- "Louder masters sound better." Only until the levels are matched.
+- "Stereo is about realism." Most pop mixes place parts where no band could stand.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Izhaki, R. (2018). *Mixing Audio: Concepts, Practices, and Tools* (3rd ed.). Routledge.
+- Owsinski, B. (2017). *The Mixing Engineer's Handbook* (4th ed.). Bobby Owsinski Media Group.
+- Katz, B. (2015). *Mastering Audio: The Art and the Science* (3rd ed.). Focal Press.
+- Moylan, W. (2020). *Recording Analysis: How the Record Shapes the Song*. Routledge.
+- Zak, A. (2001). *The Poetics of Rock: Cutting Tracks, Making Records*. University of California Press.
+- Horning, S. S. (2013). *Chasing Sound: Technology, Culture, and the Art of Studio Recording from Edison to the LP*. Johns Hopkins University Press.
+- Vickers, E. (2010). The loudness war: Background, speculation, and recommendations. *Audio Engineering Society Convention 129*, paper 8175.
+- Deruty, E., & Tardieu, D. (2014). About dynamic processing in mainstream music. *Journal of the Audio Engineering Society*, 62(1/2), 42–55.
+- ITU-R (2015). *Recommendation BS.1770-4: Algorithms to measure audio programme loudness and true-peak audio level*. International Telecommunication Union.
+- Veal, M. E. (2007). *Dub: Soundscapes and Shattered Songs in Jamaican Reggae*. Wesleyan University Press.
+- Eno, B. (1983). The studio as compositional tool. *Down Beat*, 50(7–8). (Lecture given 1979.)
+- Blauert, J. (1997). *Spatial Hearing: The Psychophysics of Human Sound Localization* (rev. ed.). MIT Press.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details, especially the Vickers paper number and convention (AES 129th, San Francisco, 2010?), Deruty & Tardieu's issue and pages, the BS.1770 revision number (-4 or -5), and the *Down Beat* issue for Eno's lecture.
+</Callout>

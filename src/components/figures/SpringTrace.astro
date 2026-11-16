@@ -1,0 +1,99 @@
+---
+// Where the sine wave comes from: a mass on a spring writes its own motion
+// onto a strip of paper pulled past at a steady speed. The trace is computed:
+// displacement = A sin(phase), with the pen at the right edge of the paper
+// ("now") and earlier moments further left.
+import Figure from '../ui/Figure.astro';
+
+const r = (v: number) => Math.round(v * 10) / 10;
+const Y0 = 132; // rest position
+const A = 58; // amplitude in px
+const PX0 = 150, PX1 = 470; // paper
+const LAM = 140; // px per period on the paper
+const k = (2 * Math.PI) / LAM;
+const PH = Math.asin(0.6); // phase at "now": 60% of the way up, rising
+const yAt = (x: number) => Y0 - A * Math.sin(PH - (PX1 - x) * k);
+
+let trace = '';
+for (let x = PX0; x <= PX1; x += 2) trace += `${x === PX0 ? 'M' : 'L'}${x},${r(yAt(x))} `;
+
+// upward zero crossings (phase = 2πm) and one peak (phase = π/2 − 2π)
+const zc0 = PX1 - PH / k;
+const zc1 = zc0 - LAM;
+const peakX = PX1 - (PH - (Math.PI / 2 - 2 * Math.PI)) / k;
+
+const massY = r(Y0 - A * 0.6);
+const MX = 525; // mass centre x
+const springTop = 20;
+const springBot = massY - 20;
+const turns = 9;
+let spring = `M${MX},${springTop} L${MX},${springTop + 6} `;
+for (let i = 0; i < turns; i++) {
+  const ya = springTop + 6 + ((springBot - springTop - 12) * (i + 0.5)) / turns;
+  spring += `L${MX + (i % 2 ? -11 : 11)},${r(ya)} `;
+}
+spring += `L${MX},${r(springBot - 6)} L${MX},${r(springBot)}`;
+---
+
+<Figure
+  title="Where the sine wave comes from"
+  caption="A weight hangs on a spring with a pen attached, writing on a strip of paper that is pulled steadily to the left. Displace the weight and let go: the spring pulls it back toward rest, its momentum carries it past, and it swings back and forth. The paper turns that motion into a graph over time, and the shape it draws is a sine wave. Anything with mass and springiness vibrates this way when disturbed: a tuning fork's prong, a guitar string, the air in a bottle."
+>
+  <svg viewBox="0 0 680 322" role="img" aria-label="A mass on a spring drawing a sine wave on a moving paper strip">
+    <defs>
+      <marker id="st-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fig-head" />
+      </marker>
+    </defs>
+
+    {/* paper strip */}
+    <rect x={PX0} y={Y0 - A - 22} width={PX1 - PX0} height={2 * A + 44} rx="3" class="fig-box" />
+    <line x1={PX0 - 30} x2={MX + 30} y1={Y0} y2={Y0} class="fig-thin" stroke-dasharray="4 4" />
+    <text x={PX0 - 34} y={Y0 + 4} text-anchor="end" class="fig-s">rest</text>
+    <path d={trace} class="fig-sa" />
+
+    {/* period bracket */}
+    <g>
+      <line x1={zc1} x2={zc0} y1={Y0 + A + 12} y2={Y0 + A + 12} class="fig-line" />
+      <line x1={zc1} x2={zc1} y1={Y0 + A + 6} y2={Y0 + A + 18} class="fig-line" />
+      <line x1={zc0} x2={zc0} y1={Y0 + A + 6} y2={Y0 + A + 18} class="fig-line" />
+      <text x={(zc0 + zc1) / 2} y={Y0 + A + 36} text-anchor="middle" class="fig-t">one period</text>
+      <line x1={zc0} x2={zc0} y1={Y0} y2={Y0 + A + 6} class="fig-thin" stroke-dasharray="2 3" />
+      <line x1={zc1} x2={zc1} y1={Y0} y2={Y0 + A + 6} class="fig-thin" stroke-dasharray="2 3" />
+    </g>
+
+    {/* amplitude */}
+    <line x1={peakX} x2={peakX} y1={Y0} y2={Y0 - A + 3} class="fig-line" marker-end="url(#st-arrow)" />
+    <text x={peakX + 7} y={Y0 - A / 2 + 4} class="fig-t fig-halo">amplitude</text>
+
+    {/* paper direction */}
+    <line x1={PX0 + 120} x2={PX0 + 20} y1={Y0 + A + 62} y2={Y0 + A + 62} class="fig-line" marker-end="url(#st-arrow)" />
+    <text x={PX0 + 128} y={Y0 + A + 66} class="fig-s">paper moves steadily: earlier moments are further left</text>
+
+    {/* ceiling, spring, mass, pen */}
+    <line x1={MX - 34} x2={MX + 34} y1={springTop} y2={springTop} class="fig-line" stroke-width="2.5" />
+    {[-28, -16, -4, 8, 20].map((d) => (
+      <line x1={MX + d} x2={MX + d + 8} y1={springTop} y2={springTop - 8} class="fig-thin" />
+    ))}
+    <path d={spring} class="fig-line" />
+    <rect x={MX - 20} y={massY - 20} width="40" height="40" rx="4" class="fig-box is-b" />
+    <text x={MX} y={massY + 4} text-anchor="middle" class="fig-t">mass</text>
+    <line x1={MX - 20} x2={PX1 + 2} y1={massY} y2={massY} class="fig-line" />
+    <circle cx={PX1} cy={massY} r="3" class="fig-b" />
+    <line x1={MX + 30} x2={MX + 30} y1={massY + 22} y2={Y0 + A} class="fig-line is-ctl" marker-start="url(#st-arrow)" marker-end="url(#st-arrow)" />
+
+    <text x={MX + 22} y={springTop + 30} class="fig-s">springiness pulls</text>
+    <text x={MX + 22} y={springTop + 44} class="fig-s">it back to rest</text>
+    <text x={MX + 40} y={massY + 40} class="fig-s">momentum carries</text>
+    <text x={MX + 40} y={massY + 54} class="fig-s">it past rest</text>
+
+    {/* rules of thumb */}
+    <line x1="20" x2="660" y1="272" y2="272" class="fig-thin" />
+    <text x="20" y="294" class="fig-t">Stiffer spring</text>
+    <text x="20" y="310" class="fig-s">vibrates faster: higher frequency</text>
+    <text x="240" y="294" class="fig-t">Heavier mass</text>
+    <text x="240" y="310" class="fig-s">vibrates slower: lower frequency</text>
+    <text x="460" y="294" class="fig-t">Bigger push</text>
+    <text x="460" y="310" class="fig-s">bigger swing, same frequency</text>
+  </svg>
+</Figure>

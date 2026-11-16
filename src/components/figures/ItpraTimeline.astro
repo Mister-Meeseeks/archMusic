@@ -1,0 +1,64 @@
+---
+// Huron's ITPRA model (Sweet Anticipation, 2006) as a timeline around one
+// expected event. Schematic: the spans show order and relative speed, not
+// measured durations.
+import Figure from '../ui/Figure.astro';
+
+const r = (v: number) => Math.round(v * 10) / 10;
+const EX = 340; // the event
+const AX = 222; // time axis y
+// tension: arousal rising toward the event, then falling away after it
+const pts: string[] = [];
+for (let k = 0; k <= 60; k++) {
+  const x = 150 + (k / 60) * (EX - 150);
+  const u = k / 60;
+  pts.push(`${r(x)},${r(AX - 6 - 70 * Math.pow(u, 2.2))}`);
+}
+const tension = `M150,${AX - 6} L${pts.join(' L')} L${EX},${AX - 6} Z`;
+const lanes = [
+  { y: 66, x0: EX + 2, x1: EX + 70, title: 'Reaction', sub: 'fast, automatic: startle or ease', cls: 'is-b' },
+  { y: 112, x0: EX + 2, x1: EX + 110, title: 'Prediction', sub: 'was I right? a small reward or penalty', cls: 'is-b' },
+  { y: 158, x0: EX + 40, x1: 650, title: 'Appraisal', sub: 'slower, conscious: what did that mean?', cls: 'is-b' },
+];
+---
+
+<Figure
+  title="Five responses around one expected event"
+  caption="David Huron's ITPRA model. Before an event you can foresee (the next note, the chord that ends a line of melody, the downbeat after a drum fill), you <b>imagine</b> how it might go and your <b>tension</b> (arousal and attention) rises as it approaches. After it arrives, three responses follow at different speeds: a fast, automatic <b>reaction</b>; a <b>prediction</b> response that rewards a correct guess and penalizes a wrong one, whatever the outcome; and a slower, conscious <b>appraisal</b>. The responses can disagree, and the mix is the feeling. The spans are schematic, not measured durations."
+>
+  <svg viewBox="0 0 680 250" role="img" aria-label="Timeline: imagination and tension before an event; reaction, prediction, and appraisal responses after it">
+    <defs>
+      <marker id="it-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fig-head" />
+      </marker>
+    </defs>
+    <text x="30" y="24" class="fig-h">Before</text>
+    <text x={EX + 12} y="24" class="fig-h">After</text>
+
+    <!-- imagination: a long, dashed span well before the event -->
+    <rect x="30" y="56" width={EX - 60} height="40" rx="8" class="fig-box is-a" />
+    <text x="44" y="74" class="fig-t">Imagination</text>
+    <text x="44" y="89" class="fig-s">picturing how it might turn out</text>
+
+    <!-- tension: rising arousal -->
+    <path d={tension} class="fig-band" />
+    <path d={`M${pts.join(' L')}`} class="fig-sa" />
+    <text x="44" y={AX - 40} class="fig-t">Tension</text>
+    <text x="44" y={AX - 25} class="fig-s">arousal and attention</text>
+    <text x="44" y={AX - 12} class="fig-s">rise as it nears</text>
+
+    {lanes.map((l) => (
+      <g>
+        <rect x={l.x0} y={l.y - 2} width={l.x1 - l.x0} height="8" rx="4" class={l.cls === 'is-b' ? 'fig-b' : 'fig-a'} />
+        <text x={l.x0} y={l.y + 22} class="fig-t">{l.title}</text>
+        <text x={l.x0 + (l.title.length * 7.6) + 8} y={l.y + 22} class="fig-s">{l.sub}</text>
+      </g>
+    ))}
+
+    <!-- the event -->
+    <line x1={EX} x2={EX} y1="34" y2={AX + 6} class="fig-line" />
+    <text x={EX} y={AX + 22} text-anchor="middle" class="fig-t">the event</text>
+    <line x1="30" x2="650" y1={AX} y2={AX} class="fig-thin" marker-end="url(#it-arrow)" />
+    <text x="650" y={AX + 22} text-anchor="end" class="fig-s">time</text>
+  </svg>
+</Figure>

@@ -1,0 +1,426 @@
+---
+title: "From Ear to Percept: Pitch, Loudness, and Timbre"
+volume: 1
+chapter: 3
+summary: Frequency, level, and spectrum are physics; pitch, loudness, and timbre are what your ear and brain make of them. How the cochlea takes sound apart, why you hear a pitch where nothing is playing, why bass vanishes when you turn the volume down, and what "tone color" is actually made of.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [frequency, pitch, sine-wave, waveform, phase, amplitude, period, sound-wave, harmonics, spectrum, timbre, formant, resonance, octave, semitone, cents, interval, frequency-ratio, note-names, register, middle-c, chord, equal-temperament]
+lintIgnore: [contour, resolution, fm-synthesis, loudness-normalization, fugue] # "equal-loudness contours"; "resolved harmonics" (hearing sense); a reference title; "loudness war" (v4-08: forward pointer to chapter 4.8); v3-08: passing mentions of fugue/imitation, taught in 3.8
+introduces: [cochlea, hair-cell, critical-band, place-coding, temporal-coding, missing-fundamental, jnd, octave-equivalence, shepard-tone, decibel, equal-loudness, spectral-centroid, attack-transient, timbre-space]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts. One new lab, **PerceptLab**, with four demonstrations: the missing fundamental, an endless scale, a loudness-matching game, and three dials of timbre. There's also a figure of the equal-loudness contours, computed from the international standard. Headphones help everywhere, and they're essential for the bass end of the loudness game. Then write your version in `src/content/chapters/v1-03-percept.mdx`.
+
+This chapter sits between the physics (chapters 1.1 and 1.2) and everything the brain does with sound afterward: grouping it into sources (chapter 1.4) and judging it smooth or rough (chapter 1.5). Its one big idea: **the ear is not a microphone.** It measures some things very finely, ignores others, and invents a few.
+</Callout>
+
+## The question
+
+Chapter 1.2 described sound in physical terms: a <Term id="waveform">waveform</Term>, its <Term id="frequency">frequency</Term>, the strength of its <Term id="harmonics">harmonics</Term>. You could measure all of that with a microphone and a computer, and the numbers wouldn't depend on who was listening.
+
+What you *hear* is different. You hear a **pitch** (how high), a **loudness** (how strong), and a **timbre** (what kind of sound). Each one is related to a physical quantity, and it's tempting to treat them as the same thing: pitch is frequency, loudness is amplitude, timbre is the spectrum. This chapter is about why each of those equations is only roughly true, and why the exceptions matter for music.
+
+Three surprises to keep in mind as you read:
+
+1. You can hear a pitch of 200 Hz when there is no energy at 200 Hz at all.
+2. Two tones at exactly the same sound pressure can differ in loudness by a factor of four, depending only on their frequency.
+3. Cut the first tenth of a second off a recorded note, and an instrument you know well can become hard to name.
+
+## The ear as an analyzer
+
+### Getting sound inside
+
+Sound reaches the ear as tiny fluctuations in air pressure. The outer ear funnels them down the ear canal to the eardrum. The canal is a short tube, closed at one end, and like any tube it has a <Term id="resonance">resonance</Term>: it boosts frequencies around 2,000–5,000 Hz by up to roughly 10–15 dB. Hold that thought; it reappears when we get to loudness.
+
+Behind the eardrum, three tiny bones (the smallest in the body) pass the vibration to the inner ear. Their job is a mechanical translation: the inner ear is filled with fluid, and sound in air mostly bounces off water. The bones act as a lever and concentrate the force from the large eardrum onto a much smaller window, so most of the energy gets through instead of reflecting.
+
+### The cochlea: frequency mapped onto place
+
+The inner ear's hearing organ is the **cochlea**, a fluid-filled tube coiled like a snail shell, about the size of a pea. Running along its length is the **basilar membrane**, and its properties change gradually from one end to the other: narrow and stiff near the entrance, wider and floppier at the far end.
+
+That gradient is the whole trick. A vibration entering the cochlea travels along the membrane as a wave, and each frequency makes the membrane vibrate most strongly at one particular place: high frequencies near the stiff entrance, low frequencies near the floppy far end. A complex sound, one with many frequencies at once, makes many places vibrate at once. **The cochlea takes the sound apart into its frequencies**, physically, before any nerve gets involved. It is doing a rough version of the <Term id="spectrum">spectrum</Term> analysis from chapter 1.2.
+
+Along the membrane sit the **hair cells**, about 3,500 inner hair cells in a single row and three rows of outer hair cells. The inner hair cells are the sensors: when the membrane moves beneath them, they release chemical signals into the auditory nerve. Each nerve fiber connects to one spot, so each fiber "reports on" one frequency region. The outer hair cells do something stranger. They actively change length in time with the vibration, pumping energy back into the membrane. This amplifies faint sounds and sharpens each spot's frequency tuning. A healthy ear even emits faint sounds of its own as a side effect, which audiologists measure to screen newborns' hearing.
+
+Hair cells are also fragile. Loud sound damages them, and in mammals they don't grow back. Most age-related and noise-induced hearing loss is lost hair cells, usually starting at the high-frequency end.
+
+<Callout kind="verify" title="ear anatomy numbers">
+Check: the ear-canal resonance (frequency range and size of the boost, often quoted as about 10–15 dB near 2.5–4 kHz); the number of inner hair cells (about 3,500) and outer hair cells (about 12,000, in three rows); and that otoacoustic emissions are used in newborn hearing screening.
+</Callout>
+
+### A logarithmic map
+
+How does frequency spread out along the membrane? Not evenly in hertz. Above a few hundred hertz, roughly **equal distances along the membrane correspond to equal frequency ratios**. The stretch of membrane between 500 and 1,000 Hz is about as long as the stretch between 1,000 and 2,000 Hz, or between 2,000 and 4,000 Hz. Each <Term id="octave">octave</Term> gets about the same amount of membrane, about 3–4 mm of the roughly 35 mm total.
+
+This is the physical basis of something chapter 0.2 asked you to take on faith: that musical distance follows ratios, not differences. Going from 220 to 440 Hz and from 440 to 880 Hz sounds like the same step because it covers the same distance in the cochlea. (Below about 500 Hz the map becomes more compressed, more nearly linear in hertz, one reason the very low register sounds muddier.)
+
+### Critical bands
+
+Each place on the membrane responds most to one frequency but also, more weakly, to frequencies nearby. So the cochlea behaves like a bank of overlapping filters, each tuned to a band of frequencies. The width of one of those bands is called the **critical band**. Two tones inside one critical band excite largely the same stretch of membrane, and the ear can't fully separate them; tones farther apart than that are resolved as two.
+
+The critical band is roughly constant as a *ratio* in the middle and upper range and much wider, as a ratio, in the bass:
+
+<DataTable title="Critical bandwidth across the range" caption="Using Glasberg and Moore's formula for the equivalent rectangular bandwidth (ERB), one standard way of measuring the critical band. The semitone column expresses each band's width as a musical interval. Other measurement methods give somewhat wider bands, but the pattern is the same.">
+
+| Center frequency | Bandwidth (Hz) | Width in semitones | Roughly |
+|---|---|---|---|
+| 100 Hz | 35 | 6.2 | a tritone |
+| 250 Hz | 52 | 3.6 | a minor third or more |
+| 500 Hz | 79 | 2.7 | between a whole step and a minor third |
+| 1,000 Hz | 133 | 2.3 | a whole step and a bit |
+| 2,000 Hz | 241 | 2.1 | a whole step |
+| 4,000 Hz | 456 | 2.0 | a whole step |
+| 8,000 Hz | 888 | 1.9 | a whole step |
+
+</DataTable>
+
+Keep this table in mind. Critical bands explain why low notes close together sound muddy (chapter 1.5 builds its whole account of smooth and harsh intervals on them), why one sound can hide another (chapter 1.4), and, below, how loudness adds up.
+
+<Callout kind="check">
+A bass player and a cellist both play notes a <Term id="semitone">semitone</Term> apart, once around 100 Hz and once around 2,000 Hz. In which register do the two notes fall within a single critical band, and what would you expect to hear differently?
+
+<Answer>
+Around 100 Hz the critical band is about six semitones wide, so two notes a semitone apart sit well inside one band: the ear can't cleanly resolve them, and the result is a murky, buzzing blur. Around 2,000 Hz the band is about two semitones wide, so a semitone is still inside it, but only half the band; the two tones are much closer to being resolved. This is why close intervals are avoided in the bass, a rule arrangers learn early and chapter 1.5 explains in detail.
+</Answer>
+</Callout>
+
+## Pitch
+
+### Pitch follows ratios
+
+Because the cochlea lays frequency out by ratio, pitch does too. Equal musical steps are equal frequency ratios: every <Term id="semitone">semitone</Term> multiplies the frequency by about 1.06, every octave by 2. A melody moved to another key keeps its shape because every ratio between its notes is unchanged.
+
+Octaves are special in a second way. Notes an octave apart sound so alike that nearly every musical culture treats them as, in some sense, the same note. That's why they share a name: every C is a C. Psychologists call this **octave equivalence**, and the set of all C's (or all F♯'s) is a **pitch class**. So pitch really has two dimensions:
+
+- **Height:** how high or low, which rises steadily with frequency.
+- **Chroma:** which note name, which goes around a circle and comes back every octave.
+
+Picture a spiral staircase. Each full turn is an octave; as you go around you pass the C's, D's, and E's again and again, each time one floor higher. Roger Shepard drew pitch exactly this way, as a helix.
+
+<Callout kind="verify" title="octave equivalence">
+Octave equivalence is near-universal but not perfectly so: a 2019 study of the Tsimane' in Bolivia (Jacoby et al., *Current Biology*) found that listeners with little exposure to Western music reproduced the relative pitch of tones but did not reliably map them onto the same note an octave away. Check the study's details and how strongly to state "nearly every culture."
+</Callout>
+
+### How fine is pitch?
+
+The smallest change a listener can reliably detect is called the **just-noticeable difference**, or **JND**. For pitch, it's remarkably small. In the middle of the range, around 500–2,000 Hz, a careful listener can tell two pure tones apart when they differ by about 0.2–0.5% in frequency, roughly 3–10 <Term id="cents">cents</Term> (a semitone is 100 cents). Trained musicians often do better. Discrimination gets worse at very low and very high frequencies.
+
+For comparison, the tuning differences chapter 1.5 discusses (like equal-tempered versus pure thirds, about 14 cents) are well above the JND. They're audible, at least in the right conditions.
+
+There's also an upper limit to *musical* pitch. Pure tones above roughly 4,000–5,000 Hz still sound higher or lower, but listeners lose the ability to recognize melodies or judge octaves there. That's about the top note of a piccolo. Above it, tones have height but little chroma.
+
+<Callout kind="verify" title="pitch discrimination">
+Check the frequency JND numbers (e.g. Wier, Jesteadt & Green 1977; Moore's *Introduction to the Psychology of Hearing*), how much musicians outperform non-musicians (Micheyl et al. 2006 found large differences), and the upper limit of melodic pitch and octave matching (Ward 1954; Attneave & Olson 1971). Also confirm the piccolo's top note (about C8, 4,186 Hz).
+</Callout>
+
+### The missing fundamental
+
+Here's the first of the three surprises. Recall from chapter 1.2 that a typical note is a stack of harmonics at 1, 2, 3, 4... times its fundamental. You might expect the pitch you hear to be the frequency of the fundamental, the lowest and usually the strongest component. Try removing it.
+
+<PerceptLab initialMode="missing" modes={['missing']} />
+
+<Callout kind="try">
+1. Play **One note** with nothing removed: a buzzy tone at 200 Hz.
+2. Remove the lowest harmonic. The tone gets thinner, but its pitch doesn't move. Keep going: remove 3, 5, even 8 harmonics. By then the lowest component is at 1,800 Hz, nine times higher, and the pitch is still essentially 200 Hz. (It may sound brighter, tinnier, or a little less definite.)
+3. Switch to **Compare with pure tones**. You'll hear the complex tone, then a pure tone at 200 Hz, then a pure tone at the lowest harmonic still present. The pitch of the complex tone matches the first pure tone, not the second.
+4. Switch to **A tune**, remove four or five harmonics, and listen: the melody is perfectly clear, played entirely by harmonics above the notes you're hearing.
+</Callout>
+
+Hearing a pitch at the fundamental when the fundamental isn't there is called the **missing fundamental** (also *residue pitch* or *virtual pitch*). It's not a rare lab effect; you rely on it every day:
+
+- **Phones and small speakers.** A phone's speaker produces almost nothing below a few hundred hertz. The fundamental of a man's speaking voice (about 100–150 Hz) or of a bass guitar's low notes (about 40–100 Hz) simply isn't reproduced. You still hear the voice at its normal pitch and the bass line on the right notes, reconstructed from the upper harmonics.
+- **Old telephone lines** carried only about 300–3,400 Hz, which removed the fundamentals of most voices. Nobody sounded higher.
+- **Music production.** Mixing engineers add distortion or extra harmonics to bass sounds so the bass line survives on laptop speakers and earbuds. The lowest octave may be gone, but the brain fills in the pitch.
+
+<ListeningCue track="billie-bad-guy" start="0:00" end="0:45">
+Listen first on headphones, then on your phone's speaker. The very bottom of the bass is gone on the phone, and the sound is thinner, but you can still follow which notes the bass is playing. Compare how it *feels* (the physical weight is gone) with what you can *identify* (the pitches are still there).
+</ListeningCue>
+
+<Callout kind="verify" title="missing fundamental in practice">
+Check the telephone passband (300–3,400 Hz is the standard figure for analog lines), typical speaking fundamentals, and that phone speakers roll off below a few hundred hertz. The "bad guy" example is my suggestion and needs confirming by ear: does its bass line remain identifiable on phone speakers? Also check the claim about deliberate harmonic enhancement of bass (devices such as psychoacoustic bass enhancers do this; confirm a citable source).
+</Callout>
+
+<Callout kind="check">
+In the lab, with the first four harmonics removed, the lowest frequency present is 1,000 Hz. Look at the right-hand picture. What property of the waveform could the brain be using to come up with "200 Hz"? And what property of the spectrum?
+
+<Answer>
+In the waveform: it still repeats exactly every 5 ms, 200 times a second, because every remaining harmonic (1,000, 1,200, 1,400 Hz...) fits a whole number of cycles into 5 ms. In the spectrum: the remaining harmonics are still spaced 200 Hz apart, and 200 Hz is the largest frequency they're all whole-number multiples of. Those two observations correspond to the two main theories of pitch, next.
+</Answer>
+</Callout>
+
+### Place or timing?
+
+How does the ear actually work out a pitch? There have been two families of answers for more than 150 years, and the question isn't fully settled.
+
+**Place coding** (place theory) says the brain reads pitch from *where* the basilar membrane vibrates. Each place corresponds to a frequency, so the pattern of active places is a spectrum, and the brain finds the fundamental that best explains it, like a template matcher looking for a harmonic series. The missing fundamental fits: the harmonics at 1,000, 1,200, 1,400 Hz fit the template for 200 Hz.
+
+**Temporal coding** says the brain reads pitch from *when* nerve fibers fire. Auditory nerve fibers tend to fire at the same point in each cycle of the vibration (this is called **phase locking**), so the timing of their spikes carries the period of the wave. The missing fundamental fits here too: the combined pattern still repeats every 5 ms.
+
+The two theories make different predictions in some cases:
+
+- Phase locking fades above about 4–5 kHz. That matches the upper limit of melodic pitch suspiciously well, which favors timing.
+- The low harmonics of a note (roughly the first eight or so) are each resolved by a separate stretch of membrane. Higher harmonics crowd into shared critical bands and aren't resolved individually. Tones made only of unresolved harmonics still have a pitch, but a weak, buzzy one. Tones with resolved harmonics have a strong, clear pitch, which favors place, or at least shows that resolution matters.
+
+The honest summary: most researchers think the brain uses both, and the debate is about how much each contributes and where. If your rewrite says "scientists know exactly how pitch works," that would be wrong.
+
+<Callout kind="verify" title="pitch theories">
+Check the history (August Seebeck's siren experiments in the 1840s, which showed a pitch at the missing fundamental; Ohm and Helmholtz's place-based view; Schouten's "residue" in 1940; Licklider's 1951 autocorrelation model; Goldstein's 1973 template-matching model), the phase-locking limit in humans (estimates vary and are debated, often 4–5 kHz), and the resolved/unresolved boundary (roughly harmonics 6–10, per Shackleton & Carlyon 1994). Oxenham's 2012 review in the *Journal of Neuroscience* is a good starting point.
+</Callout>
+
+### Pitch is a circle, too
+
+If pitch has both height and chroma, you can pull them apart. In 1964 Roger Shepard built tones that have chroma but no clear height. Each **Shepard tone** is one note sounded in every octave at once, with the loudest components in the middle of the range and the components fading out toward the top and bottom.
+
+Now step the whole stack up a semitone, then another. Every component rises, so each step sounds like a step up. But as components climb toward the top, they fade out, and new components fade in at the bottom. After twelve steps the stack is physically identical to where it started, and yet you heard twelve steps up.
+
+<PerceptLab initialMode="shepard" modes={['shepard']} />
+
+<Callout kind="try">
+1. Play it and let it run for a few cycles. Try to notice the moment where it "goes back to the start." There isn't one.
+2. Switch the loudness shape to **Plain octaves** while it's playing. Now the four components keep equal loudness, so nothing hides the jump: every twelve steps, the whole sound drops an octave.
+3. Back to the Shepard shape: listen to the circle on the right. Your ear is tracking chroma, which goes around, while height goes nowhere.
+</Callout>
+
+Jean-Claude Risset extended the idea to a continuous slide, the *Shepard–Risset glissando*, which seems to rise or fall forever. Film composers use it to suggest unrelenting tension. Hans Zimmer has described building parts of the *Dunkirk* score on it.
+
+<ListeningCue track="zimmer-supermarine" start="0:00">
+Listen for lines that seem to keep rising without arriving anywhere. The effect is usually mixed in with other material rather than played bare like the lab's version; see whether you can catch moments where the rising never arrives.
+</ListeningCue>
+
+<Callout kind="verify" title="Shepard tones and Dunkirk">
+Check Shepard (1964) and Risset's continuous version (late 1960s; in his *Computer Suite from Little Boy*, 1968). Confirm the *Dunkirk* claim (Nolan and Zimmer have discussed the Shepard tone in interviews about the film, around 2017) and find a timestamp in "Supermarine" where the effect is clearly audible.
+</Callout>
+
+## Loudness
+
+### Decibels
+
+The ear's range of sound levels is enormous. The loudest sound you can tolerate carries about a trillion (10¹²) times the power of the faintest sound you can hear. To fit that range onto a usable scale, acousticians use the **decibel** (dB), a logarithmic unit:
+
+- Every **+10 dB** multiplies the sound's power by 10.
+- Every **+20 dB** multiplies its pressure by 10 (power goes as the square of pressure).
+- **+6 dB** is roughly double the pressure; **+3 dB** is double the power.
+
+On its own, a decibel is only a ratio. To describe how loud a sound is, you need a reference. **Sound pressure level** (dB SPL) uses the faintest pressure a young listener can detect at 1,000 Hz as 0 dB.
+
+<DataTable title="Typical sound levels" caption="Rough, commonly quoted values; real levels vary a lot with distance and setting. The perceived-loudness column uses the rule of thumb that +10 dB sounds about twice as loud.">
+
+| Sound | Approximate level (dB SPL) | Loudness vs. conversation |
+|---|---|---|
+| Threshold of hearing (1 kHz) | 0 | — |
+| Quiet room at night | 20–30 | about 1/8 |
+| Normal conversation (1 m) | 60 | 1× |
+| Busy street | 70–80 | 2–4× |
+| Symphony orchestra fortissimo (in the hall) | 90–100 | 8–16× |
+| Rock concert or club near the speakers | 105–115 | 20–40× |
+| Threshold of pain | 120–130 | — |
+
+</DataTable>
+
+Two things about perceived loudness. First, it doesn't scale with power. A sound must rise by roughly 10 dB, ten times the power, before most listeners call it "twice as loud" (S. S. Stevens's rule of thumb). Second, the JND for level is about 1 dB: smaller changes are hard to notice.
+
+<Callout kind="verify" title="decibels and loudness">
+Check the typical-level table against a standard source (e.g. Everest, *Master Handbook of Acoustics*; Rossing, *The Science of Sound*), the "10 dB ≈ twice as loud" rule (Stevens's sone scale, which holds only approximately and mainly above about 40 dB), and the level JND (about 0.5–1 dB for broadband sounds at moderate levels).
+</Callout>
+
+### Equal loudness
+
+Now the second surprise. Play a pure tone at 1,000 Hz and a pure tone at 63 Hz at exactly the same sound pressure level, and they don't sound equally loud. The low one sounds much quieter. At low levels it can be inaudible.
+
+In 1933 Harvey Fletcher and Wilden Munson at Bell Labs measured this systematically. Listeners adjusted the level of tones at many frequencies until each sounded as loud as a 1,000 Hz reference. Joining the matches gives a curve of equal loudness; repeating at different reference levels gives a family of curves. These are the **equal-loudness contours**. A tone's loudness level, in **phons**, is the level in dB of the 1,000 Hz tone that sounds equally loud. The modern version is the international standard ISO 226, based on newer measurements.
+
+<EqualLoudness />
+
+Three things to read off the figure:
+
+1. **The ear is most sensitive around 2–5 kHz.** That's the ear-canal resonance from the start of the chapter, plus the middle ear's efficiency in that range. It is also, not by coincidence, where much of the energy that makes speech intelligible lives.
+2. **The bass needs much more energy to sound equally loud.** At 63 Hz, a quiet tone needs about 33 dB more sound pressure than at 1,000 Hz.
+3. **The curves flatten as the level rises.** At a loud level, the same 63 Hz tone needs only about 18 dB more. So **turning the volume down removes the bass faster than everything else**.
+
+Now try matching it yourself.
+
+<PerceptLab initialMode="loudness" modes={['loudness']} />
+
+<Callout kind="try">
+1. Keep your volume moderate. Start with **125 Hz**. The player alternates the 1 kHz reference with the test tone. Adjust the boost until they sound equally loud. It's hard: you're comparing two very different sounds, and the bass tone may feel different rather than simply quieter. Take your time.
+2. Repeat for the other frequencies. Your dots trace your own equal-loudness curve.
+3. Click **Compare with the standard**. Don't expect a close match: your headphones or speakers aren't flat, and laptop speakers barely play 63 Hz at all. You're measuring your ears *plus* your playback system. The overall shape (much more boost in the bass, a little less in the 2–4 kHz region) usually shows through.
+4. Switch to **Louder** and match again. The bass needs less boost at the higher level. (The difference between the two settings is only about 16 dB, much less than the figure's 40 phons, so expect a smaller effect, if you can hear one through your playback at all.)
+</Callout>
+
+The musical consequences are everywhere:
+
+- **Quiet listening thins the mix.** Music mixed loud sounds bass-light when played quietly. Old hi-fi amplifiers had a "loudness" button that boosted bass (and some treble) at low volume to compensate.
+- **Mixing engineers check at several levels**, quiet and loud, because the balance between instruments changes with volume.
+- **Louder sounds better**, at least at first. A louder version of the same track has more apparent bass and treble and seems fuller and more exciting. That's one reason recorded music got steadily louder from the 1990s onward, the "loudness war" (chapter 4.8).
+
+<Callout kind="check">
+You mix a song on big studio speakers at a loud level, and the bass sounds perfectly balanced. Later you hear it played quietly in a café. What do you expect, and why?
+
+<Answer>
+The bass will sound weak, maybe barely there. At the quiet café level, the equal-loudness contours are much steeper in the bass: the low frequencies need proportionally more energy to sound as loud as the midrange, so a balance set at a high level sounds bass-light at a low one. (Small café speakers make it worse, though the missing fundamental will at least keep the bass line's pitches audible.)
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="equal loudness">
+Check Fletcher & Munson (1933), Robinson & Dadson (1956), and the current standard (ISO 226:2003, revised in 2023; the figure uses the 2003 formula and parameters). Confirm the "loudness button" description and that the figure's two worked numbers (+33 dB at 40 phons and +18 dB at 80 phons, for 63 Hz) match the standard's tables.
+</Callout>
+
+### Loudness adds up across bands
+
+Level isn't the only thing that sets loudness. Two other factors matter in music:
+
+- **Bandwidth.** Energy concentrated in one critical band sounds quieter than the same total energy spread over several bands. Each band contributes its own loudness, and the contributions add. A full band playing a chord sounds louder than a single instrument with the same total power, and a mix with parts spread across the spectrum sounds louder than one where everything piles into the same region.
+- **Duration.** Very short sounds seem quieter than longer ones at the same level; the ear sums energy over roughly the first 100–200 ms. A drum hit's perceived loudness depends partly on how long its tail lasts.
+
+### Protect your hair cells
+
+Since hair cells don't regrow, hearing damage is permanent and cumulative. A common occupational guideline sets a limit of 85 dB averaged over an 8-hour day, and halves the allowed time for every 3 dB above that: about 15 minutes at 100 dB, under a minute at 115 dB. A club or a loud concert can exceed that within one song. Ringing in the ears afterward (*tinnitus*) is a warning sign. Musicians' earplugs, which reduce level fairly evenly across frequencies, are cheap, and they're the reason many working musicians can still hear well in their sixties.
+
+<Callout kind="verify" title="hearing safety">
+Check the NIOSH recommended exposure limit (85 dBA for 8 hours, 3 dB exchange rate) and the derived times at 100 and 115 dB. OSHA's legal limit differs (90 dBA, 5 dB exchange). Check the claims about loudness summation across critical bands (Zwicker) and temporal integration (about 100–200 ms).
+</Callout>
+
+## Timbre
+
+### What's left over
+
+Timbre has an awkward definition. The standard one (from the American National Standards Institute) defines it by subtraction: it's the quality that lets you tell two sounds apart when their pitch and loudness are the same. It's whatever is left.
+
+Chapter 1.2 gave the first, most important part of the answer: the spectrum. A clarinet, a violin, and a flute playing the same note at the same loudness have different strengths of harmonics, and that's a large part of why they sound different. But the spectrum of a steady tone isn't the whole story, and the rest of this section is about what else matters.
+
+### The attack
+
+The third surprise. Record an instrument, then edit off the first fraction of a second of each note, so the listener hears only the steady part. Identification drops sharply. In classic experiments of this kind, listeners confused instruments they'd easily recognize normally; with the start removed, some brass and woodwind tones became hard to tell apart.
+
+The start of a note, the **attack transient**, is rarely a neat version of the steady tone. A bowed string begins with a scratchy, noisy scrape before the string settles into regular vibration. A flute begins with a breathy "chiff." A plucked string starts with a click and an extra-bright burst of harmonics that die away quickly. Piano hammers thump. These transients last only tens of milliseconds, but they carry much of an instrument's identity.
+
+The *time course* matters too: how fast the sound reaches full strength, and whether it then holds steady (organ, bowed string, wind) or immediately decays (piano, guitar, drum, bell). A piano note played backward sounds like a reed organ or a harmonium, though the spectrum is the same, just reversed in time.
+
+<Callout kind="verify" title="attack experiments">
+Check the attack-removal studies: Saldanha & Corso (1964) and Berger (1964) are the classic ones; also Clark et al. (1963). Report what they actually found (identification percentages; which instruments became confusable) rather than my general summary. Check the reversed-piano observation (often attributed to early experiments by Stumpf and later demonstrations; find a citable source, or present it as a demonstration).
+</Callout>
+
+### Timbre space
+
+How many dimensions does timbre have? Psychologists answered this with a clever method. Play listeners pairs of instrument sounds, equalized in pitch, loudness, and duration, and ask only how *similar* each pair sounds, on a scale. Don't tell them what to listen for. Then use a statistical technique called **multidimensional scaling** to build a map in which similar-sounding instruments sit close together and dissimilar ones far apart, and look at what the map's axes correspond to physically.
+
+John Grey did this in 1977 with 16 synthesized instrument tones and found a three-dimensional **timbre space**. Stephen McAdams and colleagues repeated it in 1995 with 18 sounds and a more refined model. The axes that keep coming back, in study after study:
+
+<DataTable title="The main dimensions of timbre space" caption="The three dimensions that most often emerge from timbre-similarity studies, after Grey (1977) and McAdams et al. (1995). Different sets of sounds give somewhat different axes; this is the usual core.">
+
+| Dimension | Physical correlate | Low end | High end |
+|---|---|---|---|
+| **Brightness** | Spectral centroid: the balance point of the spectrum | Dark, mellow (French horn, soft flute) | Bright, nasal, cutting (oboe, trumpet, muted brass) |
+| **Attack** | How quickly the note reaches full strength (on a log scale) | Slow, swelling (bowed string, soft wind entry) | Sharp, percussive (plucked string, mallet, piano) |
+| **Spectral change** | How much the spectrum changes during the note (spectral flux) | Steady (clarinet, organ) | Evolving (brass getting brighter as it swells, plucked notes darkening) |
+
+</DataTable>
+
+The **spectral centroid** deserves a definition: it's the average frequency of a sound's partials, weighted by their strength. Push energy into the upper harmonics and the balance point moves up; the sound gets brighter. Of all single physical measures, it's the best predictor of perceived brightness, which is why it shows up as an axis in almost every timbre study.
+
+Here are those three dimensions as dials.
+
+<PerceptLab initialMode="timbre" modes={['timbre']} />
+
+<Callout kind="try">
+1. Start from **Bowed** and slide **Brightness** from one end to the other. Same note, same attack, only the spectral balance changes. Watch the centroid readout.
+2. Now set **Attack** to its fastest (about 2 ms), then its slowest (about 400 ms). With a fast attack, the same spectrum turns percussive; with a slow one, it swells like a bowed or blown note.
+3. Raise **Darkens over the note**. A fast attack plus a spectrum that darkens quickly is the signature of a plucked or struck string. Try the **Plucked** preset, then turn the darkening off: it stops sounding plucked, even though the attack hasn't changed.
+4. Notice what the dials *can't* do. None of these presets sounds like a real flute or violin. Real instruments have noisy transients, a slightly unsteady pitch, harmonics that change at different rates, and formants (chapter 1.2). Three dials capture the main directions of difference, not everything that makes up an instrument.
+</Callout>
+
+<Callout kind="verify" title="timbre space studies">
+Check Grey (1977): 16 tones, a three-dimensional solution, and his interpretation of the axes (spectral energy distribution; synchrony of the harmonics' attacks and decays plus spectral fluctuation; and high-frequency energy in the attack). Check McAdams et al. (1995): 18 sounds (synthesized imitations and hybrids), axes of log attack time, spectral centroid, and spectral flux, plus "specificities," features unique to particular sounds. The instrument examples in the table are my illustrations, not taken from the papers.
+</Callout>
+
+<Callout kind="check">
+A synthesizer patch has a bright spectrum that stays perfectly steady for the whole note. A pianist says it "doesn't sound like a real instrument." Using the three dimensions, what's missing?
+
+<Answer>
+Spectral change, mainly. Almost every acoustic instrument's spectrum evolves during a note: a piano note starts bright and darkens as its upper harmonics die away faster than its lower ones; brass gets brighter as it swells. A perfectly steady spectrum is a strong cue for "machine." (The attack matters too: real instruments have noisy, irregular transients, not a clean ramp. That's chapter 4.3's subject.)
+</Answer>
+</Callout>
+
+### Timbre as a musical dimension
+
+Once you think of timbre as a set of dimensions, composers' uses of it come into focus. Orchestration is largely the art of choosing points in timbre space: a melody on oboe (bright, steady) versus on horn (dark, swelling) is a different melody in character, even with every pitch the same.
+
+Arnold Schoenberg imagined going further: a melody made of changing tone colors rather than changing pitches, which he called *Klangfarbenmelodie*, "tone-color melody." His student Anton Webern applied a version of it to Bach. In 1935 he orchestrated a six-voice fugue from Bach's *Musical Offering*, passing each phrase of the theme between instruments every few notes: a few notes on trombone, a few on horn, a few on trumpet, then harp. The pitches are Bach's. The timbre keeps changing underneath them.
+
+<ListeningCue track="bach-webern-ricercar" start="0:00" end="1:00">
+Follow the opening theme as it is passed from instrument to instrument. Do you hear one melody whose color keeps changing, or several short fragments? The question links straight to chapter 1.4: timbre is one of the cues the brain uses to decide what belongs together.
+</ListeningCue>
+
+<Callout kind="verify" title="Webern Ricercar">
+Check the instrumentation of the opening theme in Webern's orchestration (often described as trombone, horn, trombone, trumpet, then harp or other instruments; confirm from the score), the 1935 date, and the attribution and definition of *Klangfarbenmelodie* (Schoenberg's *Harmonielehre*, 1911). Pick a precise end time once heard.
+</Callout>
+
+## The three percepts at a glance
+
+<DataTable title="Physics and percept" caption="Each percept has one main physical correlate, but none is a simple readout of it.">
+
+| Percept | Main physical correlate | But it also depends on | Musical consequence |
+|---|---|---|---|
+| **Pitch** | Frequency (of the fundamental) | The harmonic pattern, not the fundamental itself; chroma repeats every octave; melodic pitch fades above ~5 kHz | Bass lines survive on small speakers; octaves share a name; endless scales are possible |
+| **Loudness** | Sound pressure level | Frequency (equal-loudness contours), bandwidth, duration | Bass disappears at low volume; louder sounds "better"; mixes are checked at several levels |
+| **Timbre** | Spectrum | Attack, how the spectrum changes during a note | Instruments are recognized by their starts; orchestration chooses points in timbre space |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. How the cochlea takes sound apart: the basilar membrane's gradient, place along it standing for frequency, inner and outer hair cells, and why the map is roughly logarithmic.
+2. What a critical band is, how its width varies across the range, and the three later topics it sets up (rough intervals, one sound hiding another, loudness summation).
+3. Pitch as height plus chroma; octave equivalence and pitch class; how fine pitch discrimination is; the upper limit of musical pitch.
+4. The missing fundamental, with everyday examples, and the two families of pitch theory (place and timing), with an honest account of what's unsettled.
+5. Shepard tones: how they separate chroma from height.
+6. Decibels as ratios, dB SPL, and the rough loudness rules (+10 dB ≈ twice as loud; JND ≈ 1 dB).
+7. Equal-loudness contours: what they show and why turning the volume down thins the bass.
+8. Timbre beyond the spectrum: attack transients and spectral change, and the three dimensions of timbre space.
+
+**Decisions for your rewrite:**
+
+- **Order.** I went ear → pitch → loudness → timbre. An alternative is to open with the three surprises (missing fundamental, equal loudness, the cut attack) as puzzles and explain the ear as the answer to them.
+- **How much anatomy.** I kept it to the cochlea and hair cells. You could cut the middle ear to one sentence, or add more (the auditory nerve, the brainstem's role in locating sounds) if you want the biology to carry more of the chapter.
+- **Examples.** Substitute recordings you know: a bass-heavy track you've heard on bad speakers; a film score with an endlessly rising Shepard-tone effect; an orchestral passage where one melody changes instruments (Ravel's orchestration of *Pictures at an Exhibition* is full of them).
+- **Hearing safety.** Keep the practical section or move it to a sidebar.
+
+**Misconceptions to watch for:**
+
+- "Pitch is frequency." It's a percept the brain computes, usually from the harmonic pattern; it can exist with no energy at that frequency.
+- "Loudness is amplitude." The same pressure can sound very different in loudness at different frequencies and levels.
+- "Timbre is the spectrum." The spectrum of the steady part is only part of it; attack and change over time matter as much.
+- "The ear is a microphone." It's an analyzer with its own resolution, sensitivity curve, and blind spots, and much of music theory is shaped by them.
+- "The decibel is an absolute unit." It's a ratio; dB SPL means "relative to the threshold of hearing."
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Moore, B. C. J. (2012). *An Introduction to the Psychology of Hearing* (6th ed.). Brill.
+- Glasberg, B. R., & Moore, B. C. J. (1990). Derivation of auditory filter shapes from notched-noise data. *Hearing Research*, 47(1–2), 103–138.
+- Fletcher, H., & Munson, W. A. (1933). Loudness, its definition, measurement and calculation. *Journal of the Acoustical Society of America*, 5(2), 82–108.
+- Robinson, D. W., & Dadson, R. S. (1956). A re-determination of the equal-loudness relations for pure tones. *British Journal of Applied Physics*, 7(5), 166–181.
+- ISO 226:2003. *Acoustics — Normal equal-loudness-level contours*. International Organization for Standardization.
+- Stevens, S. S. (1955). The measurement of loudness. *Journal of the Acoustical Society of America*, 27(5), 815–829.
+- Wier, C. C., Jesteadt, W., & Green, D. M. (1977). Frequency discrimination as a function of frequency and sensation level. *Journal of the Acoustical Society of America*, 61(1), 178–184.
+- Micheyl, C., Delhommeau, K., Perrot, X., & Oxenham, A. J. (2006). Influence of musical and psychoacoustical training on pitch discrimination. *Hearing Research*, 219(1–2), 36–47.
+- Attneave, F., & Olson, R. K. (1971). Pitch as a medium: A new approach to psychophysical scaling. *American Journal of Psychology*, 84(2), 147–166.
+- Oxenham, A. J. (2012). Pitch perception. *Journal of Neuroscience*, 32(39), 13335–13338.
+- Shackleton, T. M., & Carlyon, R. P. (1994). The role of resolved and unresolved harmonics in pitch perception and frequency modulation discrimination. *Journal of the Acoustical Society of America*, 95(6), 3529–3540.
+- Shepard, R. N. (1964). Circularity in judgments of relative pitch. *Journal of the Acoustical Society of America*, 36(12), 2346–2353.
+- Jacoby, N., Undurraga, E. A., McPherson, M. J., Valdés, J., Ossandón, T., & McDermott, J. H. (2019). Universal and non-universal features of musical pitch perception revealed by singing. *Current Biology*, 29(19), 3229–3243.
+- Grey, J. M. (1977). Multidimensional perceptual scaling of musical timbres. *Journal of the Acoustical Society of America*, 61(5), 1270–1277.
+- McAdams, S., Winsberg, S., Donnadieu, S., De Soete, G., & Krimphoff, J. (1995). Perceptual scaling of synthesized musical timbres: Common dimensions, specificities, and latent subject classes. *Psychological Research*, 58(3), 177–192.
+- Saldanha, E. L., & Corso, J. F. (1964). Timbre cues and the identification of musical instruments. *Journal of the Acoustical Society of America*, 36(11), 2021–2026.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details (volume, issue, pages, year), especially Micheyl et al. 2006, Attneave & Olson 1971, Jacoby et al. 2019, and the edition and publisher of Moore's textbook.
+</Callout>

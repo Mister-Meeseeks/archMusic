@@ -1,0 +1,118 @@
+---
+// What a compressor does, in two views. Left: the static transfer curve
+// (input level → output level) for a threshold of −24 dB at several ratios,
+// with a 6 dB soft knee. Right: the same compressor over time on two drum
+// hits: the input level, the gain reduction (computed with the standard
+// attack/release smoothing of the gain in dB), and the output. A slow attack
+// lets each hit's first few milliseconds through (punch); the release sets
+// how fast the level comes back up between hits.
+import Figure from '../ui/Figure.astro';
+
+const r = (v: number) => Math.round(v * 10) / 10;
+const T = -24;
+const KNEE = 6;
+// static curve: output level for input x (dB) at ratio R, soft knee
+function curve(x: number, R: number) {
+  if (2 * (x - T) < -KNEE) return x;
+  if (2 * Math.abs(x - T) <= KNEE) return x + ((1 / R - 1) * (x - T + KNEE / 2) ** 2) / (2 * KNEE);
+  return T + (x - T) / R;
+}
+
+// ---- left panel: transfer curve ----
+const L = { x0: 56, x1: 290, y0: 30, y1: 250 };
+const DMIN = -60;
+const lx = (db: number) => r(L.x0 + ((db - DMIN) / -DMIN) * (L.x1 - L.x0));
+const ly = (db: number) => r(L.y1 - ((db - DMIN) / -DMIN) * (L.y1 - L.y0));
+const ratios = [
+  { R: 1, label: '1:1 (off)', cls: 'fig-thin', dash: '4 4' },
+  { R: 2, label: '2:1', cls: 'fig-sa' },
+  { R: 4, label: '4:1', cls: 'fig-sa' },
+  { R: 1000, label: '∞:1 (limiter)', cls: 'fig-sb' },
+];
+const paths = ratios.map((q) => {
+  const pts: string[] = [];
+  for (let k = 0; k <= 120; k++) {
+    const x = DMIN + (k / 120) * -DMIN;
+    pts.push(`${k ? 'L' : 'M'}${lx(x)},${ly(curve(x, q.R))}`);
+  }
+  return { ...q, d: pts.join(' '), endY: ly(curve(0, q.R)) };
+});
+
+// ---- right panel: over time ----
+const RP = { x0: 370, x1: 660, y0: 30, y1: 250 };
+const DUR = 0.8; // seconds shown
+const tx = (t: number) => r(RP.x0 + (t / DUR) * (RP.x1 - RP.x0));
+const LV0 = RP.y0 + 62; // top of the level plot; the gain-reduction strip sits above it
+const ry = (db: number) => r(RP.y1 - ((Math.max(-48, db) + 48) / 48) * (RP.y1 - LV0));
+const hits = [0.08, 0.46];
+// input level in dB: each hit jumps to −6 dB and decays at 60 dB/s, over a −36 dB floor
+function inLevel(t: number) {
+  let lin = Math.pow(10, -36 / 20);
+  for (const h of hits) if (t >= h) lin += Math.pow(10, (-6 - 60 * (t - h)) / 20);
+  return 20 * Math.log10(lin);
+}
+const RATIO = 4;
+const ATTACK = 0.02;
+const RELEASE = 0.15;
+const N = 800;
+const dt = DUR / N;
+let gr = 0; // gain reduction in dB (≤ 0)
+const inPts: string[] = [];
+const outPts: string[] = [];
+const grPts: string[] = [];
+for (let k = 0; k <= N; k++) {
+  const t = k * dt;
+  const x = inLevel(t);
+  const target = curve(x, RATIO) - x; // desired gain change
+  const tau = target < gr ? ATTACK : RELEASE;
+  gr += (target - gr) * (1 - Math.exp(-dt / tau));
+  inPts.push(`${k ? 'L' : 'M'}${tx(t)},${ry(x)}`);
+  outPts.push(`${k ? 'L' : 'M'}${tx(t)},${ry(x + gr)}`);
+  grPts.push(`${k ? 'L' : 'M'}${tx(t)},${r(RP.y0 + 6 + (-gr / 12) * 40)}`);
+}
+---
+
+<Figure
+  title="What a compressor does"
+  caption="Left: the compressor's rule. Below the threshold (here −24 dB) the output follows the input. Above it, the ratio sets how much the excess is reduced: at 4:1, a signal 12 dB over the threshold comes out only 3 dB over. A limiter is a compressor with a ratio so high that nothing gets past the threshold. Right: the rule doesn't act instantly. On two drum hits, at 4:1, the gain reduction (top) takes the attack time (20 ms) to arrive, so the first instant of each hit gets through at full level: the 'punch'. It takes the release time to let go, which lifts the quieter tail between hits. Illustrative numbers."
+>
+  <svg viewBox="0 0 680 290" role="img" aria-label="Compressor transfer curves at several ratios, and a compressor acting on two drum hits over time">
+    <text x={L.x0} y="18" class="fig-h">The rule: input → output</text>
+    {[-60, -48, -36, -24, -12, 0].map((d) => (
+      <g>
+        <line x1={lx(d)} x2={lx(d)} y1={L.y0} y2={L.y1} class="fig-grid" />
+        <line x1={L.x0} x2={L.x1} y1={ly(d)} y2={ly(d)} class="fig-grid" />
+        <text x={lx(d)} y={L.y1 + 14} text-anchor="middle" class="fig-s">{d}</text>
+        <text x={L.x0 - 6} y={ly(d) + 4} text-anchor="end" class="fig-s">{d}</text>
+      </g>
+    ))}
+    <text x={(L.x0 + L.x1) / 2} y={L.y1 + 30} text-anchor="middle" class="fig-s">input level (dB)</text>
+    <text x={14} y={(L.y0 + L.y1) / 2} text-anchor="middle" class="fig-s" transform={`rotate(-90 14 ${(L.y0 + L.y1) / 2})`}>output level (dB)</text>
+    <line x1={lx(T)} x2={lx(T)} y1={L.y0} y2={L.y1} class="fig-line is-ctl" />
+    <text x={lx(T) - 4} y={ly(-6)} text-anchor="end" class="fig-t fig-halo">threshold</text>
+    {paths.map((p) => (
+      <g>
+        <path d={p.d} class={p.cls} stroke-dasharray={p.dash} />
+        <text x={L.x1 + 4} y={p.endY + 4} class="fig-s fig-halo">{p.label}</text>
+      </g>
+    ))}
+
+    <text x={RP.x0} y="18" class="fig-h">Over time: attack and release</text>
+    <line x1={RP.x0} x2={RP.x1} y1={RP.y1} y2={RP.y1} class="fig-thin" />
+    <line x1={RP.x0} x2={RP.x1} y1={ry(T)} y2={ry(T)} class="fig-line is-ctl" />
+    <text x={RP.x0 + 4} y={ry(T) - 5} class="fig-s fig-halo">threshold</text>
+    <path d={inPts.join(' ')} class="fig-thin" stroke-dasharray="4 3" />
+    <path d={outPts.join(' ')} class="fig-sa" />
+    <path d={grPts.join(' ')} class="fig-sb" />
+    <line x1={RP.x0} x2={RP.x1} y1={RP.y0 + 6} y2={RP.y0 + 6} class="fig-grid" />
+    <line x1={RP.x0} x2={RP.x1} y1={LV0 - 8} y2={LV0 - 8} class="fig-grid" />
+    <text x={tx(0.2)} y={RP.y0 + 36} class="fig-s fig-halo">gain reduction</text>
+    <text x={tx(0.62)} y={ry(-17)} class="fig-s fig-halo">input (dashed)</text>
+    <text x={tx(0.62)} y={ry(-30)} class="fig-t fig-halo">output</text>
+    <text x={tx(hits[0]) + 8} y={ry(-10)} class="fig-s fig-halo">← punch</text>
+    {[0, 0.2, 0.4, 0.6, 0.8].map((t) => (
+      <text x={tx(t)} y={RP.y1 + 14} text-anchor="middle" class="fig-s">{t ? `${t * 1000} ms` : '0'}</text>
+    ))}
+    <text x={(RP.x0 + RP.x1) / 2} y={RP.y1 + 30} text-anchor="middle" class="fig-s">time</text>
+  </svg>
+</Figure>

@@ -5,7 +5,7 @@ import { chapterLabel } from '../data/outline';
 import { conceptHref } from '../lib/concepts';
 
 const all = await getCollection('concepts');
-const ORDER = ['Sound', 'Hearing', 'Notes & intervals', 'Chords', 'Harmony & style', 'Melody', 'Tuning', 'Consonance', 'Rhythm', 'Form & tension', 'Synthesis'];
+const ORDER = ['Sound', 'Hearing', 'Notes & intervals', 'Chords', 'Harmony & style', 'Melody', 'Tuning', 'Consonance', 'Rhythm', 'Form & tension', 'Synthesis', 'Production'];
 const rank = (c: string) => (ORDER.includes(c) ? ORDER.indexOf(c) : ORDER.length);
 const categories = [...new Set(all.map((c) => c.data.category))].sort((a, b) => rank(a) - rank(b));
 const hrefs = new Map(await Promise.all(all.map(async (c) => [c.id, await conceptHref(c)] as const)));

@@ -148,12 +148,30 @@
   title: I Feel Love
   artist: Donna Summer (prod. Giorgio Moroder & Pete Bellotte)
   year: 1977
-  youtube: yEbaeLv-aOo        # DonnaSummerVEVO (single edit, 3:59)
+  youtube: aupvf-3KKtU        # Donna Summer - Topic (UMG, full-length version, 5:51). v7-01 switched from DonnaSummerVEVO yEbaeLv-aOo (single edit), so the Atlas map covers the whole track.
   spotify: 1vCBk33l9HaWp5FOnhSGxk  # I Remember Yesterday (album version, 5:55)
   search: Donna Summer I Feel Love
   rights: embed-official
   listened: false
-  notes: Almost entirely sequenced synthesizer, with machine-exact timing. Proof that quantized music can groove hard.
+  duration: "5:51"
+  notes: Almost entirely sequenced synthesizer, with machine-exact timing. Proof that quantized music can groove hard. Confirm by ear that the Topic upload is the album version (its description names a compilation, Tastemakers, but the length matches).
+  # v7-01 (Atlas). A SKELETON, not a transcription: section starts were laid out in roughly eight-bar blocks
+  # and must be retimed by ear (the map's Retime panel prints YAML). Add events for each key change you hear.
+  map:
+    verified: false
+    sections:
+      - { t: "0:00", label: "Intro: the machine alone", kind: intro }
+      - { t: "0:15", label: "Verse", kind: verse }
+      - { t: "0:45", label: "Refrain", kind: chorus }
+      - { t: "1:16", label: "Verse", kind: verse }
+      - { t: "1:46", label: "Refrain", kind: chorus }
+      - { t: "2:17", label: "Instrumental", kind: bridge }
+      - { t: "3:03", label: "Verse", kind: verse }
+      - { t: "3:33", label: "Refrain", kind: chorus }
+      - { t: "4:04", label: "Instrumental", kind: bridge }
+      - { t: "4:50", label: "Refrain to the end", kind: outro }
+    events:
+      - { t: "0:15", label: "Voice enters" }
 
 # ---------- Overture ch. 2: the toolkit ----------
 - id: mj-billie-jean
@@ -166,6 +184,25 @@
   rights: embed-official
   listened: false
   notes: An unmistakable 4/4 beat from the first second (drums alone, then bass). Commonly cited at about 117 BPM; the tap-tempo exercise lets the reader check.
+  duration: "4:54"
+  # v5-05 map: estimated from lrclib.net line timestamps (album version, 4:54); structure only.
+  map:
+    verified: false
+    sections:
+      - { t: "0:00", label: "Intro (drums, then bass)", kind: intro }
+      - { t: "0:29", label: "Verse 1", kind: verse }
+      - { t: "1:09", label: "Pre-chorus", kind: prechorus }
+      - { t: "1:26", label: "Chorus", kind: chorus }
+      - { t: "1:49", label: "Verse 2", kind: verse }
+      - { t: "2:31", label: "Pre-chorus", kind: prechorus }
+      - { t: "2:48", label: "Chorus", kind: chorus }
+      - { t: "3:05", label: "Chorus", kind: chorus }
+      - { t: "3:26", label: "Break", kind: solo }
+      - { t: "3:43", label: "Chorus", kind: chorus }
+      - { t: "4:16", label: "Outro (vamp)", kind: outro }
+    events:
+      - { t: "1:26", label: "Title line" }
+      - { t: "3:26", label: "Vocal drops out" }
 
 - id: strauss-blue-danube
   title: The Blue Danube (An der schönen blauen Donau), Op. 314
@@ -415,6 +452,24 @@
     the development starts around 2:50 (bar 125, after the repeated exposition), the recapitulation
     begins around 4:20, and the solo oboe cadenza (bar 268) comes around 4:30. Check these by ear
     (allow about ±10 s).
+  duration: "7:16"
+  # v5-05 map: sonata form. ESTIMATES from bar counts (502 bars, exposition repeated, ~0.7 s/bar,
+  # fermatas ignored). Letter kinds: a = first theme, b = second theme, c = development.
+  map:
+    verified: false
+    sections:
+      - { t: "0:00", label: "Theme 1 (C minor)", kind: a }
+      - { t: "0:41", label: "Theme 2 (E♭ major)", kind: b }
+      - { t: "1:26", label: "Repeat: theme 1", kind: a }
+      - { t: "2:07", label: "Theme 2 (E♭ major)", kind: b }
+      - { t: "2:53", label: "Development", kind: c }
+      - { t: "4:19", label: "Recap: theme 1", kind: a }
+      - { t: "4:58", label: "Theme 2 (C major)", kind: b }
+      - { t: "5:47", label: "Coda", kind: outro }
+    events:
+      - { t: "0:41", label: "Horn call" }
+      - { t: "4:31", label: "Oboe cadenza" }
+      - { t: "6:50", label: "Final chords" }
 
 - id: garland-rainbow
   title: Over the Rainbow
@@ -429,6 +484,21 @@
     On "Some-where" the melody leaps up an octave, then fills the gap by stepping back down ("over
     the rain-bow"). This happens at the first sung line, a few seconds after the short orchestral intro.
     Alternative official YouTube upload: areSgU0fGp8 (WaterTower Music).
+  duration: "2:46"
+  # v5-05 map: AABA, estimated from lrclib.net line timestamps (2:46 soundtrack version); structure only.
+  map:
+    verified: false
+    sections:
+      - { t: "0:00", label: "Intro", kind: intro }
+      - { t: "0:31", label: "A", kind: a }
+      - { t: "0:53", label: "A", kind: a }
+      - { t: "1:15", label: "B (bridge)", kind: b }
+      - { t: "1:42", label: "A", kind: a }
+      - { t: "2:06", label: "Interlude", kind: intro }
+      - { t: "2:22", label: "Coda", kind: outro }
+    events:
+      - { t: "0:31", label: "Octave leap" }
+      - { t: "1:42", label: "Octave leap" }
 
 - id: beatles-yesterday
   title: Yesterday (Remastered 2009)
@@ -532,3 +602,708 @@
   # Alternative: "Blade Runner (End Titles)": youtube OP63BRzKmB0 (Vangelis - Topic, 4:40) /
   # spotify 1u1ATklwZesAvq1whHsI8Z (same 1994 album, 4:39), with the big CS-80 brass lead.
   # "Love Theme" (Topic PKpH8N1Be-o, 6:06) is mainly Dick Morrissey's saxophone, so skip it.
+
+# ---------- Vol V ch. 5: form ----------
+# Section maps were estimated from lrclib.net line timestamps (structure only, no
+# lyrics stored) or, for instrumental pieces, from bar-count proportions. All need
+# retiming by ear (SongMap's "Retime" panel). Letter kinds (a, b, c...) color
+# sections by their musical material, matching the FormStrips figure.
+
+- id: dylan-blowin
+  title: Blowin' in the Wind
+  artist: Bob Dylan
+  year: 1963
+  youtube: cQBVgtcR2rM        # Bob Dylan - Topic, "Mixing Up The Medicine" (Columbia/Legacy), originally released 1963 (2:46)
+  spotify: 18GiV1BaXzPVYpp9rmOg0E  # The Freewheelin' Bob Dylan (2:49)
+  search: Bob Dylan Blowin' in the Wind Freewheelin
+  rights: embed-official
+  listened: false
+  duration: "2:46"
+  notes: >-
+    Strophic with a refrain: three verses to the same tune, each ending with the same two-line refrain,
+    separated by harmonica breaks. Confirm the Topic upload is the 1963 Freewheelin' recording.
+  map:
+    verified: false
+    sections:
+      - { t: "0:00", label: "Verse 1", kind: a }
+      - { t: "0:35", label: "Refrain", kind: chorus }
+      - { t: "0:46", label: "Harmonica", kind: solo }
+      - { t: "0:54", label: "Verse 2", kind: a }
+      - { t: "1:27", label: "Refrain", kind: chorus }
+      - { t: "1:39", label: "Harmonica", kind: solo }
+      - { t: "1:48", label: "Verse 3", kind: a }
+      - { t: "2:21", label: "Refrain", kind: chorus }
+      - { t: "2:30", label: "Harmonica", kind: solo }
+
+- id: berry-johnny-b-goode
+  title: Johnny B. Goode
+  artist: Chuck Berry
+  year: 1958
+  youtube: OoJiKTL8Xk8        # Chuck Berry - Topic, "Gold" (UMG), ℗ 1958 (2:39)
+  spotify: 1PY5vhO3Yg2lfjIeu6msK4  # The Definitive Collection, "Single Version" (2:39)
+  search: Chuck Berry Johnny B. Goode 1958
+  rights: embed-official
+  listened: false
+  duration: "2:39"
+  notes: >-
+    Every section is one time through the 12-bar blues (about 17 s each): guitar intro, verse, refrain,
+    verse, refrain, two choruses of guitar solo, verse, refrain. Usually given as in B♭ (verify).
+    Other verified Topic uploads of the same 1958 master: 0-xwMmL2I5g, _SYl2wTNM-w (both 2:39).
+  map:
+    verified: false
+    sections:
+      - { t: "0:00", label: "Guitar intro", kind: intro }
+      - { t: "0:17", label: "Verse 1", kind: verse }
+      - { t: "0:34", label: "Refrain", kind: chorus }
+      - { t: "0:51", label: "Verse 2", kind: verse }
+      - { t: "1:08", label: "Refrain", kind: chorus }
+      - { t: "1:25", label: "Guitar solo", kind: solo }
+      - { t: "1:42", label: "Guitar solo", kind: solo }
+      - { t: "2:00", label: "Verse 3", kind: verse }
+      - { t: "2:16", label: "Refrain", kind: chorus }
+      - { t: "2:33", label: "Ending", kind: outro }
+
+- id: beethoven-fur-elise
+  title: "Für Elise (Bagatelle No. 25 in A minor, WoO 59)"
+  artist: Ludwig van Beethoven; Lang Lang (piano)
+  year: 2019
+  youtube: GwcyH-aWUc8        # Deutsche Grammophon - DG, from Lang Lang's "Piano Book" (3:25)
+  spotify: 6JRmJ2KpW7qlDUlCQOTot3  # Lang Lang, "Work From Home With Beethoven" (DG compilation, 2020) (3:26); confirm it is the Piano Book recording
+  search: Lang Lang Für Elise Piano Book
+  rights: embed-official
+  listened: false
+  duration: "3:25"
+  notes: >-
+    A small rondo, A B A C A. ESTIMATES from bar counts (about 1.6 s per bar, all repeats assumed):
+    the F-major B episode around 1:12, the A return around 1:37, the stormy C episode (repeated low A
+    in the bass) around 2:11, the final A around 2:50. If Lang Lang skips the second repeat, everything
+    after the first A comes about 20 s earlier. Find the returns by ear: the opening two-note
+    oscillation is unmistakable.
+  map:
+    verified: false
+    sections:
+      - { t: "0:00", label: "A", kind: a }
+      - { t: "1:12", label: "B (F major)", kind: b }
+      - { t: "1:37", label: "A", kind: a }
+      - { t: "2:11", label: "C (A minor, low A pedal)", kind: c }
+      - { t: "2:50", label: "A", kind: a }
+    events:
+      - { t: "2:40", label: "Run back to A" }
+
+- id: queen-bohemian-rhapsody
+  title: Bohemian Rhapsody
+  artist: Queen
+  year: 1975
+  youtube: fJ9rUzIMcZQ        # Queen Official, "Official Video Remastered" (5:59)
+  spotify: 5eIDxmWYxRA0HJBYM9bIIS  # A Night At The Opera (2011 remaster) (5:54)
+  search: Queen Bohemian Rhapsody
+  rights: embed-official
+  listened: false
+  duration: "5:59"
+  notes: >-
+    Through-composed: six sections in different styles, with almost no section returning. Times are
+    estimated from lrclib.net line timestamps for the 5:55 album audio; the video runs about 4 s
+    longer, so expect a small offset.
+  map:
+    verified: false
+    sections:
+      - { t: "0:00", label: "Intro (a cappella)", kind: a }
+      - { t: "0:49", label: "Ballad", kind: b }
+      - { t: "2:35", label: "Guitar solo", kind: c }
+      - { t: "3:03", label: "Opera", kind: d }
+      - { t: "4:07", label: "Hard rock", kind: e }
+      - { t: "4:55", label: "Outro", kind: f }
+    events:
+      - { t: "1:55", label: "Ballad, second verse" }
+      - { t: "5:50", label: "Gong" }
+
+# ---------- v2-02: why we hear beats nobody plays ----------
+- id: radiohead-videotape
+  title: Videotape
+  artist: Radiohead
+  year: 2007
+  youtube: WF83_PR2EsA        # Radiohead - Topic (In Rainbows)
+  spotify: 4T1iiabe7G0UjWQJCY6NE2  # In Rainbows
+  search: Radiohead Videotape In Rainbows
+  rights: embed-official
+  listened: false
+  notes: >-
+    The piano chords are widely heard as falling on the beat, until the drums enter and reveal a different
+    beat underneath; for many listeners the whole song "flips". Often discussed online as a metric illusion
+    (verify how the chords sit against the drums' beat, and when the drums come in).
+
+- id: bvsc-chan-chan
+  title: Chan Chan
+  artist: Buena Vista Social Club
+  year: 1997
+  youtube: o5cELP06Mik        # World Circuit Records, official audio
+  spotify: 3bxZhauuIU4ubctdRZwPYW  # Buena Vista Social Club (1997)
+  search: Buena Vista Social Club Chan Chan
+  rights: embed-official
+  listened: false
+  notes: >-
+    A son by Compay Segundo. Listen for the claves (two wooden sticks) playing the clave pattern under the
+    guitar and voices. Verify by ear that the claves are audible and which way round (3-2 or 2-3) they run.
+
+- id: west-side-story-america
+  title: America (West Side Story, 1961 film soundtrack)
+  artist: Rita Moreno, George Chakiris, West Side Story Orchestra (cond. Johnny Green); music by Leonard Bernstein
+  year: 1961
+  youtube: Do75KD2uedo        # Rita Moreno - Topic
+  spotify: 2LtrbpAkLRflC69sjay7Z2  # on "Bernstein: Greatest Hits" (1994); same soundtrack recording
+  search: West Side Story America Rita Moreno 1961 soundtrack
+  rights: embed-official
+  listened: false
+  notes: >-
+    Bernstein's chorus alternates a bar of 6/8 (two groups of three) with a bar of 3/4 (three groups of two),
+    the classic hemiola from Spanish and Latin American dance (the huapango). Other verified copies:
+    youtube 74xJqsfTLI8 (West Side Story Orchestra - Topic), spotify 5WCqPdSIcud7miLVt3RP6W (2006 compilation).
+    Confirm the YouTube and Spotify uploads are the same film recording.
+
+- id: zeppelin-black-dog
+  title: Black Dog
+  artist: Led Zeppelin
+  year: 1971
+  youtube: yBuub4Xe1mw        # Led Zeppelin - Topic (Remaster, Led Zeppelin IV)
+  spotify: 3qT4bUD1MaWpGrTwcvguhb  # Led Zeppelin IV (Deluxe Edition), Remaster
+  search: Led Zeppelin Black Dog remaster
+  rights: embed-official
+  listened: false
+  notes: >-
+    The guitar-and-bass riff seems to drift against the drums: John Bonham keeps a steady 4/4 while the
+    riff's phrase doesn't line up with the bar, so the riff and the beat keep re-meeting at different
+    places. Verify the exact description (which instrument keeps which meter) by ear and against a
+    transcription. Also verified: youtube 2KPEHohJMuw (Led Zeppelin official channel, "Official Audio").
+
+# ---------- Atlas 1: I Feel Love (v7-01) ----------
+- id: sylvester-mighty-real
+  title: You Make Me Feel (Mighty Real)
+  artist: Sylvester
+  year: 1978
+  youtube: c3vtOEiO6TY        # Sylvester (official channel), official audio from Step II (6:40)
+  spotify: 3j1fs2X0ibiihnM4Fd4A2D  # Step II (6:36)
+  search: Sylvester You Make Me Feel Mighty Real
+  rights: embed-official
+  listened: false
+  notes: San Francisco disco a year after I Feel Love, with synthesizer parts by Patrick Cowley; a step toward Hi-NRG. A pulsing sequenced-style bass under a gospel-trained falsetto. Check Cowley's role on this recording.
+
+- id: cowley-i-feel-love-megamix
+  title: I Feel Love (Patrick Cowley Mega Mix)
+  artist: Donna Summer; remix by Patrick Cowley
+  year: 1978
+  youtube: null               # no official upload found; Spotify only
+  spotify: 3p4eJMBDV5Esv2k0LSLd96  # "I Feel Love - Patrick Cowley Mega Mix", 12" Dance compilation (2009), 8:14: an edit of the 15:43 original
+  search: Donna Summer I Feel Love Patrick Cowley Mega Mix
+  rights: embed-official
+  listened: false
+  notes: Cowley's extended remix (made 1978, circulated on acetate, issued by Disconet in 1980 and Casablanca in 1982, per Wikipedia). Adds new synthesizer layers and effects over the original. The Spotify version is shorter than the original remix; confirm which edit it is.
+
+
+# ---------- Vol III ch. 5: vertical harmony (v3-05) ----------
+- id: beatles-let-it-be
+  title: Let It Be
+  artist: The Beatles
+  year: 1970
+  youtube: HzvDofigTKQ        # The Beatles - Topic, "Let It Be (Remastered 2015)" (single version, from 1)
+  spotify: 2xAEMttFb293s8FmbH8tgX  # The Beatles 1967-1970 (Remastered 2009), 3:52 single version
+  search: The Beatles Let It Be single version
+  rights: embed-official
+  listened: false
+  notes: The verse's piano chords are C–G–Am–F (I–V–vi–IV); the chorus goes Am–G–F–C. The bass walks between chords. Confirm the key (C) and chord labels by ear.
+
+- id: procol-whiter-shade
+  title: A Whiter Shade of Pale
+  artist: Procol Harum
+  year: 1967
+  youtube: hxa6GUIkNac        # Procol Harum - Topic, 2007 remaster
+  spotify: 3qitymULqEibr7yknRMKU4  # A Whiter Shade Of Pale (single, 1967), 4:09
+  search: Procol Harum A Whiter Shade of Pale
+  rights: embed-official
+  listened: false
+  notes: Organ intro over a bass line that walks steadily down the scale while the chords above change to fit it, so many chords are inversions (slash chords). Often compared to Bach (Air on the G String, Sleepers Wake). Check that the Topic remaster matches the single.
+
+- id: pachelbel-canon
+  title: Canon in D (Canon and Gigue, P. 37)
+  artist: Musica Antiqua Köln, Reinhard Goebel
+  year: 1981
+  youtube: prRhyJDCjqc        # Musica Antiqua Köln - Topic, "Canon And Gigue In D Major, P 37"
+  spotify: 1tja9MiA7qB26lHXosoH8i  # German Chamber Music Before Bach (1981), Canon only, 3:08
+  search: Pachelbel Canon Musica Antiqua Köln Goebel
+  rights: embed-official
+  listened: false
+  notes: A famously brisk period-instrument reading. The bass repeats D–A–B–F♯–G–D–G–A throughout (in C that's C G Am Em F C F G). The YouTube upload may include the Gigue; check its length against the Spotify Canon.
+
+- id: bach-passion-chorale
+  title: St Matthew Passion, BWV 244, No. 54, Chorale "O Haupt voll Blut und Wunden"
+  artist: Concentus Musicus Wien, Arnold Schoenberg Chor, Nikolaus Harnoncourt
+  year: 2001
+  youtube: -fcosDOncAo        # Nikolaus Harnoncourt - Topic
+  spotify: 0RXvDEnCfJvxnnN2k3a49f  # Bach: St Matthew Passion (2001), 2:09
+  search: Harnoncourt Matthäus-Passion 54 O Haupt voll Blut und Wunden
+  rights: embed-official
+  listened: false
+  notes: >-
+    A four-part chorale harmonization, the textbook model of voice leading: four independent lines that together make a chord on every beat. A second Topic upload (--VPS_oQtgE) also exists; check which matches the Spotify recording.
+
+- id: debussy-cathedrale
+  title: Préludes, Book 1, No. 10, La cathédrale engloutie
+  artist: Arturo Benedetti Michelangeli
+  year: 1978
+  youtube: Z7CbKMkDaiI        # Arturo Benedetti Michelangeli - Topic
+  spotify: 3sPrvMf2vNuxe4YBBM2RYE  # Debussy: Préludes (Book 1) (1978), 6:51
+  search: Michelangeli Debussy La cathédrale engloutie
+  rights: embed-official
+  listened: false
+  notes: >-
+    Opens with chords built of open fifths and octaves moving in parallel, like medieval organum and like bells: deliberate parallel fifths. The big chordal climax arrives around the middle (time to be found by ear).
+
+- id: evans-waltz-for-debby
+  title: Waltz for Debby (Take 2)
+  artist: Bill Evans Trio
+  year: 1961
+  youtube: Kv9Mt65Usys        # Bill Evans Trio - Topic
+  spotify: 6EC51OfUhguCbNp5H5SdGm  # At The Village Vanguard, 6:50
+  search: Bill Evans Trio Waltz for Debby Take 2 Village Vanguard
+  rights: embed-official
+  listened: false
+  notes: >-
+    Solo piano opening, then the trio. Evans's voicings are the model for modern jazz piano: seventh chords and added notes, often without the root (the bass player has it), with close, smoothly moving inner voices.
+
+# ---------- Vol I ch. 3: from ear to percept (v1-03) ----------
+
+- id: zimmer-supermarine
+  title: Supermarine
+  artist: Hans Zimmer
+  year: 2017
+  youtube: 4FgHkfi-9Cs        # Hans Zimmer - Topic
+  spotify: 4HO9Qw7bEtj0T5sjXtpFHl  # Supermarine (From Dunkirk) single, 8:03
+  search: Hans Zimmer Supermarine Dunkirk
+  rights: embed-official
+  listened: false
+  notes: The Dunkirk score is built around Shepard-tone-style rising figures (Nolan and Zimmer have described this in interviews), giving a sense of tension that keeps climbing without arriving. Listen for string and synth lines that seem to rise continuously; exact cue points not yet chosen.
+
+- id: billie-bad-guy
+  title: bad guy
+  artist: Billie Eilish
+  year: 2019
+  youtube: DyDfgMOUjCI        # BillieEilishVEVO, official video
+  spotify: 2Fxmhks0bxGSBdJ92vM42m  # WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?, 3:14
+  search: Billie Eilish bad guy
+  rights: embed-official
+  listened: false
+  notes: A very low synth bass line under a sparse arrangement. Compare phone speakers with headphones. The phone can't reproduce the lowest frequencies, yet you still hear the bass line's pitches (missing fundamental). The official video may add sound effects; the Spotify album version is cleaner.
+
+- id: bach-webern-ricercar
+  title: "Musical Offering, BWV 1079: Fuga (Ricercata) a 6 voci (orch. Webern)"
+  artist: Berliner Philharmoniker, Pierre Boulez
+  year: 1935
+  youtube: UUECC4IGVAw        # Berliner Philharmoniker - Topic (title matches the Boulez album track; conductor not shown in oEmbed)
+  spotify: 7fo7d6yqaUnoYPQ3gyHAJi  # Boulez conducts Webern (DG), 7:11
+  search: Bach Webern Ricercata a 6 Berlin Boulez
+  rights: embed-official
+  listened: false
+  notes: Webern's 1935 orchestration hands Bach's theme from instrument to instrument every few notes (trombone, horn, trumpet, harp...), so one melody keeps changing timbre. The opening statement of the theme (from 0:00) shows it most clearly. Year is the orchestration's; the recording is from the 1990s.
+
+# ---------- Vol I ch. 1: vibrations and waves (v1-01) ----------
+
+- id: strauss-zarathustra-sunrise
+  title: "Also sprach Zarathustra, Op. 30: Prelude (Sonnenaufgang)"
+  artist: Berliner Philharmoniker, Herbert von Karajan
+  year: 1896
+  youtube: exveTEjJa5E        # Berliner Philharmoniker - Topic, DG (p) 1974, 1:50
+  spotify: 2XoV6mbo3WDokoaW49fFAf  # "Recorded 1973", Berlin Phil / Karajan, 1:50 (matched by label year and duration)
+  search: Strauss Also sprach Zarathustra Sonnenaufgang Karajan Berlin 1973
+  rights: embed-official
+  listened: false
+  notes: >-
+    The famous opening rests on a very low organ pedal C with contrabassoon and
+    double basses, a note near the bottom of hearing whose wavelength is around
+    ten meters. On good speakers or in a hall you feel it as much as hear it;
+    on a phone it vanishes. Year is the composition's; the recording is 1973.
+
+- id: lucier-sitting-in-a-room
+  title: I Am Sitting in a Room
+  artist: Alvin Lucier, Simone Conforti
+  year: 1969
+  youtube: OgYpKTWY4iE        # Alvin Lucier - Topic (Two Circles, Mode Records 2016), 18:27
+  spotify: 09pHNT4RIvhLui6eIi4HKO  # Alvin Lucier, Two Circles (Mode), 18:26
+  search: Alvin Lucier I Am Sitting in a Room Two Circles Mode
+  rights: embed-official
+  listened: false
+  notes: >-
+    Lucier's speech is played into a room and re-recorded over and over. Each
+    pass reinforces the frequencies whose wavelengths fit the room (its
+    resonant modes), until the words dissolve into ringing tones. This is a
+    later realization (Mode Records, with Simone Conforti), not the 1969 or
+    1981 recording; compare the opening with the last few minutes.
+
+- id: reich-piano-phase
+  title: Piano Phase
+  artist: Steve Reich, Double Edge (Nurit Tilles, Edmund Niemann)
+  year: 1967
+  youtube: 6MArl7T-_As        # Steve Reich - Topic (Nonesuch, Works 1965-1995), 20:37
+  spotify: 6ZD40qL76XpU9ZvqrZKYBk  # Early Works (Nonesuch), Double Edge, 20:37
+  search: Steve Reich Piano Phase Double Edge Nonesuch
+  rights: embed-official
+  listened: false
+  notes: >-
+    Two pianists play the same twelve-note pattern; one gradually speeds up
+    until it is one note ahead, then the two lock in again. "Phase" here means
+    exactly what it means for a wave, a position within a repeating cycle,
+    on the scale of a whole melodic pattern rather than one vibration.
+
+# ---------- v3-06: functional harmony ----------
+- id: handel-hallelujah
+  title: 'Messiah, HWV 56: "Hallelujah"'
+  artist: The English Concert and Choir, Trevor Pinnock
+  year: 1988
+  youtube: AKkE2TPdCt8        # The English Concert - Topic
+  spotify: 26MkIm5xaKjY1vMyxer7NN  # Handel - Messiah (Archiv, 1988), 3:57 on both
+  search: Handel Messiah Hallelujah Pinnock English Concert
+  rights: embed-official
+  listened: false
+  notes: >-
+    The ending: a grand pause, then a slow final "Hallelujah" on a plagal
+    (IV–I) cadence, the "Amen" cadence. Confirm the cadence and the timing
+    of the pause by ear.
+
+- id: beatles-hey-jude
+  title: Hey Jude
+  artist: The Beatles
+  year: 1968
+  youtube: mQER0A0ej0M        # The Beatles - Topic (Remastered 2015)
+  spotify: 0aym2LBJBk9DAYuHHutrIl  # 1 (Remastered 2015), 7:06
+  search: The Beatles Hey Jude
+  rights: embed-official
+  listened: false
+  notes: >-
+    The long coda ("na na na") loops I–♭VII–IV–I (F–E♭–B♭–F), the Mixolydian
+    rock cadence. The coda starts around 3:00 (estimate).
+
+- id: skynyrd-sweet-home
+  title: Sweet Home Alabama
+  artist: Lynyrd Skynyrd
+  year: 1974
+  youtube: -35W_FWCT9Q        # LynyrdSkynyrdVEVO, audio
+  spotify: 7e89621JPkKaeDSTQ3avtg  # Second Helping (Expanded Edition), 4:44
+  search: Lynyrd Skynyrd Sweet Home Alabama
+  rights: embed-official
+  listened: false
+  notes: >-
+    A three-chord loop, D–C–G, that can be heard as I–♭VII–IV in D or as
+    V–IV–I in G. The classic example of a loop whose tonic is ambiguous.
+
+- id: sinatra-fly-me
+  title: Fly Me to the Moon (In Other Words)
+  artist: Frank Sinatra with Count Basie and His Orchestra
+  year: 1964
+  youtube: JYuyWrkwpok        # FrankSinatraVEVO, audio
+  spotify: 1gqdVHAZt8UBCbiBYoM1Fk  # It Might As Well Be Swing, 2:33
+  search: Frank Sinatra Count Basie Fly Me To The Moon
+  rights: embed-official
+  listened: false
+  notes: >-
+    Bart Howard's melody rides a chain of chords whose roots fall by fifths
+    (in the usual lead-sheet key of A minor, Am–Dm–G–C–F–Bø–E7–Am). Sinatra
+    and Basie's key may differ; confirm by ear.
+
+# ---------- v4-08: Mixing and mastering ----------
+- id: tubby-rockers-uptown
+  title: King Tubby Meets Rockers Uptown
+  artist: Augustus Pablo and King Tubby
+  year: 1976
+  youtube: oxAl3Jijs20        # King Tubby - Topic, 2:33
+  spotify: 38gBmRO7BNAgPz35WFgZkl  # King Tubbys Meets Rockers Uptown, 2:33
+  search: Augustus Pablo King Tubby Meets Rockers Uptown
+  rights: embed-official
+  listened: false
+  notes: >-
+    A dub mix of Jacob Miller's "Baby I Love You So". King Tubby rebuilds the
+    song at the mixing desk. Parts drop out and crash back in, the vocal
+    survives only in fragments, and echo and spring reverb are thrown on
+    single hits. The mix is the composition.
+
+- id: ronettes-be-my-baby
+  title: Be My Baby
+  artist: The Ronettes
+  year: 1963
+  youtube: jSPpbOGnFgk        # TheRonettesVEVO, official audio
+  spotify: 2G2YzndIA6jeWFPBXhUjh5  # Be My Baby - The Very Best of The Ronettes, 2:41
+  search: The Ronettes Be My Baby
+  rights: embed-official
+  listened: false
+  notes: >-
+    Phil Spector's "Wall of Sound". Many players double the same parts in a
+    reverberant room, and the result blends into one dense mono mass. Listen
+    for how hard it is to pick out individual instruments behind Ronnie
+    Spector's voice. Starts with the famous solo drum pattern.
+
+- id: prydz-call-on-me
+  title: Call On Me (Radio Edit)
+  artist: Eric Prydz
+  year: 2004
+  youtube: qetW6R9Jxs4        # Ministry of Sound, official video, 2:54
+  spotify: 0sgEQ34KyLdxBi6gumNKpt  # Call On Me (single), 2:49
+  search: Eric Prydz Call On Me
+  rights: embed-official
+  listened: false
+  notes: >-
+    The textbook example of sidechain "pumping". The looped vocal from Steve
+    Winwood's "Valerie" and the synths duck on every kick and swell back, so
+    the whole track breathes in time. The official video may add sound
+    effects at the start.
+
+- id: metallica-day-never-comes
+  title: The Day That Never Comes
+  artist: Metallica
+  year: 2008
+  youtube: K6AJuRK2NE4        # Metallica, official video, 8:26 (video adds about 30 s of intro)
+  spotify: 2gqzkEF88vMclfRZEIOnQO  # Death Magnetic, 7:56
+  search: Metallica The Day That Never Comes
+  rights: embed-official
+  listened: false
+  notes: >-
+    From Death Magnetic (2008), the album most often cited in the loudness
+    war. Fans complained of audible clipping, and a differently mastered
+    version circulated via the Guitar Hero game. Listen on a streaming
+    service with normalization on, and then off, and notice how much the
+    service turns it down.
+
+# ---------- v2-03: subdivision, syncopation, accent, grouping ----------
+
+- id: little-richard-long-tall-sally
+  title: Long Tall Sally
+  artist: Little Richard
+  year: 1956
+  youtube: E68N5E1d0_M        # Little Richard - Topic, 2:13
+  spotify: 7k2aUk9FWKDntqrLaViaBM  # Here's Little Richard (2013 listing), 2:07
+  search: Little Richard Long Tall Sally
+  rights: embed-official
+  listened: false
+  notes: >-
+    Specialty single, recorded in New Orleans with Earl Palmer on drums. A
+    loud, steady backbeat under a shouted vocal. Several reissue labels list
+    this track on Spotify; check that this one is the original 1956 Specialty
+    recording, not a re-recording.
+
+- id: srv-pride-and-joy
+  title: Pride and Joy
+  artist: Stevie Ray Vaughan and Double Trouble
+  year: 1983
+  youtube: y1Xh-UepaUs        # Stevie Ray Vaughan - Topic, 3:40
+  spotify: 1a2iF9XymafjRk56q7oCxo  # Texas Flood (Legacy Edition), 3:40
+  search: Stevie Ray Vaughan Pride and Joy Texas Flood
+  rights: embed-official
+  listened: false
+  notes: >-
+    A Texas shuffle. Guitar, bass, and drums all play the long-short
+    triplet feel, with a strong snare backbeat.
+
+- id: brubeck-take-five
+  title: Take Five
+  artist: The Dave Brubeck Quartet
+  year: 1959
+  youtube: ryA6eHZNnXY        # Dave Brubeck Quartet - Topic, 5:25
+  spotify: 1YQWosTIljIvxAgHWTp7KP  # Time Out (1959), 5:29
+  search: Dave Brubeck Quartet Take Five Time Out
+  rights: embed-official
+  listened: false
+  notes: >-
+    Paul Desmond's tune in 5/4. The piano vamp groups each bar as 3 + 2
+    beats. A second Topic upload (buVpqwraap0, 5:27) may be the remaster;
+    match whichever lines up with the Spotify listing.
+
+- id: sheeran-shape-of-you
+  title: Shape of You
+  artist: Ed Sheeran
+  year: 2017
+  youtube: JGwWNGJdvx8        # Ed Sheeran, official music video, 4:24 (video is longer than the album track)
+  spotify: 7qiZfU4dY1lWllzX7mPBI3  # ÷ (Deluxe), 3:54
+  search: Ed Sheeran Shape of You
+  rights: embed-official
+  listened: false
+  notes: >-
+    The marimba-like riff that opens the song is grouped 3 + 3 + 2 over a
+    steady pop beat, and the vocal is full of pushed
+    syllables. The official video adds an intro, so cue times differ from
+    Spotify.
+
+# ---------- Vol I ch. 6: attention, memory, expectation (v1-06) ----------
+- id: haydn-surprise
+  title: "Symphony No. 94 in G major, \"Surprise\": II. Andante"
+  artist: Joseph Haydn; Berlin Philharmonic, Herbert von Karajan
+  year: 1982
+  youtube: 14G_PDZWXVE        # Berliner Philharmoniker - Topic (DG, 1982)
+  spotify: 7DAc5WZlmE1jOLrMzbvrIn  # DG: Haydn Symphonies Nos. 94 & 101, Karajan (5:40 on both)
+  search: Haydn Symphony 94 Surprise Andante Karajan Berlin
+  rights: embed-official
+  listened: false
+  notes: >-
+    The quiet theme is played, repeated even more quietly, and ends with a
+    sudden fortissimo chord (estimated around 0:30; check by ear). The
+    classic case of a surprise that still works once you know it.
+
+- id: adele-someone-like-you
+  title: Someone Like You
+  artist: Adele
+  year: 2011
+  youtube: 22c3_LoIfZQ        # Adele - Topic (album audio; official video is hLQl3WQQoQ0)
+  spotify: 4kflIGfjdZJW4ot2ioixTB  # 21
+  search: Adele Someone Like You
+  rights: embed-official
+  listened: false
+  notes: >-
+    Cited in a 2012 Wall Street Journal article as a chills-inducing song,
+    with the chorus melody's appoggiaturas (ornamental clashing notes that
+    resolve) offered as the reason, following John Sloboda's 1991 survey.
+    Chorus estimated to begin around 1:13; check by ear.
+
+# ---------- v3-08: counterpoint ----------
+
+- id: josquin-ave-maria
+  title: "Ave Maria ... virgo serena"
+  artist: Josquin des Prez; The Tallis Scholars, Peter Phillips
+  year: null
+  youtube: Ca14d8rJp3M        # Peter Phillips - Topic, 5:27
+  spotify: 2J3Mmybwue0jyQ0UVMYurH  # Renaissance Radio (2013 compilation; Gimell recording), 5:26
+  search: Josquin Ave Maria virgo serena Tallis Scholars Phillips
+  rights: embed-official
+  listened: false
+  notes: >-
+    A four-voice motet (probably c. 1485; date disputed). It opens with a point of imitation: the
+    top voice sings "Ave Maria" alone and the other three enter one after another with the same
+    phrase, from the top down. Later sections alternate pairs of voices, imitation, and chordal
+    homophony, ending in slow block chords ("O mater Dei"). Original recording year and album not
+    confirmed (the Spotify track is on a compilation).
+
+- id: gould-wtc-c-minor-fugue
+  title: "The Well-Tempered Clavier, Book I: Fugue No. 2 in C minor, BWV 847"
+  artist: J. S. Bach; Glenn Gould
+  year: null
+  youtube: OU9LIX4lc3o        # Glenn Gould - Topic, 1:35
+  spotify: 0y5gYRweF6frHbRMJI6KIJ  # Glenn Gould plays Bach - The Well-Tempered Clavier (1993 reissue), 1:35
+  search: Glenn Gould Fugue No. 2 C minor BWV 847
+  rights: embed-official
+  listened: false
+  notes: >-
+    A three-voice fugue with a short, catchy subject. The subject is heard alone first (in the
+    middle voice), the answer follows in the top voice, then the subject enters in the bass.
+    Entry times are ESTIMATES from bar counts at Gould's fast tempo (about 3 s per bar), roughly
+    0:00, 0:06, and 0:18; find them by ear. Gould's recording dates (early 1960s) not confirmed.
+
+- id: king-oliver-dippermouth
+  title: Dippermouth Blues
+  artist: King Oliver's Creole Jazz Band (with Louis Armstrong)
+  year: 1923
+  youtube: Rm_UpMNOunA        # King Oliver's Creole Jazz Band - Topic, 2:27
+  spotify: 3imU95VbhKr5iAQimRsZQT  # Dipper Mouth Blues (Original Recordings 1923), "(04/23)", 2:29
+  search: King Oliver Creole Jazz Band Dippermouth Blues 1923
+  rights: embed-official
+  listened: false
+  notes: >-
+    New Orleans collective improvisation, recorded for Gennett in April 1923: Oliver's cornet
+    (and Armstrong's second cornet) carry the tune in the middle, Johnny Dodds's clarinet weaves
+    faster figures above, and Honoré Dutrey's trombone slides underneath. The band recorded it
+    twice in 1923 (Gennett in April, OKeh in June); check that the YouTube and Spotify uploads are
+    the same take. Oliver's famous muted cornet solo comes later in the record.
+
+- id: beach-boys-god-only-knows
+  title: God Only Knows
+  artist: The Beach Boys
+  year: 1966
+  youtube: u90beUXTKwo        # The Beach Boys - Topic, "Remastered 1999", 2:56
+  spotify: 17QTsL4K9B9v4rI8CAIdfC  # Pet Sounds (1966), 2:55
+  search: Beach Boys God Only Knows Pet Sounds
+  rights: embed-official
+  listened: false
+  notes: >-
+    The fade-out is a round: overlapping voices sing "God only knows what I'd be without you" in
+    staggered entries, layered over each other. ESTIMATE that the round starts around 2:10; check
+    by ear, and count how many separate entries you can hear.
+
+- id: sg-scarborough-canticle
+  title: Scarborough Fair / Canticle
+  artist: Simon & Garfunkel
+  year: 1966
+  youtube: cRLYWWAwcqE        # Simon & Garfunkel - Topic, 3:10
+  spotify: 0rguUqiSbFbd6vDVndfDlS  # Parsley, Sage, Rosemary and Thyme (1966), 3:10
+  search: Simon Garfunkel Scarborough Fair Canticle
+  rights: embed-official
+  listened: false
+  notes: >-
+    Two songs sung at once: the traditional English ballad "Scarborough Fair" and "Canticle", a
+    countermelody adapted from Paul Simon's anti-war song "The Side of a Hill", which enters as a
+    second, quieter line from the second verse. ESTIMATE that "Canticle" first enters around
+    0:50; check by ear. Arrangement credit (Martin Carthy's version of the ballad) is a known
+    dispute; check before discussing it.
+
+# ---------- v3-04: tonal centers and modes ----------
+- id: santana-oye-como-va
+  title: Oye Como Va
+  artist: Santana (written by Tito Puente)
+  year: 1970
+  youtube: U3XPzwjhSZw        # Santana - Topic
+  spotify: 5u6y4u5EgDv0peILf60H5t  # Abraxas
+  search: Santana Oye Como Va Abraxas
+  rights: embed-official
+  listened: false
+  notes: >-
+    A two-chord Dorian vamp (Am7 to D9, often described as A Dorian) that runs
+    under the whole song. Tito Puente's 1963 original is the source.
+
+- id: beatles-norwegian-wood
+  title: Norwegian Wood (This Bird Has Flown)
+  artist: The Beatles
+  year: 1965
+  youtube: tllsZgtELYM        # The Beatles - Topic (US stereo version)
+  spotify: 1H7gMYGykdtwZOV6s1N0by  # Rubber Soul (Remastered 2009)
+  search: Beatles Norwegian Wood Rubber Soul
+  rights: embed-official
+  listened: false
+  notes: >-
+    Verse melody in E Mixolydian (the lowered 7th, D natural, over an E home);
+    the bridge shifts toward the parallel minor. The YouTube upload is labeled
+    US stereo; Spotify is the 2009 stereo remaster. Check they match.
+
+- id: elfman-simpsons-theme
+  title: The Simpsons (Main Title Theme)
+  artist: Danny Elfman
+  year: 1989
+  youtube: Fttst9dG6Ko        # The Simpsons - Topic
+  spotify: 0dc5xtuEyEr80dt34tGGXv  # Music For A Darkened Theatre Volume One
+  search: Danny Elfman The Simpsons theme
+  rights: embed-official
+  listened: false
+  notes: >-
+    The opening melody outlines a Lydian scale (the raised 4th, F sharp over a C
+    home in the usual description). The YouTube (1:24, the show's soundtrack
+    album) and Spotify (1:31, Elfman's compilation) are different versions of
+    the theme; pick one for the final cue.
+
+- id: paco-entre-dos-aguas
+  title: Entre Dos Aguas
+  artist: Paco de Lucía
+  year: 1973
+  youtube: 0vq3qZwaXrw        # Paco de Lucía - Topic (Remastered 2014)
+  spotify: 4WO5q4gmBiPJbv2xqVDADE  # La Búsqueda (Remastered 2014)
+  search: Paco de Lucia Entre Dos Aguas
+  rights: embed-official
+  listened: false
+  notes: >-
+    Flamenco rumba built on the Andalusian cadence (Am G F E), usually analyzed
+    as Phrygian on E (the half step F to E is the signature sound). First
+    released on Fuente y caudal (1973); check the year and which recording this is.
+
+- id: hendrix-watchtower
+  title: All Along the Watchtower
+  artist: The Jimi Hendrix Experience (written by Bob Dylan)
+  year: 1968
+  youtube: TLV4_xaYynY        # JimiHendrixVEVO, official audio
+  spotify: 2aoo2jlRnM3A0NyLQqMN2f  # Electric Ladyland
+  search: Jimi Hendrix All Along the Watchtower Electric Ladyland
+  rights: embed-official
+  listened: false
+  notes: >-
+    The whole song cycles three chords, C sharp minor, B, A (i, ♭VII, ♭VI):
+    natural minor (Aeolian) with no raised 7th, so there is no leading tone.
+    The key is from memory; check by ear.

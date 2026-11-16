@@ -1,0 +1,70 @@
+---
+// The textbook "harmonic map" of a major key (after Kostka & Payne's chart):
+// chords grouped by function, with the normal direction of travel left to
+// right toward the tonic. Colors match ProgressionLab's function colors.
+import Figure from '../ui/Figure.astro';
+
+type Col = { fn: 'T' | 'PD' | 'D'; title: string; chords: { roman: string; sym: string }[] };
+const cols: Col[] = [
+  { fn: 'T', title: 'Tonic', chords: [{ roman: 'I', sym: 'C' }] },
+  { fn: 'T', title: 'Stand-ins', chords: [{ roman: 'iii', sym: 'Em' }, { roman: 'vi', sym: 'Am' }] },
+  { fn: 'PD', title: 'Predominant', chords: [{ roman: 'IV', sym: 'F' }, { roman: 'ii', sym: 'Dm' }] },
+  { fn: 'D', title: 'Dominant', chords: [{ roman: 'V(7)', sym: 'G, G7' }, { roman: 'vii°', sym: 'B°' }] },
+  { fn: 'T', title: 'Tonic', chords: [{ roman: 'I', sym: 'C' }] },
+];
+const X0 = 20, BW = 110, GAP = 22, BY = 78, BH = 116;
+const bx = (i: number) => X0 + i * (BW + GAP);
+const midY = BY + BH / 2;
+---
+
+<Figure
+  title="A map of a major key"
+  caption="The usual flow of chords in a major key (C major here), grouped by function. Progressions mostly travel left to right: away from the tonic, through the predominant, to the dominant, and home. Skipping a column is normal (I straight to IV, or IV to I in rock); moving right to left, such as V to IV, is rare in Bach and Mozart but everyday in rock and blues. vi and iii share two notes with I, so they can stand in for it. The tonic can go anywhere. The dashed arrow is the deceptive cadence: V to vi instead of I. After the chart in Kostka and Payne's <em>Tonal Harmony</em>; a summary of habits, not a law."
+>
+  <svg viewBox="0 0 680 262" role="img" aria-label="Flow chart of chord functions in a major key: tonic, tonic substitutes, predominant, dominant, tonic">
+    <defs>
+      <marker id="hm-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fig-head" />
+      </marker>
+    </defs>
+
+    {/* "the tonic can go anywhere" */}
+    <path d={`M${bx(0) + BW / 2},${BY - 4} C${bx(0) + BW / 2},${BY - 46} ${bx(3) + BW / 2},${BY - 46} ${bx(3) + BW / 2},${BY - 6}`} class="fig-thin" stroke-dasharray="2 4" marker-end="url(#hm-arrow)" />
+    <path d={`M${bx(0) + BW / 2},${BY - 4} C${bx(0) + BW / 2},${BY - 30} ${bx(2) + BW / 2},${BY - 30} ${bx(2) + BW / 2},${BY - 6}`} class="fig-thin" stroke-dasharray="2 4" marker-end="url(#hm-arrow)" />
+    <text x={bx(1) + BW / 2 + 10} y={BY - 40} text-anchor="middle" class="fig-s">I can go to any chord</text>
+
+    {cols.map((c, i) => (
+      <g class={`pl-${c.fn}`}>
+        <rect x={bx(i)} y={BY} width={BW} height={BH} rx="8" class="hm-box" />
+        <text x={bx(i) + BW / 2} y={BY + 20} text-anchor="middle" class="hm-title">{c.title}</text>
+        {c.chords.map((ch, k) => {
+          const n = c.chords.length;
+          const cy = BY + 30 + ((BH - 30) * (k + 0.5)) / n;
+          return (
+            <g>
+              <text x={bx(i) + BW / 2} y={cy + 4} text-anchor="middle" class="hm-roman">{ch.roman}</text>
+              <text x={bx(i) + BW / 2} y={cy + 20} text-anchor="middle" class="fig-s">{ch.sym}</text>
+            </g>
+          );
+        })}
+      </g>
+    ))}
+
+    {[0, 1, 2, 3].map((i) => (
+      <line x1={bx(i) + BW + 3} y1={midY} x2={bx(i + 1) - 4} y2={midY} class="fig-line" marker-end="url(#hm-arrow)" />
+    ))}
+
+    {/* deceptive: V to vi */}
+    <path d={`M${bx(3) + BW / 2},${BY + BH + 4} C${bx(3) + BW / 2},${BY + BH + 44} ${bx(1) + BW / 2},${BY + BH + 44} ${bx(1) + BW / 2},${BY + BH + 6}`} class="fig-line hm-dec" stroke-dasharray="5 4" marker-end="url(#hm-arrow)" />
+    <text x={bx(2) + BW / 2} y={BY + BH + 48} text-anchor="middle" class="fig-s">deceptive: V → vi</text>
+
+    <text x={bx(0)} y="22" class="fig-h">Away from home</text>
+    <text x={bx(4) + BW} y="22" text-anchor="end" class="fig-h">and back</text>
+  </svg>
+</Figure>
+
+<style>
+  .hm-box { fill: color-mix(in srgb, var(--fn) 9%, var(--surface)); stroke: var(--fn); stroke-width: 1.5; }
+  .hm-title { font: 600 10.5px var(--sans); fill: var(--fn); text-transform: uppercase; letter-spacing: 0.04em; }
+  .hm-roman { font: 600 19px var(--serif); fill: var(--ink); }
+</style>

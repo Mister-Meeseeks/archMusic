@@ -1,0 +1,309 @@
+---
+title: "Vibrations and Waves: Frequency, Amplitude, and Phase"
+volume: 1
+chapter: 1
+summary: Every sound is something vibrating and air passing the vibration along. What a sound wave physically is, why the simplest vibration traces a sine wave, and the four numbers that describe any wave (frequency, period, amplitude, wavelength), plus phase, the fifth idea that matters when waves meet.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [frequency, pitch, note-names, octave, middle-c]
+lintIgnore: [swing, meter, decibel] # physical swing of a string, the unit of length, and dB only inside verify callouts
+introduces: [sound-wave, simple-harmonic-motion, sine-wave, waveform, amplitude, period, wavelength, speed-of-sound, phase, interference, polarity, room-modes]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the other drafts. This is the book's physics foundation, and later chapters already lean on it: chapter 1.2 assumes you know what a sine wave and a waveform are, chapter 1.3 assumes amplitude, and chapter 1.5 assumes phase. The physics is settled, so there are fewer "the science is uncertain" flags than usual. The verify callouts here are mostly about numbers and examples.
+
+One lab with three views (**One vibration**, **Two waves together**, **Inside the air**) and one figure. Headphones help for the low end. Then write your version in `src/content/chapters/v1-01-vibrations.mdx`.
+</Callout>
+
+## The question
+
+Pluck a guitar string and a sound reaches you across the room. Nothing visible travels from the guitar to your ear. The string is barely a meter away from you, and it only moves a few millimeters. Yet you can tell, instantly, how high the note is, how strong it is, and that it's a guitar and not a piano.
+
+What exactly crossed the room? This chapter answers that, and builds the small vocabulary the rest of the book uses to describe it: frequency, period, amplitude, wavelength, and phase. None of it requires math beyond division. All of it turns out to matter musically: why bass notes fill a room and treble notes don't, why some seats in a hall boom and others sound thin, why one cable wired backward can make a band lose its bass, and why noise-cancelling headphones can cancel noise at all.
+
+## Sound is a pattern in the air
+
+Air is made of molecules, constantly jostling, packed close enough that a push on one is passed to its neighbors. Now put something vibrating in the air: a guitar string, a loudspeaker cone, your vocal folds.
+
+When a loudspeaker cone moves forward, it squeezes the air just in front of it into a slightly denser layer, a **compression**. That layer pushes on the air next to it, which pushes on the air beyond, and the squeeze moves outward. When the cone moves back, it leaves a slightly thinned-out layer behind, a **rarefaction**, and that moves outward too. A cone moving back and forth sends out a steady train of compressions and rarefactions. That traveling pattern is a **sound wave**.
+
+Two facts about it are worth holding onto:
+
+- **The air doesn't travel; the pattern does.** Each bit of air only jiggles back and forth around where it was, passing the push along. It's like a stadium wave: the wave goes around the stadium, the people stay in their seats. When a sound reaches you from across the room, no air from the guitar has arrived. The *pattern* has.
+- **A sound wave is a pattern of pressure.** At any spot, the air pressure rises slightly above normal (compression), falls slightly below (rarefaction), and rises again. Your eardrum is a pressure gauge: it gets pushed in and pulled out by those tiny pressure swings. A microphone does the same thing.
+
+Because sound is a push passed from molecule to molecule, it needs a medium. In a vacuum there is nothing to pass it along, which is why space is silent (the explosions in science-fiction films are artistic license).
+
+<Callout kind="try">
+In the lab below, choose **Inside the air** and press nothing yet: just watch. Each dot is a parcel of air. Follow one of the **orange** dots: it rocks back and forth in place. Meanwhile the dense bands (compressions) march steadily to the right. The middle strip graphs the pressure along the tube at that instant: high where the dots bunch up, low where they spread apart.
+</Callout>
+
+### How fast it travels
+
+In room-temperature air, sound travels about **343 meters per second**: roughly a kilometer every three seconds, or a mile every five. That's why you can count the seconds between lightning and thunder to estimate how far away a storm is. It's fast for a walker and slow for a musician. Sound takes a tenth of a second to travel the 34 meters from the stage to the back of a large hall. Even across a wide orchestra, about 15 meters, it takes over 40 milliseconds: enough for players on the far side to sound slightly late to players on the near side, which is part of why orchestras watch a conductor rather than only listening.
+
+The **speed of sound** depends on the medium, not on the sound. It's faster in warm air than cold, about four times faster in water, and fifteen or more times faster in steel. But within one medium, **all frequencies travel at the same speed.** If high notes traveled faster than low ones, a band heard from the back of a field would arrive as a smear, treble first. It doesn't.
+
+<Callout kind="verify" title="speed of sound">
+Check: 343 m/s in dry air at 20 °C (about +0.6 m/s per °C); roughly 1,480 m/s in water and around 5,000–6,000 m/s in steel; the "three seconds per kilometer" thunder rule. Also check the concert-hall arithmetic (34 m in about 0.1 s; 15 m in about 44 ms) and whether orchestral players genuinely rely on the conductor partly for this reason (it's commonly said; find a source or soften it).
+</Callout>
+
+## What makes something vibrate
+
+Why do strings, drumheads, and tuning forks vibrate at all, and why at a particular rate?
+
+Anything that vibrates has two properties working against each other: **springiness** (a force that pulls it back toward its resting position when you push it away) and **mass** (which keeps it moving once it's moving). Pull a weight on a spring down and let go. The spring pulls it back up toward rest. By the time it gets there, it's moving fast, and its momentum carries it past rest, compressing the spring, which then pushes it back down. It overshoots again. Back and forth, until friction wears the motion away.
+
+That motion has a name: **simple harmonic motion**. And if you record it over time, by attaching a pen to the weight and pulling a strip of paper past at a steady speed, it draws a very particular shape.
+
+<SpringTrace />
+
+That shape is a **sine wave**. It's the smoothest possible oscillation, the motion of any idealized mass-and-spring system, and as a sound it's the simplest possible tone: a **pure tone**, which sounds like a tuning fork or a soft whistle. A tuning fork is close to an ideal spring: its prongs have mass and springiness, and that's why it rings with such a plain, pure sound.
+
+The figure's rules of thumb explain a great deal of instrument design:
+
+- **Stiffer means faster (higher).** Tighten a guitar string and its pitch goes up. Tension is what makes a string springy.
+- **Heavier means slower (lower).** The low strings on a guitar or piano are thicker and often wrapped in wire, to add mass without adding much stiffness. A big drum sounds lower than a small one partly for the same reason.
+- **A bigger push gives a bigger swing at the same rate.** Pluck harder and the string swings further, but its pitch stays put. This is lucky for music. If loud notes came out at a different pitch than soft ones, instruments couldn't play in tune at more than one volume.
+
+<Callout kind="note" title="Nearly, not exactly">
+"Same rate at any size of swing" holds exactly only for an ideal spring. Real vibrators bend the rule slightly. A hard-plucked string starts a little sharp, because the big swing stretches it and raises its tension, then settles as the swing dies down. You can sometimes hear it on a bass guitar or a koto. It's small, but it's part of the sound.
+</Callout>
+
+<Callout kind="verify" title="springs, strings, and pitch">
+Check: that a plucked string's pitch is slightly sharp at a large amplitude and falls as it decays (tension modulation), and whether this is audible on bass guitar or koto. Check that wound strings add mass with relatively little stiffness. "Bigger drum, lower pitch" is mostly about size, not only mass; reword if the owner wants to be strict.
+</Callout>
+
+## Frequency and period
+
+You already know **frequency** from the toolkit chapter: how many times per second a vibration repeats, in hertz. A string vibrating 440 times a second makes the tuning A, A4.
+
+Flip that number over and you get the **period**: the time one cycle takes. They're two views of the same fact.
+
+> **period = 1 ÷ frequency**
+
+A 100 Hz tone repeats every 1/100 of a second, so its period is 10 milliseconds. A 1,000 Hz tone has a period of 1 millisecond. Middle C, at about 261.6 Hz, has a period of about 3.8 milliseconds.
+
+The two views are good for different jobs. Frequency is natural for talking about pitch: double the frequency and you go up an octave. Period is natural for looking at a graph of a sound, or for thinking about timing. Chapter 1.3 will show that part of how the ear finds pitch may be by timing exactly this: the repeat of the period.
+
+A graph of pressure (or of a string's position) over time is called a **waveform**. A sine wave is the smoothest waveform there is. Real instruments make more complicated shapes, as you'll see at the end of this chapter.
+
+<WaveLab />
+
+<Callout kind="try">
+1. Press **Play** in the **One vibration** view. You're hearing a pure tone at 220 Hz (A3). The graph shows 20 milliseconds of it: you can count 4.4 cycles.
+2. Drag **Frequency** up. The cycles crowd together, the period readout shrinks, and the pitch rises. Drag it to 440 Hz: twice as many cycles in the window, an octave higher.
+3. Drag it down toward 50 Hz. Now one period is 20 ms, the whole window. Below that the window can't even show one complete cycle. (On a laptop or phone you probably hear almost nothing down here. The speaker can't move enough air at that frequency, which is a wavelength problem, coming up below.)
+4. Change **Amplitude** at a fixed frequency. The curve gets taller or shorter, the sound gets stronger or weaker, and the period doesn't change at all.
+</Callout>
+
+## Amplitude
+
+**Amplitude** is the size of the vibration. For a string, it's how far the string swings from rest. For a sound wave, it's how far the pressure rises above and falls below normal air pressure.
+
+What's remarkable is how *small* those pressure swings are. Normal air pressure at sea level is about 101,000 pascals (the pascal is the standard unit of pressure). Ordinary conversation, at a meter away, wobbles that pressure by about **0.02 pascals**: two parts in ten million. The faintest sound a young listener can hear is a swing of about **0.00002 pascals**. At that level the air molecules move back and forth by a distance smaller than the diameter of an atom. At the other extreme, sound starts to become painful at around 20 pascals and above, a million times the amplitude of the faintest audible sound.
+
+That enormous range is why sound levels are usually measured on a compressed, logarithmic scale rather than in pascals, and why amplitude and how loud something *sounds* aren't the same thing. Bigger amplitude generally sounds louder, but loudness is a perception and depends heavily on frequency too. Chapter 1.3 takes that apart.
+
+<Callout kind="verify" title="pressure numbers">
+Check: standard atmospheric pressure 101,325 Pa; conversational speech about 0.02 Pa at 1 m (about 60 dB SPL); the threshold of hearing 20 µPa at 1 kHz (the 0 dB SPL reference); pain threshold roughly 20–60 Pa (120–130 dB SPL). Check the "smaller than an atom" claim: at 1 kHz and 20 µPa, particle displacement works out to roughly 10⁻¹¹ m (p ÷ (ρ·c·2πf)), against an atomic diameter of roughly 10⁻¹⁰ m.
+</Callout>
+
+## Wavelength
+
+So far we've looked at the wave at one spot, over time. Now freeze time and look along the wave in space. The distance from one compression to the next is the **wavelength**. Since the wave moves at the speed of sound and makes one compression per cycle:
+
+> **wavelength = speed of sound ÷ frequency**
+
+The numbers are surprising.
+
+<DataTable title="Frequency, period, and wavelength across the musical range" caption="Wavelengths in room-temperature air (343 m/s). Periods are rounded. The lowest organ note is the C an octave below the piano's lowest C, found on large organs with 32-foot pipes.">
+
+| Sound | Frequency | Period | Wavelength in air |
+|---|---|---|---|
+| Lowest organ C (32-foot pipe) | 16.4 Hz | 61 ms | 21 m |
+| Bottom of human hearing (roughly) | 20 Hz | 50 ms | 17 m |
+| Piano's lowest note (A0) | 27.5 Hz | 36 ms | 12.5 m |
+| Bass guitar's low E (E1) | 41.2 Hz | 24 ms | 8.3 m |
+| Middle C (C4) | 261.6 Hz | 3.8 ms | 1.3 m |
+| Tuning A (A4) | 440 Hz | 2.3 ms | 78 cm |
+| Piano's highest note (C8) | 4,186 Hz | 0.24 ms | 8 cm |
+| Top of human hearing (young ears) | 20,000 Hz | 0.05 ms | 1.7 cm |
+
+</DataTable>
+
+The low notes of a bass guitar have wavelengths as long as a bus. The top of hearing has wavelengths about the width of a finger. A thousandfold range in wavelength, inside one room, and that range explains several everyday puzzles:
+
+- **Why bass goes around corners.** Waves bend around obstacles that are small compared to their wavelength, and pass straight by them; they cast "shadows" behind obstacles that are large compared to it. An 8-meter bass wave flows around a doorway, a car, a person. A 2-centimeter treble wave is blocked by your own head. That's why the music from a party down the street is all bass, and why turning your head changes the treble you hear but not the bass. (Walls also let low frequencies through more easily than high ones, for a separate reason: a heavy wall resists being shaken back and forth quickly far better than slowly. Either way, the bass gets through.)
+- **Why you can't tell where a subwoofer is.** Your brain locates sounds partly by comparing what arrives at your two ears. When a wave is many meters long, your two ears, 20 centimeters apart, receive almost the same part of it. That's why one subwoofer can sit anywhere in a room, while the small speakers that carry the higher frequencies must be placed with care.
+- **Why small speakers can't make deep bass.** To make a long-wavelength wave of any strength, a speaker has to push a lot of air a long way, because the push has to last a long time per cycle. A phone's speaker is too small to move enough air at 50 Hz. This is also why the lab sounds empty at the bottom of its range on a laptop. (Chapter 1.3 explains why you can still often hear the *pitch* of a bass line on a phone.)
+- **Why rooms boom at some notes.** Sound reflects off walls. When a wavelength fits neatly between two walls (when the room is exactly half a wavelength long, or a whole number of half-wavelengths), the reflections line up and reinforce each other, building up a strong, lingering tone at that frequency. These are a room's **room modes**. In a room 5 meters long the first one falls at about 34 Hz (a 10-meter wavelength), with others at 69 Hz, 103 Hz, and so on. In a small room, bass notes near those frequencies boom and others nearly vanish, depending on where you sit. Headphones skip the room entirely, which is one reason mixes are often checked on both.
+
+<Callout kind="verify" title="wavelength effects">
+Check the claims about diffraction (low frequencies bend around obstacles comparable to their wavelength), head shadowing of high frequencies, the localization of low frequencies (commonly cited: below roughly 80–120 Hz it's hard to tell where a sound comes from, which is the basis of single-subwoofer systems), and why walls transmit low frequencies more readily (the "mass law": transmission loss rises about 6 dB per doubling of frequency). Check the room-mode arithmetic (f = 343 ÷ (2 × 5 m) ≈ 34 Hz, then multiples).
+</Callout>
+
+<ListeningCue track="strauss-zarathustra-sunrise" start="0:00" end="0:30">
+The famous opening of *Also sprach Zarathustra* begins on a very low C held by the organ, contrabassoon, and double basses: a wave several meters long. Listen once on phone speakers and once on headphones or a good system. On the phone the opening is a near-silent wash; on a good system you feel it in your chest before the trumpets enter.
+</ListeningCue>
+
+<Callout kind="verify" title="Zarathustra's low C">
+Confirm the scoring of the opening (organ pedal C, contrabassoon, double basses, and possibly a bass drum roll), and which C it is: the organ part is often said to use a 32-foot stop (16.4 Hz) under a 16-foot C (32.7 Hz). Adjust the wavelength wording to match. The owner should confirm the phone-versus-headphones contrast by ear with this recording.
+</Callout>
+
+<ListeningCue track="lucier-sitting-in-a-room" start="0:00">
+Alvin Lucier records himself speaking a short text, plays the recording back into the room, records that, and repeats. Each pass, the frequencies whose wavelengths fit the room are reinforced a little more and the others fade. Listen to the first minute, then skip to the last few minutes: the speech has turned into a set of ringing tones. Those tones are the room's own frequencies, its shape made audible.
+</ListeningCue>
+
+<Callout kind="verify" title="Lucier">
+Check the details: the piece dates from 1969 (Brandeis), the text Lucier reads, and that this recording (Mode Records' *Two Circles*, with Simone Conforti) is a later realization. Choose a skip-to time for the "dissolved" ending after listening.
+</Callout>
+
+<Callout kind="check">
+A string quartet plays in a tiled bathroom, and the cello's low notes boom on some pitches and sound weak on others. The violin's notes sound much more even. Why the difference?
+
+<Answer>
+Room modes. The bathroom's dimensions fit a few low frequencies' wavelengths (or half-wavelengths), and those notes build up; neighboring low notes don't fit and stay weak. The violin's wavelengths are short, a few tens of centimeters, so the room has a huge number of closely packed modes in its range. They blur together into even support, and no single note stands out.
+</Answer>
+</Callout>
+
+## Phase
+
+Two waves can have the same frequency and the same amplitude and still differ in one way: **when** their peaks happen. **Phase** describes where a wave is in its cycle at a given moment. It's measured as a fraction of a cycle, usually in degrees: a full cycle is 360°, half a cycle is 180°, a quarter is 90°.
+
+On its own, phase is almost meaningless to the ear. A single pure tone sounds the same whether it started at a peak or a trough. Phase matters when **waves meet**, and in music they meet all the time: two instruments playing the same note, two speakers, a sound and its reflection off a wall, two microphones picking up the same drum.
+
+A related idea is **polarity**: which direction a signal pushes. Flip a signal's polarity and every peak becomes a trough and every trough a peak. For a sine wave, flipping polarity looks exactly like shifting it by half a cycle (180°). For complex sounds it isn't quite the same thing, but the effect on combining is similar.
+
+## When waves meet
+
+When two sound waves overlap, the air can't follow both at once. It does something simple: the pressures **add**. At each moment, at each spot, the air pressure is the sum of what each wave alone would have produced. This is **superposition**, and it's why a single eardrum, moving in and out along a single path, can carry an entire orchestra (chapter 1.4 takes up how the brain unpicks the sum again).
+
+Adding waves of the same frequency has striking consequences, called **interference**:
+
+- **In phase** (0°): peaks meet peaks and troughs meet troughs. The waves reinforce: constructive interference. Two equal waves make one wave twice as big.
+- **Out of phase** (180°): every peak meets a trough. The waves cancel: destructive interference. Two equal waves make silence.
+- **In between**: some reinforcement or some cancellation.
+
+<WaveLab initialMode="add" modes={['add']} />
+
+<Callout kind="try">
+1. With **Wave B** set to **Same frequency**, press **Play**. A and B are in phase: the black sum is twice as tall as either, and the readout says it's louder.
+2. Drag **B's phase** slowly from 0° to 180°. The sum shrinks... and at 180° it's gone. Silence, from two tones that are each playing perfectly well.
+3. Back at 0°, click **Flip B's polarity**. Same result: silence. For a pure tone, flipping polarity is the same as a 180° shift.
+4. Leave B at 180° and lower **B's amplitude** a little. The cancellation is no longer complete: what's left is A minus a smaller B, which is a quieter tone. Perfect cancellation needs a perfect match.
+</Callout>
+
+### Interference in the real world
+
+Interference sounds like a laboratory curiosity, but it shapes a lot of music technology.
+
+- **Noise-cancelling headphones** listen to the noise outside with a small microphone, then play the same noise with its polarity flipped, so the two cancel at your ear. It works best on steady, low sounds like engine hum, whose long periods give the electronics time to match the wave precisely. High, unpredictable sounds (voices, clattering) get through more, so the headphones block those with padding instead.
+- **A speaker wired backward.** If one of a pair of speakers is connected with its wires swapped, its cone moves out while the other moves in. In the bass, where the wavelengths are long enough that both speakers' sound reaches you nearly in step, the two cancel, and the music suddenly sounds thin. Audio engineers check polarity for exactly this reason.
+- **Two microphones on one instrument.** If a drum is picked up by a mic at 10 cm and another at 50 cm, the far mic's sound arrives about a millisecond later. Mixed together, some frequencies arrive in phase and reinforce while others arrive out of phase and cancel, and the drum sounds hollow and strangely colored. Mixing engineers spend real effort on this (chapter 4.8).
+- **Reflections in a room** are the same story: the direct sound and its reflection off a nearby wall combine at your ear. At some frequencies they reinforce, at others they cancel. Room modes, above, are the extreme case.
+
+<Callout kind="verify" title="interference examples">
+Check: that active noise cancellation is most effective at low frequencies (roughly below 1 kHz) and that passive isolation handles the highs; the reversed-speaker bass loss; the two-microphone delay arithmetic (40 cm path difference ÷ 343 m/s ≈ 1.2 ms; first cancellation near 1 ÷ (2 × 1.2 ms) ≈ 430 Hz, and more above it at regular spacings, which engineers call comb filtering).
+</Callout>
+
+<Callout kind="check">
+Two identical tones are playing, perfectly in phase. You delay one of them by exactly half a millisecond. At what frequency do they now cancel completely? What happens at twice that frequency?
+
+<Answer>
+A half-millisecond delay is half a cycle for a wave whose period is 1 millisecond: 1,000 Hz. At 1,000 Hz the delayed wave is exactly 180° behind, so they cancel. At 2,000 Hz (period 0.5 ms) the same delay is a whole cycle, 360°, so the waves line up again and reinforce. That's the comb pattern: the same delay cancels some frequencies and reinforces others.
+</Answer>
+</Callout>
+
+## Adding different frequencies
+
+What if the two waves have *different* frequencies? Then their peaks can't stay lined up: one runs faster than the other. But if one frequency is a whole-number multiple of the other, or the two frequencies are in a simple proportion like 3 to 2, the sum still repeats, and its waveform is a new, more complicated shape.
+
+<Callout kind="try">
+Back in the lab, set **Wave B** to **2×**. Now B vibrates twice for each cycle of A. The black sum has a lopsided, two-humped shape, but it still repeats every cycle of A. Try **3×**, then **3:2**. With 3:2, the sum repeats only every *two* cycles of A, the first moment both waves are back at the start together.
+
+Now move **B's phase** with B at **2×** or **3×**. The *shape* changes dramatically. Listen closely: the *sound* barely changes, if at all.
+</Callout>
+
+This is the second big idea of the chapter, and the bridge to the next one: **complex waveforms can be built by adding sine waves**, and conversely, most sounds can be understood as sums of sine waves. A clarinet's waveform and a violin's look quite different, and chapter 1.2 shows that almost every musical note is a whole stack of sine waves at whole-number multiples of one frequency.
+
+And the experiment you just did shows something important about how we hear those stacks. In the 19th century Georg Ohm and Hermann von Helmholtz proposed that the ear mostly ignores the phases between the components of a steady sound and responds to which frequencies are present and how strong they are. That's largely true: the waveform's shape can change a lot without the sound changing much. It's not the whole truth (with some sounds, particularly when the components are close together or very low, phase changes are audible), but it's why the next chapter describes sounds by their frequency content rather than by their shape.
+
+<Callout kind="verify" title="phase deafness">
+Check the history and the current view: "Ohm's acoustic law" (Ohm 1843) and Helmholtz's claim that the ear is largely insensitive to the relative phase of a steady tone's components; and the well-known exceptions, such as audible phase effects for components close together in frequency, Patterson's (1987) work on phase and tone color, and Schroeder-phase complexes. Also listen to the lab: is the phase change at 2× really inaudible on headphones? If you can hear a change, say so in your version.
+</Callout>
+
+## Phase on a larger scale
+
+"Phase" isn't only a word for tiny fractions of a second. It means a position within *any* repeating cycle, and musicians use it that way too.
+
+<ListeningCue track="reich-piano-phase" start="0:00">
+In Steve Reich's *Piano Phase* (1967), two pianists play the same quick twelve-note pattern in unison. Then one gradually speeds up until it's a full note ahead, and the two lock in again, now out of phase by one note, then two, and so on through the whole cycle. Each new phase relationship makes new patterns emerge from the same twelve notes. It's interference on the scale of a melody: same repeating shape, different offsets, different results.
+</ListeningCue>
+
+<Callout kind="verify" title="Piano Phase">
+Check: the pattern length (twelve notes), the 1967 date, and the performers (Double Edge: Nurit Tilles and Edmund Niemann). Pick a timestamp for the first drift after listening.
+</Callout>
+
+## The vocabulary of a wave
+
+<DataTable title="The vocabulary of a wave" caption="What each quantity measures, and what (roughly) it corresponds to in what you hear. The right-hand column is a first approximation; chapter 1.3 shows where it breaks down.">
+
+| Quantity | What it is | Measured in | Roughly heard as |
+|---|---|---|---|
+| Frequency | Cycles per second | hertz (Hz) | Pitch |
+| Period | Time for one cycle (1 ÷ frequency) | milliseconds | Pitch, seen from the other side |
+| Amplitude | Size of the pressure swing | pascals (or a logarithmic scale, chapter 1.3) | Loudness, partly |
+| Wavelength | Distance between compressions (speed ÷ frequency) | meters | Nothing directly; shapes how sound fills a room |
+| Phase | Position within the cycle | degrees (360° per cycle) | Nothing alone; decisive when waves combine |
+| Waveform | The shape of the vibration over time | a graph | Tone color, partly (chapter 1.2) |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. What a sound wave is: a traveling pattern of compressions and rarefactions; the air jiggles in place while the pattern moves; why sound needs a medium.
+2. The speed of sound, and why all frequencies travel at the same speed.
+3. Why things vibrate (springiness versus mass), why that traces a sine wave, and how stiffness, mass, and push size affect frequency and amplitude.
+4. Frequency and period as two views of one fact; what a waveform is.
+5. Amplitude, and how tiny audible pressure swings are.
+6. Wavelength, its huge range across hearing, and its consequences: bass bending around corners, subwoofers, small speakers, room modes.
+7. Phase and polarity; superposition; constructive and destructive interference, with real examples.
+8. Complex waveforms as sums of sine waves, and why the ear cares much more about which frequencies are present than about their phases.
+
+**Decisions for your rewrite:**
+
+- **The hook.** I started with "what crossed the room?" Alternatives: start with noise-cancelling headphones (silence made from sound), with Lucier's room, or with the thunder count.
+- **How much math.** I used two division formulas and no trigonometry. You could drop the formulas into the table, or go further and show the sine function itself.
+- **Where to put phase.** It's abstract until waves meet. I held it back until just before interference; another option is to introduce it with the lab's two-wave view first and name it after.
+- **Examples.** Swap in your own: a venue you know that booms, a phone speaker versus a club system, a recording where you can hear a polarity or comb-filter problem.
+
+**Misconceptions to watch for:**
+
+- "Sound is air moving from the source to you." The pattern travels; the air stays put.
+- "High notes travel faster." All frequencies travel at the same speed.
+- "Louder notes are higher." Amplitude and frequency are independent (nearly: see the note on strings).
+- "Amplitude *is* loudness." It's the physical cause; loudness is the perception, and they part ways (chapter 1.3).
+- "Phase doesn't matter." Alone, almost never. When waves combine, it can make the difference between double strength and silence.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Rossing, T. D., Moore, F. R., & Wheeler, P. A. (2002). *The Science of Sound* (3rd ed.). Addison-Wesley.
+- Hall, D. E. (2002). *Musical Acoustics* (3rd ed.). Brooks/Cole.
+- Benade, A. H. (1976). *Fundamentals of Musical Acoustics*. Oxford University Press.
+- Everest, F. A., & Pohlmann, K. C. (2015). *Master Handbook of Acoustics* (6th ed.). McGraw-Hill.
+- Helmholtz, H. von (1863/1885). *On the Sensations of Tone* (trans. A. J. Ellis). Longmans, Green.
+- Patterson, R. D. (1987). A pulse ribbon model of monaural phase perception. *Journal of the Acoustical Society of America*, 82(5), 1560–1586.
+- Lucier, A. (1995). *Reflections: Interviews, Scores, Writings*. MusikTexte.
+- Reich, S. (2002). *Writings on Music, 1965–2000*. Oxford University Press.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check each reference's details (editions, years, publishers), especially the Patterson 1987 title and pages and the Lucier *Reflections* edition.
+</Callout>

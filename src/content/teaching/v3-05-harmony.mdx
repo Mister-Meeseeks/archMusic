@@ -1,0 +1,374 @@
+---
+title: "Vertical Harmony: Chords, Voicing, and Voice Leading"
+volume: 3
+chapter: 5
+summary: What a chord is made of, how the same chord can be laid out in a hundred ways, and why chords that follow each other are really several melodies moving at once. Stacked thirds, chord qualities and sevenths, inversions, spacing, and the perceptual logic of voice leading.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [frequency, pitch, harmonics, spectrum, timbre, note-names, octave, semitone, middle-c, interval, frequency-ratio, cents, equal-temperament, just-intonation, cluster, register, chord, root, major-minor, scale, key, voicing, dominant-seventh, extensions, power-chord, resolution, consonance, roughness, critical-band, common-practice, counterpoint, auditory-stream, fusion, grouping, melodic-transformation, step-leap, beat]
+introduces: [diatonic-chords, chord-quality, roman-numerals, chord-symbol, seventh-chord, quartal, chord-inversion, voice-leading]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts. One new lab, in three modes: **Building** (chords made from a scale), **Voicing** (one chord laid out many ways, with its roughness), and **Voice leading** (four voices moving through a progression). There's also one figure, on the four ways two voices can move. Then write your version in `src/content/chapters/v3-05-harmony.mdx`.
+
+This chapter is about the *inside* of chords: what they're built from and how their notes connect. It deliberately stops short of the big question of why chords go where they go (why G7 wants to go to C), which is chapter 3.6's subject. It leans on three earlier chapters: the Toolkit (triads), chapter 1.5 (roughness and the low interval limits), and chapter 1.4 (streams and fusion), which turns out to explain the old rules of voice leading.
+</Callout>
+
+## The question
+
+Ask a pianist to play "C major" and they'll play something. Ask fifty pianists and you'll hear fifty different things: three notes in the middle of the keyboard; a low C with a wide spread of notes above it; a bright cluster high up; a chord with no C in it at all, because the bass player already has the C. All fifty are "C major." A guitarist has a dozen more shapes, and an orchestrator has thousands.
+
+The Toolkit defined a <Term id="chord">chord</Term> as notes sounding together, and a triad as a root with a third and a fifth stacked above it. That definition says *which notes*. It says nothing about which octave each note is in, which note is on the bottom, which notes are doubled, or how each note got there from the chord before. Those choices are most of what a listener actually hears.
+
+This chapter takes chords apart along three dimensions:
+
+1. **What the chord is:** which notes, built how. Stacked thirds, the four kinds of triad, sevenths.
+2. **How it's laid out:** inversions (which note is in the bass) and voicing (how the notes are spaced).
+3. **How it moves:** voice leading, the craft of connecting one chord to the next so that each note travels a sensible path.
+
+The first is the chord as an object. The third treats it as a moment in several melodies at once. That second view is the deeper one, and it's where the perception chapters pay off.
+
+## Building chords from a scale
+
+### Stacking thirds
+
+Chapter 3.3 introduced the <Term id="scale">major scale</Term>: seven notes, C D E F G A B on the white keys. A chord can be built on any of those notes by the same recipe: **take every other note of the scale.** Start on C: C, (skip D), E, (skip F), G. That's the C major triad. Start on D: D, F, A. Start on G: G, B, D.
+
+Each skip covers a third: two scale steps. So every one of these chords is a **stack of thirds**, and chords built this way from the notes of one scale are called **diatonic chords** ("diatonic" means "using the notes of the scale"). Almost all of the harmony in Western classical, folk, and popular music starts here.
+
+<VoicingLab initialMode="diatonic" modes={['diatonic']} />
+
+<Callout kind="try">
+1. Click each chord from I to vii°. Each one is built from the bottom up, so you can hear the stack.
+2. Watch the labels above the keys. Every chord is two thirds, but they aren't all the same size: some are **major thirds** (4 semitones) and some are **minor thirds** (3), because the scale's half steps (E–F and B–C) land in different places depending on where you start.
+3. Press **Play all seven in turn**. Three chords sound bright, three darker, and one, the last, sounds pinched and unstable.
+4. Turn on **sevenths** and play them again. One more third on top, and every chord gets richer.
+</Callout>
+
+### Four kinds of triad
+
+A triad is two stacked thirds, and each can be major or minor. That gives four combinations, the four **chord qualities**:
+
+<DataTable title="The four triads" caption="Built on C. The quality depends only on the sizes of the two thirds; the outer interval (root to fifth) follows from them.">
+
+| Quality | Thirds, bottom up | Root to fifth | On C | Symbol | Character |
+|---|---|---|---|---|---|
+| **Major** | major + minor (4 + 3) | perfect fifth (7) | C E G | C | Bright, stable |
+| **Minor** | minor + major (3 + 4) | perfect fifth (7) | C E♭ G | Cm | Darker, still stable |
+| **Diminished** | minor + minor (3 + 3) | tritone (6) | C E♭ G♭ | C° | Tense, unstable |
+| **Augmented** | major + major (4 + 4) | augmented fifth (8) | C E G♯ | C+ | Floating, unresolved |
+
+</DataTable>
+
+Major and minor triads both contain a perfect fifth, the smoothest interval after the octave (chapter 1.5). The diminished triad replaces it with a tritone, and that's much of why it sounds unstable. The augmented triad divides the octave into three equal major thirds, so it has no obvious root: any of its notes could be the bottom of the stack. It never occurs in a major scale; it needs a note from outside.
+
+Building on each degree of C major gives a fixed pattern:
+
+<DataTable title="The chords of C major" caption="The pattern of qualities is the same in every major key: major on degrees 1, 4, and 5; minor on 2, 3, and 6; diminished on 7.">
+
+| Degree | Roman numeral | Chord | Notes | Thirds | Quality |
+|---|---|---|---|---|---|
+| 1 | I | C | C E G | M + m | Major |
+| 2 | ii | Dm | D F A | m + M | Minor |
+| 3 | iii | Em | E G B | m + M | Minor |
+| 4 | IV | F | F A C | M + m | Major |
+| 5 | V | G | G B D | M + m | Major |
+| 6 | vi | Am | A C E | m + M | Minor |
+| 7 | vii° | B° | B D F | m + m | Diminished |
+
+</DataTable>
+
+### Roman numerals and chord symbols
+
+The table uses two naming systems, because harmony is talked about in two ways.
+
+**Roman numerals** name a chord by the scale degree it's built on: I for the chord on degree 1, V for the chord on degree 5. Capitals mean a major chord, lower case a minor one, and ° diminished. Their advantage is that they ignore the key. The progression I–V–vi–IV is C–G–Am–F in C major, G–D–Em–C in G major, and E–B–C♯m–A in E major, and it sounds like the same progression in all three, just as a transposed melody sounds like the same melody (chapter 3.3). Analysts, classical theory, and session musicians calling out changes ("go to the four") all use numerals.
+
+**Chord symbols** name the actual chord: a root letter plus a suffix for the quality. C, Cm, C°, C+, and (coming next) C7, Cmaj7, Cm7. A **lead sheet**, the standard score in jazz and pop, is just a melody with chord symbols written above it. It tells the player *what* chord to play and leaves *how* (the voicing, the rhythm, the inversion) to them. That's the fifty-pianists problem from the start of the chapter, by design.
+
+<ListeningCue track="beatles-let-it-be" start="0:00" end="0:40">
+The piano opening: C, G, Am, F, the I–V–vi–IV pattern, then C, G, F, C. Four of the seven diatonic chords carry most of the song. Count how many different pop songs you can sing over these same four chords.
+</ListeningCue>
+
+<Callout kind="verify" title="Let It Be chords and I–V–vi–IV">
+Confirm the key (C) and the chord sequence of the single version's piano opening by ear. Also check the claim, often made (for example in de Clercq & Temperley 2011's rock corpus), that I, IV, V, and vi are by far the most common chords in rock and pop, and whether I–V–vi–IV specifically is as common as its reputation suggests.
+</Callout>
+
+<Callout kind="check">
+A song in G major uses the chords G, Em, C, and D. Write them as Roman numerals. Then name the same progression in C major.
+
+<Answer>
+In G major: G is I, Em is vi, C is IV, D is V. So it's I–vi–IV–V. In C major the same numerals give C–Am–F–G. That's the classic 1950s progression ("Stand By Me," "Earth Angel," countless doo-wop songs); the Roman numerals are what reveal that two songs in different keys share it.
+</Answer>
+</Callout>
+
+## Seventh chords
+
+Stack one more third on a triad and you reach the seventh above the root. These four-note chords are **seventh chords**. Chapter 1.5 met one of them already, the <Term id="dominant-seventh">dominant seventh</Term> (G B D F). There are five common types, and each has its own color:
+
+<DataTable title="Seventh chords on C" caption="Each is a triad plus one more third. The suffixes are the standard jazz and pop chord symbols. In C major, the diatonic sevenths are Cmaj7, Dm7, Em7, Fmaj7, G7, Am7, and Bm7♭5.">
+
+| Name | Symbol | Notes | Triad + top third | Sound and typical use |
+|---|---|---|---|---|
+| **Major seventh** | Cmaj7 | C E G B | major + major third | Lush, bittersweet; bossa nova, soul ballads, "dreamy" pop |
+| **Dominant seventh** | C7 | C E G B♭ | major + minor third | Restless, bluesy; wants to move on (classical), or just sits there (blues) |
+| **Minor seventh** | Cm7 | C E♭ G B♭ | minor + minor third | Mellow, relaxed; funk vamps, jazz |
+| **Half-diminished** | Cm7♭5 | C E♭ G♭ B♭ | diminished + major third | Dark, questioning; minor-key jazz |
+| **Diminished seventh** | C°7 | C E♭ G♭ B𝄫 (sounds as A) | diminished + minor third | Melodramatic; silent-film villains, sudden turns |
+
+</DataTable>
+
+The major seventh is worth pausing on, because it contains the sharpest dissonance in the table: the major seventh between C and B is just a semitone short of an octave, and the B rubs against the C an octave up. Yet in a lush voicing it sounds gentle. That's the first hint of a theme of this chapter: how dissonant a chord sounds depends heavily on how it's voiced.
+
+In jazz, seventh chords are the *basic unit*, not an embellishment: a plain triad sounds bare in that style. And the stacking doesn't have to stop. Keep adding thirds and you get the <Term id="extensions">ninths, elevenths, and thirteenths</Term> from chapter 1.5. Stack all six thirds above C and you've used every note of the scale: C E G B D F A. Any diatonic chord is a slice of that tower.
+
+### Not everything is thirds
+
+Stacking thirds is a convention, not a law of nature. In the late 1950s, jazz pianists began building chords from stacked fourths instead, called **quartal** voicings. A stack of fourths (D G C F) has no third in it at all, so it isn't clearly major or minor. It sounds open, modern, and a little unresolved. The most famous example is the two-chord answer in Miles Davis's "So What," played by the piano and horns after each phrase of the bass melody: three fourths with a major third on top, then the same shape a step lower.
+
+<ListeningCue track="miles-so-what" start="0:30" end="1:00">
+After the slow introduction, the bass plays a short melody and the band answers with two chords, a rhythmic "so what." Each chord is mostly stacked fourths. Compare their openness with the chords of "Let It Be."
+</ListeningCue>
+
+<Callout kind="verify" title="So What voicing">
+Check the cue time for the bass melody's entrance (I estimated about 0:30), and the voicing usually given for the "So What chord": E A D G B over E (three perfect fourths plus a major third), which Bill Evans is generally credited with.
+</Callout>
+
+## Inversions: what's in the bass
+
+A chord's notes can be arranged so that any of them is the lowest. Which note is on the bottom changes the sound more than any other single choice.
+
+- **Root position:** the root is in the bass. C E G, with C lowest.
+- **First inversion:** the third is in the bass. E G C.
+- **Second inversion:** the fifth is in the bass. G C E.
+- **Third inversion** (seventh chords only): the seventh is in the bass. B♭ C E G.
+
+Chord symbols show an inversion with a slash: **C/E** means "a C chord with E in the bass." These **slash chords** are everywhere in pop piano parts and lead sheets.
+
+(Don't confuse this with **inversion** of a melody from chapter 3.3, which flips a melody upside down. Same word, different idea. Chord inversion changes which note is lowest; the chord's notes stay the same.)
+
+Why does the bass note matter so much? Part of the answer is simply that we attend to the lowest and highest lines most closely (chapter 1.4 noted the extra salience of the outer voices). Part is the harmonic series. In a root-position major triad in close position, the three notes C, E, G are very nearly harmonics 4, 5, and 6 of a C two octaves below. So the whole chord fits one harmonic series, with its implied fundamental on the root. The ear's machinery for finding pitch (chapter 1.2's puzzle of why a stack of harmonics sounds like one note) can find a single "root" for the chord, and that root agrees with the bass. In first or second inversion, the bass is no longer that implied fundamental, and the chord feels lighter, less anchored.
+
+Common-practice composers treated the three positions differently. Root position was the stable default. First inversion was used freely, especially to make bass lines move by step. Second inversion was considered unstable, used only in a few specific situations, because the fourth between the bass and the root above it counted as a dissonance (chapter 1.5's "third kind" of dissonance).
+
+<Callout kind="verify" title="root perception">
+The idea that a chord has a perceived root, computed from how well its notes fit one harmonic series, is Terhardt's (1974) theory, developed by Parncutt (1988). Check: (1) that close-position C E G corresponds to harmonics 4:5:6 (in just intonation exactly; in equal temperament the E is 14 cents sharp of the 5th harmonic, as chapter 1.2 noted); (2) how well the model predicts listeners' root judgments, especially for minor triads (10:12:15), where it's weaker; (3) the salience of outer voices (Huron 2001; Palmer & Holleran 1994).
+</Callout>
+
+## Voicing: spacing the notes
+
+Chapter 1.5 introduced <Term id="voicing">voicing</Term>: how a chord's notes are spread across octaves. Its lab showed that the same chord gets muddier as it moves down, because the notes' harmonics fall inside each other's critical bands. Now we can look at the choices a pianist, arranger, or orchestrator actually makes:
+
+- **Close position:** the notes packed together, as close as they'll go. C E G C.
+- **Open position:** skip a chord tone each time, so the notes are spread over more than an octave. C G E C.
+- **Spread**, wide at the bottom and narrow at the top: the bass, an octave above it, then a fifth, then the rest close together higher up. C, C, G, C, E.
+- **Doubling:** with three chord tones and four (or more) voices, something has to be doubled. The classical habit is to double the root, and to avoid doubling the third of a major chord, which can sound heavy.
+
+<VoicingLab initialMode="voicing" modes={['voicing']} />
+
+<Callout kind="try">
+1. Press **Hold the chord** and leave it sounding while you change things. Start with the major triad, close, root C3.
+2. Drag **Root** down to C2 and below. The close voicing turns to mud, and the roughness bar shoots up. Switch to **Open** or **Spread**: the roughness drops by about half, even though spread adds a fifth note.
+3. Turn on **Show the bass note's harmonics**. With the spread voicing, the chord's notes sit almost exactly on harmonics 1, 2, 3, 4, and 5 of the bass note. A spread major chord is a copy of the harmonic series.
+4. Try **In the bass: 3rd** and **5th** (first and second inversion). Listen to how the chord's weight changes even though the notes are the same.
+5. Try **maj7** in close position at C3, then **Open**, which puts the B more than an octave from any C: the roughness roughly halves. Then **Spread**: the recipe happens to put a B right below a C again, and the roughness comes back. What matters is not how spread out the chord is overall but which pairs of notes end up close together.
+</Callout>
+
+The pattern that every orchestration manual teaches, wide intervals low and close intervals high, is the harmonic series' own pattern. Its first harmonics are an octave apart, then a fifth, then a fourth, and they get closer as they go up. Spacing a chord that way keeps every pair of notes outside each other's critical band (chapter 1.5) and lets the chord's notes line up with the bass's harmonics. The ear hears the result as clear, full, and well balanced. Stack the same notes close together low down and you get the opposite: notes inside each other's critical bands and harmonics colliding, which is mud.
+
+Jazz pianists push the idea further. In a band, the bass player plays the root, so the pianist often leaves it out entirely. These **rootless voicings** put the third and seventh (the notes that define a seventh chord's quality) and the extensions in a compact group in the middle of the keyboard, out of the bass's way. Bill Evans's trio recordings are the classic model.
+
+<ListeningCue track="evans-waltz-for-debby" start="0:00" end="0:50">
+The solo piano opening. Listen to the chords' inner notes rather than the melody on top: close, rich, and constantly shifting by small steps. Then the bass enters, playing the roots the piano has been leaving room for.
+</ListeningCue>
+
+<Callout kind="check">
+A guitarist strums a C major chord on the lowest strings and it sounds muddy. The same chord in a higher position sounds clean. A keyboard player playing with a bass player is told "get out of the bass's way." Explain both with one idea.
+
+<Answer>
+Critical bands are wide, relative to the intervals between notes, at low frequencies (chapter 1.5). A third low down puts the two notes, and many of their harmonics, inside the same critical band, so they roughen each other: mud. Higher up, the same third is comfortably wider than a critical band. The keyboard player's chords collide with the bass in the same way: low, close chord tones next to the bass line pile roughness into the register where it's worst, and also mask the bass (chapter 1.4). So keep the low register sparse (roots, fifths, octaves) and put the thirds and sevenths higher, which is exactly the shape of the harmonic series.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="voicing and doubling">
+Check the doubling conventions as stated in a standard harmony text (Aldwell & Schachter; Piston), especially "avoid doubling the third of a major triad" and its exceptions. Check how standard rootless-voicing practice is described (Levine 1989), and whether "Waltz for Debby" is a fair example of it.
+</Callout>
+
+## Voice leading: chords as moving lines
+
+### A progression is several melodies
+
+Here is the shift of viewpoint this chapter has been building toward. Play C, then F, then G, then C on a piano, and you might think of it as four blocks. But a choir singing those chords is four singers, each singing a melody. The soprano sings one line, the alto another, the tenor and bass two more. At every moment their notes form a chord, but each singer only experiences their own path through the notes.
+
+**Voice leading** is the craft of writing those paths. Every chord progression has voice leading, whether or not anyone planned it, because every note of a chord must go *somewhere* in the next one (or stop). The four-part chorale harmonizations that Bach wrote by the hundred are the textbook model, still used to teach harmony three centuries later.
+
+<ListeningCue track="bach-passion-chorale" start="0:00" end="0:45">
+A chorale from the St Matthew Passion: a hymn tune in the soprano, harmonized in four parts. Try to follow the bass line by itself, then the soprano. Each makes sense as a melody, and together they make a chord on every beat.
+</ListeningCue>
+
+### The principles
+
+Good voice leading in this tradition comes down to a few principles:
+
+- **Keep common tones.** If a note belongs to both chords, hold it in the same voice. (C and Am share C and E; C and G share G.)
+- **Move the other voices as little as possible.** Each voice should usually step to the nearest available note of the next chord.
+- **Prefer contrary motion,** especially between the outer voices: when the bass goes up, let the soprano come down.
+- **Avoid parallel fifths and octaves:** two voices a fifth (or an octave) apart should not both move to another fifth (or octave) in the same direction.
+- **Keep the voices in their own ranges, and don't let them cross.**
+
+<MotionTypes />
+
+<VoicingLab initialMode="leading" modes={['leading']} progression="pop" />
+
+<Callout kind="try">
+1. Play **C G Am F C** with **Block chords**. The same hand shape slides up and down. Look at the totals: around 70 semitones of motion and a dozen parallel fifths and octaves (dashed red lines).
+2. Switch to **Smooth voice leading**. Same chords, same bass line. Now under half the motion and no parallels: the G is held from C to G, the C slides down a half step to B, and so on. The flat lines are common tones.
+3. Use **Bring out** to hear the alto or tenor alone. In the block version, each inner voice jumps around; in the smooth version, each one is a calm, stepwise line you could sing.
+4. Now listen to the two versions with all voices. The block version sounds heavier and more like one thick sound moving; the smooth one, more like a group of voices.
+</Callout>
+
+The smooth version isn't hand-written. The lab computes it, chord by chord: it tries every way to voice the next chord in the four voices' ranges, then picks the one where the voices travel the least total distance, with a heavy penalty for parallel fifths and octaves. It's a crude model of what a trained arranger does by ear, but it rediscovers the textbook voicings. That's the point: most of the "rules" of voice leading fall out of one goal, *each voice moves as little as possible*, plus one prohibition.
+
+### Why parallel fifths?
+
+For centuries, harmony students were taught never to write parallel fifths or octaves, and many were never told why. Chapter 1.4 gave the answer, following David Huron (2001). The rules of voice leading are largely rules for keeping each voice a separate <Term id="auditory-stream">auditory stream</Term>:
+
+- **Small steps** hold each voice together, because notes close in pitch group into one stream.
+- **No crossing** keeps the ear from swapping two voices.
+- **No parallel fifths or octaves:** an octave or a fifth lines up with the harmonic series, so two notes at that interval already tend to <Term id="fusion">fuse</Term>. When they also move together, they share common fate as well, and the ear hears one voice with a richer timbre instead of two voices. A four-part texture briefly becomes a three-part one.
+- **Contrary motion** is the strongest cue that two lines are independent: they can't be one source if they go opposite ways.
+
+The proof is what happens when composers *want* fusion. Rock guitar's power chords are root, fifth, and octave moving in strict parallel, the most forbidden motion in the book. But the guitarist doesn't want independent voices; they want one huge, thick note, and parallel fifths deliver it. Medieval church music did the same thing deliberately: the earliest written polyphony doubled a chant melody at the fifth or fourth, moving in parallel. And Debussy reached back to that sound for the bell-like opening of *La cathédrale engloutie* (The Sunken Cathedral).
+
+<ListeningCue track="debussy-cathedrale" start="0:00" end="1:10">
+The opening: chords built from open fifths and octaves, moving in parallel, like bells or medieval organ music heard through water. The parallel fifths that a harmony teacher would cross out are exactly the point here: fused, hollow, ancient-sounding blocks instead of independent voices.
+</ListeningCue>
+
+<Callout kind="verify" title="parallel fifths">
+Check (1) Huron 2001's derivation of the parallel fifths/octaves prohibition (from tonal fusion and common fate) and his evidence that composers avoid them more than chance; (2) the description of early organum (parallel fourths and fifths in the *Musica enchiriadis*, about 900) and how literally it applies; (3) the parallel fifths/octaves in the opening of *La cathédrale engloutie* (they're usually described as parallel chords built on fifths and octaves; check the score).
+</Callout>
+
+### Inversions make smooth bass lines
+
+Inversions earn their place here. If every chord must have its root in the bass, the bass has to jump around: C to G is a leap of a fifth or fourth. Allow inversions and the bass can move by step like any other voice. C, then G with B in the bass (G/B), then Am: the bass walks down C, B, A.
+
+In the lab, switch **Bass** to **Allow inversions**. The search now considers putting the third or fifth in the bass, at a small cost, and the bass line of C G Am F turns into a descending scale. Pachelbel's Canon is built on exactly this kind of line: eight chords repeated for the whole piece, whose bass descends in a pattern that, with inversions, becomes nearly a scale.
+
+<VoicingLab initialMode="leading" modes={['leading']} progression="canon" />
+
+<ListeningCue track="pachelbel-canon" start="0:00" end="0:40">
+The cello and continuo repeat the same eight bass notes, two per bar, throughout the piece, while the violins enter one by one above. (The original is in D; the lab plays the same chords in C.)
+</ListeningCue>
+
+<ListeningCue track="procol-whiter-shade" start="0:00" end="0:45">
+The organ introduction. The bass walks steadily down the scale, and the chords above change to fit it, so many of them are inversions. Its debt to Bach is famous.
+</ListeningCue>
+
+### Notes that want to move
+
+Some notes in a chord have strong tendencies, and good voice leading respects them. Two matter most:
+
+- **The seventh of a chord tends to step down.** In G7 going to C, the F falls to E.
+- **The third of G7 (B) tends to rise to C**, a half step up, the strongest pull in the major key.
+
+Switch the voice-leading lab to **C F G7 C** and watch both happen. Then try **Dm7 G7 Cmaj7**, the core move of jazz harmony. With smooth voice leading, the three upper voices travel only four semitones in total: each chord's seventh slides down a half step to become the next chord's third, and the other notes hold. That chain of half steps is why the progression sounds so seamless, and why jazz musicians practice it in every key.
+
+Why these notes pull the way they do, and why G7 wants to go to C in the first place, is a question about keys and expectation rather than about chords themselves. That's chapter 3.6.
+
+<Callout kind="check">
+Using the lab's Dm7 G7 Cmaj7 with smooth voice leading: which notes are held from one chord to the next, and which move? What's the largest move any upper voice makes?
+
+<Answer>
+Dm7 (D F A C) to G7 (G B D F): with roots in the bass, F is held, C slides down a half step to B, and A steps down to G, while the bass leaps from D to G. G7 to Cmaj7 (C E G B): G and B are held, F slides down a half step to E, and the bass goes from G to C. Apart from the bass, nothing moves more than two semitones, and the key moves are the half steps: the seventh of each chord falling to the third of the next (C to B, F to E). (The exact voicing the lab picks may differ slightly; the pattern of held notes and half steps is the point.)
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="voice-leading principles">
+Check the list of voice-leading principles against a standard text (Aldwell & Schachter, *Harmony and Voice Leading*), especially the treatment of the chordal seventh (resolves down by step) and the third of V7. Check Pachelbel's bass (D A B F♯ G D G A) and how often it appears with first-inversion chords in arrangements and in pop borrowings. The Whiter Shade of Pale bass line and its Bach connection (the Air from BWV 1068 and "Wachet auf" are both cited) need checking too.
+</Callout>
+
+## Two kinds of chord color
+
+This chapter and chapter 1.5 between them separate two things that get lumped together as "how tense a chord sounds."
+
+**Sensory roughness** comes from the sound itself: which intervals the chord contains, how low it sits, and how it's spaced. It's what the Voicing lab's bar measures. A close Cmaj7 at C3 is rough; a spread one is smooth. Same chord, different voicing, different roughness.
+
+**Contextual pull** comes from where the chord sits in the key and what listeners have learned to expect next. G7 sounds like it wants to go to C even voiced very smoothly; chapter 5.4's lab showed the identical C major chord sounding like home or like a step away, depending only on what came before.
+
+<DataTable title="Where a chord's character comes from" caption="The first three rows are vertical (the chord as a sound); the last two are horizontal (the chord as a moment in time).">
+
+| Property | Controlled by | Heard as | Chapter |
+|---|---|---|---|
+| **Quality** | Sizes of the stacked thirds | Bright, dark, tense, floating | This one |
+| **Inversion** | Which tone is in the bass | Grounded or light | This one |
+| **Voicing and register** | Spacing and doubling | Clear or muddy, open or dense | This one; 1.5 |
+| **Voice leading** | How each note moves to the next chord | Smooth or blocky; one sound or many voices | This one; 1.4 |
+| **Function** | The chord's place in the key | Stable or wanting to move | 3.6; 5.4 |
+
+</DataTable>
+
+## The architecture of a chord
+
+<DataTable title="Vertical harmony at a glance">
+
+| Level | The idea | The perception behind it | Example |
+|---|---|---|---|
+| **Building** | Stack thirds from a scale | Thirds and fifths are low-ratio, smooth intervals (1.5) | The seven chords of C major |
+| **Quality** | Major or minor thirds | The perfect fifth stabilizes; the tritone unsettles | Major vs diminished |
+| **Sevenths and beyond** | Keep stacking | More color, more roughness to manage | Cmaj7, the jazz basic unit |
+| **Inversion** | Choose the bass | Root position fits one harmonic series | C/E, Pachelbel's bass |
+| **Voicing** | Space the notes | Critical bands; copy the harmonic series | Spread low, close high |
+| **Voice leading** | Chords as lines | Streams and fusion (1.4) | Bach chorales; no parallel fifths |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. How diatonic chords are built by stacking thirds from a scale, and why the qualities come out major on I, IV, V; minor on ii, iii, vi; diminished on vii°.
+2. The four triad qualities and the five common seventh chords, by their thirds.
+3. Roman numerals versus chord symbols: what each is for, and why numerals reveal shared progressions across keys.
+4. Inversions and slash chords; why the bass note matters (salience, and the harmonic-series account of the root).
+5. Voicing: close, open, spread, doubling, rootless voicings; why wide-low and close-high works (critical bands and the harmonic series).
+6. Voice leading as several simultaneous melodies; the principles (common tones, least motion, contrary motion, no parallel fifths/octaves) and Huron's perceptual explanation.
+7. When composers break the parallel-fifths rule on purpose (power chords, organum, Debussy), and why that confirms the explanation.
+8. Sensory roughness versus contextual pull as two separate sources of a chord's color.
+
+**Decisions for your rewrite:**
+
+- **The hook.** I used "fifty pianists playing C major." Alternatives: start with the block-chords versus smooth-voice-leading comparison in the lab, or with a choir: four people singing four melodies that happen to make chords.
+- **How much spelling.** I kept note spelling light (C°7's top note written B𝄫 but sounding as A). Decide whether your readers need the rules of spelling chords, or whether chord symbols are enough.
+- **Roman numeral details.** Classical analysis adds inversion figures (I⁶, V⁶₄) and other refinements; I left them out. Decide whether to mention them, since readers who go on to theory books will meet them.
+- **Examples.** Swap in your own: a progression you love (Radiohead's chromatic voice leading in "Creep" or "Exit Music," Stevie Wonder's chord voicings, a gospel piano player's moving inner voices), a famous descending bass line (Led Zeppelin's "Stairway to Heaven," "Dear Prudence," "My Funny Valentine").
+
+**Misconceptions to watch for:**
+
+- "A chord symbol specifies the sound." It specifies the notes; voicing, inversion, and register shape most of what you hear.
+- "Dissonance is a property of the chord." Roughness depends on voicing and register; function depends on context.
+- "Inversions are a different chord." Same notes, same chord; only the bass and the weight change. (And chord inversion is not melodic inversion.)
+- "The voice-leading rules are arbitrary conventions." Most of them are perceptual: they keep the voices audible as separate lines. When composers want fusion instead, they break them.
+- "Harmony is vertical and melody is horizontal." Good harmony is also horizontal: a progression is several melodies at once.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Aldwell, E., Schachter, C., & Cadwallader, A. (2019). *Harmony and Voice Leading* (5th ed.). Cengage.
+- Piston, W. (1987). *Harmony* (5th ed., revised by M. DeVoto). W. W. Norton.
+- Huron, D. (2001). Tone and voice: A derivation of the rules of voice-leading from perceptual principles. *Music Perception*, 19(1), 1–64.
+- Tymoczko, D. (2011). *A Geometry of Music: Harmony and Counterpoint in the Extended Common Practice*. Oxford University Press.
+- Terhardt, E. (1974). Pitch, consonance, and harmony. *Journal of the Acoustical Society of America*, 55(5), 1061–1069.
+- Parncutt, R. (1988). Revision of Terhardt's psychoacoustical model of the root(s) of a musical chord. *Music Perception*, 6(1), 65–93.
+- Plomp, R., & Levelt, W. J. M. (1965). Tonal consonance and critical bandwidth. *Journal of the Acoustical Society of America*, 38(4), 548–560.
+- Palmer, C., & Holleran, S. (1994). Harmonic, melodic, and frequency height influences in the perception of multivoiced music. *Perception & Psychophysics*, 56(3), 301–312.
+- Levine, M. (1989). *The Jazz Piano Book*. Sher Music.
+- de Clercq, T., & Temperley, D. (2011). A corpus analysis of rock harmony. *Popular Music*, 30(1), 47–70.
+- Rimsky-Korsakov, N. (1922/1964). *Principles of Orchestration* (M. Steinberg, Ed.; E. Agate, Trans.). Dover.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details, especially the Aldwell & Schachter edition and co-author, Palmer & Holleran 1994 (volume and pages, and whether it supports the outer-voice salience claim), and the Rimsky-Korsakov edition. Tymoczko is listed as further reading on voice leading as "efficient" motion; it isn't cited for a specific claim.
+</Callout>

@@ -1,0 +1,448 @@
+---
+title: "Attention, Memory, Expectation, and Emotional Response"
+volume: 1
+chapter: 6
+summary: Music happens in time, so a listener has to hold the past, attend to the present, and guess the future. How memory, attention, and statistical prediction work while you listen, and how prediction (with several other mechanisms) turns patterned sound into feeling.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [frequency, waveform, pitch, note-names, octave, semitone, interval, chord, major-minor, dominant-seventh, resolution, beat, tempo, meter, timbre, harmonics, auditory-scene-analysis, auditory-stream, grouping, consonance]
+lintIgnore: [groove, entrainment, tonic, dynamics] # forward references to chapters 2.2 and 2.5 by name; "Dynamics" and "Tonality" only in names and titles
+introduces: [predictive-processing, statistical-learning, surprisal, expectation-types, itpra, echoic-memory, short-term-memory, chunking, mere-exposure, habituation, emotion-mechanisms, frisson]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts. One new lab with two halves: **Learn a tone language** (an experiment you can run on yourself, about two minutes of listening) and **Guess the next note** (you against a small statistical model). Do the tone-language test *before* reading the section that explains it. Then write your version in `src/content/chapters/v1-06-expectation.mdx`.
+
+This chapter closes Volume I and supplies the theory the rest of the book keeps leaning on: melody (chapter 3.3) uses the statistics of expectation, the beat chapter (2.2) and groove (2.5) use prediction in time, and tension (5.4) and form (5.5) use prediction over minutes. Expect it to be the chapter you cross-reference most.
+</Callout>
+
+## The question
+
+A pattern of air-pressure changes, lasting three minutes, makes a grown adult cry in a car. Nothing in it refers to anything: no words (or none that explain the tears), no pictures, no story. Why does patterned sound move people at all?
+
+There's no single answer, and this chapter will end with a list of several mechanisms. But one idea runs through most current research, and it ties together everything Volume I has built so far:
+
+> **Listening is predicting.** Your brain doesn't wait for the music to happen. It continually guesses what comes next, and much of what music makes you feel comes from those guesses being confirmed, delayed, or overturned.
+
+To predict, you need three things, and they give this chapter its shape:
+
+1. **Memory**, to hold what just happened (and what usually happens).
+2. **Attention**, to decide what to follow and when to listen hardest.
+3. **A model** of how music tends to go, learned from years of exposure.
+
+Then we'll see how the guesses turn into feelings, and what else, besides prediction, makes music emotional.
+
+## Listening happens in time
+
+A painting is all there at once. A piece of music never is. At any instant you hear one thin slice of it. Everything else is either memory or anticipation. So the first question is how much of the past a listener actually has.
+
+### Three timescales of memory
+
+The composer and theorist Bob Snyder, in *Music and Memory* (2000), organizes musical listening around three memory systems, each with its own timescale:
+
+- **Echoic memory.** A brief, detailed trace of the raw sound, a kind of acoustic afterimage. It's why you can "replay" the last second or two of what someone said even if you weren't paying attention. It holds detail but fades within a few seconds.
+- **Short-term memory.** The small amount you can hold in mind at once, a few seconds' worth without rehearsal. Snyder argues this sets the size of the musical *present*: roughly a line of a melody, the length of a sung breath. Notes inside that window are heard as belonging together; notes beyond it have to be remembered rather than heard.
+- **Long-term memory.** Everything that lasts: the tune you heard yesterday, how a favorite song goes, and, crucially, your general knowledge of how music in your culture goes.
+
+<DataTable title="Three timescales of musical memory" caption="After Snyder (2000). The boundaries are approximate and vary with the material and the listener.">
+
+| Memory | Holds | For about | What it does in music |
+|---|---|---|---|
+| Echoic | The raw sound, in detail | Up to a few seconds | Fuses fast events into notes and tone colors; lets you catch a sound you didn't attend to |
+| Short-term | A few items or chunks | A few seconds (longer if rehearsed) | The "present": a melodic line, a rhythmic figure, a bar or two |
+| Long-term | Pieces, styles, and patterns | A lifetime | Recognizing a tune; knowing what usually comes next; following form over minutes |
+
+</DataTable>
+
+<Callout kind="verify" title="memory timescales">
+Check the durations against Snyder (2000), chapters 1–4, and against the memory literature: Cowan (1984) on a short (about 250 ms) and a long (several seconds) form of auditory sensory memory; Darwin, Turvey & Crowder (1972) on echoic memory; and the commonly quoted 3–5 s (up to about 8 s) span of short-term memory for music in Snyder.
+</Callout>
+
+### Chunking
+
+Short-term memory holds only a handful of items. George Miller's famous estimate was "seven, plus or minus two"; later work (Cowan, 2001) suggests nearer four. That sounds hopeless for music, where a single line of melody can contain a dozen notes.
+
+The way out is **chunking**: grouping several items into one unit you already know. A phone number is ten digits, but you remember it as three chunks. A musician hearing a familiar rhythm, a chord pattern, or a scrap of tune holds it as one chunk, not as its separate notes. This is one reason experienced listeners can follow more complex music than beginners: their long-term knowledge supplies bigger chunks, so the same short-term memory holds more music.
+
+The grouping of chapter 1.4 is the raw material here. Notes that form one <Term id="auditory-stream">auditory stream</Term>, close in time and pitch, are also the notes that get chunked together.
+
+### Why music repeats
+
+Music repeats itself far more than speech or prose does. A song's catchiest section returns three or four times; a riff repeats for minutes; a classical theme comes back at the end. Elizabeth Hellmuth Margulis, in *On Repeat* (2014), argues that repetition is one of the things that *makes* sound feel like music.
+
+Her most striking evidence is an illusion discovered by Diana Deutsch. Take a short spoken phrase and loop it. After a few repetitions, most listeners start to hear the speaking voice as *singing*: the pitches of the speech seem to settle into a little tune, and the illusion persists when the phrase is put back into the full sentence. Nothing about the sound changed. Repetition changed how it was heard: from "what is she saying?" to "how does it go?"
+
+Repetition does work for memory, too. You can't predict what you can't remember, and a pattern heard four times is a pattern you can hold, chunk, and anticipate. A pop hook is built to be learned in one listening.
+
+<Callout kind="check">
+A jazz musician and a newcomer listen to the same fast bebop solo. The newcomer hears a blur of notes; the musician can sing back whole passages. Using this section's ideas, what's the likely difference? (It's not that the musician's short-term memory is bigger.)
+
+<Answer>
+Chunking. The musician's long-term memory contains the stock patterns of bebop (familiar runs, chord outlines, standard endings), so each passage is held as a few known chunks. The newcomer has to hold each note separately and runs out of short-term memory within a second or two. Same memory capacity, different-sized chunks.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="repetition">
+Check the speech-to-song description against Deutsch, Henthorn & Lapidis (2011), including how many repetitions it typically takes. Check Margulis's claims (*On Repeat*, 2014), and whether her "repetition makes it music" argument is presented there as a hypothesis or a finding.
+</Callout>
+
+## Attention
+
+Chapter 1.4 showed the brain sorting one tangled waveform into separate streams. Attention is the next step: choosing which stream to follow. And attention is limited.
+
+### What you can follow at once
+
+You can easily follow one melodic line, and with effort two. Beyond that, it gets hard. In a classic study, David Huron (1989) asked musicians to count how many voices were sounding at each moment in polyphonic organ music, where every voice had the same tone color. They were accurate for one, two, and three voices; with four or more, they consistently underestimated. If you can't even count the voices, you certainly can't follow them all.
+
+Composers seem to know this. Huron found that in Bach's many-voiced keyboard works, which can have four or five independent lines, the texture usually thins out or makes one line stand out, rather than demanding that the listener follow every part at once. Arrangers and mixing engineers face the same limit: a mix may contain thirty tracks, but a listener follows two or three, and the rest is heard as background.
+
+<Callout kind="verify" title="voice counting">
+Check Huron (1989), "Voice denumerability in polyphonic music of homogeneous timbres," for the exact accuracy figures and stimuli, and whether the Bach observation is from that paper or a later one.
+</Callout>
+
+### Attention in time
+
+Attention also has a *rhythm*. The psychologist Mari Riess Jones proposed that attention isn't spread evenly over time. When you hear a regular beat, your attention starts to pulse with it, peaking when the next beat is due. Events that arrive on the beat are perceived more accurately than identical events slightly early or late. This **dynamic attending** theory (Jones & Boltz, 1989; Large & Jones, 1999) links attention directly to the beat: the beat is, among other things, a schedule for when to listen hardest.
+
+That makes the beat a prediction too: a guess about *when*, separate from the guess about *what*. The beat chapter (2.2) builds on this.
+
+<Callout kind="verify" title="dynamic attending">
+Check the summary of Jones & Boltz (1989) and Large & Jones (1999), and find one clean experimental result to cite (for example, better pitch judgments for on-time tones; Jones, Moynihan, MacKenzie & Puente, 2002).
+</Callout>
+
+## Learning the statistics of music
+
+Where do musical predictions come from? Mostly from exposure. Nobody teaches a child that a melody tends to move by small steps, or that a dominant-seventh chord tends to resolve. They absorb it, the way they absorb the sound patterns of their native language, by hearing thousands of examples.
+
+### An experiment to try on yourself
+
+Before reading on, try this. The stream below is made of six made-up three-tone "words," strung together in random order with no pauses between them. Nothing marks where one word ends and the next begins. Listen for a couple of minutes without trying hard, then take the test.
+
+<ExpectationLab initialMode="learn" modes={['learn']} />
+
+<Callout kind="try">
+1. Leave **Show the hidden words** off. Listen for 2 minutes (the default). You can do something else while it plays.
+2. Take the test: eight pairs of three-tone snippets. For each pair, choose the one that sounds more familiar. Don't think too hard.
+3. Note your score. Then turn **Show the hidden words** on, keep listening, and watch the colors: each color is one word. The readout shows how predictable the next tone is inside a word versus across a word boundary.
+4. Optional: start over with 5 minutes, and see whether your score goes up.
+</Callout>
+
+### What the experiment shows
+
+This is a scaled-down version of an experiment by Jenny Saffran and colleagues. In 1996, Saffran, Aslin, and Newport played 8-month-old infants a two-minute stream of nonsense syllables built the same way ("bidakupadotigolabubidaku..."), then tested whether they could tell the stream's "words" from "part-words" that straddled a boundary. They could. The only clue was the **transitional probability**: how likely one syllable is to follow another. Inside a word it's high; across a boundary it's low, because any word can follow any other. In 1999 the same group (Saffran, Johnson, Aslin & Newport) showed that infants and adults do the same with sequences of *tones*, which is what this lab imitates. Their tone words, too, were made from notes chosen to have no musical meaning.
+
+This ability, picking up the statistical regularities of what you hear without trying and without knowing you're doing it, is called **statistical learning**. It's one of the strongest candidates for how listeners acquire a musical style: by unconsciously tallying which notes, intervals, rhythms, and chords tend to follow which.
+
+<Callout kind="check">
+In the lab's readout, the next tone inside a word is only about 60% predictable, not 100%. Why, if every word always continues the same way?
+
+<Answer>
+Because several tones appear in more than one word. D, for example, occurs in four of the six words, at different positions. When you hear a D, you don't know which word you're in, so the next tone isn't certain. It's still far more predictable than the tone after a word boundary (about 20%), and that gap is the clue. Saffran's tone words were built the same way, which makes the task harder and the result more impressive.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="Saffran experiments">
+Check against Saffran, Aslin & Newport (1996) and Saffran, Johnson, Aslin & Newport (1999): the exposure durations (the 1999 adults heard about 21 minutes, in three 7-minute sessions?), the tone durations, the six tone words (the lab uses ADB, DFE, GG♯A, FCF♯, D♯ED, CC♯D), the size of the effects, and whether infants were tested with the same words. The lab's within-word and across-boundary percentages are measured from its own stream.
+</Callout>
+
+### Surprise, measured
+
+If listeners learn probabilities, then each note has a probability given everything before it, and we can measure how surprising it is. Information theory offers a natural measure, called **surprisal** (or information content): minus the base-2 logarithm of the note's probability, in *bits*.
+
+- A note that was 50% likely carries 1 bit of surprisal.
+- 25% likely: 2 bits. 12.5%: 3 bits. Each extra bit means half as likely.
+- A near-certain note carries almost 0 bits; a 1-in-100 note carries about 6.6.
+
+The psychologist and computer scientist Marcus Pearce built a model called **IDyOM** (Information Dynamics of Music) that learns note-to-note probabilities from a large collection of melodies, then reports the surprisal of every note in a new one. Its surprisal values track listeners' ratings of how expected each note is, and track brain responses to unexpected notes, better than rule-based theories of melodic expectation (Pearce et al., 2010; Pearce, 2018). A model trained on Western folk songs makes Western-sounding predictions; trained on another tradition's music, it predicts that tradition's habits. Expectations are learned, and they're culture-specific.
+
+The lab below has a tiny cousin of IDyOM. It learned its sense of style from the other tunes in this lab (a few hundred notes, where IDyOM uses thousands of melodies), using three things: how big the last move was, how often each note name appears, and a pull back toward the middle of the tune's range. That's crude, but it's enough to play against.
+
+<ExpectationLab initialMode="guess" modes={['guess']} tune="ode" />
+
+<Callout kind="try">
+1. With **Ode to Joy** and **A stranger to this tune**, press **Play up to the gap**, then click the key you think comes next. (You probably know this tune, so you have an unfair advantage. Try **Another gap** a few times.)
+2. Look at the bars above the keyboard after you guess: the model's probabilities. Notice how it spreads its bets over nearby notes, and how rarely it bets on a big jump in pitch.
+3. Turn on **Show the whole tune**. The bars under the notes are each note's surprisal. Where are the tall ones? Usually on big jumps in pitch and on notes that break a pattern.
+4. Still on **Ode to Joy**, look at the third note, a simple step up. The model found it surprising: in its little corpus, a repeated note is usually repeated again (think of the opening of *Jingle Bells*). A model only knows what it has heard, and so do you.
+5. Switch to **Twinkle, Twinkle** and look at the third note (the jump up). Then compare the average surprisal for the same tune under the three listeners.
+</Callout>
+
+<Callout kind="verify" title="IDyOM">
+Check the description of IDyOM against Pearce (2005, 2018), and the claims about predicting ratings and brain responses against Pearce, Ruiz, Kapasi, Wiggins & Bhattacharya (2010). Check the cross-cultural claim (for example, Pearce & Wiggins 2006; Hansen & Pearce 2014 on musicians' and non-musicians' expectations). The lab's model is ours, not IDyOM: say so in your version.
+</Callout>
+
+## Three kinds of expectation
+
+Here's a puzzle. Haydn's Symphony No. 94 is nicknamed the "Surprise." In its slow movement, a gentle tune is played quietly, then repeated even more quietly, and at the end of the repeat the whole orchestra hits a loud chord. Audiences in 1792 jumped. But people who know the piece well still feel a jolt, every time. How can something you *know* is coming still surprise you?
+
+<ListeningCue track="haydn-surprise" start="0:00" end="0:45">
+The quiet tune, its even quieter repeat, and the chord (around 0:30, an estimate). Listen once knowing it's coming. Does it still jump out?
+</ListeningCue>
+
+Following the psychologist Jamshed Bharucha, Huron distinguishes several sources of expectation, which run side by side:
+
+- **Schematic expectations** come from your knowledge of a *style* in general: what usually happens in melodies, chords, and rhythms of the music you grew up with. They're automatic and hard to switch off.
+- **Veridical expectations** come from memory of *this particular piece*. If you know the Haydn, your veridical memory knows the chord is coming.
+- **Dynamic expectations** are learned *during* the current hearing: the piece's own patterns, picked up as it goes. When a tune repeats its first line, dynamic expectations predict the repeat even if you've never heard the tune before.
+
+(Huron adds a fourth, conscious expectations: what you explicitly think will happen.)
+
+The Haydn chord violates the schematic expectation (quiet, gentle tunes don't usually end in a bang) even while the veridical one predicts it. The schematic system keeps reacting as if it didn't know, which is why the surprise survives familiarity. Huron (following Wittgenstein's version of the puzzle) argues this is also why a well-known piece can still give you a thrill at the same place each time.
+
+The lab's three listeners correspond to these three sources. Try it on a tune with a lot of internal repetition:
+
+<ExpectationLab modes={['guess']} tune="frere" listener="dynamic" />
+
+<Callout kind="try">
+1. Turn on **Show the whole tune**. Compare the average surprisal for **A stranger to this tune**, **+ notices repeats**, and **Knows it by heart**.
+2. With **+ notices repeats**, look at where surprisal drops: on the second statement of each line, once the pattern has been heard once. That's a dynamic expectation forming.
+3. With **Knows it by heart**, almost everything is near zero. That's veridical memory. The remaining surprise in the real Haydn comes from the schematic system, which this toy can't keep running alongside its memory. Real listeners do both at once.
+</Callout>
+
+<Callout kind="check">
+Many listeners report that a song they love still gives them chills at the same moment after dozens of hearings. Which kind of expectation is being violated at that moment, and which kind has stopped being violated?
+
+<Answer>
+The schematic expectation (what the style usually does there) is still violated on every hearing, because style knowledge doesn't update for one piece. The veridical expectation (memory of this song) is no longer violated: you know exactly what's coming. Huron's point is that the two systems run separately, so a schematic surprise can survive veridical knowledge. Your veridical anticipation may even add to the effect, since you feel the moment approaching.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="expectation types and the Haydn">
+Check Huron (2006, chapters 11–12) for the four kinds of expectation and the credit to Bharucha (1994), and the "Wittgenstein's puzzle" framing. Check the Haydn story (the 1792 premiere; Haydn's own comment about waking the audience is an anecdote of doubtful origin) and the timestamp of the chord in this recording.
+</Callout>
+
+## From prediction to feeling
+
+So far: listeners predict, from statistics learned over a lifetime and patterns picked up as the piece goes. Why should predicting feel like anything?
+
+### The brain as a prediction machine
+
+The broadest version of the answer is the theory of **predictive processing** (also called predictive coding). It holds that the brain is constantly generating predictions about incoming sensation and mainly processes the *difference*, the prediction error. Errors drive learning (update the model) and attention (look here, something unexpected). Applied to music, it suggests why both confirmation and surprise matter, and why the sweet spot lies between total predictability and chaos. The groove chapter (2.5) uses the same idea to explain why some rhythmic surprise feels good.
+
+### ITPRA
+
+Huron's book *Sweet Anticipation* (2006) gives a more detailed psychological account, in five parts. He calls it **ITPRA**, after the five responses an expected event produces, two before and three after:
+
+<ItpraTimeline />
+
+- **Imagination.** Before an event, you imagine possible outcomes and feel a little of how each would feel. This is what motivates you to prepare.
+- **Tension.** As the moment approaches, arousal and attention rise, so you're ready to respond. The more uncertain the outcome, the more tension.
+- **Prediction response.** Right after the event, a quick reward if you predicted it correctly, and a penalty if you didn't, *regardless of whether the outcome is good or bad*. The brain likes being right.
+- **Reaction response.** A fast, automatic response to the event itself: a startle at a sudden loud chord, before you've had time to think.
+- **Appraisal response.** A slower, conscious assessment: was that good or bad? A loud chord in a concert hall is harmless, so the appraisal is neutral or pleasant.
+
+Two consequences explain a lot of music.
+
+**The prediction effect.** Because correct predictions are rewarding in themselves, familiar, predictable music feels good, and Huron argues listeners misattribute that pleasure to the music ("I love this song") when part of it is the pleasure of having predicted it. This helps explain why people like the music of their own culture, and why a song often grows on you.
+
+**Contrastive valence.** When a negative fast response (a startle, a wrong prediction) is followed by a positive appraisal ("oh, it's fine, that's lovely"), the contrast makes the final feeling *more* positive than if nothing surprising had happened. Relief after a scare feels better than calm. Huron argues that much musical pleasure works this way: a moment of surprise, quickly reappraised as safe.
+
+<Callout kind="verify" title="ITPRA details">
+Check each ITPRA component against Huron (2006, chapters 1–2), including his claim that the prediction response is independent of whether the outcome is good, the misattribution argument (chapter 8 on the "prediction effect"), and contrastive valence. The tension chapter (5.4) also summarizes ITPRA; make sure the two summaries agree.
+</Callout>
+
+### Surprise and pleasure
+
+If prediction errors drive feeling, is more surprise better? Not quite. Recent work suggests pleasure depends on surprise *and* uncertainty together. Cheung and colleagues (2019) used a statistical model to rate 80,000 chords from popular songs for how surprising each was and how uncertain the listener's prediction was just before it. Listeners liked a chord most when an uncertain context was resolved by an expected chord, or when a confident prediction was overturned by a surprising one. Both very high and very low surprise were less pleasant than the middle. That's the same "sweet spot" shape found for rhythmic surprise in groove.
+
+<Callout kind="verify" title="Cheung et al. 2019">
+Check the design and findings of Cheung, Harrison, Meyer, Pearce, Haynes & Koelsch (2019), "Uncertainty and surprise jointly predict musical pleasure and amygdala, hippocampus, and auditory cortex activity," *Current Biology*: the number of chords, how they were presented (I believe as chord sequences stripped of melody and lyrics), and the exact shape of the interaction. Also see Gold et al. (2019) for a related inverted-U.
+</Callout>
+
+## Emotion: more than expectation
+
+Expectation explains a lot, but not everything. A sad song played to someone who has never heard anything like it can still sound sad. A sudden loud bang startles a newborn. A song from the summer you fell in love brings back the summer.
+
+### Perceived versus felt
+
+First, a distinction. Music can *express* an emotion that you recognize ("this sounds sad") without making you *feel* it, and it can make you feel something it doesn't express (a sad song you find beautiful and comforting). Researchers separate **perceived** emotion from **felt** emotion (Gabrielsson, 2002), and they often diverge. Perceived emotion is fairly consistent across listeners, and partly across cultures; felt emotion varies a lot more.
+
+Much of perceived emotion comes from cues music shares with the human voice: sad speech and sad music are both slow, quiet, low, and dark in timbre; happy speech and happy music are faster, louder, higher, and brighter (Juslin & Laukka, 2003). You hear the sadness the way you'd hear it in a voice.
+
+### Several routes to feeling
+
+Patrik Juslin and colleagues proposed that music induces emotion through a set of distinct mechanisms, each with its own brain systems, speed, and dependence on learning. The list has grown over the years; the current version goes by the acronym **BRECVEMA**:
+
+<DataTable title="How music can induce emotion" caption="After Juslin (2013) and Juslin & Västfjäll (2008). Several mechanisms often act at once, and they can pull in different directions.">
+
+| Mechanism | What happens | Musical example |
+|---|---|---|
+| **B**rain stem reflex | An automatic alarm response to sudden, loud, or harsh sound | The Haydn chord; a sudden crash after silence |
+| **R**hythmic locking | Your body falls into step with the beat, and arousal follows it | Wanting to move to a fast dance track |
+| **E**valuative conditioning | A piece becomes linked to whatever it was paired with | A song you always heard at happy family gatherings |
+| **C**ontagion | You "catch" the emotion expressed, as you would from a voice | A sobbing violin line makes you feel sad |
+| **V**isual imagery | The music evokes images you respond to | A slow swell that conjures a landscape |
+| **E**pisodic memory | It brings back a specific memory | "Our song" |
+| **M**usical expectancy | Predictions are confirmed, delayed, or overturned | Everything in this chapter so far |
+| **A**esthetic judgment | Appreciating skill, beauty, or originality | Being moved by a performance as a performance |
+
+</DataTable>
+
+The point of the list is that "music is emotional" isn't one fact. A film score can work through contagion and imagery, a dance track through rhythmic locking and the brain stem, a song from your past through episodic memory, all at the same time.
+
+<Callout kind="verify" title="BRECVEMA">
+Check the eight mechanisms and their names against Juslin (2013), *Physics of Life Reviews*, and the earlier six-mechanism version in Juslin & Västfjäll (2008), *Behavioral and Brain Sciences*. The "R" is "rhythmic entrainment" in Juslin's terms; I renamed it in the table because entrainment is introduced in chapter 2.2. Check Juslin & Laukka (2003) on shared voice and music cues and Gabrielsson (2002) on perceived versus felt emotion.
+</Callout>
+
+### Chills
+
+The most studied strong response to music is **frisson**, or musical chills: goosebumps or a shiver down the spine at a particular moment. It's useful to researchers because it's a physical, timeable event.
+
+John Sloboda (1991) asked listeners to name passages that gave them chills, tears, or a racing heart, and then looked at what happened in the scores at those moments. Chills clustered at new or unexpected harmonies, sudden changes in loudness or texture, and melodic *appoggiaturas*: notes that clash with the harmony on a strong beat and then resolve by step. Later studies found similar triggers: entrances of a new voice or instrument, a sudden swell, a return after a build (Grewe et al., 2007).
+
+<ListeningCue track="adele-someone-like-you" start="1:05">
+A song often cited as a chills trigger. A 2012 newspaper article, drawing on Sloboda's findings, pointed to the clashing-then-resolving notes in the melody of the song's main section (the one built around the title line) as the reason. Does anything happen to you as that section arrives (around 1:13, an estimate)? Don't worry if not: chills are unpredictable and personal.
+</ListeningCue>
+
+Two brain-imaging studies are often quoted here. Blood and Zatorre (2001) scanned listeners while they heard music that, for them personally, reliably gave chills, and found activity in brain regions involved in reward, the same systems that respond to food and sex. Salimpoor and colleagues (2011) went further, measuring dopamine release: it rose in one region (the caudate) during the *anticipation* of a peak moment, and in another (the nucleus accumbens) at the peak itself. That fits ITPRA nicely: one reward for the approach, another for the arrival.
+
+Some honest limits:
+
+- These studies are small (around ten people each), and participants chose their own music.
+- Chills are idiosyncratic. Many people rarely or never get them, and the same passage works for one listener and not another.
+- A small minority of people find music almost entirely unrewarding while enjoying other rewards normally, a condition called specific musical anhedonia (Mas-Herrero et al., 2014). Music's link to reward isn't automatic.
+- "The brain's reward system lights up" is a description, not an explanation. It says pleasure is real pleasure, not what causes it.
+
+<Callout kind="check">
+Salimpoor's study found dopamine release in two places at two different times. Using ITPRA, which two responses do those match, and why might a composer care about both?
+
+<Answer>
+Dopamine during the anticipation fits Tension (and Imagination): the approach to an expected peak is itself rewarding. Dopamine at the peak fits the post-event responses: the Prediction reward plus a positive Reaction and Appraisal. A composer can work both: lengthen and intensify the approach (a rising line, a held dominant-seventh chord), and then make the arrival satisfying. The tension chapter (5.4) is about exactly this craft.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="chills studies">
+Check Sloboda (1991) for the list of triggers and the size of the sample; Grewe et al. (2007); Blood & Zatorre (2001) (I believe 10 participants, PET); Salimpoor et al. (2011) (I believe 8 participants, PET with a dopamine tracer, plus fMRI); Mas-Herrero et al. (2014) on specific musical anhedonia and its prevalence. Check the Adele story: Michaeleen Doucleff, "Anatomy of a Tear-Jerker," *Wall Street Journal*, February 2012, and whether it quotes Sloboda. Check the timestamp of that section.
+</Callout>
+
+## Familiarity, complexity, and boredom
+
+The prediction effect says familiar music is rewarding. So why don't we just play one song forever?
+
+### Mere exposure
+
+Robert Zajonc (1968) showed that people tend to like things more simply because they've encountered them before, even nonsense words and shapes they don't remember seeing. This **mere-exposure effect** holds for music too: in general, liking for an unfamiliar piece rises over the first several hearings (Peretz, Gaudreau & Bonnel, 1998). It's one reason radio repetition works, and one reason a song you disliked at first can grow on you.
+
+### Too much of a good thing
+
+But the rise doesn't go on forever. Play a piece often enough and liking levels off, then falls. You've exhausted it. Part of this is **habituation**: the fading of a response to a stimulus that keeps repeating unchanged. Your brain stops reacting to what it can perfectly predict, because there's nothing to learn from it.
+
+Put these together and you get a classic idea from the psychologist Daniel Berlyne (1971): pleasure is highest at a *moderate* level of complexity or novelty, lower for music that's too simple or too familiar (boring) and lower again for music that's too complex or too strange (confusing). Plotted, it's an upside-down U. Where the peak sits depends on the listener: more experience with a style moves the peak toward more complex music, because what's complex to a newcomer is predictable to an expert.
+
+A 2017 review of the music research (Chmiel & Schubert) found that most studies support this inverted-U shape, though not all, and the result depends on how complexity is measured.
+
+<DataTable title="What expectation predicts about liking" caption="Each row is a tendency, not a law; individual taste and context shift all of them.">
+
+| Situation | What happens to predictions | Likely response |
+|---|---|---|
+| First hearing of a style you don't know | Almost nothing can be predicted | Confusing; often disliked |
+| First hearing of a song in a familiar style | Schematic predictions work; details surprise | Interest, mild pleasure |
+| Fifth hearing | Schematic and veridical predictions mostly confirmed | Liking usually rises (mere exposure) |
+| Five-hundredth hearing | Everything predicted perfectly | Boredom (habituation), unless something keeps schematic surprises alive |
+| An expert hearing complex music in their own style | Rich predictions, some cleverly overturned | Strong pleasure for the expert, confusion for others |
+
+</DataTable>
+
+<Callout kind="check">
+Using this chapter, explain why a composer of a long piece might bring back the opening theme near the end, but changed somehow.
+
+<Answer>
+Bringing it back lets veridical and dynamic expectations succeed: the listener recognizes it, and the prediction effect rewards that recognition. Changing it keeps some surprise alive, so the moment isn't simply habituated: a familiar thing, slightly overturned, gives both the pleasure of being right and the contrast of a surprise. Form (chapter 5.5) is largely the large-scale management of this balance.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="exposure and complexity">
+Check Zajonc (1968), Peretz, Gaudreau & Bonnel (1998), Berlyne (1971), and the conclusions of Chmiel & Schubert (2017), "Back to the inverted-U for music preference: A review of the literature," *Psychology of Music*. Check that the "expertise moves the peak" claim is supported, and by which studies.
+</Callout>
+
+## The architecture of listening in time
+
+Volume I started with vibrations and ends with feelings. In between, the ear analyzes sound into frequencies (chapters 1.2 and 1.3), the brain regroups them into sources and streams (1.4) and judges how they fit together (1.5). This chapter adds time: memory holds what has passed, attention selects what to follow, and a learned statistical model predicts what's next. The feelings come partly from how those predictions fare and partly from other routes that bypass prediction altogether.
+
+<DataTable title="Listening in time at a glance">
+
+| Process | What it does | Where it shows up later |
+|---|---|---|
+| Echoic and short-term memory | Holds a few seconds: the musical present | Melodic lines and their length (3.3); bars and patterns (2.2) |
+| Chunking and long-term memory | Holds patterns and pieces | Riffs, hooks, and repeated sections (5.5) |
+| Attention | Follows two or three streams; peaks on the beat | Texture and orchestration (4.4); groove (2.5) |
+| Statistical learning | Absorbs a style's probabilities | Melody (3.3); every harmony chapter |
+| Expectation (schematic, veridical, dynamic) | Predicts what and when | Tension (5.4); form (5.5) |
+| ITPRA and prediction errors | Turns predictions into feelings | Groove's sweet spot (2.5); builds and drops (5.4) |
+| Other emotion mechanisms | Reflexes, contagion, memory, and more | Timbre and production (Volume IV); music as a human system (Volume VI) |
+| Exposure and habituation | Liking rises with familiarity, then falls | Repetition versus contrast in form (5.5, 5.6) |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. Why listening is prediction, and what prediction needs: memory, attention, a learned model.
+2. The three timescales of memory, the musical "present," chunking, and why music repeats (the speech-to-song illusion).
+3. The limits of attention (about three voices) and dynamic attending: attention pulsing with the beat.
+4. Statistical learning: the Saffran experiments, transitional probabilities, and what your own score in the lab did or didn't show.
+5. Surprisal in bits, and what a model like IDyOM does with it.
+6. Schematic, veridical, and dynamic expectations, and why a known surprise still surprises (the Haydn).
+7. ITPRA, the prediction effect, and contrastive valence; why both surprise and uncertainty matter for pleasure.
+8. Perceived versus felt emotion, and the BRECVEMA mechanisms (expectation is one of eight).
+9. Chills: the triggers, the dopamine studies, and their limits.
+10. Mere exposure, habituation, and the inverted U.
+
+**Decisions for your rewrite:**
+
+- **The hook.** I opened with "why does patterned sound move people?" Alternatives: start with the tone-language experiment (the reader becomes the subject), or with the Haydn chord.
+- **How much to put here versus later.** ITPRA is also summarized in the tension chapter (5.4). Decide which chapter owns the full treatment; I've put the full version here and the tension chapter can shrink its summary to a refresher.
+- **How hard to lean on predictive processing.** It's an influential framework but also a very general one; critics say it can explain anything after the fact. Decide whether to present it as *the* theory or as one lens.
+- **Examples.** Swap in your own chills moment, your own "song that grew on me," and your own known surprise that still works.
+
+**Misconceptions to watch for:**
+
+- "Expectations are conscious guesses." Mostly they're automatic and unconscious; you notice them only when they fail.
+- "Surprise is pleasurable, so more surprise is better." Pleasure peaks in the middle, and depends on uncertainty too.
+- "Knowing a piece should kill its surprises." Schematic expectations keep running.
+- "Music's emotional power is all about expectation." It's one mechanism of several.
+- "Dopamine studies explain musical pleasure." They show that it engages the reward system, not why.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Berlyne, D. E. (1971). *Aesthetics and Psychobiology*. Appleton-Century-Crofts.
+- Bharucha, J. J. (1994). Tonality and expectation. In R. Aiello & J. Sloboda (Eds.), *Musical Perceptions* (pp. 213–239). Oxford University Press.
+- Blood, A. J., & Zatorre, R. J. (2001). Intensely pleasurable responses to music correlate with activity in brain regions implicated in reward and emotion. *Proceedings of the National Academy of Sciences*, 98(20), 11818–11823.
+- Cheung, V. K. M., Harrison, P. M. C., Meyer, L., Pearce, M. T., Haynes, J.-D., & Koelsch, S. (2019). Uncertainty and surprise jointly predict musical pleasure and amygdala, hippocampus, and auditory cortex activity. *Current Biology*, 29(23), 4084–4092.
+- Chmiel, A., & Schubert, E. (2017). Back to the inverted-U for music preference: A review of the literature. *Psychology of Music*, 45(6), 886–909.
+- Cowan, N. (1984). On short and long auditory stores. *Psychological Bulletin*, 96(2), 341–370.
+- Cowan, N. (2001). The magical number 4 in short-term memory. *Behavioral and Brain Sciences*, 24(1), 87–114.
+- Darwin, C. J., Turvey, M. T., & Crowder, R. G. (1972). An auditory analogue of the Sperling partial report procedure. *Cognitive Psychology*, 3(2), 255–267.
+- Deutsch, D., Henthorn, T., & Lapidis, R. (2011). Illusory transformation from speech to song. *Journal of the Acoustical Society of America*, 129(4), 2245–2252.
+- Gabrielsson, A. (2002). Emotion perceived and emotion felt: Same or different? *Musicae Scientiae*, Special Issue 2001–2002, 123–147.
+- Gold, B. P., Pearce, M. T., Mas-Herrero, E., Dagher, A., & Zatorre, R. J. (2019). Predictability and uncertainty in the pleasure of music: A reward for learning? *Journal of Neuroscience*, 39(47), 9397–9409.
+- Grewe, O., Nagel, F., Kopiez, R., & Altenmüller, E. (2007). Listening to music as a re-creative process: Physiological, psychological, and psychoacoustical correlates of chills and strong emotions. *Music Perception*, 24(3), 297–314.
+- Huron, D. (1989). Voice denumerability in polyphonic music of homogeneous timbres. *Music Perception*, 6(4), 361–382.
+- Huron, D. (2006). *Sweet Anticipation: Music and the Psychology of Expectation*. MIT Press.
+- Jones, M. R., & Boltz, M. (1989). Dynamic attending and responses to time. *Psychological Review*, 96(3), 459–491.
+- Juslin, P. N. (2013). From everyday emotions to aesthetic emotions: Towards a unified theory of musical emotions. *Physics of Life Reviews*, 10(3), 235–266.
+- Juslin, P. N., & Laukka, P. (2003). Communication of emotions in vocal expression and music performance: Different channels, same code? *Psychological Bulletin*, 129(5), 770–814.
+- Juslin, P. N., & Västfjäll, D. (2008). Emotional responses to music: The need to consider underlying mechanisms. *Behavioral and Brain Sciences*, 31(5), 559–575.
+- Large, E. W., & Jones, M. R. (1999). The dynamics of attending: How people track time-varying events. *Psychological Review*, 106(1), 119–159.
+- Margulis, E. H. (2014). *On Repeat: How Music Plays the Mind*. Oxford University Press.
+- Mas-Herrero, E., Zatorre, R. J., Rodriguez-Fornells, A., & Marco-Pallarés, J. (2014). Dissociation between musical and monetary reward responses in specific musical anhedonia. *Current Biology*, 24(6), 699–704.
+- Miller, G. A. (1956). The magical number seven, plus or minus two. *Psychological Review*, 63(2), 81–97.
+- Pearce, M. T. (2005). *The Construction and Evaluation of Statistical Models of Melodic Structure in Music Perception and Composition* (Doctoral dissertation). City University, London.
+- Pearce, M. T. (2018). Statistical learning and probabilistic prediction in music cognition: Mechanisms of stylistic enculturation. *Annals of the New York Academy of Sciences*, 1423(1), 378–395.
+- Pearce, M. T., Ruiz, M. H., Kapasi, S., Wiggins, G. A., & Bhattacharya, J. (2010). Unsupervised statistical learning underpins computational, behavioural, and neural manifestations of musical expectation. *NeuroImage*, 50(1), 302–313.
+- Peretz, I., Gaudreau, D., & Bonnel, A.-M. (1998). Exposure effects on music preference and recognition. *Memory & Cognition*, 26(5), 884–902.
+- Saffran, J. R., Aslin, R. N., & Newport, E. L. (1996). Statistical learning by 8-month-old infants. *Science*, 274(5294), 1926–1928.
+- Saffran, J. R., Johnson, E. K., Aslin, R. N., & Newport, E. L. (1999). Statistical learning of tone sequences by human infants and adults. *Cognition*, 70(1), 27–52.
+- Salimpoor, V. N., Benovoy, M., Larcher, K., Dagher, A., & Zatorre, R. J. (2011). Anatomically distinct dopamine release during anticipation and experience of peak emotion to music. *Nature Neuroscience*, 14(2), 257–262.
+- Sloboda, J. A. (1991). Music structure and emotional response: Some empirical findings. *Psychology of Music*, 19(2), 110–120.
+- Snyder, B. (2000). *Music and Memory: An Introduction*. MIT Press.
+- Zajonc, R. B. (1968). Attitudinal effects of mere exposure. *Journal of Personality and Social Psychology*, 9(2, Pt. 2), 1–27.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details (volume, issue, pages, year), especially Gabrielsson 2002 (special issue pagination), Bharucha 1994 (chapter pages), Huron 1989 (pages), Cheung et al. 2019 (pages), and Gold et al. 2019.
+</Callout>

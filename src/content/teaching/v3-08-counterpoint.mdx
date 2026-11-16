@@ -1,0 +1,361 @@
+---
+title: "Counterpoint: Independent Melodies Together"
+volume: 3
+chapter: 8
+summary: Several melodies at once, each one a line you can follow, together making sense as harmony. What makes lines independent to the ear, how musicians trained themselves to write them, and how rounds, fugues, New Orleans jazz, and pop countermelodies use the same principles.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [pitch, spectrum, root, power-chord, resolution, syncopation, auditory-scene-analysis, melodic-expectation, note-names, octave, semitone, interval, register, timbre, harmonics, chord, major-minor, scale, key, tonic, dominant, cadence, mode, consonance, roughness, common-practice, counterpoint, fusion, auditory-stream, grouping, masking, contour, step-leap, motif, phrase, melodic-transformation, voice-leading, beat, tempo, meter]
+lintIgnore: [sonata-form] # "exposition" here means a fugue's opening, not sonata form's
+introduces: [texture, monophony, heterophony, homophony, polyphony, species-counterpoint, cantus-firmus, imitation, canon, fugue, invertible-counterpoint]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts. One new lab with three parts: **rounds** (one tune against delayed copies of itself), **two voices** (first-species counterpoint, which you can write yourself by clicking), and a **voice-counting test**. Headphones help, especially for the counting test. Then write your version in `src/content/chapters/v3-08-counterpoint.mdx`.
+
+This chapter joins two earlier threads. Chapter 1.4 showed how the ear sorts sounds into streams; chapter 3.5 showed voice leading, where a chord progression becomes several lines. Counterpoint is what happens when you make those lines the point.
+</Callout>
+
+## The question
+
+Sing "Frère Jacques" with three friends, each starting two bars after the last. Four people are singing the same tune at different places in it, so at every moment four different notes are sounding. By rights it should be a mess. Instead it sounds like music: a texture where you can follow any one singer, and where all four together make satisfying harmony.
+
+That's **counterpoint**: two or more melodies sounding at once, each one a real line with its own shape, together making sense as harmony. The word comes from the Latin *punctus contra punctum*, "note against note." It's the oldest systematic craft in Western composition, and it isn't only Western or only old: a New Orleans jazz band, a pop record with a countermelody, and a Balinese gamelan all do versions of it.
+
+Counterpoint asks two things at once:
+
+1. **Each line must be heard as a line.** That's sequential grouping from chapter 1.4: the ear must keep each voice in its own <Term id="auditory-stream">stream</Term>.
+2. **The lines must fit together.** At every moment, the notes sounding must make acceptable harmony.
+
+The two demands pull against each other. Lines that fit together perfectly (moving in the same rhythm, always a consonance apart) tend to merge into one; lines that are completely independent tend to clash. This chapter is about how musicians resolve that tension, and why the classic rules make perceptual sense.
+
+## Four textures
+
+Start with a vocabulary. A piece's **texture** is how many layers are sounding at once and how they relate to each other: a voice alone is a thin texture, a full band a thick one. Four basic kinds of texture have names. (Chapter 5.7 returns to texture as a tool for managing a listener's attention.)
+
+<TextureTypes />
+
+**Monophony** is a single line: a solo voice, a chant, a crowd singing one tune together (even in octaves, which fuse into one line). **Heterophony** is several performers playing the *same* tune at once, each decorating it in their own way, so the versions rub and diverge and rejoin. **Homophony** is one line leading with the other parts moving under it as chords, mostly in the same rhythm. **Polyphony** is two or more independent lines, each with its own <Term id="contour">contour</Term> and rhythm. Writing polyphony is counterpoint.
+
+<DataTable title="Textures compared" caption="Real music mixes them: a pop song is mostly homophonic, with polyphonic moments (a countermelody, a call-and-answer between voice and guitar).">
+
+| Texture | What you hear | Examples |
+|---|---|---|
+| Monophony | One line, nothing else | Gregorian chant; a solo folk ballad; a stadium singing a chant |
+| Heterophony | One tune, several simultaneous versions | Balinese and Javanese gamelan; an Irish session; Arabic ensembles; Gaelic psalm singing in the Hebrides |
+| Homophony | A tune plus chords in step with it | A hymn; a barbershop quartet; strummed-guitar folk and most pop |
+| Polyphony | Independent lines, staggered entries | A Renaissance motet; a Bach fugue; New Orleans jazz; a round |
+
+</DataTable>
+
+The line between homophony and polyphony is a matter of degree. Chapter 3.5's Bach chorale is usually called homophonic, because its four voices move mostly in the same rhythm. Yet each voice was written as a singable melody, by the rules of voice leading. Counterpoint is the end of that spectrum where the lines stop sharing a rhythm and start having their own lives.
+
+<Callout kind="verify" title="texture examples">
+Check that Gaelic psalm singing (the "lining out" tradition of the Outer Hebrides) is standardly described as heterophonic, and that the Irish-session and Arabic ensemble descriptions are fair generalizations (Arabic music theory has its own term for heterophonic ensemble practice; check whether it's worth naming). Also check whether ethnomusicologists prefer "stratified polyphony" over "heterophony" for gamelan; the terms are used differently by different authors.
+</Callout>
+
+## Hearing several lines at once
+
+### How many voices can you follow?
+
+Before the rules, a test of your own ears. Each texture below has between one and five lines, all in the same organ-like tone, each in its own register and with its own rhythm. Your job is to count them.
+
+<CounterpointLab initialMode="count" modes={['count']} />
+
+<Callout kind="try">
+1. Press **Play**, listen (as often as you like), then click how many voices you heard. The notes appear after you answer.
+2. Do this ten or fifteen times with **New texture**. Watch your record: which counts do you get right, and which do you miss?
+3. When you miss, play it again with the notes visible and try to follow each line in turn. Are the middle voices harder than the top and bottom?
+</Callout>
+
+In 1989, David Huron ran essentially this experiment with real music. He played listeners passages from Bach's fugues for organ in which voices entered one at a time, all in the same timbre, and asked them to track how many voices were sounding. Up to three voices, listeners did well. Beyond three, their accuracy dropped sharply, and they tended to *underestimate*: four or five voices sounded like three. Inner voices are generally the hardest to hear out; the top and bottom lines get more attention, which is where the lab's middle lines put you at a disadvantage.
+
+This puts a limit on counterpoint. Bach wrote fugues in five and six voices, but Huron's results suggest that most listeners don't hear five independent lines at once. They hear about three, or hear a texture whose lines come and go from attention. Polyphonic music that wants its lines heard tends to work within that limit, for example by bringing voices in one at a time, as a fugue does.
+
+<Callout kind="verify" title="Huron 1989">
+Check Huron (1989), "Voice denumerability in polyphonic music of homogeneous timbres," *Music Perception* 6(4): the stimuli (Bach organ fugues? or synthesized textures?), the task, and the actual results: accuracy by number of voices, the "three voices" threshold, and the tendency to underestimate. Check the claim that inner voices are hardest to hear out (outer-voice salience is discussed in Huron 2001 and in Palmer & Holleran 1994; it may not be a finding of the 1989 paper). The lab's textures are random, not Bach, so its numbers won't match.
+</Callout>
+
+### What makes lines independent
+
+Why are some lines easy to hear apart? Chapter 1.4 already gave the answers, as grouping rules. David Huron's 2001 monograph, "Tone and voice," made the connection explicit: the rules that generations of students learned for writing independent voices are, almost one for one, the conditions under which the auditory system keeps sounds in separate streams.
+
+<DataTable title="What keeps voices apart" caption="Following Huron (2001), who derived most of the traditional rules from auditory scene analysis. The left column is what the ear needs; the right is what composition teachers taught.">
+
+| What the ear needs | Why | What the rule books say |
+|---|---|---|
+| Each line moves by small steps | Pitch proximity keeps a sequence in one stream (chapter 1.4) | Prefer stepwise motion; follow a leap with a step back |
+| Lines stay in their own registers | Close-in-pitch notes get grouped across voices | Keep voices in range; don't let them cross |
+| Notes don't always start together | Common onset fuses notes into one sound | Vary the rhythms between parts; stagger entries |
+| Lines don't move in lockstep | Common fate (same direction, same amount) groups sounds | Prefer contrary and oblique motion |
+| No long stretches at the octave or fifth | Those intervals fuse most readily, being close to the harmonic series | Avoid parallel fifths and octaves; use them sparingly |
+| Spread out the low voices | Low notes close together mask each other and sound rough | Wide intervals at the bottom (chapter 3.5's spacing rule) |
+| Not too many lines | Attention tracks about three | Bach's dense passages reduce to a few active lines |
+
+</DataTable>
+
+Chapter 3.5 met the most famous of these, the ban on parallel fifths and octaves. Here's the point in its general form: **counterpoint's rules are mostly rules for preventing fusion.** A fifth or octave is close to the harmonic series, so two voices sounding it tend to fuse (chapter 1.4). If they also move together in the same direction, they share common fate as well, and the ear gives up and hears one voice with a richer timbre. Composers who wanted that effect, from medieval organum to rock power chords, used parallel fifths gladly. Composers who wanted two voices avoided them.
+
+<Callout kind="verify" title="Huron 2001">
+Check Huron (2001), "Tone and voice: A derivation of the rules of voice-leading from perceptual principles," *Music Perception* 19(1): his list of perceptual principles (toneness, minimum masking, tonal fusion, pitch proximity, pitch co-modulation, onset synchrony, limited density, timbral differentiation, source location), and which traditional rules he derives from each. The table compresses these; check that nothing is misattributed. In particular check his evidence that Bach avoids synchronous onsets in polyphonic (but not homophonic) works, and avoids perfect consonances more than chance would predict.
+</Callout>
+
+## Learning by species
+
+### Fux's method
+
+For three centuries, composers learned counterpoint from one book. In 1725, Johann Joseph Fux, composer to the Habsburg court in Vienna, published *Gradus ad Parnassum* ("Steps to Parnassus"), a textbook in Latin written as a dialogue between a student, Josephus, and a teacher, Aloysius, who stands for Palestrina, the great sixteenth-century master of vocal polyphony. Haydn taught himself from it; Mozart used it to teach his students; Beethoven worked through its exercises. Composition teachers still use versions of it.
+
+Fux's method is **species counterpoint**. The student is given a **cantus firmus** ("fixed song"): a plain melody in long, equal notes. The job is to write a second line against it, under strict constraints that loosen step by step:
+
+- **First species:** note against note. One note in the new line for each note of the cantus.
+- **Second species:** two notes against one.
+- **Third species:** four notes against one.
+- **Fourth species:** the new line is syncopated, each note tied over into the next beat, so it briefly clashes with the cantus and then steps down to a consonance. This is the controlled dissonance that chapter 5.4 builds on.
+- **Fifth species:** "florid" counterpoint, mixing all the above freely, the nearest thing to real music.
+
+The idea is pedagogical genius: master consonance and motion first, with rhythm removed from the problem, then add one complication at a time.
+
+<Callout kind="verify" title="Fux">
+Check: *Gradus ad Parnassum* (Vienna, 1725), Fux's post (Hofkapellmeister to Charles VI), the dialogue's characters (Josephus and Aloysius, with Aloysius standing for Palestrina), and the claims about Haydn (taught himself from it), Mozart (used it with students such as Thomas Attwood), and Beethoven (exercises with Haydn and Albrechtsberger, based on Fux). Check the fourth-species description (tied notes forming dissonances that resolve down by step); their standard name is introduced in chapter 5.4, so this chapter avoids it.
+</Callout>
+
+### First species, by ear
+
+The rules of first species are short. Each one has a perceptual reason, most of them from the table above.
+
+<DataTable title="First-species rules and their reasons" caption="A simplified version of Fux's rules for two voices. The 'reason' column follows Huron's (2001) perceptual account, plus the logic of cadences.">
+
+| Rule | Reason |
+|---|---|
+| Use only consonances: thirds, sixths, fifths, octaves, unisons (in two voices, the fourth counts as a dissonance) | Rhythm has been removed, so there's nothing yet to justify a dissonance |
+| Prefer imperfect consonances (thirds, sixths) to perfect ones (fifths, octaves) | Perfect consonances fuse; imperfect ones blend without merging |
+| No parallel fifths or octaves | Fusion plus common fate: two voices become one |
+| Prefer contrary and oblique motion | Lines moving in opposite directions are hard to mistake for one |
+| Approach a perfect consonance only by contrary or oblique motion | Even "hidden" fifths (similar motion into a fifth) briefly sound like one voice |
+| Move mostly by step; leaps are rare and followed by a step back | Pitch proximity keeps each line in one stream |
+| Begin and end on a perfect consonance; reach the final octave by step | A clear start, and a <Term id="cadence">cadence</Term> that sounds like an ending |
+
+</DataTable>
+
+The lab below gives you Fux's own first cantus firmus, a melody in D: D F E D G F A G F E D. (It uses only white keys, starting and ending on D. That's the Dorian <Term id="mode">mode</Term> from chapter 3.4.) Above it, try four different second lines.
+
+<CounterpointLab initialMode="species" modes={['species']} />
+
+<Callout kind="try">
+1. Play **A textbook solution**. Read the numbers between the voices: mostly 3s and 6s, with 5s and an 8 at the ends. Then read the letters underneath: plenty of C (contrary) and O (oblique).
+2. Switch to **Parallel octaves**, then **Parallel fifths**. These are the cantus doubled. Listen for how many melodies you hear. Does the fifths version sound like two singers, or like one strange, hollow instrument?
+3. Try **Parallel thirds**. Every interval is consonant and no rule about fifths is broken, but the upper voice is only a shadow of the lower one. It's pleasant, and not quite two lines.
+4. Now write your own. Start from the textbook solution and click in any column to move the upper note. Try to make the flags disappear while keeping the line singable. Listen to each attempt, not just the flags.
+</Callout>
+
+<Callout kind="check">
+A student's exercise breaks no rules: every interval is a third or a sixth, and there are no parallel fifths. Yet the teacher marks it down for "lack of independence." What might the student have done, and why does it matter?
+
+<Answer>
+Probably written the upper voice in parallel thirds or sixths with the cantus for long stretches, as in the lab's **Parallel thirds** example. Every interval is consonant, but the two lines share direction and rhythm at every step (common fate, and common onset, since first species is note against note), so the upper line sounds like a harmonization of the lower one, not a melody in its own right. Independence needs contrary and oblique motion, and a contour of its own.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="cantus firmus and the solution">
+Check that D F E D G F A G F E D is the first cantus firmus in *Gradus ad Parnassum*, and whether the lab's "textbook solution" (A A G A B C C B D C♯ D above it) matches Fux's own first-species example or only resembles it. If it is Fux's, say so; if not, keep "a textbook-style solution." Check also the rule list against Fux (and against Jeppesen's *Counterpoint*, the standard modern edition of the method): the fourth as a dissonance in two voices, the rule about approaching perfect consonances, and the raised C♯ at the cadence.
+</Callout>
+
+## Imitation
+
+Species counterpoint teaches you to add a line to a given melody. Most real counterpoint has another ingredient: the lines share material. In **imitation**, one voice plays a figure and another voice repeats it a moment later, while the first voice carries on with something new.
+
+Imitation solves both of counterpoint's problems at once. The voices are clearly independent, because they're doing the same thing at *different times*: their onsets are staggered and their contours are offset. And the texture is coherent, because there's really only one idea, heard from several places. A listener who has heard the first voice knows what to listen for when the second comes in.
+
+Imitation was the backbone of Renaissance vocal music. A typical motet sets each phrase of its text to a short melodic idea, introduced by one voice and then taken up by each of the others in turn: a "point of imitation." Josquin des Prez's *Ave Maria... virgo serena* opens with a textbook example.
+
+<ListeningCue track="josquin-ave-maria" start="0:00" end="0:50">
+The top voice sings "Ave Maria" alone. Then the next voice down enters with the same phrase, then the next, then the bass, each while the previous voices continue. Count the entries. Later in the piece, listen for the contrast: pairs of voices answering each other, and at the very end, slow block chords (homophony) for the final prayer.
+</ListeningCue>
+
+<Callout kind="verify" title="Josquin Ave Maria">
+Check the date (often given as the 1480s; a date as early as 1476 has been proposed, and the attribution of the early date is disputed), the order of the opening entries (top voice first, then down the texture, each a few bars apart), and the description of the later sections (paired voices; homophonic "O mater Dei, memento mei" ending).
+</Callout>
+
+## Rounds and canons
+
+### One tune against itself
+
+Push imitation to its limit and the second voice copies the *whole* melody. That's a **canon**: a melody sounding against delayed copies of itself. A **round** is the simplest kind of canon, where each voice enters at the same pitch and can loop back to the start forever. "Frère Jacques" and "Row, Row, Row Your Boat" are rounds.
+
+Not every tune works as a round. Try it.
+
+<CounterpointLab initialMode="round" />
+
+<Callout kind="try">
+1. Play **Frère Jacques** with **4** voices entering every **2 bars**. Mute and unmute voices with the colored chips to hear the texture build. The red marks under the plot show where any two voices clash (a second, seventh, or tritone apart). They're brief: a passing note here and there.
+2. Change the delay to 1, 3, and 4 bars. Frère Jacques still works at every delay. The clash readout stays low.
+3. Now try **Mary Had a Little Lamb** at a delay of **1 bar**. Listen and watch the clash readout: with four voices, some pair of them is rubbing most of the time (with two voices, about half the time). **Ode to Joy** at one bar is nearly as bad.
+4. Turn off **Different timbres**. With four identical sounds, can you still follow one voice through the texture? Which voice is easiest to follow, and why?
+</Callout>
+
+Why is Frère Jacques so forgiving? Look at its notes. Bar by bar: C D E C, E F G, G A G F E C, C G C. Every bar is built from the notes of one <Term id="chord">chord</Term>, C major (C, E, G), with a few passing notes between them. So any bar sounds fine against any other bar: wherever the voices are, together they spell a C major chord. "Row, Row, Row Your Boat" does the same. Most rounds are built this way, which is also why most rounds stay on one chord for their whole length. Mary and Ode to Joy move through different chords (they imply a <Term id="dominant">dominant</Term> chord in places), so when one voice is on the home chord and another is on the dominant, they clash.
+
+<Callout kind="check">
+Using the lab's clash readout, you could search for the delays at which a given tune works as a round. Why might a tune that works as a round at 2 bars fail at 1 bar?
+
+<Answer>
+At a delay of 2 bars, each bar of the tune is heard against the bar two earlier; at 1 bar, against the bar just before it. If the tune's harmony changes every bar (say, home chord, then dominant, then home), a 1-bar delay puts a home-chord bar against a dominant bar, and they clash; at 2 bars, the bars that line up might share a chord. A round works when every pair of bars that the delay brings together implies the same harmony.
+</Answer>
+</Callout>
+
+### Canons at other intervals
+
+A canon doesn't have to repeat at the same pitch. The follower can enter a fifth higher, or a third lower, or with every interval turned upside down (an inversion, from chapter 3.3). Each variation makes the puzzle harder, and canons became a showcase for composers' technique. In Bach's *Goldberg Variations*, every third variation is a canon, and the interval between leader and follower grows by one step each time: a canon at the unison, then at the second, then the third, all the way to the ninth.
+
+Pachelbel's Canon, from chapter 3.5, is a real canon too: over the repeating bass, three violins play the same melody, each entering two bars after the last. Pachelbel solved the round's problem the same way Frère Jacques does, but at a larger scale: the bass repeats one eight-chord pattern every two bars, so any two-bar stretch of the melody fits any other.
+
+<ListeningCue track="pachelbel-canon" start="0:00" end="1:00">
+After the bass starts, the first violin enters; two bars later the second violin enters with the same melody; two bars after that, the third. Try to follow the second violin's entry. Once three are going, can you still pick out one violin from the others?
+</ListeningCue>
+
+Rounds turn up in pop too. The Beach Boys' "God Only Knows" fades out on one.
+
+<ListeningCue track="beach-boys-god-only-knows" start="2:05">
+The ending: "God only knows what I'd be without you," sung in overlapping entries, like a round. How many separate voices can you hear?
+</ListeningCue>
+
+<Callout kind="verify" title="canons">
+Check (1) the *Goldberg Variations* canons: variations 3, 6, 9, ... 27, canons at the unison through the ninth (and which ones are inverted canons); (2) Pachelbel: three violins in canon at two bars' distance, over a two-bar bass pattern repeated about 28 times; (3) the ending of "God Only Knows" (how many interlocking vocal parts, and whether "round" is the right word or whether it's a layered set of overlapping phrases) and its start time (estimated at about 2:05–2:10).
+</Callout>
+
+## Fugue
+
+The most elaborate form of imitative counterpoint is the **fugue**. A fugue is built from one short, memorable theme, the **subject**, and its opening follows a fixed plan:
+
+1. One voice plays the subject alone.
+2. A second voice enters with the subject, starting on the <Term id="dominant">dominant</Term> (a fifth higher or a fourth lower). This entry is called the **answer**. Meanwhile, the first voice carries on with a countermelody, often one that will keep returning (a **countersubject**).
+3. A third voice enters with the subject on the <Term id="tonic">tonic</Term> again, and so on until every voice is in.
+
+That opening, once every voice has entered, is called the **exposition**. After it, the fugue alternates entries of the subject (in different voices, often in new keys) with **episodes**: freer passages, often built on sequences of fragments of the subject, that move from one key to the next. Toward the end, the subject usually returns in the home key, sometimes with entries crowding on top of each other.
+
+A fugue isn't so much a form as a procedure. No two of Bach's 48 fugues in *The Well-Tempered Clavier* (24 in Book I, 24 in Book II, one in each major and minor key) have the same layout. What they share is the process: one subject, imitation between voices, and a texture where you're always listening for the next entry.
+
+<ListeningCue track="gould-wtc-c-minor-fugue" start="0:00" end="0:30">
+The C minor fugue from Book I of *The Well-Tempered Clavier*, in three voices. The subject is heard alone first, in the middle register. Then the answer enters higher up, while the first voice continues. Then the bass enters with the subject. Sing the subject to yourself after the first hearing, then listen for it coming back throughout the piece.
+</ListeningCue>
+
+### Lines that swap places
+
+For a fugue to work, its lines have to be reusable. The subject and countersubject should sound good with either one on top, because the composer will want to put them in different voices at different times. Lines written so that they can swap places are called **invertible counterpoint** (or double counterpoint). It takes care: two lines a fifth apart become a fourth apart when one is moved an octave, and a fourth is treated as a dissonance in two voices. Much of the craft of fugue writing is preparing material that survives being rearranged.
+
+<Callout kind="check">
+Why does a fugue's opening, with voices entering one at a time, suit the ear?
+
+<Answer>
+It's built for stream segregation and for the limits of attention. Each new voice enters alone at first against a texture you already know, with a subject you've already heard, so the ear can latch on to it and give it its own stream. And as Huron found, keeping track of more than three voices is hard; adding them one at a time, with a familiar theme as a marker, is the best possible help.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="fugue">
+Check the description of a fugue's exposition (the answer at the fifth above or fourth below; real versus tonal answers, which I've omitted), the countersubject, episodes (built on sequences), and stretto (entries overlapping, which I've called "crowding" without naming it). Check the C minor fugue's details: three voices, the order of entries (middle voice, top voice, bass), and the time of the bass entry in Gould's recording. Check the invertible-counterpoint point about fifths becoming fourths.
+</Callout>
+
+## Counterpoint beyond the conservatory
+
+The textbook tradition centers on Palestrina and Bach, but counterpoint is everywhere.
+
+### New Orleans polyphony
+
+The early jazz bands of New Orleans played a texture called collective improvisation. The "front line" of three horns plays at once, each with a job. The cornet or trumpet carries the melody in the middle register. The clarinet weaves faster, higher lines above it. The trombone plays slower, sliding lines below, filling in harmonies. Behind them, the rhythm section keeps the chords and the <Term id="beat">beat</Term>.
+
+Read that description again with chapter 1.4's table in mind. Each horn gets its own register, its own rhythmic speed, and its own timbre. That's three separate streams by every rule in the book. Nobody wrote the parts down, but the roles were learned conventions, and they produce counterpoint that the ear can follow.
+
+<ListeningCue track="king-oliver-dippermouth" start="0:00" end="0:40">
+King Oliver's Creole Jazz Band in 1923, with the young Louis Armstrong on second cornet. In the opening ensemble, listen for the three layers: the cornets in the middle, Johnny Dodds's clarinet above, the trombone below. Try to follow the clarinet alone, then the trombone alone.
+</ListeningCue>
+
+### Countermelodies in pop
+
+In pop, counterpoint usually appears as a countermelody: a second line set against the main tune. Simon & Garfunkel's "Scarborough Fair/Canticle" takes it to an extreme, with two different songs sung at once. Paul Simon's "Canticle," a quieter melody with anti-war lyrics, weaves under the traditional ballad of "Scarborough Fair."
+
+<ListeningCue track="sg-scarborough-canticle" start="0:45" end="1:30">
+From the second time through the tune, a second voice sings a different melody with different words, quieter and lower in the mix. Which details keep it separate from the main tune (register, rhythm, loudness, the words themselves)? Can you follow it all the way through?
+</ListeningCue>
+
+More quietly, almost every pop arrangement has a two-voice frame: the vocal melody on top and the bass line at the bottom. Arrangers and bass players shape those outer voices against each other, often with contrary motion, exactly as a species exercise would. Strip a song down to its singer and its bass and you often find a surprisingly good piece of two-part counterpoint.
+
+### Heterophony and interlocking parts
+
+Other traditions build their textures differently. In Balinese and Javanese gamelan, a core melody is played simultaneously by instruments at different speeds and registers, each elaborating it in its own way, with the faster instruments decorating it most. That layered heterophony is gamelan's characteristic sound.
+
+Gamelan also does something Western counterpoint rarely does: in Balinese **kotekan**, which you met in chapter 1.4, two players play interlocking parts that fill in each other's gaps. Neither part alone makes much sense; together they form one fast melody. Similar interlocking runs through much African music, such as Ugandan xylophone music, where players' parts mesh into composite melodies that no single player is playing. Medieval Europe had a version too, called hocket, where a melody was split between voices note by note. These are the opposite of counterpoint's usual goal: lines built to *fuse* into one stream, not to stay apart.
+
+<ListeningCue track="gamelan-oleg-kotekan" start="0:00">
+Listen for the layers: slow, deep gongs marking the large-scale cycle; a core melody in the middle; and the fast shimmer at the top, which is two interlocking parts heard as one. Where does heterophony end and interlocking begin?
+</ListeningCue>
+
+<Callout kind="verify" title="beyond the conservatory">
+Check (1) the New Orleans front-line roles, and the personnel on this "Dippermouth Blues" (King Oliver and Louis Armstrong, cornets; Johnny Dodds, clarinet; Honoré Dutrey, trombone; Lil Hardin, piano); whether the upload is the April (Gennett) or June (OKeh) take; and that the opening ensemble shows the layers clearly. (2) "Canticle" adapted from Simon's "The Side of a Hill" (1965), and its entry time. (3) The claim about pop's two-voice frame of melody and bass, and whether it can be sourced (it's a common teaching point in arranging and in Schenkerian "outer-voice" analysis). (4) Gamelan heterophony, kotekan, Ugandan amadinda interlocking (Kubik's work), and medieval hocket.
+</Callout>
+
+## The architecture of counterpoint
+
+<DataTable title="Counterpoint at a glance">
+
+| Idea | What it does | Example |
+|---|---|---|
+| Polyphony | Independent lines at once | Fugue; New Orleans ensemble |
+| Independence | Each line its own stream: own register, rhythm, contour, motion | Contrary motion; staggered entries |
+| Coherence | Lines fit together as harmony | Consonances on strong beats; shared chords |
+| Species | A training method: one complication at a time | Fux's first species |
+| Imitation | Voices share material at different times | Josquin's points of imitation |
+| Canon and round | A whole melody against its own copies | "Frère Jacques"; Pachelbel; the *Goldberg* canons |
+| Fugue | Imitation organized around one subject | *The Well-Tempered Clavier* |
+| Interlocking | Parts built to fuse into one line | Kotekan; hocket |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. What counterpoint is, and the tension at its heart: lines must stay independent and still fit together.
+2. The four textures (monophony, heterophony, homophony, polyphony), with an example of each, and why the boundaries are blurry.
+3. How many voices listeners can follow (about three), and what that means for composers.
+4. The perceptual reasons behind the classic rules: step motion, separate registers, staggered onsets, contrary motion, and avoiding parallel perfect intervals (fusion plus common fate).
+5. Species counterpoint: Fux, the cantus firmus, the five species, the first-species rules and their reasons.
+6. Imitation, canon, and round; why rounds like "Frère Jacques" work (one chord throughout) and others don't.
+7. The plan of a fugue's exposition (subject, answer, countersubject) and what follows (episodes, returns of the subject), and why invertible counterpoint matters.
+8. Counterpoint outside the textbook: New Orleans polyphony, pop countermelodies and the melody–bass frame, heterophony and interlocking.
+
+**Decisions for your rewrite:**
+
+- **The hook.** I opened with a round. Alternatives: start with "Scarborough Fair/Canticle" (two songs at once), with a New Orleans band, or with the voice-counting test (how many can *you* hear?).
+- **How much fugue.** I kept it to the exposition and the idea of invertible counterpoint. You could go further (stretto, augmentation, *The Art of Fugue*), or cut it back and point forward.
+- **Examples.** Swap in your own: a jazz big-band soli, a Motown bass line against the vocal, a band with two guitarists playing interlocking parts (Television, Talking Heads, Afrobeat).
+- **Overlap with chapter 3.5.** That chapter already explained parallel fifths through Huron. Decide whether to recap it here or just point back.
+
+**Misconceptions to watch for:**
+
+- "Counterpoint means following rules." The rules are a training scheme, and most of them are perceptual advice in disguise.
+- "Counterpoint is European art music." Collective improvisation, countermelodies, heterophony, and interlocking are all ways of combining lines.
+- "More voices means richer counterpoint." Beyond about three, listeners stop hearing them as separate.
+- "Homophony and polyphony are opposites." They're ends of a spectrum; a chorale is both.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Fux, J. J. (1725). *Gradus ad Parnassum*. Vienna. Partial English translation: Mann, A. (Trans.) (1965). *The Study of Counterpoint*. W. W. Norton.
+- Jeppesen, K. (1939). *Counterpoint: The Polyphonic Vocal Style of the Sixteenth Century*. Prentice-Hall.
+- Huron, D. (1989). Voice denumerability in polyphonic music of homogeneous timbres. *Music Perception*, 6(4), 361–382.
+- Huron, D. (2001). Tone and voice: A derivation of the rules of voice-leading from perceptual principles. *Music Perception*, 19(1), 1–64.
+- Huron, D. (2016). *Voice Leading: The Science Behind a Musical Art*. MIT Press.
+- Bregman, A. S. (1990). *Auditory Scene Analysis: The Perceptual Organization of Sound*. MIT Press. (Chapter 5, on music.)
+- Wright, J. K., & Bregman, A. S. (1987). Auditory stream segregation and the control of dissonance in polyphonic music. *Contemporary Music Review*, 2(1), 63–92.
+- Mann, A. (1987). *The Study of Fugue*. Dover.
+- Tenzer, M. (2000). *Gamelan Gong Kebyar: The Art of Twentieth-Century Balinese Music*. University of Chicago Press.
+- Kubik, G. (1962). The phenomenon of inherent rhythms in East and Central African instrumental music. *African Music*, 3(1), 33–42.
+- Schuller, G. (1968). *Early Jazz: Its Roots and Musical Development*. Oxford University Press.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details (volume, pages, year), especially Huron 1989's page range, Wright & Bregman 1987, the edition and date of Mann's Fux translation, and Mann's *The Study of Fugue* (original 1958; the Dover reprint year).
+</Callout>

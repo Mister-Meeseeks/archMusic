@@ -1,0 +1,341 @@
+---
+title: "Why We Hear Beats Nobody Plays"
+volume: 2
+chapter: 2
+summary: The beat you tap your foot to is not in the sound. Your brain infers it, holds it steady through silence, and organizes it into a hierarchy of strong and weak. How that inference works, where it fails, and how musicians play with it.
+status: teaching-draft
+updated: 2026-11-15
+assumes: [frequency, sound-wave, beat, tempo, meter, subdivision, chord]
+lintIgnore: [harmonics, dynamics, resonance, accent, statistical-learning] # only in reference titles
+introduces: [beat-induction, tactus, subjective-rhythmization, metrical-hierarchy, syncopation, clave, hemiola, entrainment]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts. There is one new lab with two halves: **Beat range** (a click you can speed up and slow down, and tap along with) and **Find the beat** (looping rhythms, a model that predicts which beat you'll feel, and a tap test of which beat you actually felt). Tapping works best on a computer with the space bar; on a phone, use the Tap button. Then write your version in `src/content/chapters/v2-02-beat.mdx`.
+
+Chapter 2.1 (tempo, pulse, and meter) isn't written yet, so this chapter builds on the Toolkit's definitions of beat, tempo, meter, and subdivision, and introduces the metrical hierarchy itself. It sets up syncopation for chapter 2.3, ambiguity for polyrhythm in chapter 2.4, and the "sweet spot" of syncopation in chapter 2.5.
+</Callout>
+
+## The question
+
+Put on "Billie Jean" and tap your foot. You'll find the beat within a second or two, and so will almost anyone: children, people who've never had a music lesson, people who don't like the song. Now look at what you did. Every so often your foot came down where the drummer played nothing at all. And you didn't wait to hear each drum hit before tapping; you tapped *at the same time*, which means you knew when the next beat was coming before it came.
+
+That's the puzzle. A beat feels like something in the music, like the notes. But it isn't in the sound wave. There's no signal that says "beat here." Your brain builds the beat from clues in the rhythm, projects it forward into the future, and keeps it going through gaps and silences. When it does this well, you can't tell the difference between the beats that are played and the ones you supply.
+
+This chapter is about that construction: what the brain uses to find a beat, how fast or slow a beat can be, how beats stack into strong and weak positions, what happens when a rhythm lands *between* the beats, and what happens when a rhythm supports two beats at once.
+
+<ListeningCue track="mj-billie-jean" start="0:00" end="0:30">
+Tap along from the very first drum hit. Notice how quickly you lock on, and that your taps land *with* the drums, not after them. You're predicting.
+</ListeningCue>
+
+## A beat is something you do
+
+Psychologists call the act of finding a beat **beat induction** (the music induces a beat in you). The word is chosen carefully: the beat is a response, not a stimulus. Three observations show this.
+
+- **Beats fall on silence.** In most music, many beats have no sound at all on them, and listeners feel them anyway.
+- **Listeners agree, mostly.** Given the same rhythm, most people tap the same beat. So the inference follows rules, and the rules are widely shared.
+- **Listeners sometimes disagree, and can switch.** Some rhythms support two different beats. People pick one, and can often flip to the other at will, like the two readings of an ambiguous drawing. The sound didn't change; the beat did.
+
+Henkjan Honing, who has studied beat induction for decades, argues that it is one of the few truly universal ingredients of music: every culture has music with a beat, even though not all music has one (the slow opening sections of many Indian ragas, much Gregorian chant, and a lot of ambient music don't).
+
+<ListeningCue track="shankar-jogeshwari-alap" start="0:00" end="1:30">
+For contrast: the opening of a raga performance, with no beat at all. The notes come at irregular times and you can't tap along, though the music is perfectly organized. Notice the strange feeling of *not* being able to predict when the next note will come.
+</ListeningCue>
+
+## Where a beat can live
+
+A beat can't be arbitrarily fast or slow. Try it.
+
+<MeterLab initialMode="range" />
+
+<Callout kind="try">
+1. Press **Play** at the starting spacing (600 ms, 100 clicks per minute). Tap along a dozen times. Look at **Timing**: you're probably tapping a little *early*.
+2. Drag **Spacing** down to about 150 ms. Try to tap every click. You'll likely give up and start tapping every second or every fourth click without deciding to. Check **Your taps**: the readout tells you if you're tapping every 2 or 4 clicks.
+3. Drag it up past 2 seconds. Tap along. It gets surprisingly hard: you start waiting for each click and reacting to it, and your taps get late and uneven (watch **Steadiness**).
+4. Find the spacing where tapping feels most natural, with no effort. Where is it on the map?
+</Callout>
+
+Three findings come out of a century of experiments like this one.
+
+**There's a window.** Below about 200–250 ms between beats, events come too fast to be beats; we hear them as subdivisions and group them, feeling a slower beat every two or four events. Above about 1.5–2 seconds, the events are too far apart to feel connected. We hear separate events, and we react to each one instead of anticipating it. Justin London, whose book *Hearing in Time* is the standard reference, puts the beat range at roughly 250 ms to 1.5 seconds, with the extremes varying from person to person. Paul Fraisse's older work gives similar numbers.
+
+**There's a sweet spot.** Inside the window, people favor a beat about 500–700 ms apart, around 100 beats per minute. When asked to tap at a comfortable rate, or to tap along with music that supports several speeds of beat, people gravitate there. Dirk Moelants found that the tempos of recorded music, dance music especially, bunch up around 120 BPM (500 ms). Leon van Noorden and Moelants compared the beat-finding system to a pendulum, which is easiest to keep going when you push it at its natural rate: it responds most strongly to beats about half a second apart, and less strongly the further you go from there.
+
+**We anticipate.** When tapping along with a steady click, people typically tap *before* the click, by 20 to 80 ms for non-musicians and less for trained musicians. This is called negative mean asynchrony. Nobody is quite sure why it happens, but it's strong evidence that tapping is driven by prediction, not by reaction. You can't react before the event.
+
+The slowest regular sound pattern that still carries a beat is roughly as long as a slow walking step; the fastest beat is about as fast as you can comfortably tap. That's probably not a coincidence. Chapter 2.7 takes up the link between the beat and the body.
+
+<Callout kind="check">
+A song is at 180 BPM. Is the beat really 333 ms apart, or might listeners feel something else?
+
+<Answer>
+333 ms is inside the window, but on the fast side of the sweet spot. Many listeners would feel a slower beat at half the speed (90 BPM, 667 ms), right in the sweet spot, and treat the 180 BPM pulse as a subdivision. That's why fast punk can feel "in half time," and why two people can tap the same song at different tempos without either being wrong. The beat people tap to is the one they settle on, and it depends on the listener as well as the music.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="beat-range numbers">
+Check the limits against London (2012), chapter 2: the lower limit (about 100 ms between onsets for events to be perceived as separate; about 200–250 ms for a beat), the upper limit (about 1.5–2 s), and the preferred ~600 ms. Check Moelants (2002) for the 120 BPM peak and van Noorden & Moelants (1999) for the resonance model. Check Repp (2005) for the size of negative mean asynchrony (I wrote 20–80 ms) and the typical tapping variability (about 3–5% of the time between taps). The lab's boundaries are fixed approximations; say so in your version.
+</Callout>
+
+## Hearing groups that aren't there
+
+Start with the simplest possible rhythm: identical clicks, evenly spaced. There's nothing to group them, and yet most people hear them in groups anyway, usually pairs (*TICK-tock, TICK-tock*) or fours, with the first of each group sounding a little stronger. A clock's tick is identical every time, but we hear "tick-tock." This is called **subjective rhythmization**, first studied by Thaddeus Bolton in 1894. Listeners often hear the grouping change at will, too: try hearing pairs, then threes.
+
+<MeterLab initialMode="find" patterns={['even', 'strong', 'weak']} lock />
+
+<Callout kind="try">
+1. Play **Identical ticks**. Try to hear them in twos, then in threes, then in fours. The sound doesn't change, but the feeling of where the strong click is moves.
+2. Look at the model's readout: it has no preference. Nothing in the sound favors any grouping. Whatever you hear, *you* brought.
+3. Choose a beat from the list ("every 2 steps from step 1"), and a low drum plays on it. Now try to hear the clicks grouped in threes against it. It's much harder: the drum has made a decision for you.
+</Callout>
+
+So the brain doesn't just detect regularity; it imposes structure, even on a sequence that has none. That's the first clue that beat induction is active. The rest of this chapter is about what happens when the sound does have structure, which is nearly always.
+
+## The metrical hierarchy
+
+The Toolkit described meter as beats grouped into bars, with the downbeat strongest. That's the core of it, but the full picture has more layers. When you've found the beat of a song in 4/4, you also have a sense of the half-beats between your taps, the pairs of beats, and the bars. These are all steady pulses at different speeds, nested inside each other.
+
+Music theorists Fred Lerdahl and Ray Jackendoff drew this as a dot grid, in their 1983 book *A Generative Theory of Tonal Music*. Each row of dots is one level: one steady pulse. Each level's dots fall on dots of the faster level below, and a position is strong when many levels have a dot there.
+
+<MetricalGrid />
+
+This stack is the **metrical hierarchy**, or metrical grid. Two rules make it work. Each level is evenly spaced (a steady pulse). And each level fits inside the next, every beat of a slower level also being a beat of every faster level. The level you tap to is called the **tactus**, an old Latin term for the conductor's beat. It's usually the level closest to the 600 ms sweet spot, with faster levels felt as subdivisions and slower levels felt as bars and groups of bars.
+
+Meters differ in how the levels nest. In some, each level divides into two; in others, into three.
+
+<DataTable title="Common meters" caption="'Simple' meters divide the beat in two; 'compound' meters divide it in three. The tempo column is just an example to show durations: at 120 BPM a beat is 500 ms.">
+
+| Meter | Beats per bar | Each beat divides into | Typical sound | At 120 BPM, one bar lasts |
+|---|---|---|---|---|
+| 2/4 | 2 | 2 eighths | Marches, polka | 1 s |
+| 3/4 | 3 | 2 eighths | Waltz, minuet | 1.5 s |
+| 4/4 | 4 | 2 eighths (or 4 sixteenths) | Most rock, pop, funk, hip-hop | 2 s |
+| 6/8 | 2 | 3 eighths | Jigs, lullabies, many ballads | 1 s |
+| 12/8 | 4 | 3 eighths | Slow blues, doo-wop, much West African music | 2 s |
+
+</DataTable>
+
+Notice that 6/8 and 3/4 both have six eighth notes per bar. The difference is the grouping: 6/8 is two beats of three eighths (ONE-two-three FOUR-five-six), 3/4 is three beats of two (ONE-two THREE-four FIVE-six). Same pulses, different hierarchy. Keep that in mind for later in the chapter.
+
+<Callout kind="check">
+In the grid, beat 3 of a 4/4 bar has more dots than beats 2 and 4. Why does that make sense, given the rule that each level fits inside the next?
+
+<Answer>
+Beat 3 is the midpoint of the bar, so it's on the half-bar level as well as the beat level. Beats 2 and 4 are only on the beat level. Each level is a steady pulse fitting inside the next: the bar level ticks once per bar (beat 1), the half-bar level twice (beats 1 and 3), the beat level four times. So beat 3 is "second strongest." That's the same ranking as the metrical weights in chapter 2.5.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="Lerdahl and Jackendoff's rules">
+Check the description of the metrical well-formedness rules (each level evenly spaced; every beat at one level is also a beat at all faster levels) against Lerdahl & Jackendoff (1983), chapter 4. Check the claim that the tactus is usually the level nearest ~600 ms (London 2012; Parncutt 1994). Check that "tactus" originally meant the conductor's beat in Renaissance music.
+</Callout>
+
+## How the brain picks a meter
+
+A real rhythm doesn't come with dots attached. The brain has to infer the hierarchy from the sound. What does it use?
+
+**Loudness.** Louder notes are heard as strong beats. Drummers and dance producers make this easy by putting the loudest sounds on the strongest positions.
+
+**Grouping.** Even when every note is equally loud, *where* notes fall makes some of them sound accented. Dirk-Jan Povel and Peter Essens (1985) proposed simple rules for this. In a sequence of identical tones:
+
+- a tone with silence on both sides sounds accented;
+- in a pair of tones, the second sounds accented;
+- in a run of three or more, the first and last sound accented.
+
+Longer notes also tend to sound accented: a note followed by a long gap stands out.
+
+**Fitting a clock.** Povel and Essens then proposed that the brain tries out "internal clocks" (steady beats at different speeds and starting points) and chooses the one that best fits the accents. A clock tick that lands on silence counts heavily against that clock; a tick on an unaccented tone counts a little.
+
+The lab runs a simplified version of their model. Every candidate beat that fits the loop is listed, best first, with a bar showing how much evidence counts against it.
+
+<MeterLab initialMode="find" patterns={['strong', 'weak', 'even', 'blank']} pattern="strong" lock />
+
+<Callout kind="try">
+1. Play **Clear beat**. Nine identical toks, no loud ones. Tap along before you look at the model. Then check **You tapped** against the model's best fit.
+2. Look at the wedges over the toks: those are the tones the grouping rules predict will sound accented. The best-fitting beat lands on every one of them and never on silence (all the beat dots are green).
+3. Now play **Unclear beat**. It has exactly the same nine toks and the same set of gaps, only in a different order. Try to tap along. Most people find it much harder to settle. Look at the list: no beat fits without landing on silence (red dots).
+4. Choose **Make your own** and click cells to build a rhythm with an obvious beat, then one with no beat at all. What did you have to do?
+</Callout>
+
+Povel and Essens found that listeners reproduced rhythms like the first one much more accurately than rhythms like the second, even though the two used the same notes and the same durations. A rhythm that implies a strong beat is easier to perceive and remember. The beat works as a scaffold: once you have it, you can hear each note as "on beat 2," "just after beat 3," and so on, instead of as a string of unrelated durations.
+
+The clock model is one of several ideas about how beat-finding works:
+
+- **Rule-based models**, from Christopher Longuet-Higgins and colleagues (starting around 1979), build a meter step by step as notes arrive, making early guesses and revising them when the evidence goes against them. The first note is assumed to be a downbeat until shown otherwise.
+- **Pendulum models**, from Edward Large and Mari Riess Jones (1999), treat the beat as an internal rhythm, a steady back-and-forth in the brain, that locks onto the music the way a pendulum can be set swinging by regular pushes. Attention rises and falls with it, so you're most alert exactly when a beat is expected. This is **entrainment**: one rhythmic system falling into step with another. Chapter 2.5 shows how entrainment connects to the urge to move.
+- **Learned, statistical models** say the brain expects rhythms like the ones it has heard most, which makes meter partly a matter of culture (more on this below).
+
+These aren't exclusive, and real listening uses more than timing. In real music, the meter is also signaled by where the chords change (usually on strong beats), where low bass notes fall, and by repetition: when a pattern repeats every eight beats, its start feels like the start of a bar.
+
+<Callout kind="verify" title="Povel and Essens">
+Check the accent rules and the clock model against Povel & Essens (1985): the exact rules (isolated tones; second of a pair; first and last of a run of three or more), the weighting (I used 4 for a tick on silence, 1 for a tick on an unaccented tone), the 9-tone, 16-unit patterns built from the same set of gaps, and the finding that strong-clock patterns were reproduced more accurately. The lab simplifies the model (only beats that divide the loop and tick at least three times; beats limited to 200–1800 ms; scores divided by the number of ticks); the caption should say so. Check the Longuet-Higgins & Steedman (1971) / Longuet-Higgins & Lee (1982) attributions and dates.
+</Callout>
+
+## Beats on silence: syncopation
+
+Here's where the beat becomes musically powerful. Once a listener has a meter, the meter persists. It keeps going through notes that contradict it, and through silences where a strong beat should be. A rhythm can then *pull against* the meter, and the listener feels the pull.
+
+**Syncopation** is putting notes on weak positions and leaving the strong positions empty, so the rhythm pulls against the beat. A note just before a strong beat, followed by silence on the beat itself, is the classic case: the note seems to arrive early, and the empty strong beat is felt as an absence.
+
+The crucial point is that syncopation is *relative to a meter in the listener's head*. With no meter, a rhythm with gaps is just a rhythm. A syncopation only exists if you're holding a beat that the rhythm contradicts. That's why syncopation can sound thrilling to one listener and confusing to another, and why it usually depends on other instruments keeping the beat clear.
+
+The figure above showed the most famous example. The **son clave**, the rhythmic key of Cuban son and salsa, is five strokes over two bars of 4/4 eighths (here drawn as one bar of sixteenths). Its first half is the **tresillo**, a 3 + 3 + 2 grouping heard everywhere from Cuban music to New Orleans R&B to modern pop. Only two of the clave's five strokes fall on beats; beats 2 and 3 fall on silence. Played alone, the clave doesn't strongly suggest the beat that a salsa band plays under it. Played with the band, it pulls against that beat in a way that defines the style.
+
+<MeterLab initialMode="find" patterns={['tresillo', 'clave', 'bell']} pattern="clave" lock />
+
+<Callout kind="try">
+1. Play **Son clave** with no beat. Where would you put the beat? Tap it and see what you chose.
+2. Now choose the beat "every 4 steps from step 1" (the band's beat). The rhythm becomes a syncopation: listen for the strokes that land just before or after the drum, and for the two drum hits with no stroke at all.
+3. Look at the model's ranking. It doesn't strongly prefer the band's beat: several beats tie. The clave on its own is ambiguous; in a real band, the bass and drums supply the meter, and the clave plays against it.
+4. Try **12-pulse bell**, a bell pattern central to music across West Africa and the Afro-Cuban diaspora. The model's best guess is not the beat dancers and drummers in those traditions actually feel (often the one "every 3 steps from step 1"). Choose that beat and listen. This is a limit of any model built only from the sound: some beats are learned from a tradition, not deduced from the rhythm.
+</Callout>
+
+<ListeningCue track="bvsc-chan-chan" start="0:00" end="1:00">
+Listen past the guitar and voices for the claves: two wooden sticks clicked together, playing the clave pattern over and over. Tap the beat with your foot and notice how the claves keep landing off it.
+</ListeningCue>
+
+That last point matters a lot. Erin Hannon and Sandra Trehub (2005) played rhythms in Western meters and in a Balkan meter with uneven beats (2 + 2 + 3) to infants and adults. Six-month-old North American infants noticed disruptions in both kinds of meter. North American adults only noticed disruptions in the familiar Western meter; adults from Bulgaria and Macedonia noticed both. By twelve months, North American infants were already becoming Western specialists, though brief exposure at home helped them recover. Meter perception starts out flexible and is tuned by the music around you.
+
+<Callout kind="check">
+A drummer plays nothing on the downbeat of a bar, and a whole room of dancers lands on it anyway. What has to be true for this to work?
+
+<Answer>
+The dancers must already have a meter, established by what came before (previous bars, other instruments, the bass), and the meter persists through the silence. Beat induction projects the beat forward, so an empty downbeat is felt as a downbeat with nothing on it. If the meter hadn't been established, the silence wouldn't be felt as a beat at all. Syncopation and "beats nobody plays" only work after the meter is in place.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="clave, tresillo, and infants">
+Check the son clave pattern (onsets at 16th-note positions 1, 4, 7, 11, 13 for 3-2 clave) and the tresillo's spread into New Orleans R&B (Toussaint 2013; Sublette 2008). Check the 12-pulse bell pattern (Toussaint's "standard pattern") and the claim about which beat is felt in performance; this is contested among ethnomusicologists (Agawu 2003 versus earlier accounts). Check Hannon & Trehub (2005): ages (6 and 12 months), the Balkan meter they used, and the exposure result (Hannon & Trehub 2005b, PNAS).
+</Callout>
+
+## When the meter flips
+
+Some rhythms support two meters about equally well. Then the listener can hear it either way, and a composer can play one against the other.
+
+The oldest trick is the **hemiola**: regrouping six equal pulses from two groups of three into three groups of two, or the reverse. In the lab's **6/8 or 3/4?** pattern, twelve pulses are grouped long-long (two groups of three), then short-short-short (three groups of two). Bernstein built the main sung section of "America" from *West Side Story* on exactly this alternation, borrowed from Mexican and Spanish dances.
+
+<MeterLab initialMode="find" patterns={['hemiola', 'tresillo']} pattern="hemiola" lock />
+
+<Callout kind="try">
+1. Play **6/8 or 3/4?** with no beat. Count along "ONE-two-three FOUR-five-six, ONE-two THREE-four FIVE-six."
+2. Choose the beat "every 3 steps from step 1." The first half fits, the second half fights it.
+3. Choose "every 2 steps from step 1." Now the second half fits and the first half fights it. Neither beat fits the whole pattern; the rhythm's meter keeps changing under you.
+4. Try **3 + 3 + 2** against "every 2 steps" (eighths) and "every 4 steps." The tresillo is a cousin of the hemiola: three nearly equal groups squeezed into a span that the meter divides in two.
+</Callout>
+
+<ListeningCue track="west-side-story-america" start="0:00" end="1:30">
+Wait for the main sung section, where the title comes in. Clap along. The first half of each line falls into two long beats, the second into three short ones. It's the same span of time, grouped two ways in alternation.
+</ListeningCue>
+
+Rock and pop use ambiguity too, often to surprise a listener who has settled on the wrong beat.
+
+<ListeningCue track="radiohead-videotape" start="0:00">
+The song opens with piano chords alone. Tap the beat you hear. When the drums come in, many listeners discover the beat is somewhere else, and the whole song seems to shift. Did yours?
+</ListeningCue>
+
+<ListeningCue track="zeppelin-black-dog" start="0:00" end="1:00">
+After the a cappella vocal line, the guitar and bass play a long repeated figure (a riff). Try to tap a steady beat through it. The drums keep a steady 4/4, but the riff doesn't fit neatly into the bars, so it keeps meeting the beat at different places. Listen for the moments where the riff and the drums seem to "find each other" again.
+</ListeningCue>
+
+<Callout kind="verify" title="ambiguity examples">
+Listen to all three recordings and check the descriptions. *America*: confirm the alternation of 6/8 and 3/4 in the main sung section and the cue time; check the huapango attribution. *Videotape*: confirm how the piano chords sit against the drums' beat and when the drums enter (I didn't give a timestamp). *Black Dog*: confirm which part keeps the 4/4 and how the riff relates to the bar (it's often described as the riff shifting against the beat; check a transcription).
+</Callout>
+
+Meter can even be flipped by imagination alone. John Iversen, Bruno Repp, and Aniruddh Patel (2009) played people a repeating, unaccented pattern and asked them to imagine the accent on one note or another. Their brain responses to the same sound differed depending on where they imagined the downbeat. Sylvie Nozaradan and colleagues (2011) found something similar with a steady pulse: when listeners imagined it in groups of two or groups of three, their brain activity showed an extra rhythm at the imagined bar rate. The meter is a mental structure imposed on the sound, and it changes what you hear.
+
+## The beat in the brain
+
+Where in the brain does the beat live, and how early does it appear? This is an active, argumentative field, so it's worth separating the solid findings from the contested ones.
+
+**Fairly solid.** Listening to music with a beat activates motor areas of the brain (the basal ganglia and the supplementary motor area), even when listeners are told to keep still (Grahn and Brett 2007). Beat perception and movement planning share machinery, which fits the prediction story: a beat is a plan for when to move.
+
+**Contested: brain rhythms locking to the beat.** Nozaradan's 2011 study used a technique called frequency tagging: record brain activity (EEG) while people listen, and look for a rhythm in the brain at the rate of the beat. Peaks showed up there, which looked like direct evidence of neurons entraining to the beat. Critics (Novembre and Iannetti 2018, among others) pointed out that such peaks could also appear if the brain simply responded to each sound in turn, with no internal rhythm at all. The debate is about whether the brain *keeps its own rhythm* in time with the beat or *reacts* to each event in a way that only looks like oscillation. It isn't settled.
+
+**Contested: newborns.** In 2009, István Winkler, Henkjan Honing, and colleagues reported that sleeping newborn babies, two or three days old, showed a "surprise" brain response when a drum rhythm left out a downbeat, but not when it left out a weaker beat. That would mean beat induction is present at birth. Later work by the same group raised a problem: the omitted downbeats in the original rhythms differed in other ways (the rhythms around them weren't equally predictable), so the babies might have been noticing a statistical pattern, not a beat. Follow-up studies tried to rule this out; a 2024 study by the same team argues that the newborn response can't be explained by those statistics alone. So the claim has survived its own authors' criticism, but it rests on a small number of studies with a difficult method.
+
+**Interesting: other animals.** Most animals can't synchronize to a beat. One that can is a sulphur-crested cockatoo named Snowball, who bobbed his head in time with music and adjusted when the tempo changed (Patel and colleagues 2009). One hypothesis links beat-keeping to vocal learning, the ability to imitate sounds, which parrots and humans share but most mammals lack. Monkeys can learn to tap regularly but struggle to predict a beat the way people do (Merchant and Honing 2014). The evidence is still thin.
+
+<Callout kind="verify" title="brain studies">
+Check: Grahn & Brett (2007) (which areas, and that participants weren't moving). Nozaradan et al. (2011) (the imagined binary/ternary meter condition, and that the beat was a modulated tone at 2.4 Hz, if I remember it right). Novembre & Iannetti (2018) (their exact critique). Winkler et al. (2009) (newborn age, the mismatch response, and the design). Bouwer, Van Zuijen & Honing (2014) and Háden et al. (2024) (the critique and the reply; I have the 2024 *Cognition* paper's claim from memory). Patel et al. (2009) on Snowball, and Merchant & Honing (2014). This section especially needs a careful read of the actual papers before your rewrite.
+</Callout>
+
+## What builds a beat
+
+<DataTable title="What builds a beat" caption="The cues listeners use to find a meter, roughly from the most physical to the most learned.">
+
+| Cue | What it does | Where you heard it |
+|---|---|---|
+| Tempo window | Only pulses about 250 ms to 1.5 s apart are felt as beats; ~600 ms is preferred | Beat range lab |
+| Loudness | Loud notes are heard as strong beats | Every drum part |
+| Grouping and duration | Isolated tones, the ends of runs, and long notes sound accented | Clear beat versus unclear beat |
+| Persistence | Once found, the meter continues through silences and contradictions | Billie Jean; syncopation |
+| Harmony and bass | Chords tend to change, and bass notes to land, on strong beats | (Later chapters) |
+| Repetition | A repeating pattern's start feels like a downbeat | The lab's loops |
+| Imagination and attention | You can impose a meter, or switch between two | Identical ticks; 6/8 or 3/4 |
+| Culture | Familiar meters are easier; some beats are learned, not deduced | The bell pattern; Balkan meters |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. Why the beat is "not in the sound": beats on silence, prediction (negative asynchrony), agreement and disagreement between listeners.
+2. The tempo window and the preferred beat, and why fast music is often felt at half speed.
+3. Subjective rhythmization: grouping where there's nothing to group.
+4. The metrical hierarchy: levels, the nesting rule, the tactus, simple versus compound meters (and 6/8 versus 3/4).
+5. How a meter is inferred: loudness, grouping accents (Povel and Essens's rules), clock fitting, and the alternatives (rule-based, pendulum, learned).
+6. Syncopation as a contradiction of a meter that persists in the listener; tresillo and clave as examples.
+7. Ambiguity: hemiola, the "flip," imagined meter.
+8. What the brain evidence does and doesn't show, including the newborn and frequency-tagging debates.
+
+**Decisions for your rewrite:**
+
+- **The hook.** I opened with tapping to "Billie Jean." Alternatives: open with the flip in "Videotape" (a beat you were sure of turns out to be wrong), or with the clock that goes "tick-tock."
+- **How much model.** The clock model is a lovely, concrete way to show that beat-finding follows rules. You could keep it to the lab and one paragraph, or go further into Longuet-Higgins's rule-based parser. Chapter 2.5 already uses the Longuet-Higgins and Lee syncopation weights, so you may want to set those up here.
+- **Brain section.** It could be trimmed to a paragraph with a pointer to chapter 2.7, or kept as a model of how to present contested science.
+- **Examples.** Swap in your own: a song where you were surprised to find the beat was elsewhere, a waltz, a jig, a salsa track with audible clave, a piece with a famous hemiola (Brahms and Handel are full of them).
+
+**Misconceptions to watch for:**
+
+- "The beat is the drum." The drum usually helps, but the beat is inferred and often falls where the drum is silent.
+- "Syncopation is a property of the rhythm." It's a relation between a rhythm and a meter the listener holds.
+- "Meter is just the time signature." The time signature is notation; meter is a perceived hierarchy, and listeners can hear a different one from what's written.
+- "Everyone hears the same beat." Most people agree on clear music; on ambiguous music, and across cultures, they don't.
+- "Newborns have been proven to hear the beat." There's evidence for it, but it's contested.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- London, J. (2012). *Hearing in Time: Psychological Aspects of Musical Meter* (2nd ed.). Oxford University Press.
+- Honing, H. (2012). Without it no music: Beat induction as a fundamental musical trait. *Annals of the New York Academy of Sciences*, 1252, 85–91.
+- Fraisse, P. (1982). Rhythm and tempo. In D. Deutsch (Ed.), *The Psychology of Music* (pp. 149–180). Academic Press.
+- Moelants, D. (2002). Preferred tempo reconsidered. In *Proceedings of the 7th International Conference on Music Perception and Cognition* (pp. 580–583).
+- van Noorden, L., & Moelants, D. (1999). Resonance in the perception of musical pulse. *Journal of New Music Research*, 28(1), 43–66.
+- Repp, B. H. (2005). Sensorimotor synchronization: A review of the tapping literature. *Psychonomic Bulletin & Review*, 12(6), 969–992.
+- Bolton, T. L. (1894). Rhythm. *American Journal of Psychology*, 6(2), 145–238.
+- Lerdahl, F., & Jackendoff, R. (1983). *A Generative Theory of Tonal Music*. MIT Press.
+- Parncutt, R. (1994). A perceptual model of pulse salience and metrical accent in musical rhythms. *Music Perception*, 11(4), 409–464.
+- Povel, D.-J., & Essens, P. (1985). Perception of temporal patterns. *Music Perception*, 2(4), 411–440.
+- Longuet-Higgins, H. C., & Lee, C. S. (1982). The perception of musical rhythms. *Perception*, 11(2), 115–128.
+- Large, E. W., & Jones, M. R. (1999). The dynamics of attending: How people track time-varying events. *Psychological Review*, 106(1), 119–159.
+- Toussaint, G. T. (2013). *The Geometry of Musical Rhythm*. CRC Press.
+- Sublette, N. (2008). *The World That Made New Orleans*. Lawrence Hill Books.
+- Agawu, K. (2003). *Representing African Music*. Routledge.
+- Hannon, E. E., & Trehub, S. E. (2005). Metrical categories in infancy and adulthood. *Psychological Science*, 16(1), 48–55.
+- Hannon, E. E., & Trehub, S. E. (2005). Tuning in to musical rhythms: Infants learn more readily than adults. *Proceedings of the National Academy of Sciences*, 102(35), 12639–12643.
+- Iversen, J. R., Repp, B. H., & Patel, A. D. (2009). Top-down control of rhythm perception modulates early auditory responses. *Annals of the New York Academy of Sciences*, 1169, 58–73.
+- Nozaradan, S., Peretz, I., Missal, M., & Mouraux, A. (2011). Tagging the neuronal entrainment to beat and meter. *Journal of Neuroscience*, 31(28), 10234–10240.
+- Novembre, G., & Iannetti, G. D. (2018). Tagging the musical beat: Neural entrainment or event-related potentials? *Proceedings of the National Academy of Sciences*, 115(47), E11002–E11003.
+- Grahn, J. A., & Brett, M. (2007). Rhythm and beat perception in motor areas of the brain. *Journal of Cognitive Neuroscience*, 19(5), 893–906.
+- Winkler, I., Háden, G. P., Ladinig, O., Sziller, I., & Honing, H. (2009). Newborn infants detect the beat in music. *Proceedings of the National Academy of Sciences*, 106(7), 2468–2471.
+- Bouwer, F. L., Van Zuijen, T. L., & Honing, H. (2014). Beat processing is pre-attentive for metrically simple rhythms with clear accents: An ERP study. *PLoS ONE*, 9(5), e97467.
+- Háden, G. P., Bouwer, F. L., Honing, H., & Winkler, I. (2024). Beat processing in newborn infants cannot be explained by statistical learning based on transition probabilities. *Cognition*, 243, 105670.
+- Patel, A. D., Iversen, J. R., Bregman, M. R., & Schulz, I. (2009). Experimental evidence for synchronization to a musical beat in a nonhuman animal. *Current Biology*, 19(10), 827–830.
+- Merchant, H., & Honing, H. (2014). Are non-human primates capable of rhythmic entrainment? Evidence for the gradual audiomotor evolution hypothesis. *Frontiers in Neuroscience*, 7, 274.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details (volume, pages, year), especially Moelants 2002 (proceedings pages), Parncutt 1994, Novembre & Iannetti 2018, Háden et al. 2024, and Merchant & Honing (published 2014 in volume 7). The Bouwer 2014 paper may not be the right citation for the critique of the newborn study; find the paper that identified the confound.
+</Callout>
