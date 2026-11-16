@@ -1,0 +1,31 @@
+---
+title: Musical Time
+volume: 2
+chapter: 1
+summary: (Write your one-sentence summary.)
+status: not-started
+# Copied from the teaching draft; adjust as your version changes. `npm run concepts` checks them.
+assumes: [frequency, pitch, middle-c, chord, sound-wave, period, waveform, attack-transient, short-term-memory, beat, tempo, meter, subdivision]
+lintIgnore: [interval, dynamics, metrical-hierarchy] # 'inter-onset interval' is a time interval; the others only in reference titles (Todd 1992; McKinney & Moelants 2006)
+introduces: [inter-onset-interval, tempo-marking, click-track, expressive-timing, tempo-change, simple-compound-meter]
+---
+
+{/*
+  YOUR VERSION of Vol 2 ch. 1. Teaching draft: src/content/teaching/v2-01-time.mdx
+
+  Figure:
+    <TimeScales />                                   the timescales of music on one log axis
+
+  Widgets:
+    <TempoLab initialMode="tempo" modes={['tempo']} />        one tune at any tempo; beat length, shortest gap, tempo marking
+    <TempoLab initialMode="drift" modes={['drift']} />        eight bars that speed up or slow down; mystery mode; steady click track
+    <TempoLab initialMode="rubato" modes={['rubato']} tunes={['ode', 'twinkle']} />
+                                                     deadpan / phrase arch / ritardando / accelerando / random wobble
+    <TempoLab />                                     all three modes in one frame
+      props: initialMode, modes, tune, tunes, bpm, curve, curves, title
+    <Metronome controls={['meter', 'subdivision']} beatsPerBar={2} subdivision={3} bpm={66} />   6/8 vs 3/4
+
+  Tables: wrap a Markdown table in <DataTable title="..." caption="..."> (blank lines inside).
+*/}
+
+Start writing here.

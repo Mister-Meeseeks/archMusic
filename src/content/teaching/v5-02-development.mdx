@@ -1,0 +1,365 @@
+---
+title: "Repetition, Variation, Transformation, Development"
+volume: 5
+chapter: 2
+summary: Music says a few things many times. How composers and performers repeat material, vary it, and work it over, from loops and ground basses to theme and variations, Beethoven's motif, call and response, and borrowing across pieces, and how much repetition a listener wants.
+status: teaching-draft
+updated: 2026-11-16
+assumes: [motif, phrase, melodic-sequence, melodic-transformation, contour, ornament, step-leap, scale, key, tonic, major-minor, mode, chord, chord-symbol, cadence, harmonic-loop, interval, octave, note-names, register, timbre, texture, imitation, canon, beat, meter, tempo, groove, drum-kit, habituation, mere-exposure, chunking, short-term-memory, predictive-processing, pitch, semitone, resolution, subdivision, modulation, reverb, ostinato]
+introduces: [song-sections, variation, theme-and-variations, motivic-development, developing-variation, call-and-response, musical-borrowing]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts. One new lab, in two modes: **Variations** (Mozart's theme, varied one way at a time, with tags showing what changed and what was kept) and **Develop a motif** (chain operations onto a motif and hear it get worked over, all the way down to a single repeated note). Plus one figure and three tables. Then write your version in `src/content/chapters/v5-02-development.mdx`.
+
+This chapter sits between two others. Chapter 3.3 introduced motifs and the basic transformations (transposition, sequence, inversion, augmentation, fragmentation); this chapter is about using them over time. Chapter 5.5 covers the large forms (verse–chorus, the 32-bar song, the classical forms), which are mostly plans for where repetition and contrast go. Here the subject is the material itself: what comes back, and how it changes.
+</Callout>
+
+## The question
+
+Mozart wrote twelve variations on a French children's song that English speakers know as "Twinkle, Twinkle, Little Star." Beethoven built the first movement of his Fifth Symphony, more than seven minutes of music, out of four notes. Daft Punk's "Around the World" is one bass line and one sung phrase, repeated for seven minutes, and it fills dance floors.
+
+All three are doing the same thing at different intensities: saying a little, many times, and changing what it means each time. Compared with speech, music is extraordinarily repetitive. Most of the skill in composing, arranging, and improvising is deciding *what* to repeat, *what* to change, and *how much*.
+
+This chapter is about the toolkit for that:
+
+1. **Repetition**: the same again. Underneath a piece (an ostinato or loop) or as whole sections returning.
+2. **Variation**: the same again, *changed*, but recognizable.
+3. **Development**: material taken apart and rebuilt, sometimes until it's barely recognizable.
+
+And it asks why listeners want so much repetition, and where "enough" becomes "too much."
+
+## Why music repeats
+
+### Repetition is how music is learned
+
+Chapter 1.6 made the case that repetition is part of what makes sound musical: loop a spoken phrase and it starts to sound sung. It also showed why: you can only <Term id="predictive-processing">predict</Term> what you remember, and a pattern heard several times can be <Term id="chunking">chunked</Term> and held. A piece of music teaches you its own patterns as it goes, and repetition is the teaching.
+
+Against that pull is <Term id="habituation">habituation</Term> (chapter 1.6): play the same thing unchanged for long enough and it fades into the background. So music lives between two failures, too little repetition (nothing to hold on to) and too much (nothing to notice). The techniques in this chapter are ways of having both at once: enough sameness to follow, enough change to stay interested.
+
+### Every timescale at once
+
+Repetition isn't one thing. In any piece of popular music it happens at several timescales simultaneously. (The table uses the names of a pop song's **sections**: a **verse** has the same music each time with new words; the **chorus** repeats both music and words and carries the hook; a **bridge** is a contrasting section, usually heard once, near the end. Chapter 5.4 adds the pre-chorus, and chapter 5.5 covers song form in depth.)
+
+<DataTable title="Repetition at every timescale" caption="One pop song, from the drum pattern to the record. Each level repeats while the levels above and below it change, which is how a piece can be extremely repetitive and still keep moving.">
+
+| Timescale | What repeats | Typical length | Usually varied by |
+|---|---|---|---|
+| Beat and bar | The drum pattern | 1–2 seconds | Fills at phrase ends |
+| Riff or loop | A bass line, guitar figure, or chord loop | 2–8 seconds | Small changes every fourth time |
+| Phrase | The first half of a melody, answered by a second half that starts the same way | 5–15 seconds | A different ending (open, then closed) |
+| Section | Verse and chorus music | 20–60 seconds | New words; added layers; a key change |
+| Whole song | The record, played again | Minutes | Nothing, which is the point: relistening is repetition too |
+| Across songs | A tune, riff, or sample reused in another song | Any | Everything else |
+
+</DataTable>
+
+The same nesting appears in a Bach suite or a Javanese gamelan piece, with different materials. Notice that each row is "the same, with something different," at its own scale. Very little music repeats anything exactly for long.
+
+<VariationMap />
+
+<Callout kind="check">
+A dance track loops the same four-bar pattern for six minutes. In what sense is it *not* exact repetition? List at least three things that could be changing while the loop stays the same.
+
+<Answer>
+Layers entering and leaving (drums, bass, vocal, pads), filters opening and closing (the same notes getting brighter or duller), loudness and density, effects such as reverb or delay, and the listener's own state: by the tenth time, you hear the loop differently because you can predict it and attend to details. Exact repetition of the notes is a canvas for changes in texture and timbre. Chapter 5.4's build and drop is exactly this.
+</Answer>
+</Callout>
+
+## Repetition underneath: the ostinato
+
+### Ground bass
+
+One of the oldest ways to organize music is to repeat a short pattern continuously underneath while something above it changes. A pattern repeated like that is an **ostinato** (Italian for "obstinate"). When it's in the bass it's called a **ground bass**, or simply a ground.
+
+Baroque composers loved grounds, especially for laments. In Purcell's opera *Dido and Aeneas* (around 1689), the dying queen sings over a bass line that creeps down by semitones, then cadences, and then starts again, over and over. Her melody deliberately doesn't line up with the ground: her phrases start and end at different points in the pattern, so the voice seems to struggle against something that won't change.
+
+<ListeningCue track="purcell-dido-lament" start="0:00">
+Dido's Lament. Find where the ground starts (the falling bass), and count its repetitions under the voice. Notice where the voice's phrases end compared with where the ground ends.
+</ListeningCue>
+
+Pachelbel's Canon is built on a ground too: eight bass notes, two bars long, repeated throughout while the violins pile up ever-busier variations above it (and play them in <Term id="canon">canon</Term>, chapter 3.8).
+
+<ListeningCue track="pachelbel-canon" start="0:00" end="1:30">
+Listen to the bass only. The same eight notes, again and again. Then notice how the upper parts get faster and more elaborate each time round: variation over an ostinato.
+</ListeningCue>
+
+### Riffs and loops
+
+In popular music, the ostinato is everywhere, under other names. A **riff** (chapter 3.3) is a short instrumental figure repeated through a song. A <Term id="harmonic-loop">chord loop</Term> is a ground made of chords. Electronic dance music is built from loops, repeated patterns stacked and swapped.
+
+"Around the World" is a near-pure case. A bass riff and a robotic vocal phrase repeat almost the whole way through, and the interest comes from what's layered over them, taken away, and filtered.
+
+<ListeningCue track="daft-punk-around-the-world" start="0:00" end="2:00">
+Two minutes of "Around the World." The notes barely change. Listen for what does: which layers enter and leave, and how the filter makes the same bass line darker and brighter.
+</ListeningCue>
+
+The classical extreme is Ravel's *Boléro*: a snare-drum rhythm repeats for about fifteen minutes while two melodies alternate, each repeated with new instrumentation and the whole orchestra slowly getting louder. Ravel himself called it an experiment in orchestration without development.
+
+<ListeningCue track="ravel-bolero" start="0:00" end="2:00">
+The snare-drum ostinato, then the first melody on flute. Keep listening as long as you like: nothing but the instruments and the loudness will change, almost to the end.
+</ListeningCue>
+
+Why does an ostinato work? It creates a stable background, the musical equivalent of a figure against a ground. The ear can stop tracking it and give its attention to what moves. It also builds a strong, cheap prediction: every listener soon knows exactly what the bass will do next, which frees surprise for the other parts.
+
+<Callout kind="verify" title="ostinato examples">
+Check the date of *Dido and Aeneas*; the shape and length of the Lament's ground (a chromatic descent over five bars?) and how many times it repeats; whether this track includes the recitative "Thy hand, Belinda" before the ground. Check the length of Pachelbel's ground (two bars, eight notes) and how many times it repeats. Check the Ravel quotation (he described *Boléro* as an orchestral experiment, "orchestral tissue without music," or similar: find the exact wording and source).
+</Callout>
+
+## Theme and variations
+
+### What a variation keeps
+
+A **variation** repeats something with changes, so that it's recognizably the same and recognizably different. The obvious question is what has to stay the same for it to still be "the same."
+
+The answer, worked out in practice by centuries of composers, is usually the **skeleton**: the phrase lengths, the harmony (the chord under each part of the tune), the main notes of the melody on the strong beats, and the cadences. What changes is the **surface**: rhythm, decoration, mode, register, accompaniment, instrumentation, tempo. A variation changes some dimensions and keeps the rest, and what it keeps is what lets you recognize it.
+
+A **theme and variations** is a whole piece built that way: a theme, then a series of variations on it, A A′ A″ A‴. It was one of the main forms of the Baroque and Classical periods, partly because it's a showcase: the same tune displayed in as many guises as the composer can invent.
+
+Mozart's variations on "Ah, vous dirai-je, maman" (K. 265) are the classic example, and the theme is already in your head. (Mozart didn't know it as "Twinkle." The French tune came first; the English words were written later and fitted to it.) The lab gives you six variations of the theme, each built with one or two techniques. They're generic, not Mozart's own, but they use the same moves he did.
+
+<DevelopmentLab initialMode="variations" modes={['variations']} />
+
+<Callout kind="try">
+1. Play the **Theme**. Then **Decorated**. The tune is hidden in a stream of quick notes, but you should still hear it: every fourth note is a note of the theme, on the beat. Turn on **Theme first** to compare directly.
+2. Play **Minor**. Three notes are lowered by a semitone and the chords turn minor; nothing else changes. Notice how much the *character* changes for how little the notes do.
+3. Play **New chords**. The melody is exactly the theme; only the chords underneath differ. The tune seems to mean something else. This is called reharmonization, and jazz musicians do it constantly.
+4. Play **Tune in the bass**. Can you still follow it? (It's harder: the ear tends to treat the top line as the melody.)
+5. For each variation, look at the tags. Which variation changes the most dimensions while still sounding like the theme?
+</Callout>
+
+Now hear what Mozart did with it. He keeps the theme's phrase structure and harmony almost untouched through the set, and changes the surface: running notes in the right hand, then in the left, triplets, a variation in the minor, a slow, ornamented variation near the end, and a fast finale in a new meter.
+
+<ListeningCue track="mozart-twinkle-variations" start="0:00" end="2:30">
+The theme and the first two variations. In variation 1 the right hand runs in quick notes while the left hand keeps the harmony; in variation 2 they swap jobs. (Brautigam plays a fortepiano, the lighter instrument of Mozart's time.)
+</ListeningCue>
+
+<ListeningCue track="mozart-twinkle-variations" start="6:30">
+Variation 8, in the minor (the start is estimated). Then keep listening for the slow variation and the fast, triple-meter finale.
+</ListeningCue>
+
+<Callout kind="check">
+Why does a theme for variations tend to be simple: short, regular phrases and plain harmony?
+
+<Answer>
+Because the theme has to survive the variations. Each variation buries or changes part of it, so listeners need a skeleton they can still recognize under the decoration. A simple, regular theme (like this one: four-bar phrases, three chords) is easy to hold in memory and leaves room for invention. A complicated theme would disappear under the first ornament.
+</Answer>
+</Callout>
+
+<DataTable title="Techniques of variation" caption="The main ways a theme is varied, roughly from the surface inward. Most variations combine two or three. The last column names a variation in the lab that uses the technique.">
+
+| Technique | What changes | What usually stays | Example | In the lab |
+|---|---|---|---|---|
+| Decoration (figuration) | Quick notes fill in around the melody | Melody notes on the beats, harmony | Mozart K. 265, variation 1 | Decorated |
+| Rhythmic change | Note lengths, meter, or feel | Pitches, harmony | Mozart's triple-meter finale | New rhythm |
+| Change of mode | Major ↔ minor | Melody shape, rhythm, phrase | Mozart, variation 8 | Minor |
+| Reharmonization | The chords underneath | The melody itself | Jazz ballads; hymn settings | New chords |
+| Register and texture | Where the tune sits; what accompanies it | Melody, harmony | Tune moved to the bass, or to an inner voice | Tune in the bass |
+| Tempo and character | Speed, articulation, mood | Notes, harmony | A slow, ornamented variation near the end of a set | Slow |
+| Instrumentation | Who plays it | Everything else | *Boléro* | — |
+| Improvisation over the harmony | A new melody entirely | The chord sequence and phrase length | A jazz solo | — |
+
+</DataTable>
+
+### Variations over a repeating bass
+
+Two old forms combine the ostinato and the variation. In a **passacaglia** or **chaconne** (the two words were used loosely and are hard to separate) a short bass line or chord pattern repeats throughout, and each repetition carries a new variation above it. Dido's Lament and Pachelbel's Canon are both built this way.
+
+The grandest example in the symphonic repertoire is the finale of Brahms's Fourth Symphony (1885). An eight-bar theme, borrowed from a Bach cantata, is stated by the winds and then varied about thirty times, the theme migrating from the top of the texture to the bass and into the inner parts, the music slowing to a quiet, solo-flute variation at the center, then building to a final climax. It's a movement of variations that sounds like a single drama.
+
+<ListeningCue track="brahms4-finale" start="0:00" end="1:30">
+The theme in the winds (eight slow chords), then the first variations. Try counting the eight bars of each one: the theme is always there, though not always on top.
+</ListeningCue>
+
+<ListeningCue track="brahms4-finale" start="2:30" end="3:30">
+The slow, quiet center (estimated start): a flute solo, still over the same eight-bar pattern, now stretched to twice the length.
+</ListeningCue>
+
+### Jazz: theme and improvisation
+
+Most jazz performances of a standard are a theme and variations in which the variations are improvised. The band plays the tune (the *head*), then each soloist improvises over the same chord sequence and phrase lengths for one or more times through (*choruses*), and the head returns at the end. What's kept is exactly the skeleton listed above: the harmony and the phrase structure. What's varied is the whole surface, including the melody itself.
+
+John Coltrane's 1960 recording of "My Favorite Things," the Rodgers and Hammerstein waltz from *The Sound of Music*, goes further. After stating the tune, the band drops the song's chord changes and improvises over a two-chord <Term id="ostinato">vamp</Term>, a short repeated harmonic pattern, for minutes at a time, with the theme returning between solos as a landmark. The variation is set free from the skeleton; the ostinato holds it together instead.
+
+<ListeningCue track="coltrane-favorite-things" start="0:00" end="3:00">
+The tune on soprano saxophone, then the start of the improvisation. Listen for McCoy Tyner's piano rocking between two chords, and for the moments when fragments of the tune come back.
+</ListeningCue>
+
+<Callout kind="verify" title="theme and variations">
+Check: the date and place of K. 265 (once thought Paris 1778, now usually dated Vienna 1781–82); the French song's origin and the date of Jane Taylor's "Twinkle" words (1806?); Mozart's techniques by variation number (1 right-hand figuration, 2 left-hand, 8 minor, 11 Adagio, 12 Allegro in 3/4); the Brautigam cue times. Brahms 4: the date, the theme's source (the final chorus of Bach's Cantata BWV 150?), the number of variations (30?), the flute variation's meter and placement, and the cue times. Coltrane: recording date (October 1960?), the lineup (McCoy Tyner, Steve Davis, Elvin Jones), and whether the solos alternate between E minor and E major vamps.
+</Callout>
+
+## Developing a motif
+
+### From transformation to development
+
+Chapter 3.3 introduced the <Term id="melodic-transformation">transformations</Term> of a <Term id="motif">motif</Term>: transposition, <Term id="melodic-sequence">sequence</Term>, inversion, augmentation and diminution, fragmentation. Each one makes a new version of the motif that keeps some relation to it. **Motivic development** is what happens when you chain them: each new version is made not from the original, but from the version before it. A passage grows the way a sentence of an argument does, each step following from the last, and it can travel a long way from where it began.
+
+One end point of development is called **liquidation** (the term is Schoenberg's). The motif is fragmented, then the fragment is fragmented, until all its characteristic features have been worn away and only a rhythm, or a single repeated note or chord, is left. Liquidation is a way of ending a thought: it dissolves the motif's identity, often just before something new, or the motif's triumphant return.
+
+<DevelopmentLab initialMode="develop" modes={['develop']} preset="answer" />
+
+<Callout kind="try">
+1. Play **Statement and answer**: the short-short-short-long motif, then the same shape a scale step lower. This is how Beethoven's Fifth opens: G G G E♭, then F F F D.
+2. Choose **Liquidation**. The motif, its answer, then fragments: first the last two notes, carried up step by step, then only the final note, repeated. Listen to the identity drain out of it. What's left at the end is pure rhythm, waiting for something to happen.
+3. Choose **Mirror**. Twinkle's opening, then upside down. Inversion is a strong transformation on paper, but by ear it's surprisingly hard to recognize. Chapter 3.3 found the same thing.
+4. Build your own: pick a motif and add steps. Try **Keep the end** twice in a row, then **Step up** several times: fragmentation plus sequence is the engine of many classical development passages.
+</Callout>
+
+### Beethoven's Fifth
+
+The first movement of the Fifth is the textbook of motivic development, because the motif is so short and so recognizable that you can follow it nearly everywhere.
+
+It opens with the motif and its answer a step lower. Then the motif becomes a building block: stacked up in <Term id="imitation">imitation</Term>, each instrument entering on a higher note, so a melody seems to be assembled out of copies of the motif. Even the contrasting, lyrical tune that comes next is introduced by a horn call that is the motif expanded (three short notes, then longer ones), and the motif keeps knocking in the bass underneath the smooth new tune.
+
+In the middle of the movement Beethoven takes the material apart. The best-known passage is a liquidation: the horn call is cut down to its last two notes, traded between winds and strings, then to a single chord at a time, quieter and quieter, until the music seems to have forgotten what it was about. Then the motif crashes back at full volume, and the opening returns.
+
+<SongMap track="beethoven5-mvt1" prompt="Start at the development and listen for the motif breaking into smaller and smaller pieces: by the end of the development, single chords answer each other, pianissimo, before the motif explodes back in." />
+
+<ListeningCue track="beethoven5-mvt1" start="3:40" end="4:25">
+The liquidation (estimated times). Two-note fragments, then single chords alternating between winds and strings, getting quieter. Then the return.
+</ListeningCue>
+
+<Callout kind="check">
+Liquidation removes a motif's identity. Why would a composer want that just before the motif returns?
+
+<Answer>
+Because the return means more after an absence. As the motif dissolves, the music loses its sense of what it's about, which builds a strong expectation (and tension) that something will restore it. When the full motif comes back, it lands as an arrival, not just one more repetition. Liquidation also wipes the slate before new material: it ends a thought cleanly, like trailing off at the end of a paragraph. Both uses are about controlling expectation (chapter 1.6) through what is taken away.
+</Answer>
+</Callout>
+
+### Developing variation
+
+Arnold Schoenberg, who coined "liquidation," had a name for a deeper version of the same idea: **developing variation**. In his view (set out above all in a 1947 essay, "Brahms the Progressive"), the best music doesn't repeat ideas so much as keep varying them, each new idea growing out of a variation of an earlier one, so that a whole movement unfolds from a few small cells without anything literally coming back. He found this above all in Brahms, whose melodies often turn out, on analysis, to be built from a few intervals or rhythms recombined over and over.
+
+Developing variation is an analyst's lens as much as a composer's method, and it has a bias: it values a piece for how much is derived from how little. That's one aesthetic among several. Schoenberg was explicitly arguing that repetition is a lesser craft, which would surprise the composers of *Boléro*, "Around the World," or a gamelan piece. A loop and a developing variation are different strategies, not a primitive and an advanced version of the same thing.
+
+### Can listeners hear it?
+
+There's an awkward question here, the same one chapter 5.5 asks about large forms: how much of this do listeners perceive? Obvious repetitions and sequences, certainly. Subtler derivations, an inner voice that's secretly the theme inverted, much less, at least on first hearing. Research on repeated listening suggests that listeners gradually come to group passages by shared themes and motifs as they get to know a piece, so motivic relations may be something you grow into rather than hear at once. For the music in this chapter, the honest summary is: the surface relations (the Fifth's rhythm everywhere) are heard by nearly everyone; the deep ones reward study and relistening, and some may exist mainly on paper.
+
+<Callout kind="verify" title="motivic development">
+Check: Schoenberg as the source of "liquidation" (in *Fundamentals of Musical Composition*, published 1967?) and his definition; "Brahms the Progressive" (1947 lecture, published in *Style and Idea*, 1950) and how it presents developing variation and the value of repetition. Beethoven 5: the imitative stacking of the motif after the opening, the horn call's shape and its relation to the motif, the liquidation passage (around bars 196–240?) and whether it uses the horn call's two-note figure, the cue times (estimated from the bar-count map). Listener research: Pollard-Gott (1983) on thematic concepts emerging with repeated listening (to a Liszt piano sonata?) and Deliège's cue-abstraction studies; what they actually show.
+</Callout>
+
+## Call and response
+
+### Repetition between people
+
+So far, repetition has been one composer reusing material. A different kind happens between performers: a phrase from one voice, answered by another. This is **call and response**, and it's one of the most widespread musical patterns there is: a leader and a chorus, a preacher and a congregation, a singer and a guitar, the brass section and the saxophones.
+
+It's central to the musical traditions of West and Central Africa, and it came to the Americas with enslaved Africans, into work songs, spirituals and gospel, and from there into blues, jazz, soul, funk, and hip-hop. (It's also found elsewhere: European churches sang psalms antiphonally, alternating between two choirs, for centuries.) In a blues, a sung line is often answered by the guitar in the gap before the next line, the instrument responding to the voice. In jazz, soloists "trade fours," alternating four-bar improvisations, each answering the last.
+
+Call and response is a form of variation that's also a form of conversation. The response repeats the call, imitates it, completes it, or contradicts it, and it creates exactly the kind of short-range expectation and fulfillment that chapter 1.6 describes. It also makes music participatory: a congregation or a crowd doesn't have to know the song to sing the response.
+
+Ray Charles's "What'd I Say" (1959) brought the call and response of the Black church into a rhythm-and-blues hit. In the second half, Charles trades wordless cries with his backing singers, the Raelettes, each call answered and the exchanges getting more intense.
+
+<ListeningCue track="ray-charles-whatd-i-say" start="2:30" end="3:45">
+The second part (the start is estimated: find where the band comes back after the false ending). Listen for the calls and the answers, and how the exchange builds.
+</ListeningCue>
+
+<Callout kind="verify" title="call and response">
+Check: the African origins and diaspora history of call and response (a standard claim, but find a solid source, e.g., Floyd's *The Power of Black Music*, 1995, or Southern's *The Music of Black Americans*); antiphonal psalm singing; "trading fours." "What'd I Say": the recording and release dates, the story of its improvised origin at a dance (often told; how reliable?), and the timing of part 2 on this track.
+</Callout>
+
+## Borrowing across pieces
+
+Variation doesn't stop at the edge of a piece. Music constantly reuses material from other music:
+
+- **Quotation**: a recognizable bit of another tune dropped into a new piece, as a joke, an homage, or a comment. Jazz soloists quote other songs mid-solo; classical composers quoted folk songs, hymns, and each other.
+- **Variations on someone else's theme**: Mozart's Twinkle variations, Brahms's variations on themes by Handel and Haydn, Rachmaninoff's on Paganini.
+- **Covers**: a whole song re-performed, often with its style, tempo, or harmony transformed, which makes a cover a theme and variations at the scale of a song.
+- **Sampling** and **interpolation**: reusing a piece of an actual recording (sampling, chapter 4.6), or re-recording a recognizable part of an older song inside a new one (interpolation, a common way around the cost of clearing a sample). Hip-hop and much electronic music is built on this.
+
+Brahms's Fourth borrows its theme from Bach; "Around the World" is built on loops; a hip-hop track builds on a drum break from a 1970 funk record. The techniques are the same ones as within a piece: keep something recognizable, change the rest. What's different is that the listener's memory of the *other* piece becomes part of the meaning.
+
+<Callout kind="verify" title="borrowing">
+Check the definition of interpolation in music licensing (re-recording versus sampling, and the different rights involved). Chapter 6.9 covers borrowing and hybridization in depth; keep this section short and consistent with it.
+</Callout>
+
+## How much to repeat
+
+### The balance
+
+Chapter 1.6 described the inverted U: listeners tend to like music best at a moderate level of complexity or novelty, and <Term id="mere-exposure">exposure</Term> moves a piece down the curve, from strange toward familiar. Repetition and variation are the composer's handles on that curve. Repeat more and the piece becomes easier to follow and quicker to tire of; vary or develop more and it becomes more interesting and harder to follow.
+
+Different musics place themselves at different points, and listeners differ too. But a few patterns recur across styles:
+
+- **Repeat, then vary.** Something is heard twice, and the third or fourth time it changes. A riff repeats three times and the fourth time it gets a fill; a melody's first phrase is repeated with a new ending. Two repetitions set up an expectation; the change uses it.
+- **Repeat, repeat, then break up.** Classical music has a standard eight-bar pattern that Schoenberg called the *sentence*: a two-bar idea, the idea repeated (often a step higher or lower), then four bars in which the idea is fragmented and sped up toward a <Term id="cadence">cadence</Term>. Repetition, then development, inside a single phrase.
+- **Vary the surface, keep the ground.** An ostinato or a chord loop holds still so that what's above it can change freely: grounds, loops, vamps, the blues chorus.
+- **Take away, then bring back.** Liquidation, the moment a dance track strips back to almost nothing before the full beat returns (chapter 5.4), the bridge before the last chorus. Absence makes the return an event.
+
+<Callout kind="check">
+A songwriter's verse melody has four lines. Lines 1 and 2 are identical, line 3 is the same melody a step higher, and line 4 is new and ends on the tonic. Using this chapter's terms, describe what each line does for the listener.
+
+<Answer>
+Line 1 states the idea. Line 2 repeats it exactly, which lets the listener learn and chunk it, and sets up the expectation that it will continue. Line 3 is a sequence, varied repetition: the shape is recognizable, so it's easy to follow, but the change of pitch raises the energy and signals that something is developing. Line 4 breaks the pattern and resolves it with a cadence on the tonic, using the expectation built by the repetitions to make an ending. It's the "repeat, then vary" pattern and very close to the classical sentence.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="how much to repeat">
+Check the description of Schoenberg's sentence (presentation of a basic idea and its repetition, then a continuation with fragmentation and acceleration toward a cadence; usually eight bars) against Caplin, *Classical Form* (1998). The textbook example is the opening of Beethoven's Piano Sonata Op. 2 No. 1; consider adding it as a listening example.
+</Callout>
+
+## The architecture of reuse
+
+<DataTable title="Repetition, variation, and development at a glance" caption="Five relations to material heard before, the figure at the start of the chapter as a table.">
+
+| Strategy | What it keeps | What it changes | Effect on the listener | Examples |
+|---|---|---|---|---|
+| Ostinato, loop, riff | The pattern, exactly | What's above or around it | A stable ground; attention goes to the changes | Dido's Lament, "Around the World," *Boléro* |
+| Varied repetition | Almost everything | One detail (ending, fill, words) | Expectation set up, then gently used | A riff with a fill; a verse with new words |
+| Theme and variations | The skeleton: harmony, phrases | The surface: rhythm, mode, decoration, texture | The pleasure of recognizing the old in the new | Mozart K. 265, Brahms 4 finale, a jazz chorus |
+| Motivic development | A motif, or only its rhythm | Pitch level, shape, length, context | Momentum and instability; a sense of argument | Beethoven 5, first movement |
+| Call and response | The call's shape, partly | Who's singing; the answer's content | Conversation; participation | Gospel, blues, "What'd I Say" |
+| Borrowing | Another piece's tune, riff, or sound | The new setting | Recognition across pieces; comment and homage | Covers, quotations, samples |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. Why music repeats so much (memory, chunking, prediction) and why it can't repeat unchanged forever (habituation); repetition at several timescales at once.
+2. Ostinato and ground bass: what they are, and why a fixed background frees attention for what changes. Dido, Pachelbel, loops, *Boléro*.
+3. Variation: what a variation keeps (the skeleton) and changes (the surface), with the main techniques, and how theme and variations, the passacaglia, and jazz choruses all work that way.
+4. Motivic development: chaining transformations, fragmentation and liquidation, with Beethoven's Fifth as the example; Schoenberg's developing variation and its built-in bias against repetition.
+5. Call and response as repetition between performers, and its history.
+6. Borrowing across pieces: quotation, covers, sampling, interpolation.
+7. How much to repeat: the inverted U, and the recurring patterns (repeat then vary, the sentence, vary over a ground, take away and bring back).
+
+**Decisions for your rewrite:**
+
+- **Where to start.** I started with three extremes (Mozart, Beethoven, Daft Punk). Alternatives: start with the loop (the most repetitive music is the most popular), or with the lab's liquidation (hear a motif dissolve).
+- **Overlap with chapters 3.3 and 5.5.** Chapter 3.3 already shows the transformations and quotes the Beethoven opening; 5.5 covers the Fifth's overall plan. Decide how much to recap. Here I kept the transformations as a reference and added chaining and liquidation.
+- **The value of repetition.** Schoenberg's view (development as the higher art) dominated classical analysis for a long time; Margulis and others push back. Decide how far you want to take sides.
+- **Examples.** Swap in your own: a hip-hop track built on a sample, a favorite riff-based song (Led Zeppelin, Nirvana, Daft Punk), a jazz standard you know well, a minimalist piece (Reich and Glass are chapter 5.6's).
+
+**Misconceptions to watch for:**
+
+- "Repetition is lazy." It's how music is learned and anticipated, and most music depends on it.
+- "A variation changes the melody." Often the melody stays and everything around it changes; often the melody goes and the harmony stays.
+- "Development means making it longer." It means transforming and recombining; liquidation makes material smaller.
+- "If an analyst can show a motivic relation, listeners hear it." Some relations are heard at once, some only with familiarity, some perhaps never.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Margulis, E. H. (2014). *On Repeat: How Music Plays the Mind*. Oxford University Press.
+- Huron, D. (2006). *Sweet Anticipation: Music and the Psychology of Expectation*. MIT Press.
+- Schoenberg, A. (1950). Brahms the Progressive. In *Style and Idea*. Philosophical Library. (Lecture 1933, revised 1947.)
+- Schoenberg, A. (1967). *Fundamentals of Musical Composition* (G. Strang & L. Stein, Eds.). Faber and Faber.
+- Caplin, W. E. (1998). *Classical Form: A Theory of Formal Functions for the Instrumental Music of Haydn, Mozart, and Beethoven*. Oxford University Press.
+- Frisch, W. (1984). *Brahms and the Principle of Developing Variation*. University of California Press.
+- Pollard-Gott, L. (1983). Emergence of thematic concepts in repeated listening to music. *Cognitive Psychology*, 15(1), 66–94.
+- Deliège, I. (1996). Cue abstraction as a component of categorisation processes in music listening. *Psychology of Music*, 24(2), 131–156.
+- Floyd, S. A., Jr. (1995). *The Power of Black Music: Interpreting Its History from Africa to the United States*. Oxford University Press.
+- Sisman, E. (2001). Variations. In *The New Grove Dictionary of Music and Musicians* (2nd ed.). Macmillan.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details, especially the date and history of "Brahms the Progressive" (lecture 1933, revised 1947, published 1950?), the editors of *Fundamentals*, and the Pollard-Gott and Deliège volume and page numbers.
+</Callout>

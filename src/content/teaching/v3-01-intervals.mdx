@@ -1,0 +1,380 @@
+---
+title: "Pitch, Intervals, Ratios, and Tuning"
+volume: 3
+chapter: 1
+summary: The interval is the atom of melody and harmony. What an interval is physically (a frequency ratio) and on paper (a name), why cents turn ratio arithmetic into addition, and how precisely listeners hear intervals and performers tune them.
+status: teaching-draft
+updated: 2026-11-16
+assumes: [frequency, pitch, sine-wave, harmonics, timbre, note-names, octave, semitone, interval, frequency-ratio, cents, register, chord, major-minor, equal-temperament, just-intonation, pythagorean-tuning, beats, roughness, consonance, jnd, octave-equivalence, inharmonicity, resolution]
+introduces: [interval-quality, enharmonic, interval-inversion, compound-interval, interval-class, categorical-perception, octave-stretch, intonation, absolute-pitch]
+# "inversion" and "transposed" here mean interval inversion and moving a tune to a new pitch (taught in this chapter);
+# "augmented"/"diminished" here are interval qualities, not the chord qualities of chapter 3.5.
+lintIgnore: [melodic-transformation, chord-quality]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts: it explains more than your chapter will need, flags uncertain science, and ends with a rewrite callout. One new lab with three views: stacking intervals (ratio arithmetic), a minor-or-major test (how you categorize interval sizes), and tuning by ear. Use headphones for the tuning view. Then write your version in `src/content/chapters/v3-01-intervals.mdx`.
+
+This chapter opens Volume III. The Toolkit gave you interval names and the idea that intervals are ratios; chapter 1.5 showed why some ratios sound smooth. This chapter goes deeper into the interval itself. It deliberately stops before **tuning systems** (how you fit a whole set of notes together, and why that's impossible to do perfectly); that's the next chapter, "Why Scales Exist".
+</Callout>
+
+## The question
+
+Sing the opening of "Happy Birthday". Now sing it again, starting a little higher. It's still "Happy Birthday". Every single frequency changed, and nothing about the tune did.
+
+What survived is the set of **intervals**: the distances between the notes. A melody is not a list of pitches; it's a pattern of steps and jumps, and the pattern can start anywhere. The same is true of chords: a major chord is a recipe of intervals, built on whatever note you like.
+
+So the interval is the atom of pitch music. This chapter asks four questions about it:
+
+1. What *is* an interval, physically? (A ratio of frequencies.)
+2. How do we measure and add intervals? (Cents.)
+3. How do musicians name them? (A system of numbers and qualities that looks odd until you see its logic.)
+4. How precisely do we hear them, and how precisely do performers actually play them? (Less precisely than the numbers suggest, and in interesting ways.)
+
+## Four ways to describe one interval
+
+The Toolkit introduced intervals by counting piano keys. That's one of four descriptions you'll meet, and each is good for something different:
+
+<DataTable title="Four descriptions of one interval" caption="The same interval, a perfect fifth from C up to G, described four ways.">
+
+| Description | For the fifth C–G | Good for | Blind to |
+|---|---|---|---|
+| **Semitones** | 7 | Keyboards, guitar frets, quick arithmetic | Tuning differences smaller than a semitone |
+| **Name** | perfect fifth | Reading music; telling apart notes that share a key (C–F♯ versus C–G♭) | Exact size |
+| **Frequency ratio** | 3/2 (about 1.5) | Physics: why it sounds smooth, how harmonics line up | Easy addition |
+| **Cents** | 702 (just) or 700 (equal-tempered) | Measuring and comparing tuning; adding intervals | The names musicians use |
+
+</DataTable>
+
+The rest of the chapter is about moving fluently between these four.
+
+## Where the ratios come from
+
+The <Term id="harmonics">harmonic series</Term> of chapter 1.2 is a ready-made ladder of intervals. A note on a string or a wind instrument contains harmonics at 1, 2, 3, 4, 5... times its fundamental frequency. The distance between neighbouring harmonics gives the classic intervals, in order of size:
+
+- harmonics 1 and 2: ratio **2/1**, the octave;
+- 2 and 3: **3/2**, the perfect fifth;
+- 3 and 4: **4/3**, the perfect fourth;
+- 4 and 5: **5/4**, the major third;
+- 5 and 6: **6/5**, the minor third;
+- 8 and 9: **9/8**, the major second (a whole step).
+
+Skip a harmonic and you get more: harmonics 3 and 5 make **5/3**, the major sixth; 5 and 8 make **8/5**, the minor sixth.
+
+Two things to notice. First, the higher you climb the series, the smaller the gaps and the bigger the numbers in the ratio. The intervals Western music treats as most stable, octave and fifth, are the ones with the smallest numbers. Chapter 1.5 explained why: when two harmonic tones form a simple ratio, many of their partials coincide instead of beating.
+
+Second, the series doesn't stop at the familiar intervals. Harmonics 6 and 7 make **7/6**, a minor third noticeably smaller than 6/5; 4 and 7 make **7/4**, a seventh that no piano key gets near. The series is richer than the twelve notes we use, which is one of the things the next chapter is about.
+
+<Callout kind="note" title="Why 'about' 3/2?">
+On a modern piano the fifth isn't exactly 3/2. It's 2<sup>7/12</sup> ≈ 1.4983, a hair narrow. The Toolkit mentioned this; chapter 1.5 let you hear it. This chapter uses the simple ratios as the reference sizes, because they're where the acoustics points, and the next chapter explains why nobody can tune all of them exactly at once.
+</Callout>
+
+## Cents: turning multiplication into addition
+
+Here is the awkward thing about ratios. **Stacking intervals multiplies their ratios.** A fifth on top of a fourth is 3/2 × 4/3 = 12/6 = 2/1, an octave. A major third on top of a minor third is 5/4 × 6/5 = 30/20 = 3/2, a fifth. Correct, but nobody wants to multiply fractions in their head while listening.
+
+The fix is a logarithmic unit, the cent. Its definition: an interval with ratio *r* measures
+
+<div class="formula">cents = 1,200 × log₂(*r*)</div>
+
+You don't need to compute logarithms; the point is what they do. A logarithm turns multiplying into adding, so **cents add when ratios multiply**:
+
+- fifth + fourth: 702 + 498 = 1,200 cents, an octave;
+- major third + minor third: 386 + 316 = 702 cents, a fifth.
+
+The 1,200 is chosen so that an octave is 1,200 cents and each equal-tempered semitone exactly 100. One cent is a ratio of about 1.0006, a change of 0.06%; near the tuning A (440 Hz) that's about a quarter of a hertz.
+
+<IntervalLab initialMode="stack" modes={['stack']} />
+
+<Callout kind="try">
+1. Start with **Fifth + fourth**. Read the two readouts: the fractions multiply to 2/1, the cents add to 1,200. Press play: three notes, then the chord. The top note is an exact octave above the bottom.
+2. Try **Major + minor third**. The result, 3/2, is a perfect fifth: the major chord's outer notes. Now add a **P4**: the three intervals land exactly on an octave (5/4 × 6/5 × 4/3 = 2).
+3. Clear it and add **P5** twice. The total is 9/4, 1,404 cents: a major ninth, which is a whole step (9/8) plus an octave. Two fifths up is a whole step, an octave higher.
+4. Look at the "Nearest name" readout each time. The just fifth is 2 cents wider than the piano's; the just major third is 14 cents narrower. Those small offsets are where the next chapter starts.
+</Callout>
+
+The picture below puts every simple ratio on the same ruler as the twelve equal-tempered semitones.
+
+<CentsLine />
+
+The lower panel is worth memorizing in rough form: **fifths and fourths are within 2 cents of the piano; thirds and sixths are off by 14–16.** Chapter 1.5 showed you can hear that difference as beating in a held chord.
+
+<Callout kind="check">
+A major sixth (5/3) plus a minor third (6/5) makes what interval? Work it out both ways: by multiplying the ratios and by adding the cents (884 and 316).
+
+<Answer>
+5/3 × 6/5 = 30/15 = 2/1, an octave. In cents: 884 + 316 = 1,200. A major sixth and a minor third fit together into an octave; they are each other's inversions, which is the next section's topic.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="cents arithmetic and history">
+The arithmetic is computed: 3/2 = 701.96¢, 4/3 = 498.04¢, 5/4 = 386.31¢, 6/5 = 315.64¢, 5/3 = 884.36¢, 9/4 = 1,403.91¢, 7/4 = 968.83¢; 1 cent at 440 Hz ≈ 0.254 Hz. Check the attribution of the cent to Alexander Ellis (1880s, in his work on non-Western tunings and his translation of Helmholtz) if your version mentions it.
+</Callout>
+
+## Naming intervals
+
+The Toolkit gave the twelve basic names. Here's the system behind them, which matters once you start reading music or harmony.
+
+### Number and quality
+
+An interval's **number** counts letter names, including both ends: C up to E spans C, D, E, so it's a third, whatever the sharps and flats. Its **quality** says which size of that number it is:
+
+- **Perfect** intervals come in one standard size: the unison, fourth, fifth, and octave.
+- **Major** and **minor** intervals come in two sizes a semitone apart: seconds, thirds, sixths, and sevenths. Major is the larger.
+- Stretch a major or perfect interval by a semitone and it becomes **augmented**; shrink a minor or perfect interval by a semitone and it becomes **diminished**.
+
+Why are fourths and fifths "perfect"? The name is old, from medieval theory, which treated the octave, fifth, and fourth as the *perfect consonances* (the smoothest intervals, with the smallest ratios). There's also a tidy structural reason, which the section on inversion shows: perfect intervals stay perfect when you flip them.
+
+### Same sound, different names
+
+The tritone, six semitones, is the interval with two common names. From C, it can be C–F♯ (a fourth, since C to F spans four letters, made one semitone bigger: an **augmented fourth**) or C–G♭ (a fifth made smaller: a **diminished fifth**). On a piano, F♯ and G♭ are the same key. Notes or intervals that share a key but carry different names are called **enharmonic**.
+
+That raises an obvious question: if they sound the same, why have two names? Because the name records the job the note is doing. In C major, F♯ is a raised F that's about to go up to G; G♭ is a lowered G that's about to fall to F. Spelling a chord or a passage correctly makes it readable, the way spelling "their" and "there" correctly does. And for musicians who can bend pitch, the two spellings are not always tuned the same, as the section on how musicians tune explains.
+
+### Inversion
+
+Take any interval and move its bottom note up an octave. C up to E (a major third) becomes E up to C (a minor sixth). This is **interval inversion**, and an interval and its inversion always fill an octave exactly between them. That gives a set of simple rules:
+
+<DataTable title="Inverting an interval" caption="An interval and its inversion always add up to one octave.">
+
+| Measure | Rule | Example: major third ↔ minor sixth |
+|---|---|---|
+| Number | The two numbers add to 9 | 3 + 6 = 9 |
+| Quality | Major ↔ minor, augmented ↔ diminished, perfect stays perfect | major → minor |
+| Semitones | Add to 12 | 4 + 8 = 12 |
+| Cents | Add to 1,200 | 386 + 814 = 1,200 (just) |
+| Ratio | Multiply to 2/1; to invert, divide 2 by the ratio | 5/4 × 8/5 = 2 |
+
+</DataTable>
+
+Why does the number rule say 9 and not 8? Because both counts include the shared note: C–E counts C, D, E (three), E–C counts E, F, G, A, B, C (six), and the E is counted twice.
+
+Inversion is why fourths and fifths go together: each is the other upside down (3/2 inverts to 4/3). It's also why harmony textbooks treat a major third and a minor sixth as close relatives. They're made of the same two note names.
+
+### Beyond the octave
+
+Intervals larger than an octave are **compound intervals**, named by continuing the count: a ninth is a second plus an octave, a tenth a third plus an octave, a twelfth a fifth plus an octave. In ratios, adding an octave doubles the ratio: the major third 5/4 becomes the major tenth 5/2. Intervals within an octave are called **simple**.
+
+Because of <Term id="octave-equivalence">octave equivalence</Term>, a lot of music theory deliberately ignores the octave and the direction. If you only ask "how far apart are these two note names, measured the shorter way round?", every interval reduces to one of six **interval classes**, from 1 to 6 semitones. A major third, a minor sixth (its inversion), and a major tenth (its compound) are all interval class 4. You won't need interval classes again until chapter 3.9 on post-tonal music, where they become the main tool.
+
+### The intervals, measured
+
+Here is the reference table, putting the four descriptions together.
+
+<DataTable title="The intervals, measured" caption="Ratios are the simplest common just ratio for each interval; the tritone and the minor seventh have several candidates, of which the most-cited are shown. The last column is the just ratio's distance from equal temperament.">
+
+| Semitones | Name | Short | Inverts to | Simple ratio | Ratio in cents | Minus equal |
+|---|---|---|---|---|---|---|
+| 0 | unison | P1 | octave | 1/1 | 0 | 0 |
+| 1 | minor second | m2 | major seventh | 16/15 | 112 | +12 |
+| 2 | major second | M2 | minor seventh | 9/8 | 204 | +4 |
+| 3 | minor third | m3 | major sixth | 6/5 | 316 | +16 |
+| 4 | major third | M3 | minor sixth | 5/4 | 386 | −14 |
+| 5 | perfect fourth | P4 | perfect fifth | 4/3 | 498 | −2 |
+| 6 | tritone (augmented fourth or diminished fifth) | TT | tritone | 45/32 or 7/5 | 590 or 583 | −10 or −17 |
+| 7 | perfect fifth | P5 | perfect fourth | 3/2 | 702 | +2 |
+| 8 | minor sixth | m6 | major third | 8/5 | 814 | +14 |
+| 9 | major sixth | M6 | minor third | 5/3 | 884 | −16 |
+| 10 | minor seventh | m7 | major second | 16/9, 9/5, or 7/4 | 996, 1,018, or 969 | −4, +18, or −31 |
+| 11 | major seventh | M7 | minor second | 15/8 | 1,088 | −12 |
+| 12 | octave | P8 | unison | 2/1 | 1,200 | 0 |
+
+</DataTable>
+
+<Callout kind="check">
+What's the inversion of an augmented fourth, and how many semitones is it? Why does the tritone "invert to itself" on a piano but not in just ratios?
+
+<Answer>
+An augmented fourth inverts to a diminished fifth (4 + 5 = 9; augmented becomes diminished), and both are 6 semitones, so on a piano the tritone is its own inversion. In ratios, inverting 45/32 gives 2 ÷ 45/32, a ratio of 64:45, which is about 610 cents, not 590. The two just versions of the tritone differ by about 20 cents; equal temperament splits the octave exactly in half and makes them identical.
+</Answer>
+</Callout>
+
+## How precisely we hear intervals
+
+The numbers above are exact. Hearing isn't. How close does an interval have to be to sound right, and what are listeners actually doing when they recognize one?
+
+### Categories, not a continuum
+
+Imagine a dial that slowly widens an interval from a minor third (300 cents) to a major third (400 cents). Physically, the change is smooth. Do you hear it smoothly?
+
+For trained musicians, mostly not. In a classic study, Burns and Ward (1978) played musicians melodic intervals at many sizes in between and asked them to label each one. The labels didn't drift gradually from "minor" to "major". They stayed "minor" for a while, switched fairly abruptly near the middle, then stayed "major". And when the same listeners were asked simply whether two intervals were the same size or different, they were better at it when the two straddled the switch point than when both fell inside one category.
+
+This pattern is called **categorical perception**: hearing a physical continuum as a handful of categories, and being somewhat deaf to differences inside a category. It was first described for speech sounds (the switch between "ba" and "pa" as voice-onset time changes), and the interval results look similar. Burns and Ward's own conclusion was more cautious: the effect in musicians is real but weaker than in speech, and it depends heavily on training. Listeners without musical training don't show sharp interval categories at all; many can't label intervals, even though they recognize tunes perfectly well.
+
+Try it on yourself. The lab plays intervals at seven sizes between a minor and a major third, from a random starting note, and plots how often you answer "major" at each size.
+
+<IntervalLab initialMode="categories" modes={['categories']} />
+
+<Callout kind="try">
+1. Leave **Tell me each size** off at first, so you can't calibrate yourself. Answer about 30 intervals (each size comes up about four times).
+2. Look at the shape. A steep step near 350 cents means you're hearing two categories. A gentle diagonal means you're hearing size more continuously, or guessing in the middle. Both are common.
+3. Switch to **Together** and start over. Harmonic thirds also differ in sound quality (the major third is smoother; chapter 1.5's roughness), which gives you an extra cue. Does your curve get steeper?
+</Callout>
+
+Categories have a practical upside. They make melodies robust: a singer who is 20 cents flat still sang a major third, and you heard a major third. Siegel and Siegel (1977) went further and found that trained musicians often couldn't say whether a slightly mistuned interval was sharp or flat. Their paper's subtitle makes the point: musicians "can't tell sharp from flat." The category absorbed the error.
+
+<Callout kind="verify" title="categorical perception studies">
+Check Burns & Ward 1978 (stimuli, the sharpness of the identification functions, and their "phenomenon or epiphenomenon" conclusion) and Siegel & Siegel 1977 (the subtitle, and how large the mistunings were that musicians accepted). Burns's 1999 chapter in Deutsch's *The Psychology of Music* reviews both and gives typical category widths and interval-discrimination thresholds; use it for any numbers in your version.
+</Callout>
+
+### Together versus one after the other
+
+How precise your hearing is depends a lot on whether the two notes sound **together** (a harmonic interval) or **one after the other** (a melodic interval).
+
+Together, a mistuning announces itself. As chapter 1.5 showed, two harmonic tones that are slightly off a simple ratio have partials that nearly coincide, and you hear <Term id="beats">beating</Term>. A trained ear can hear a fifth that's out by a few cents as a slow wobble. You're not judging the size of the interval at all; you're listening for the beating to stop.
+
+One after the other, there is no beating. You have to hold the first pitch in memory and compare. That's much harder, and the tolerance is much wider: discriminating melodic interval sizes typically takes differences of the order of 10–30 cents even for trained musicians, compared with a few cents for two tones heard together, or for the pitch of a single tone (chapter 1.3's <Term id="jnd">JND</Term>).
+
+### The stretched octave
+
+Here's a strange result. Play two pure tones in succession and ask people to adjust the upper one until it's exactly an octave above the lower. On average they don't set 2:1. They set it slightly **wider**, typically by something like 10–20 cents, with more stretch higher up. Ward (1954) reported this for trained musicians, and it has been replicated many times. The effect is called **octave stretch**.
+
+Nobody is sure why. Explanations include the way the auditory nerve encodes timing at high frequencies, a learned template of the harmonic series that is slightly stretched, and long exposure to stretched tunings. The last can't be the whole story, because the effect also shows up with pure tones and in listeners from other musical cultures. The point to take away is that "octave" in perception is a category with a preferred size, and the preferred size isn't exactly the physicist's 2:1.
+
+Don't confuse this with the stretched *tuning* of pianos, which has a physical cause: stiff piano strings have slightly <Term id="inharmonicity">inharmonic</Term> overtones, so tuners widen the octaves to keep them from beating. Chapter 4.1, "Acoustic Instruments as Physical Systems", explains that one.
+
+<IntervalLab initialMode="tune" modes={['tune']} />
+
+<Callout kind="try">
+1. Start with **Fifth, together**. Press play, then move the slider until the wobble stops. Use the ±1 buttons at the end. Press **Done**. Most people land within a couple of cents of the just 3/2, not on the piano's 700: beating guides you to the simple ratio.
+2. Try **Major third, together**. The just third (5/4) is 14 cents below the piano's. Which one did your ear choose?
+3. Now **Octave, pure tones in turn**. No beating to help you, just two notes alternating. Repeat it several times. Is your average a little above 1,200? Many listeners' are.
+4. Compare with **Octave, together**. With both notes sounding and the tones full of harmonics, beating pins you to exactly 2:1. Same interval, a different cue, a different answer.
+</Callout>
+
+<Callout kind="verify" title="octave stretch">
+Check Ward 1954 (procedure, the size of the stretch, and how it varies with frequency) and a later replication such as Sundberg & Lindqvist 1973 or the review in Burns 1999. Check the claim that the effect appears in listeners from non-Western traditions (Burns reports studies with Indian and other musicians), and that the explanations listed are the main ones in the literature. Test the lab yourself several times to see if your own octaves stretch.
+</Callout>
+
+<DataTable title="How fine is interval hearing?" caption="Rough figures for a careful listener in the middle of the range. All vary with training, register, timbre, and test method.">
+
+| Task | Typical precision | Main cue |
+|---|---|---|
+| Two notes together, near a simple ratio | A few cents | Beating between near-coinciding partials |
+| Pitch of a single tone (JND) | About 3–10 cents | The pitch itself (chapter 1.3) |
+| Size of a melodic interval, trained musicians | About 10–30 cents | Pitch memory and interval categories |
+| Accepting a melodic interval as "in tune" | Often 20 cents or more off | The category absorbs the error |
+| Untrained listeners labelling intervals | Often no reliable labels at all | Melodic shape and familiar tunes instead |
+
+</DataTable>
+
+<Callout kind="verify" title="precision figures">
+The single-tone JND comes from chapter 1.3's sources. The melodic-interval figures (10–30 cents; 20+ cents accepted) are typical values reported by Burns & Ward 1978, Siegel & Siegel 1977, and Burns 1999, but they vary widely between studies and listeners. Pin each number to a source before going public, or keep them as ranges.
+</Callout>
+
+## How musicians actually tune
+
+A piano player chooses notes; the tuner chose their exact pitches months ago. But singers, string players, wind and brass players, and trombonists especially, place every note themselves. What do they actually do? Measurements of recordings and performances give a consistent answer: **they follow neither equal temperament nor just ratios exactly.** How performers who can bend pitch actually place their notes is called **intonation**, and three tendencies show up again and again.
+
+**Chords pull toward simple ratios.** When notes are held together, performers who can hear each other adjust until the beating stops, which means drifting toward just intervals. Chapter 1.5's barbershop quartet is the clearest case: its singers aim for chords that "lock and ring". String quartets and choirs do it too, though less purely. Kopiez (2003) found expert trumpeters could adapt their tuning to either equal temperament or just intonation when asked, which shows the adjustment is a skill, not an accident.
+
+**Melodies pull notes toward their goals.** In a melodic line, a note that is about to move up by a semitone is often played high, closer to where it's going, and a note about to fall is often played low. The cellist Pablo Casals made a doctrine of this, which he called **expressive intonation**. Studies of solo violinists (Loosen 1993) found their melodic intervals closer to <Term id="pythagorean-tuning">Pythagorean tuning</Term> (wide major thirds, narrow semitones) than to either equal or just sizes. This is where enharmonic spellings can part company: a violinist may play an F♯ that's heading up to G a little higher than a G♭ that's heading down to F.
+
+**Everything varies.** Even excellent singers' intervals scatter by roughly ±10–20 cents from note to note (Vurma and Ross 2006), and listeners mostly don't notice, because, as the previous section showed, the categories are wide. Pitch varies within notes too: vibrato moves the pitch up and down by tens of cents several times a second, and listeners hear a single steady pitch near the middle of its range.
+
+<ListeningCue track="casals-bach-prelude-1" start="0:00">
+Casals's recording of the first cello suite, made in the late 1930s. The Prelude is a stream of broken chords with rising and falling steps. Listen for the steps that climb by a semitone: on a piano they're all identical, but Casals's sound tighter, as if pulled upward. Don't expect to measure it by ear; just notice that a great string player's tuning is alive, not fixed.
+</ListeningCue>
+
+<ListeningCue track="barbershop-tag" start="3:20">
+Back to chapter 1.5's barbershop chord, now with this chapter's vocabulary. When the chord locks, the four singers have tuned toward just ratios: the major third settles about 14 cents below a piano's. That is intonation driven by beating, the opposite of Casals's melodic pulls.
+</ListeningCue>
+
+At the other extreme from Casals is pitch-correction software. Auto-Tune, introduced in the late 1990s, measures a singer's pitch and nudges it to the nearest equal-tempered note. Used gently, it's inaudible. Set to correct instantly, it removes every glide and wobble, and the voice jumps from note to note like a keyboard.
+
+<ListeningCue track="cher-believe" start="0:00" end="1:00">
+"Believe" (1998) was the first big hit to use that instant setting as an audible effect. Listen to the opening lines: on some words Cher's voice flips between notes in a stair-step, with no slide in between. It's the sound of a voice forced onto the twelve-note grid. Compare it with Casals: the human tendency is to bend pitch toward where the music is going; the machine snaps it to the nearest fixed category.
+</ListeningCue>
+
+<Callout kind="verify" title="intonation studies and the recordings">
+Check: Loosen 1993 (violinists closer to Pythagorean than to equal or just); Kopiez 2003 (trumpeters adapting to both tunings); Vurma & Ross 2006 (the ±20-cent scatter, and listeners' tolerance); the size of typical vibrato (often cited as roughly ±50–100 cents at 5–7 Hz in operatic singing; check before using). Casals's "expressive intonation": the usual source is David Blum's *Casals and the Art of Interpretation* (1977); check the wording of his rule. Auto-Tune: confirm the year it was released (1997, Antares) and that "Believe" used it (the producers, Mark Taylor and Brian Rawling, long described it as a vocoder effect at first). Retime both cues by ear.
+</Callout>
+
+## Absolute and relative pitch
+
+Back to "Happy Birthday". You recognized it when it started on a new note because you hear melodies by their intervals. That ability, **relative pitch**, is nearly universal. Most people can't name the intervals, but they hear them; that's what lets you recognize a tune in any key or sing along with someone whose voice is higher than yours.
+
+**Absolute pitch**, often called **perfect pitch**, is something else: the ability to name a note heard on its own, or sing a named note, with no reference. Someone with absolute pitch hears a car horn and knows it's an F. It's rare. A figure of about 1 in 10,000 is often quoted for the general Western population, but it's much more common among musicians who started training very young, and strikingly more common among musicians who grew up speaking a tonal language such as Mandarin (Deutsch and colleagues, 2006). That pattern suggests a critical period: a window in early childhood when pitch labels can be learned, especially if pitch already carries meaning in speech.
+
+Absolute pitch is not "better" pitch. People who have it aren't more precise at intervals, and some find music transposed to a new key, or tuned to a slightly different reference, disorienting.
+
+And here's the twist: everyone has a little absolute pitch memory. Levitin (1994) asked people who couldn't name notes to sing a favourite pop song from memory, and many sang it in the original key or within a semitone or two. Schellenberg and Trehub (2003) found that ordinary listeners could tell the real soundtrack of a familiar TV theme from a version shifted by one or two semitones. What's rare is not the memory for pitch; it's the **names**.
+
+<Callout kind="check">
+Someone with no musical training recognizes a song instantly whatever key it's in, but can't tell you whether a given interval is a major or a minor third. Is that a contradiction?
+
+<Answer>
+No. Recognizing a tune needs relative pitch: hearing the pattern of intervals, which nearly everyone does. Naming an interval needs a learned category with a label attached, like the categories in the minor-or-major test. Untrained listeners hear the intervals well enough to identify tunes, but haven't learned to map sizes onto names.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="absolute pitch">
+Check: the 1-in-10,000 prevalence figure (usually traced to Bachem 1955; Takeuchi & Hulse 1993 review the estimates); Deutsch et al. 2006 (American versus Chinese conservatory students, and the critical-period interpretation, which is debated); Levitin 1994 (how many participants sang within one and two semitones); Schellenberg & Trehub 2003 (TV themes, shifts of one and two semitones). Check the claim that absolute-pitch possessors are no better at intervals, and some are worse; Miyazaki's studies are the usual source.
+</Callout>
+
+## The interval in one picture
+
+<DataTable title="The interval at a glance">
+
+| Question | Answer | Where it leads |
+|---|---|---|
+| What is an interval physically? | A frequency ratio; simple ratios come straight from the harmonic series | Consonance (chapter 1.5); tuning systems (next chapter) |
+| How do intervals combine? | Ratios multiply, so cents add | Measuring any tuning |
+| How are they named? | Number (letters counted) plus quality; inversions add to an octave | Chords, harmony, reading music |
+| How precisely do we hear them? | Together: a few cents (beating). In succession: categories tens of cents wide | Why melodies survive imperfect singing |
+| How do performers tune? | Chords toward just ratios, melodies toward their goals, with ±10–20 cents of scatter | Expressive performance; why fixed tuning is a compromise |
+| What do listeners remember? | Intervals (relative pitch), plus a rough memory of the usual pitch | Melody (chapter 3.3) |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. Why a tune survives being moved to a new starting note, and what that says about intervals.
+2. Where the classic ratios come from (neighbouring harmonics), and why the stable intervals have the smallest numbers.
+3. Why ratios multiply and cents add, with one worked example.
+4. The naming system: number, quality (perfect, major/minor, augmented/diminished), enharmonic spellings, inversion and its rules, compound intervals, interval class.
+5. Categorical perception of intervals, and its limits (training, weaker than speech).
+6. Why harmonic intervals can be tuned to a few cents and melodic ones can't.
+7. Octave stretch, and how it differs from piano stretch tuning.
+8. What performers actually do: chords toward just, melodies toward goals, scatter; and how pitch correction differs.
+9. Relative versus absolute pitch, and the evidence that pitch memory is widespread.
+
+**Decisions for your rewrite:**
+
+- **How much naming.** The full quality system (augmented, diminished, enharmonic spelling) is essential for chapters 3.5 and 3.6 but dry here. You could keep it short and lean on the reference table, or move the spelling details into chapter 3.5 where chords make them matter.
+- **Cents formula.** I showed the logarithm. You could skip it entirely and just state "cents add when ratios multiply", with the lab as proof.
+- **Examples.** Swap in your own: a singer whose intonation you love (or hate), a string player, a pop vocal with heavy pitch correction (T-Pain's records made the effect a style).
+- **Overlap.** Chapter 1.5 already covered beating and barbershop; chapter 1.3 covered the JND and octave equivalence. Decide how much to recap versus point back.
+
+**Misconceptions to watch for:**
+
+- "The simple ratios are the 'true' intervals and everything else is out of tune." Performers deliberately and usefully deviate from them, and equal temperament is a choice, not an error.
+- "Perfect pitch means hearing pitch more precisely." It means having labels; it doesn't make interval hearing sharper.
+- "An octave is exactly 2:1 to the ear." Physically yes; perceptually the preferred melodic octave is a little wider.
+- "Interval names describe sizes." They describe letter distances; the same size can have two names.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Burns, E. M. (1999). Intervals, scales, and tuning. In D. Deutsch (Ed.), *The Psychology of Music* (2nd ed., pp. 215–264). Academic Press.
+- Burns, E. M., & Ward, W. D. (1978). Categorical perception—phenomenon or epiphenomenon: Evidence from experiments in the perception of melodic musical intervals. *Journal of the Acoustical Society of America*, 63(2), 456–468.
+- Siegel, J. A., & Siegel, W. (1977). Categorical perception of tonal intervals: Musicians can't tell *sharp* from *flat*. *Perception & Psychophysics*, 21(5), 399–407.
+- Ward, W. D. (1954). Subjective musical pitch. *Journal of the Acoustical Society of America*, 26(3), 369–380.
+- Sundberg, J., & Lindqvist, J. (1973). Musical octaves and pitch. *Journal of the Acoustical Society of America*, 54(4), 922–929.
+- Loosen, F. (1993). Intonation of solo violin performance with reference to equally tempered, Pythagorean, and just intonations. *Journal of the Acoustical Society of America*, 93(1), 525–539.
+- Kopiez, R. (2003). Intonation of harmonic intervals: Adaptability of expert musicians to equal temperament and just intonation. *Music Perception*, 20(4), 383–410.
+- Vurma, A., & Ross, J. (2006). Production and perception of musical intervals. *Music Perception*, 23(4), 331–344.
+- Blum, D. (1977). *Casals and the Art of Interpretation*. Heinemann.
+- Takeuchi, A. H., & Hulse, S. H. (1993). Absolute pitch. *Psychological Bulletin*, 113(2), 345–361.
+- Deutsch, D., Henthorn, T., Marvin, E., & Xu, H. (2006). Absolute pitch among American and Chinese conservatory students: Prevalence differences, and evidence for a speech-related critical period. *Journal of the Acoustical Society of America*, 119(2), 719–722.
+- Levitin, D. J. (1994). Absolute memory for musical pitch: Evidence from the production of learned melodies. *Perception & Psychophysics*, 56(4), 414–423.
+- Schellenberg, E. G., & Trehub, S. E. (2003). Good pitch memory is widespread. *Psychological Science*, 14(3), 262–266.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details (volume, issue, pages, year), especially Sundberg & Lindqvist 1973, Kopiez 2003, Vurma & Ross 2006, and the Blum publisher.
+</Callout>

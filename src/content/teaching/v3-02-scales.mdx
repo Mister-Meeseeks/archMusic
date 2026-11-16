@@ -1,0 +1,410 @@
+---
+title: "Why Scales Exist: 12-TET and Its Alternatives"
+volume: 3
+chapter: 2
+summary: Pitch is continuous, yet nearly every musical tradition picks out a handful of steps. Why scales exist at all, why Western music settled on twelve equal ones, the tiny leftover intervals that make every tuning a compromise, and the systems that chose differently.
+status: teaching-draft
+updated: 2026-11-16
+assumes: [frequency, pitch, harmonics, spectrum, timbre, inharmonicity, note-names, octave, octave-equivalence, semitone, interval, frequency-ratio, cents, enharmonic, chord, root, major-minor, consonance, roughness, beats, equal-temperament, just-intonation, pythagorean-tuning, comma, meantone, slendro-pelog]
+lintIgnore: [pentatonic, fugue, contour] # forward mentions: "pentatonic" (taught in 3.4) and the WTC's "prelude and fugue" (3.8); "contour" only in a reference title (Dowling 1978)
+introduces: [scale, circle-of-fifths, temperament, wolf-interval, well-temperament, edo, microtone]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the others. One new lab with four modes: **Stacking fifths** (build a scale one pure fifth at a time and hear where it fails to close), **Tunings and keys** (five historical keyboard tunings, in any key), **The comma pump** (pure chords that sink), and **Equal divisions** (split the octave into any number of equal steps). The lab's numbers are computed from the same values it plays, so the cents you see are the cents you hear. Headphones or decent speakers help: the differences here are small, and the beating that gives them away is easier to hear without room echo.
+
+Chapter 1.5 introduced the three main tunings briefly, as part of the consonance story. This chapter is the full version: where each one comes from, what it costs, and why the piano ended up where it did. Chapter 3.1 covers single intervals (ratios, cents, interval names); this one is about whole scales and the systems that tune them.
+</Callout>
+
+## The question
+
+A voice, a violin, or a slide whistle can produce any pitch at all, sliding smoothly from one to the next. Yet when people make music, almost everywhere, they don't use that continuum. They pick out a small set of pitches and stick to them. A piano offers twelve per octave, all exactly the same distance apart. A Javanese gamelan offers five, or seven. An Arabic oud player uses pitches that fall between the piano's keys.
+
+A **scale** is that set: the collection of pitches a piece (or a whole tradition) draws from, listed in order of pitch. Usually it repeats every octave, so a scale is really a pattern of steps that fills one octave and then starts again.
+
+This chapter asks four questions:
+
+1. Why use steps at all, rather than any pitch?
+2. Why these steps? What makes some sets of pitches more useful than others?
+3. Why does Western music use twelve, and why equal ones?
+4. What did other traditions choose instead, and why?
+
+The answers come from four different places: perception and memory, the physics of the harmonic series, a piece of arithmetic that makes every tuning a compromise, and the technology of instruments that can't bend their notes.
+
+## Why steps at all
+
+### Categories make music shareable
+
+Chapter 3.1 showed that trained listeners hear intervals in categories, much as speakers of a language hear speech sounds as distinct letters rather than as a continuum. Scales give music the same advantage that a small alphabet gives writing. With a fixed set of pitches:
+
+- **A tune can be remembered.** You don't store a melody as a list of exact frequencies. You store something closer to "up a step, up a step, down two." The psychologist Jay Dowling argued that memory for melodies has two parts: the overall shape of ups and downs, and the scale steps that fill that shape in. The scale is the grid that makes the second part possible.
+- **A tune can be repeated and passed on.** If every singer used arbitrary pitches, no two performances of a song would match, and nobody could tell a wrong note from a right one.
+- **People can play together.** An ensemble needs agreement about which pitches exist. Fixed-pitch instruments, like xylophones, flutes with finger holes, and fretted lutes, need it built in.
+
+### What most scales have in common
+
+In 2015, Patrick Savage and colleagues analyzed 304 recordings from around the world, looking for features that turn up far more often than chance. Several concerned scales. Most music they sampled used discrete pitches rather than glides, most used scales of seven or fewer notes per octave, and most melodies moved mainly by small steps (chapter 3.3).
+
+<DataTable title="What most scales have in common" caption="Statistical tendencies, not laws: each has real exceptions. The 'likely reasons' are the leading explanations, and several are still debated.">
+
+| Feature | Typical | Exceptions | Likely reasons |
+|---|---|---|---|
+| Discrete pitches | A fixed set, reused | Glides and slides decorate the notes in many traditions, and some music (some chant, some electronic music) is built on them | Memory, sharing, playing together |
+| Repeats at the octave | The same note names in every octave | Octave equivalence is weaker in some cultures (chapter 1.3) | The octave's harmonics coincide almost completely |
+| Five to seven notes per octave | Five or seven | The chromatic twelve exist, but most music uses subsets of them | Few enough to remember and tell apart; enough for variety |
+| Unequal steps | A mix of larger and smaller steps (the major scale: 2 2 1 2 2 2 1 semitones) | Javanese slendro is close to five equal steps | Each note has a different pattern of neighbours, so listeners can tell where they are |
+| Includes a fifth above the starting note | Very common | Not universal; slendro has no exact fifth | The 3:2 is the simplest interval after the octave |
+
+</DataTable>
+
+The fourth row is the least obvious. Why would *unequal* steps help? In a scale whose steps are all the same, every note looks like every other one: from any note, the intervals around you are identical. In the major scale, each note sits in a slightly different neighbourhood of large and small steps. The music theorist Gerald Balzano pointed out that this lets a listener work out *where they are* in the scale from the intervals alone. That position-finding is a precondition for hearing one note as the place a tune comes to rest, which is chapter 3.4's subject.
+
+There is experimental support. Sandra Trehub and colleagues found that infants noticed a mistuned note more easily in scales with unequal steps than in an equal-step scale, even when the unequal scale was an invented one they had never heard. Adults did best only with the familiar major scale, which suggests both a built-in bias and the effect of a lifetime of exposure.
+
+<Callout kind="verify" title="universals and unequal steps">
+Check: Savage, Brown, Sakai & Currie (2015), *PNAS*: the sample size (304), and exactly which features they classed as statistical universals (discrete pitches, seven or fewer scale degrees, small melodic intervals). Dowling (1978) on scale and contour. Balzano (1980) on the uniqueness property of scales built from 12. Trehub, Schellenberg & Kamenetsky (1999): the stimuli (major, invented unequal, equal-step) and the exact infant vs adult results. The table's "likely reasons" column is a summary of explanations, not established findings; trim it if it overstates.
+</Callout>
+
+<Callout kind="check">
+Why would a scale of twelve equal steps be harder to "find your place in" than a seven-note scale with two sizes of step? And why is it still possible to find your place in music that uses all twelve?
+
+<Answer>
+In an equal-step scale, every note has exactly the same intervals around it, so the intervals alone can't tell you which note you're on. In a seven-note scale with large and small steps, each note has a different arrangement of neighbours: the half steps act like landmarks. Music that uses all twelve notes still usually treats a seven-note subset as the main scale and the others as passing colour, so the landmarks are still there. When music really does use all twelve equally (chapter 3.9), listeners do find it harder to orient themselves, which is partly the point.
+</Answer>
+</Callout>
+
+## Building a scale from fifths
+
+If you had to build a scale from nothing, where would you start? The octave (2:1) is the obvious frame. After the octave, the simplest frequency ratio is the fifth, 3:2. Chapter 1.5 showed why that matters: when two notes a pure fifth apart sound together, many of their harmonics coincide exactly, so the fifth is smooth, stable, and easy to tune by ear. Tuning a string a pure fifth above another is something a musician can do with no equipment at all, just by listening for the beating to stop.
+
+So here is a recipe that many cultures seem to have discovered: start on a note, tune a pure fifth above it, then a pure fifth above that, and keep going. Each time a note climbs out of the octave you started in, bring it down an octave so everything stays in one octave.
+
+<ScaleTuningLab initialMode="fifths" modes={['fifths']} />
+
+<Callout kind="try">
+1. Drag **Notes** from 1 up to 5 and play the scale. Five fifths (C G D A E) folded into an octave give C D E G A: a five-note scale with no half steps at all. Chapter 3.4 calls it the pentatonic scale. Notice that the octave strip has only **two** step sizes.
+2. Go to 7. Now there are seven notes with two step sizes again: five whole tones and two half steps. That's the step pattern of the major scale. (This chain started on C, so it includes F♯; start one fifth lower, on F, and you get exactly the white keys.)
+3. Go to 12 and play it. Twelve notes, nearly evenly spaced, but the half steps come in two sizes, 90¢ and 114¢.
+4. Go to 13. The thirteenth note should be C again. It isn't. Press **Hear the comma**: C, then B♯, then the two together. They're a quarter of a semitone apart, and together they produce slow beating.
+</Callout>
+
+### The Pythagorean comma
+
+That thirteenth note is the crux of this chapter. Twelve pure fifths almost exactly equal seven octaves, but not quite:
+
+- Twelve fifths: (3/2)¹² ≈ 129.75
+- Seven octaves: 2⁷ = 128
+
+The difference, a ratio of about 1.0136, is the **Pythagorean comma**: about 23.5 cents, roughly a quarter of a semitone. It means that the note you reach by twelve fifths (B♯) is slightly higher than the note you reach by seven octaves (C). On a piano these are the same key. In pure fifths they are different pitches.
+
+Arrange the twelve notes in the order the chain produces them, C G D A E B F♯ C♯ G♯ D♯ A♯ E♯, and bend the list into a ring, and you have the **circle of fifths**: the twelve notes arranged so that neighbours are a fifth apart. Chapter 3.6 uses it as a map of how chords move. With pure fifths it isn't really a circle at all. It's a spiral that never closes: keep stacking and you get B♯, then F𝄪, and an endless series of new notes, each a little off from an old one.
+
+That's why the lab draws the chain spiralling outward. On a circle where a full turn is an octave, the comma is a gap of about 7 degrees between C and B♯.
+
+### Why stop at twelve?
+
+If the chain never closes, why stop at twelve rather than eleven or thirteen? Two things make some stopping points better than others, and both show up in the lab.
+
+- **How close the next fifth comes to the start.** Stop after twelve notes and the next fifth lands only 23.5¢ from where you began, so the set feels nearly complete. Stop after eleven or thirteen and the next note lands far from anything you already have.
+- **How many sizes of step the scale has.** Most stopping points leave three different step sizes. A few leave only two, a large one and a small one, which makes for an orderly scale. Watch the strip in the lab: at 4, 6, or 8 notes there are three colors; at 5, 7, and 12 there are two.
+
+<DataTable title="The good stopping points" caption="Scales made from a chain of pure fifths that have only two step sizes, and how far the next fifth in the chain lands from the starting note. Computed from 3:2 = 701.955¢; step sizes rounded to the nearest cent.">
+
+| Notes | Step sizes | Next fifth lands | What you get |
+|---|---|---|---|
+| 5 | 294¢ and 204¢ | 90¢ from the start | The five-note scale with no half steps |
+| 7 | 204¢ and 90¢ | 114¢ from the start | The step pattern of the major scale: five whole tones, two half steps |
+| 12 | 114¢ and 90¢ | 23.5¢ from the start | The chromatic scale; the miss is the Pythagorean comma |
+| 41 | 43¢ and 23.5¢ | 19.8¢ from the start | Slightly closer, but far too many notes for most purposes |
+| 53 | 23.5¢ and 19.8¢ | 3.6¢ from the start | Very nearly closed (see "Other divisions of the octave") |
+
+</DataTable>
+
+Five, seven, and twelve are the practical stopping points, and those are exactly the numbers of notes in the world's most common scales and in the Western chromatic set. That is a strong hint that the 3:2 fifth shaped them, though it isn't the only route: plenty of traditions arrive at five- and seven-note scales by ear, by voice, or by instrument building, without stacking fifths at all.
+
+<Callout kind="verify" title="fifths and the origins of scales">
+The arithmetic is exact (computed). The historical claims need care: that Pythagorean (fifth-based) derivations appear in ancient Greek and ancient Chinese theory (the Chinese *sanfen sunyi* "add or subtract a third" method gives the same pitches) is standard; check a source such as Barbour (1951) or the Grove "Pythagorean intonation" article. Avoid implying that five- and seven-note scales were *historically* derived this way everywhere; that's a modern reconstruction for many traditions.
+</Callout>
+
+## Pythagorean tuning
+
+A scale built entirely from pure fifths is **Pythagorean tuning**, named after the ancient Greek tradition that described it (the mathematics is much older than Pythagoras himself). It was the basis of medieval European music theory, and chapter 1.5 gave its main consequence: fifths and fourths are perfectly smooth, but major thirds are wide and rough. The Pythagorean major third is four fifths stacked and brought down two octaves, (3/2)⁴ ÷ 4 = 81:64, about 408 cents. The pure third, 5:4, is 386 cents. The difference, 22 cents, is audible as fast beating.
+
+That fits medieval practice, where fifths and octaves were the stable consonances and thirds were treated as unstable. It also suits melody: Pythagorean half steps are narrow (90¢), so a note leaning up into the next one by a half step sounds especially tight.
+
+On a keyboard there's a further problem. A keyboard has twelve keys per octave, so the spiral must be cut somewhere. A typical medieval layout runs the chain of pure fifths from E♭ up to G♯. Eleven of the twelve fifths are pure, and the last one, from G♯ back to E♭, has to absorb the whole comma. It comes out 23.5¢ too narrow, and sounds sour.
+
+That leftover interval has a name. When a tuning makes almost every interval pure, the one place where all the error collects is called the **wolf**: the **wolf interval**, or wolf fifth, because it howls. Every keyboard tuning before equal temperament had to decide where to put its wolf, or how to get rid of it.
+
+<Callout kind="verify" title="Pythagorean keyboards">
+Check: the claim that medieval keyboards were laid out from E♭ to G♯ (or similar, such as G♭ to B), and that the wolf was placed among rarely used notes. Also check the aside below on "Pythagorean thirds that come out pure": late medieval and early fifteenth-century keyboard music is said to exploit thirds spelled as fourths (e.g. B–E♭ in this layout, which looks like a fourth on paper), which in Pythagorean tuning are within 2¢ of pure. The arithmetic is right (8192:6561 = 384.4¢); the historical use needs a source (Mark Lindley's work on keyboard temperaments).
+</Callout>
+
+## Just intonation and the syntonic comma
+
+### A scale of pure chords
+
+If thirds matter, why not tune them pure too? **Just intonation** builds a scale from pure fifths *and* pure thirds, so that the main chords have all their harmonics lined up. The classic just major scale makes the three most important major triads, on the first, fourth and fifth notes, perfectly pure, each with frequencies in the ratio 4:5:6.
+
+<DataTable title="A just major scale on C" caption="Ratios above C, sizes in cents, and the difference from the equal-tempered piano. Three pure major triads (C–E–G, F–A–C, G–B–D) generate every note.">
+
+| Note | Ratio | Cents | Equal-tempered | Difference |
+|---|---|---|---|---|
+| C | 1:1 | 0 | 0 | 0 |
+| D | 9:8 | 203.9 | 200 | +3.9 |
+| E | 5:4 | 386.3 | 400 | −13.7 |
+| F | 4:3 | 498.0 | 500 | −2.0 |
+| G | 3:2 | 702.0 | 700 | +2.0 |
+| A | 5:3 | 884.4 | 900 | −15.6 |
+| B | 15:8 | 1088.3 | 1100 | −11.7 |
+| C | 2:1 | 1200 | 1200 | 0 |
+
+</DataTable>
+
+### What goes wrong
+
+The table hides two problems. First, the whole steps aren't all the same: C–D is 9:8 (204¢), but D–E is 10:9 (182¢). Second, and worse, the fifth from D up to A is not pure. D is 9:8 and A is 5:3, so D–A is (5/3) ÷ (9/8) = 40:27, about 680¢: 22 cents narrow. The D minor chord, which a composer in C major uses constantly, is badly out of tune.
+
+That 22-cent discrepancy is the second great comma, the **syntonic comma**, a ratio of 81:80 (about 21.5¢). It's the difference between reaching a note by four pure fifths and reaching it by a pure major third: C up four fifths gives an E at 81:64, while C up a pure third gives E at 5:4, and 81:64 ÷ 5:4 = 81:80. The Pythagorean comma is the price of making the fifths close up; the syntonic comma is the price of making fifths and thirds agree. You can't have both pure with a fixed set of twelve pitches.
+
+### The comma pump
+
+Singers and string players don't have fixed pitches, so can't they just tune every chord pure as they go? They can, but it has a strange consequence.
+
+<ScaleTuningLab initialMode="pump" modes={['pump']} />
+
+<Callout kind="try">
+1. With **Every chord pure**, play the progression. Each chord is perfectly smooth: no beating. Watch the dots: every chord's root sinks a little against the keyboard.
+2. Listen to the very end: after the last chord, the lab plays the opening chord again at its original pitch. After three trips round, the gap is 64.5¢, about two-thirds of a semitone. Most people hear the jump up clearly.
+3. Switch to **Equal temperament** and play again. No drift at all, but now every chord beats gently, because its thirds are off.
+</Callout>
+
+The progression C – A minor – D minor – G – C, sung with every chord pure and each shared note held exactly where it was, ends a syntonic comma lower than it started. Do it again and it sinks again. This is called a **comma pump**, and it's a real problem for unaccompanied choirs: a group that tunes each chord purely by ear can drift flat over the course of a piece. Research on a cappella quartets has found exactly this kind of drift when the music's harmonies force it. In practice, good ensembles compromise: they tune the important chords nearly pure and nudge shared notes slightly to stay on pitch.
+
+<ListeningCue track="barbershop-tag" start="3:20">
+Barbershop singers push hardest toward pure chords. Listen to the final sustained chord lock into place (chapter 1.5). Those pure chords are exactly what a fixed keyboard can't give you in every key.
+</ListeningCue>
+
+<Callout kind="verify" title="just intonation and drift">
+The ratios and commas are computed. Check: Howard (2007), *Journal of Voice*, on intonation drift in SATB quartet singing, and whether his result matches "drifts when the harmony forces it". The phrase "comma pump" is common in tuning literature and online (it's associated with the microtonal theory community); find a citable use or define it as our own label. Also check how much pitch drift listeners notice (the claim that 64.5¢ is clearly audible as a jump).
+</Callout>
+
+<Callout kind="check">
+In just intonation tuned for C, the chords C, F and G are perfect, but D minor is badly out. Using the ratios in the table, where exactly does the problem come from? Why can't you fix it by retuning D?
+
+<Answer>
+The D–A fifth is 40:27 instead of 3:2, about 22¢ narrow, because D was tuned as a pure fifth above G (9:8 from C) while A was tuned as a pure third above F (5:3). If you retune D to make D–A pure (D = 10:9), then D is no longer a pure fifth above G, so the G major chord's D goes out instead. The two routes to D disagree by the syntonic comma, and one fixed pitch can't satisfy both.
+</Answer>
+</Callout>
+
+## Temperaments: hiding the commas
+
+Every fixed tuning has to hide two commas somewhere. A **temperament** is a deliberate choice about where: you mistune (or "temper") some intervals slightly away from pure so that the whole system works in more keys. From the sixteenth to the nineteenth centuries, European musicians tried many temperaments, and each one has a sound.
+
+<ScaleTuningLab initialMode="keys" modes={['keys']} tuning="meantone" />
+
+### Meantone
+
+Renaissance music was full of thirds, and Pythagorean thirds were too rough. The answer was **meantone**: narrow every fifth slightly so that the thirds come out pure, or nearly. In the most famous version, quarter-comma meantone, each fifth is narrowed by a quarter of a syntonic comma (about 5.4¢). Four of those slightly narrow fifths, C–G–D–A–E, then land exactly on a pure major third, C–E at 5:4. (The name comes from the whole step, which sits exactly at the mean of the two just whole steps, 9:8 and 10:9.)
+
+In keys near C the result is lovely: pure thirds, and fifths only slightly off. But the cost is steep. Narrowing eleven fifths leaves the twelfth, G♯–E♭, about 36¢ *too wide*: a ferocious wolf. And thirds that cross the wolf are wrecked: B–D♯ and F♯–A♯ come out about 41¢ wide, which is so far from pure that they barely work as thirds at all. In meantone, G♯ and A♭ are genuinely different pitches, so you have to choose which one a keyboard gets. Some organs and harpsichords had split black keys, with separate front and back halves for G♯ and A♭ or D♯ and E♭, to give players both.
+
+<Callout kind="try">
+1. With **Quarter-comma meantone** selected and the key set to **C**, look at the bars: the thirds on C, F and G are at 0 (pure), and every fifth is slightly narrow, except one red bar. Play I–IV–V–I and hold the C chord. It's very still.
+2. Now pick **E** and play. The E and A chords are still pure, but the B chord (V) needs D♯, and on this keyboard that black key is tuned as E♭. Its third is 41¢ wide, and it howls.
+3. Try **A♭**. The chord on A♭ itself uses the wolf fifth.
+</Callout>
+
+### Well temperament
+
+By the late seventeenth century, composers wanted to write in more keys, so tuners spread the commas more evenly to get rid of the wolf. The result is a **well temperament**: no wolf, every key usable, but the keys are not all alike. Andreas Werckmeister published several in 1691. In his best-known one (Werckmeister III), four of the fifths are narrowed by a quarter of the Pythagorean comma each and the rest are pure. Keys near C get nearly pure thirds; keys far from C get wider, Pythagorean-like thirds.
+
+<Callout kind="try">
+Switch to **Werckmeister III** and play I–IV–V–I in **C**, then in **E**, then in **A♭**. Nothing howls. But hold the C chord, then the A♭ chord: the A♭ chord beats noticeably faster. The bars show why: the third on C is 4¢ wide, the one on A♭ is 22¢ wide.
+</Callout>
+
+This gave each key its own character, and writers of the time described them: one key bright and heroic, another melancholy, another harsh. How much of that came from tuning and how much from convention is hard to untangle, but in a well temperament the keys really did sound different.
+
+The most famous monument to well temperament is J. S. Bach's *The Well-Tempered Clavier* (Book I 1722, Book II about 1742): a prelude and fugue in every one of the 24 major and minor keys. It's often described as a demonstration of *equal* temperament, but "well-tempered" meant tuned so that all keys were playable, not tuned equally. What tuning Bach himself used isn't known. In 2005 the harpsichordist Bradley Lehman proposed that a looping pattern drawn on the book's title page is a tuning diagram; others are unconvinced.
+
+<Callout kind="verify" title="meantone and well temperament">
+Check: the attribution of quarter-comma meantone (Pietro Aron 1523 described something like it; Zarlino and Salinas gave precise descriptions later in the century); "split keys" on Renaissance and Baroque keyboards (which notes, how common); Werckmeister 1691 (*Musicalische Temperatur*) and the description of Werckmeister III (the lab's table uses the standard cents values: 0, 90.2, 192.2, 294.1, 390.2, 498.0, 588.3, 696.1, 792.2, 888.3, 996.1, 1092.2); key-character writers (Mattheson 1713, Schubart c. 1784); the dates of the two WTC books; Lehman (2005), *Early Music*, and the responses to it. The meantone cents in the lab are computed: fifth 696.6¢, wolf 737.6¢.
+</Callout>
+
+## Equal temperament
+
+The modern solution is to spread the Pythagorean comma perfectly evenly: narrow every fifth by one twelfth of it, about 2¢. Twelve of those fifths close the circle exactly, and the octave splits into twelve identical semitones of 100¢. That's **equal temperament**, or 12-TET (twelve-tone equal temperament).
+
+What it buys:
+
+- **Every key is identical.** A piece moved up a semitone sounds exactly the same, just higher. There's no wolf and no key color from tuning.
+- **Any note can be any spelling.** G♯ and A♭ are the same key and the same pitch, so a composer can treat a note as one and then the other (chapter 3.1's enharmonic notes). That freedom underlies the wandering, chromatic harmony of the nineteenth century, and of jazz.
+- **Instruments can agree.** A piano, a guitar, a vibraphone and a synthesizer can all play together in any key.
+
+What it costs: only the octave is pure. Fifths are 2¢ narrow (almost inaudible). Major thirds are about 14¢ wide and minor thirds about 16¢ narrow, which is clearly audible as beating in a sustained chord (try **Equal** in the lab, or revisit the tuning comparison in chapter 1.5). Western listeners have heard these thirds all their lives and generally accept them as normal.
+
+The idea is old. The precise mathematics was worked out independently by the Chinese prince Zhu Zaiyu in 1584 and the Flemish engineer Simon Stevin around 1605. Fretted instruments got there first in practice: a fret runs across every string at once, so it can't be placed to suit one string's pure intervals without spoiling another's, and lutes and viols were fretted close to equal steps from the sixteenth century on. Keyboards held out much longer, with well temperaments common through the eighteenth century. Equal temperament became the standard way to tune pianos only gradually, during the nineteenth century.
+
+Even then, real pianos aren't tuned to exact 12-TET. Piano strings are slightly inharmonic (chapter 1.2): their upper partials run sharp, so tuners stretch the octaves slightly wider than 2:1 to keep the beating even, especially at the extremes of the keyboard. And instruments that can bend pitch, like voices, violins and trombones, still adjust their tuning moment to moment (chapter 3.1).
+
+<DataTable title="Five ways to tune a keyboard" caption="Errors are relative to pure (3:2 fifths, 5:4 major thirds), in cents. All values are computed from the tunings in the lab.">
+
+| Tuning | Fifths | Major thirds | Where the commas go | Usable keys | Main era |
+|---|---|---|---|---|---|
+| Pythagorean | 11 pure, one wolf (−23.5) | +22 (most) | Pythagorean comma into one wolf fifth | Those avoiding the wolf | Medieval |
+| Just (tuned for C) | Mostly pure; D–A −21.5 | 0 on C, F, G; others badly off | Syntonic comma into several bad intervals | Essentially one | Theory and voices, not keyboards |
+| Quarter-comma meantone | 11 at −5.4, wolf +35.7 | 0 (8 of them); 4 at +41 | Pythagorean comma into the wolf; syntonic comma spread over the fifths | About six near C | c. 1500–1700 |
+| Werckmeister III | 4 at −5.9, 8 pure | +4 (C) to +22 (A♭, D♭, F♯) | Pythagorean comma spread over four fifths | All, each with its own color | c. 1690–1800 |
+| 12-tone equal | All −2.0 | All +13.7 | Pythagorean comma spread evenly over all twelve fifths | All, identical | 1800s on (pianos) |
+
+</DataTable>
+
+<Callout kind="verify" title="equal temperament history">
+Check: Zhu Zaiyu (1584) and Simon Stevin (c. 1605, unpublished in his lifetime); fretted lutes and viols approximating equal temperament in the sixteenth century (Vincenzo Galilei's 18:17 fret rule is the usual example); when equal temperament became standard for pianos (often dated to the mid-nineteenth century in England, e.g. Broadwood around 1846, and earlier in Germany); and stretch tuning (the Railsback curve). Duffin's *How Equal Temperament Ruined Harmony* (2007) argues for the later dating and is worth reading as a corrective to standard accounts.
+</Callout>
+
+<Callout kind="check">
+Equal temperament is sometimes described as "making every interval slightly out of tune." Is that right? Which interval is perfectly in tune, which is almost in tune, and which is noticeably out?
+
+<Answer>
+Almost right, but not quite. The octave is exactly pure (2:1). The fifth is very nearly pure: 2¢ narrow, too small for most listeners to notice in a single interval, though it causes slow beating in a sustained chord. Major and minor thirds and sixths are noticeably off, by 14–16¢, and their beating is easy to hear. So equal temperament isn't evenly out of tune: it keeps the octave and fifth nearly perfect and puts nearly all the compromise into the thirds.
+</Answer>
+</Callout>
+
+## Other divisions of the octave
+
+Twelve isn't the only way to divide the octave equally. Any number works mathematically; the question is how well the steps approximate the intervals you care about. Musicians and theorists have tried many, and the general idea is called an **equal division of the octave**, written N-TET or N-EDO for N equal steps.
+
+<ScaleTuningLab initialMode="edo" modes={['edo']} />
+
+<Callout kind="try">
+1. Start at **12**. The fifth is 2¢ off; the major third is 14¢ off. Play the major triad, then the pure triad, and compare.
+2. Try **19**. The fifth is worse (7¢ narrow), but the thirds are much better. Nineteen-tone equal temperament sounds a lot like meantone, with every key usable.
+3. Try **31**. The major third is within 1¢ of pure.
+4. Try **53**. Everything is within about 2¢ of pure: fifths, thirds, and minor thirds.
+5. Try **24**: quarter tones. The fifth and thirds are exactly 12-TET's (24 contains all of 12's notes), plus a new note between every pair of piano keys. The harmonic seventh (7:4) is a little closer than in 12.
+</Callout>
+
+<EdoErrors />
+
+The figure shows the whole landscape. Twelve is the first division with an excellent fifth, which is the main reason it won. Others have been used:
+
+- **19 equal steps** was proposed in the sixteenth century and has been revived by modern composers; it behaves like an improved meantone.
+- **31 equal steps** was described by the physicist Christiaan Huygens in 1691. In the twentieth century the Dutch physicist Adriaan Fokker built a 31-tone organ, now in Amsterdam, and composers wrote for it.
+- **53 equal steps** approximates both pure fifths and pure thirds almost perfectly. One version of Turkish music theory measures intervals in fifty-thirds of an octave.
+- **24 equal steps (quarter tones)** was adopted as a theoretical framework in Arabic music theory in the twentieth century. But it's a framework, not a description of practice: the "neutral" intervals of maqam, about halfway between a piano's major and minor intervals, vary from one region and one maqam to another, and good players place them by ear.
+
+A **microtone** is any interval smaller than a semitone; more loosely, any pitch that falls between the keys of a piano. A quarter tone (50¢) is the most common. From the point of view of maqam, raga, or gamelan, there's nothing "micro" about these intervals: they're ordinary scale steps. The word only makes sense from inside 12-TET.
+
+<ListeningCue track="bashir-taqsim-rast" start="0:00">
+Munir Bashir improvising on the oud in maqam Rast. Rast's third note sits between a major and a minor third, and its seventh between a major and a minor seventh. Try singing a major scale against it: the third will feel too high, a minor scale's third too low.
+</ListeningCue>
+
+<ListeningCue track="king-gizzard-rattlesnake" start="0:00" end="1:30">
+The Australian rock band King Gizzard & the Lizard Wizard had guitars refretted with quarter-tone frets for their 2017 album *Flying Microtonal Banana*. The riff bends between the piano's notes, deliberately, and the band plays it with the drive of ordinary garage rock. Notice how quickly the "out of tune" impression turns into a flavour.
+</ListeningCue>
+
+<ListeningCue track="collier-bleak-midwinter" start="0:00">
+Jacob Collier's multitracked a cappella arrangement famously shifts its harmony by a quarter tone partway through, so that the piece ends in a key between two piano keys. Voices can do this because they aren't locked to a keyboard. Listen for the moment where the harmony seems to slide into a new, slightly strange world.
+</ListeningCue>
+
+<Callout kind="verify" title="other divisions and microtonal examples">
+Check: 19-TET history (Costeley's 1558 chanson is often cited; Salinas; Joel Mandelbaum and Easley Blackwood in the twentieth century); Huygens (1691, *Novus cyclus harmonicus*); Fokker's 31-tone organ (1950, Teylers Museum in Haarlem, moved to the Muziekgebouw aan 't IJ in Amsterdam); the 53-comma basis of Arel–Ezgi–Uzdilek Turkish theory; the 1932 Cairo Congress of Arab Music and the 24-tone framework; the claim that maqam neutral intervals vary by region (Marcus 1992 is a standard source). King Gizzard: the 24-TET refretting and the inspiration from Turkish music. Jacob Collier: the quarter-tone pivot and its timestamp (no cue time sourced; find it by ear). Munir Bashir: the recording date and the Rast intervals.
+</Callout>
+
+## Scales that don't fit twelve at all
+
+Some traditions don't divide the octave into equal steps of any size, and don't tune by fifths or thirds.
+
+**Gamelan.** Javanese and Balinese gamelan use two tuning systems, **slendro** and **pelog** (chapter 1.5 introduced them briefly). Slendro divides the octave into five roughly equal steps, each around 240¢, which is between a whole tone and a minor third; nothing in it matches a piano. Pelog has seven unequal steps, of which pieces usually use five at a time. There's no single correct tuning: each gamelan is tuned as a unit, and two orchestras' slendro can differ noticeably. In Balinese gamelan, instruments are tuned in pairs set deliberately slightly apart, so that the pairs produce beating and the sound shimmers. Chapter 1.5 described William Sethares' idea that gamelan tunings suit the inharmonic spectra of metal bars and gongs, the way Western scales suit harmonic spectra. Chapter 3.10 returns to gamelan in depth.
+
+<ListeningCue track="gamelan-oleg-kotekan" start="0:00">
+A Balinese gong kebyar ensemble. Listen for the shimmer of paired instruments beating against each other, and try humming a piano scale against it. The pitches won't line up with any of the piano's.
+</ListeningCue>
+
+**Harry Partch.** The American composer Harry Partch rejected equal temperament altogether. He built a just intonation scale of 43 pitches per octave, then built the instruments to play it: reed organs, marimbas, and kitharas of his own design. His music sounds like nothing else.
+
+<ListeningCue track="partch-barstow" start="0:00">
+*Barstow*, Partch's setting of graffiti he copied from a highway railing in the Depression. The voice speaks and sings in his just intonation, over his own instruments. Listen to how the intervals sound purer and stranger at the same time.
+</ListeningCue>
+
+**Bohlen–Pierce.** A scale doesn't even have to repeat at the octave. The Bohlen–Pierce scale divides the 3:1 interval (an octave plus a fifth) into thirteen equal steps. It was designed for timbres whose harmonic series has mainly odd-numbered harmonics, like a clarinet's: for those sounds, 3:1 behaves the way 2:1 does for ordinary ones. It's a neat demonstration of chapter 1.5's idea that scales and timbres fit together.
+
+<Callout kind="verify" title="gamelan, Partch, Bohlen–Pierce">
+Check: slendro step sizes (around 240¢ on average, with real variation) and pelog's typical use of five-note subsets; Balinese paired tuning (*ombak*: the pengumbang/pengisep pairs and typical beating rates); Partch's 43-tone scale (*Genesis of a Music*, 1949), his instruments, and *Barstow*'s dates (1941, revised); Bohlen (1970s) and Pierce's later work on the scale, and its match to odd-harmonic timbres.
+</Callout>
+
+## Why twelve won
+
+Put together, the story of the Western scale looks like this:
+
+<DataTable title="Why scales look the way they do" caption="A summary of the forces in this chapter. None works alone; the scale a tradition settles on is a compromise among them.">
+
+| Force | What it pushes toward | Example |
+|---|---|---|
+| Memory and sharing | A small set of discrete pitches | Five to seven notes per octave, almost everywhere |
+| Finding your place | Unequal steps | The major scale's 2 2 1 2 2 2 1 |
+| Harmonics and roughness | Pure octaves, fifths, and (with harmony) thirds | Fifth-based scales; just intonation in choirs |
+| Arithmetic | Compromise: the commas can't be avoided | Pythagorean, meantone, well, and equal temperaments |
+| Fixed-pitch instruments | One tuning that has to work for everything | Frets and keyboards adopting equal temperament |
+| Musical ambition | Freedom to change key and use all twelve notes | Nineteenth-century chromatic harmony, jazz |
+| Timbre | Scales that suit the instruments' spectra | Gamelan tunings; Bohlen–Pierce for clarinet-like tones |
+| Culture | Whatever the tradition has learned to hear as right | Maqam's neutral intervals; Western acceptance of wide thirds |
+
+</DataTable>
+
+Twelve-tone equal temperament is not the natural scale, and it isn't simply arbitrary either. Twelve is the smallest number of equal steps that captures the fifth almost perfectly, and it lets fixed-pitch instruments play in every key. Its price, slightly sour thirds and the loss of every pitch between the keys, is one most Western listeners no longer notice. Listeners raised on maqam or gamelan often hear that price clearly.
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. Why music uses discrete pitches: memory, sharing, ensemble. The common features of scales and the leading explanations for unequal steps.
+2. How stacking pure fifths produces five-, seven- and twelve-note scales, and why the chain never closes (the Pythagorean comma, 23.5¢).
+3. The circle of fifths as the order the chain produces, and why with pure fifths it's a spiral.
+4. Pythagorean tuning: pure fifths, wide thirds, and the wolf on a keyboard.
+5. Just intonation: pure triads, the D–A problem, the syntonic comma (81:80), and the comma pump.
+6. Temperament as choosing where to hide the commas: meantone (pure thirds, a wolf), well temperament (no wolf, key color), and equal temperament (everything equal, thirds 14¢ wide).
+7. Why "well-tempered" doesn't mean "equal-tempered."
+8. Other equal divisions (19, 24, 31, 53) and what each gets right; microtones as ordinary steps in other traditions.
+9. Scales that don't fit twelve at all: gamelan, Partch, Bohlen–Pierce.
+
+**Decisions for your rewrite:**
+
+- **How much arithmetic.** The ratios make the commas concrete, but some readers will glaze over. You could keep the arithmetic in tables and let the lab carry the argument.
+- **Overlap with chapter 1.5.** That chapter already introduces the three tunings and the comma. Decide whether 1.5 keeps a short version (and points here) or whether this chapter assumes it and skips the basics.
+- **Where to put gamelan and maqam.** Chapter 3.10 will treat them fully. Here they could be a short teaser or a full section.
+- **The ending.** I closed on "twelve is a good compromise, not a law." You might instead end on a piece that crosses systems (a jazz singer bending thirds over a piano, or a microtonal pop track).
+
+**Misconceptions to watch for:**
+
+- "The 12 notes are natural, discovered in the harmonic series." The harmonic series supplies the octave and fifth, but the twelve-note set comes from stopping a chain that doesn't close, and its equal tuning is a compromise.
+- "Bach invented (or demonstrated) equal temperament." *Well*-tempered means every key playable, not every key identical.
+- "Just intonation is the true tuning and equal temperament is wrong." Just intonation is perfect for one set of chords and fails elsewhere; no fixed tuning is perfect in every key.
+- "Microtones are out of tune." They're out of 12-TET, which is a different thing.
+- "Equal temperament makes everything a little out of tune." The octave is perfect and the fifth almost so; the compromise lives mainly in the thirds.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Barbour, J. M. (1951). *Tuning and Temperament: A Historical Survey*. Michigan State College Press.
+- Duffin, R. W. (2007). *How Equal Temperament Ruined Harmony (and Why You Should Care)*. W. W. Norton.
+- Savage, P. E., Brown, S., Sakai, E., & Currie, T. E. (2015). Statistical universals reveal the structures and functions of human music. *Proceedings of the National Academy of Sciences*, 112(29), 8987–8992.
+- Dowling, W. J. (1978). Scale and contour: Two components of a theory of memory for melodies. *Psychological Review*, 85(4), 341–354.
+- Balzano, G. J. (1980). The group-theoretic description of 12-fold and microtonal pitch systems. *Computer Music Journal*, 4(4), 66–84.
+- Trehub, S. E., Schellenberg, E. G., & Kamenetsky, S. B. (1999). Infants' and adults' perception of scale structure. *Journal of Experimental Psychology: Human Perception and Performance*, 25(4), 965–975.
+- Howard, D. M. (2007). Intonation drift in a capella soprano, alto, tenor, bass quartet singing with key modulation. *Journal of Voice*, 21(3), 300–315.
+- Lindley, M. (1987). Stimmung und Temperatur. In F. Zaminer (Ed.), *Geschichte der Musiktheorie*, Vol. 6. Wissenschaftliche Buchgesellschaft.
+- Lehman, B. (2005). Bach's extraordinary temperament: Our Rosetta Stone. *Early Music*, 33(1), 3–23, and 33(2), 211–231.
+- Werckmeister, A. (1691). *Musicalische Temperatur*. Quedlinburg.
+- Marcus, S. (1992). Modulation in Arab music: Documenting oral concepts, performance rules and strategies. *Ethnomusicology*, 36(2), 171–195.
+- Sethares, W. A. (2005). *Tuning, Timbre, Spectrum, Scale* (2nd ed.). Springer.
+- Partch, H. (1949). *Genesis of a Music*. University of Wisconsin Press.
+- Mathews, M. V., Pierce, J. R., Reeves, A., & Roberts, L. A. (1988). Theoretical and experimental explorations of the Bohlen–Pierce scale. *Journal of the Acoustical Society of America*, 84(4), 1214–1222.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details, especially the Lindley chapter (title and volume), Lehman's two-part article pages, Marcus 1992 (the best source for neutral intervals may be a different Marcus paper), Howard 2007's exact title, and the Mathews et al. Bohlen–Pierce paper.
+</Callout>

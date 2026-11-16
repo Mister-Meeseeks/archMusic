@@ -1,0 +1,83 @@
+---
+// From exact repetition to contrast: five ways a passage can relate to an
+// earlier one, as a continuum. Each column has a tiny piano roll: the original
+// figure (blue) and what comes back (orange). The figure is drawn from the
+// note lists below, in scale steps; the short-short-short-long shape echoes
+// Beethoven's Fifth.
+import Figure from '../ui/Figure.astro';
+
+const r = (v: number) => Math.round(v * 10) / 10;
+type N = [number, number]; // [scale step (or -1 = rest), length in eighths]
+const ORIG: N[] = [[-1, 1], [4, 1], [4, 1], [4, 1], [2, 4]];
+const cols: { title: string; back: N[]; keeps: string[]; ex: string[] }[] = [
+  { title: 'Exact repetition', back: ORIG, keeps: ['Everything'], ex: ['A loop or riff;', '“Around the World”'] },
+  { title: 'Varied repetition', back: [[-1, 1], [4, 1], [4, 1], [4, 1], [0, 4]], keeps: ['All but one detail'], ex: ['A verse with new', 'words; a riff', 'with a fill'] },
+  {
+    title: 'Variation',
+    back: [[4, 0.5], [5, 0.5], [4, 0.5], [3, 0.5], [4, 0.5], [5, 0.5], [4, 0.5], [3, 0.5], [2, 4]],
+    keeps: ['The skeleton: outline,', 'chords, phrase length'],
+    ex: ['Mozart’s Twinkle', 'variations; a jazz', 'solo chorus'],
+  },
+  {
+    title: 'Development',
+    back: [[4, 1], [2, 1], [5, 1], [3, 1], [6, 1], [4, 1], [6, 0.5], [6, 0.5], [6, 0.5], [6, 0.5]],
+    keeps: ['A fragment of the', 'motif, often just', 'its rhythm'],
+    ex: ['Beethoven’s Fifth,', 'development section'],
+  },
+  { title: 'Contrast', back: [[0, 3], [1, 1], [3, 2], [2, 2]], keeps: ['Key, tempo, style;', 'sometimes nothing'], ex: ['A bridge; a', 'second theme'] },
+];
+
+const X0 = 14, CW = 130, GW = 112, GH = 52, GY = 90;
+const STEP = GH / 8;
+function glyph(cx: number) {
+  const x = (u: number) => r(cx + (u / 16) * GW);
+  const bars = (ns: N[], u0: number, cls: string) => {
+    let u = u0;
+    return ns.flatMap(([s, d]) => {
+      const out = s >= 0 ? [{ x: x(u), y: r(GY + GH - 6 - s * STEP), w: r(Math.max(2, (d / 16) * GW - 1.5)), cls }] : [];
+      u += d;
+      return out;
+    });
+  };
+  return bars;
+}
+const drawn = cols.map((c, i) => {
+  const cx = X0 + i * CW + (CW - GW) / 2 - 4;
+  const g = glyph(cx);
+  return { ...c, x: X0 + i * CW, cx, notes: [...g(ORIG, 0, 'fig-a'), ...g(c.back, 8, 'fig-b')], mid: r(cx + GW / 2) };
+});
+// the familiarity / novelty gradient
+const steps = Array.from({ length: 5 }, (_, i) => i);
+---
+
+<Figure
+  title="From repetition to contrast"
+  caption="Five relations a passage can have to something heard earlier, from identical to new. In each small roll the blue figure comes first and the orange one is what follows it. Moving right, less is kept and more must be learned: the music gets less predictable and asks more of memory and attention (chapter 1.6). Most music mixes all five, at different timescales at once."
+>
+  <svg viewBox="0 0 680 300" role="img" aria-label="Five columns from exact repetition to contrast, each with a small piano roll, what stays the same, and an example">
+    <defs>
+      <marker id="vm-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fig-head" />
+      </marker>
+    </defs>
+    {steps.map((i) => (
+      <rect x={X0 + i * CW + 2} y="14" width={CW - 4} height="26" rx="5" style={`fill: color-mix(in srgb, var(--tone-b) ${6 + i * 9}%, var(--surface))`} />
+    ))}
+    <line x1={X0 + 8} x2={X0 + 5 * CW - 8} y1="48" y2="48" class="fig-thin" marker-start="url(#vm-arrow)" marker-end="url(#vm-arrow)" />
+    <text x={X0 + 8} y="62" class="fig-s">more familiar, more predictable</text>
+    <text x={X0 + 5 * CW - 8} y="62" text-anchor="end" class="fig-s">more novel, more to remember</text>
+
+    {drawn.map((c) => (
+      <g>
+        <text x={c.x + CW / 2} y="31" text-anchor="middle" class="fig-t">{c.title}</text>
+        <rect x={c.cx - 4} y={GY - 6} width={GW + 8} height={GH + 10} rx="5" class="fig-box" />
+        <line x1={r(c.cx + GW / 2)} x2={r(c.cx + GW / 2)} y1={GY - 2} y2={GY + GH} class="fig-grid" />
+        {c.notes.map((n) => <rect x={n.x} y={n.y} width={n.w} height="5" rx="2" class={n.cls} />)}
+        <text x={c.x + 6} y="172" class="fig-h">Kept</text>
+        {c.keeps.map((l, k) => <text x={c.x + 6} y={188 + k * 14} class="fig-s">{l}</text>)}
+        <text x={c.x + 6} y="238" class="fig-h">Example</text>
+        {c.ex.map((l, k) => <text x={c.x + 6} y={254 + k * 14} class="fig-s">{l}</text>)}
+      </g>
+    ))}
+  </svg>
+</Figure>

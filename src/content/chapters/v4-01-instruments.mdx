@@ -1,0 +1,28 @@
+---
+title: Acoustic Instruments as Physical Systems
+volume: 4
+chapter: 1
+summary: (Write your one-sentence summary.)
+status: not-started
+# Copied from the teaching draft; adjust as your version changes. `npm run concepts` checks them.
+assumes: [frequency, pitch, sine-wave, waveform, sound-wave, amplitude, wavelength, period, speed-of-sound, harmonics, standing-wave, spectrum, timbre, resonance, formant, inharmonicity, octave, interval, frequency-ratio, cents, semitone, note-names, middle-c, chord, major-minor, tonic, beats, equal-temperament, attack-transient, missing-fundamental, drum-kit, register]
+lintIgnore: [physical-modeling, oscillator] # forward pointers to 4.5; a reference title
+introduces: [exciter-resonator, mode-locking, helmholtz-motion, soundboard, sympathetic-resonance, open-closed-pipe, bore, reed, overblowing, membrane-modes, bar-modes, bell-partials, hornbostel-sachs]
+---
+
+{/*
+  YOUR VERSION of Vol 4 ch. 1. Teaching draft: src/content/teaching/v4-01-instruments.mdx
+
+  Figure:
+    <ExciterResonator />                       violin, clarinet, drum as exciter -> resonator -> radiator, with feedback loops
+
+  Lab (pick resonators with `resonators`, the first one shown with `initial`, and a `title`):
+    <InstrumentLab />                                                      all nine resonators
+    <InstrumentLab initial="string" resonators={['string']} />            pluck/bow, pluck point, stiffness (piano inharmonicity, mode locking)
+    <InstrumentLab initial="closed" resonators={['open', 'closed']} />    flute vs clarinet: all vs odd harmonics
+    <InstrumentLab initial="membrane" resonators={['membrane', 'timpani', 'tabla']} />   inharmonic head; air-loaded and center-loaded heads
+    <InstrumentLab initial="bar" resonators={['bar', 'marimba', 'bell']} />   free bar, undercut marimba bar, church bell partials
+    Resonator ids: string, open, closed, membrane, timpani, tabla, bar, marimba, bell
+*/}
+
+Start writing here.

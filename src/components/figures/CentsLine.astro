@@ -1,0 +1,89 @@
+---
+// The simple just ratios placed on a ruler in cents, against the twelve
+// equal-tempered semitones, plus how far each one sits from its
+// equal-tempered neighbour. All positions are computed from the ratios
+// (cents = 1200 × log2(ratio)); the lower panel is exaggerated in scale.
+import Figure from '../ui/Figure.astro';
+
+const r = (v: number) => Math.round(v * 10) / 10;
+const cents = (n: number, d: number) => 1200 * Math.log2(n / d);
+type Iv = { short: string; n: number; d: number; semis: number; extra?: boolean };
+const IVS: Iv[] = [
+  { short: 'm2', n: 16, d: 15, semis: 1 },
+  { short: 'M2', n: 9, d: 8, semis: 2 },
+  { short: 'm3', n: 6, d: 5, semis: 3 },
+  { short: 'M3', n: 5, d: 4, semis: 4 },
+  { short: 'P4', n: 4, d: 3, semis: 5 },
+  { short: 'TT', n: 45, d: 32, semis: 6 },
+  { short: 'P5', n: 3, d: 2, semis: 7 },
+  { short: 'm6', n: 8, d: 5, semis: 8 },
+  { short: 'M6', n: 5, d: 3, semis: 9 },
+  { short: 'm7', n: 16, d: 9, semis: 10 },
+  { short: 'M7', n: 15, d: 8, semis: 11 },
+  { short: 'P8', n: 2, d: 1, semis: 12 },
+];
+const SEVENTH: Iv = { short: 'm7', n: 7, d: 4, semis: 10, extra: true };
+
+const X0 = 46, X1 = 650;
+const x = (c: number) => r(X0 + (c / 1200) * (X1 - X0));
+const RY = 96; // ruler
+const BY = 222; // deviation baseline
+const K = 2.6; // px per cent of deviation
+const pts = [...IVS, SEVENTH].map((iv) => {
+  const c = cents(iv.n, iv.d);
+  const dev = c - iv.semis * 100;
+  return { ...iv, c, dev, devR: Math.round(dev) };
+});
+const shorts = ['P1', 'm2', 'M2', 'm3', 'M3', 'P4', 'TT', 'P5', 'm6', 'M6', 'm7', 'M7', 'P8'];
+---
+
+<Figure
+  title="Simple ratios on the cents ruler"
+  caption="Top: the twelve equal-tempered semitones (ticks, 100 cents apart) and the simplest whole-number ratio for each interval (dots), placed by computing 1,200 × log₂ of the ratio. Bottom: how far each ratio sits from its equal-tempered neighbour, enlarged so the differences are visible. The fifth and fourth miss by about 2 cents; the thirds and sixths by 14–16. The hollow dot is 7/4, the seventh harmonic's interval, which the twelve-note system misses by about 31 cents. Several intervals (the tritone, the minor seventh, the seconds) have more than one candidate ratio; the one shown is a common choice, not the only one."
+>
+  <svg viewBox="0 0 680 300" role="img" aria-label="A cents ruler from 0 to 1200 with the twelve equal-tempered semitones and the simple just ratios, and a bar chart of each ratio's distance from equal temperament">
+    <text x={X0} y="18" class="fig-h">Where the ratios fall</text>
+    <line x1={X0} x2={X1} y1={RY} y2={RY} class="fig-line" />
+    {shorts.map((s, k) => (
+      <g>
+        <line x1={x(k * 100)} x2={x(k * 100)} y1={RY - 6} y2={RY + 6} class="fig-line" />
+        <text x={x(k * 100)} y={RY + 20} text-anchor="middle" class="fig-s">{s}</text>
+        {k % 2 === 0 && <text x={x(k * 100)} y={RY + 34} text-anchor="middle" class="fig-s cl-num">{k * 100}</text>}
+      </g>
+    ))}
+    {pts.map((p, i) => (
+      <g>
+        <line x1={x(p.c)} x2={x(p.c)} y1={RY - (p.extra ? 30 : 8)} y2={RY} class="fig-thin" />
+        <circle cx={x(p.c)} cy={RY - (p.extra ? 34 : 12)} r="4.5" class={p.extra ? 'cl-hollow' : 'fig-a'} />
+        {p.extra ? (
+          <text x={x(p.c) - 8} y={RY - 30} text-anchor="end" class="fig-s">{p.n}/{p.d}</text>
+        ) : (
+          <text x={x(p.c)} y={i % 2 ? RY - 40 : RY - 24} text-anchor="middle" class="fig-t cl-ratio">{p.n}/{p.d}</text>
+        )}
+      </g>
+    ))}
+    <text x={X0 - 12} y={RY + 34} text-anchor="end" class="fig-s cl-num">cents</text>
+
+    <text x={X0} y={BY - 70} class="fig-h">Just ratio minus equal temperament</text>
+    <line x1={X0} x2={X1} y1={BY} y2={BY} class="fig-thin" />
+    {[-20, -10, 10, 20].map((d) => (
+      <g>
+        <line x1={X0} x2={X1} y1={r(BY - d * K)} y2={r(BY - d * K)} class="cl-grid" />
+        <text x={X0 - 6} y={r(BY - d * K) + 4} text-anchor="end" class="fig-s cl-num">{d > 0 ? `+${d}` : `−${-d}`}</text>
+      </g>
+    ))}
+    <text x={X0 - 6} y={BY + 4} text-anchor="end" class="fig-s cl-num">0</text>
+    {pts.filter((p) => !p.extra).map((p) => {
+      const h = p.dev * K;
+      const bx = x(p.semis * 100);
+      return (
+        <g>
+          <rect x={bx - 9} y={r(h > 0 ? BY - h : BY)} width="18" height={Math.max(1, r(Math.abs(h)))} class={h >= 0 ? 'fig-b' : 'fig-a'} />
+          <text x={bx} y={r(h >= 0 ? BY - h - 5 : BY - h + 13)} text-anchor="middle" class="fig-s cl-dev">{p.devR > 0 ? `+${p.devR}` : p.devR === 0 ? '0' : `−${-p.devR}`}</text>
+          <text x={bx} y={BY + 68} text-anchor="middle" class="fig-s">{p.short}</text>
+        </g>
+      );
+    })}
+    <text x={X1} y={BY - 58} text-anchor="end" class="fig-s">orange: ratio is wider · blue: narrower</text>
+  </svg>
+</Figure>

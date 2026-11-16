@@ -1,0 +1,80 @@
+---
+// The timescales of music on one logarithmic axis, from a single cycle of a
+// high pitch (tens of microseconds) to an opera cycle (hours). Every band and
+// anchor is placed by computing log10(seconds); the band edges are fuzzy in
+// reality (the caption says so).
+import Figure from '../ui/Figure.astro';
+
+const r = (v: number) => Math.round(v * 10) / 10;
+const X0 = 40, X1 = 660, L0 = -4.6, L1 = 5;
+const x = (s: number) => r(X0 + ((Math.log10(s) - L0) / (L1 - L0)) * (X1 - X0));
+const AXIS = 196;
+
+const ticks: [number, string][] = [
+  [1e-4, '0.1 ms'], [1e-3, '1 ms'], [1e-2, '10 ms'], [1e-1, '100 ms'], [1, '1 s'], [10, '10 s'],
+  [60, '1 min'], [600, '10 min'], [3600, '1 h'], [36000, '10 h'],
+];
+
+// bands: [from s, to s, row (0 = lowest), title, subtitle, class]
+const bands: [number, number, number, string, string, string][] = [
+  [5e-5, 5e-2, 0, 'Pitch', 'one cycle of a wave', 'is-a'],
+  [0.1, 1.8, 0, 'Rhythm', 'notes and beats', 'is-b'],
+  [2, 10, 1, 'Phrases', 'the remembered present', 'is-ctl'],
+  [10, 600, 2, 'Sections', 'verse, chorus, movement', ''],
+  [60, 72000, 3, 'Whole works', "from a song to Wagner's 15-hour Ring", ''],
+];
+const rowY = (row: number) => 150 - row * 40;
+
+// anchors: [seconds, label, label row, side of the leader line the label sits on]
+// (placed so no leader line crosses another label)
+const anchors: [number, string, number, 'start' | 'end'][] = [
+  [1 / 440, 'A440: one cycle, 2.3 ms', 0, 'end'],
+  [0.5, 'a beat at 120 BPM', 0, 'end'],
+  [8, '4 bars at 120 BPM', 1, 'end'],
+  [210, 'a pop song, 3.5 min', 2, 'end'],
+  [2100, 'a symphony, ~35 min', 0, 'start'],
+];
+const labelY = (row: number) => AXIS + 30 + row * 18;
+---
+
+<Figure
+  title="The timescales of music"
+  caption="The same thing, vibration, organized at different speeds. Each step to the right is ten times longer. Below about 50 ms, events are too close together to hear separately: they blur into a buzz and then into a pitch. Rhythm lives roughly between a tenth of a second and two seconds; beyond that, events are too far apart to feel connected, and the work is done by memory (phrases, sections, whole forms). The edges of the bands are fuzzy, not sharp boundaries."
+>
+  <svg viewBox="0 0 680 290" role="img" aria-label="A logarithmic time axis from 0.1 milliseconds to 10 hours, with bands for pitch, rhythm, phrases, sections, and whole works">
+    {/* bands */}
+    {bands.map(([a, b, row, title, sub, cls]) => {
+      const y = rowY(row);
+      const x0 = x(a), x1 = x(b);
+      return (
+        <g>
+          <rect x={x0} y={y} width={r(x1 - x0)} height={18} rx="9" class={`fig-box ${cls}`} />
+          <text x={x0 + 8} y={y - 18} class="fig-t">{title}</text>
+          <text x={x0 + 8} y={y - 5} class="fig-s">{sub}</text>
+        </g>
+      );
+    })}
+
+    {/* axis */}
+    <line x1={X0} x2={X1} y1={AXIS} y2={AXIS} class="fig-line" />
+    {ticks.map(([s, label]) => (
+      <g>
+        <line x1={x(s)} x2={x(s)} y1={AXIS - 4} y2={AXIS + 4} class="fig-line" />
+        <text x={x(s)} y={AXIS - 9} text-anchor="middle" class="fig-s fig-halo">{label}</text>
+      </g>
+    ))}
+
+    {/* anchors */}
+    {anchors.map(([s, label, row, side]) => {
+      const ax = x(s);
+      const ly = labelY(row);
+      return (
+        <g>
+          <line x1={ax} x2={ax} y1={AXIS} y2={ly + 3} class="fig-thin" />
+          <circle cx={ax} cy={AXIS} r="3.5" class="fig-b" />
+          <text x={side === 'end' ? ax - 5 : ax + 5} y={ly} text-anchor={side} class="fig-s">{label}</text>
+        </g>
+      );
+    })}
+  </svg>
+</Figure>

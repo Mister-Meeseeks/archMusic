@@ -1,0 +1,32 @@
+---
+title: Why Scales Exist
+volume: 3
+chapter: 2
+summary: (Write your one-sentence summary.)
+status: not-started
+# Copied from the teaching draft; adjust as your version changes. `npm run concepts` checks them.
+assumes: [frequency, pitch, harmonics, spectrum, timbre, inharmonicity, note-names, octave, octave-equivalence, semitone, interval, frequency-ratio, cents, enharmonic, chord, root, major-minor, consonance, roughness, beats, equal-temperament, just-intonation, pythagorean-tuning, comma, meantone, slendro-pelog]
+lintIgnore: [pentatonic, fugue, contour] # forward mentions: "pentatonic" (taught in 3.4) and the WTC's "prelude and fugue" (3.8); "contour" only in a reference title (Dowling 1978)
+introduces: [scale, circle-of-fifths, temperament, wolf-interval, well-temperament, edo, microtone]
+---
+
+{/*
+  YOUR VERSION of Vol 3 ch. 2. Teaching draft: src/content/teaching/v3-02-scales.mdx
+
+  Lab (one widget, four modes; pass `modes` to show only some):
+    <ScaleTuningLab initialMode="fifths" modes={['fifths']} />   stack pure fifths; 5/7/12 notes; hear the Pythagorean comma at 13
+    <ScaleTuningLab initialMode="pump" modes={['pump']} />       C–Am–Dm–G–C, every chord pure: sinks 21.5¢ per trip
+    <ScaleTuningLab initialMode="keys" modes={['keys']} tuning="meantone" />
+                                                                five keyboard tunings × 12 keys; fifth/third error bars; I–IV–V–I
+                                                                props: tuning (pythagorean|just|meantone|werckmeister|equal),
+                                                                tunings (subset to offer), keyPc (0 = C … 11 = B)
+    <ScaleTuningLab initialMode="edo" modes={['edo']} edo={19} />  N equal steps; errors for 3:2, 5:4, 6:5, 7:4
+  Figure:
+    <EdoErrors />                                               fifth and major-third error for 5–53 equal steps
+  Also useful: <TuningComparator initialShape="M3" />           (chapter 1.5) one interval, three tunings, beat rates
+
+  Recordings (tracks.yaml): bashir-taqsim-rast, king-gizzard-rattlesnake, collier-bleak-midwinter,
+  partch-barstow; reused: barbershop-tag, gamelan-oleg-kotekan.
+*/}
+
+Start writing here.

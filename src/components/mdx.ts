@@ -34,8 +34,14 @@ import FusionLab from './embeds/FusionLab.astro';
 import MelodyLab from './embeds/MelodyLab.astro';
 import SynthLab from './embeds/SynthLab.astro';
 import PerceptLab from './embeds/PerceptLab.astro'; // v1-03
+// v3-01
+import IntervalLab from './embeds/IntervalLab.astro';
+import CentsLine from './figures/CentsLine.astro';
 // v2-02
 import MeterLab from './embeds/MeterLab.astro';
+// v2-04
+import PolyrhythmLab from './embeds/PolyrhythmLab.astro';
+import PolyGrid from './figures/PolyGrid.astro';
 import MetricalGrid from './figures/MetricalGrid.astro';
 // v3-05
 import VoicingLab from './embeds/VoicingLab.astro';
@@ -61,9 +67,20 @@ import GroupingMeter from './figures/GroupingMeter.astro';
 // v3-08
 import CounterpointLab from './embeds/CounterpointLab.astro';
 import TextureTypes from './figures/TextureTypes.astro';
+// v2-01
+import TempoLab from './embeds/TempoLab.astro';
+import TimeScales from './figures/TimeScales.astro';
 // v3-04
 import ModeLab from './embeds/ModeLab.astro';
 import ModeLadder from './figures/ModeLadder.astro';
+import ScaleTuningLab from './embeds/ScaleTuningLab.astro'; // v3-02
+import EdoErrors from './figures/EdoErrors.astro'; // v3-02
+// v5-02
+import DevelopmentLab from './embeds/DevelopmentLab.astro';
+import VariationMap from './figures/VariationMap.astro';
+// v4-01
+import InstrumentLab from './embeds/InstrumentLab.astro';
+import ExciterResonator from './figures/ExciterResonator.astro';
 
 export const mdxComponents = {
   Answer,
@@ -98,8 +115,14 @@ export const mdxComponents = {
   MelodyLab,
   SynthLab,
   PerceptLab, // v1-03
+  // v3-01
+  IntervalLab,
+  CentsLine,
   // v2-02
   MeterLab,
+  // v2-04
+  PolyrhythmLab,
+  PolyGrid,
   MetricalGrid,
   // v3-05
   VoicingLab,
@@ -123,7 +146,18 @@ export const mdxComponents = {
   // v3-04
   ModeLab,
   ModeLadder,
+  ScaleTuningLab, // v3-02
+  EdoErrors, // v3-02
   // v3-08
   CounterpointLab,
   TextureTypes,
+  // v2-01
+  TempoLab,
+  TimeScales,
+  // v5-02
+  DevelopmentLab,
+  VariationMap,
+  // v4-01
+  InstrumentLab,
+  ExciterResonator,
 };

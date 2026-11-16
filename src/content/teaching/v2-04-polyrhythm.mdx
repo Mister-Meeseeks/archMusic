@@ -1,0 +1,343 @@
+---
+title: "Polyrhythm, Cross-Rhythm, Polymeter, and Phase"
+volume: 2
+chapter: 4
+summary: What happens when two rhythms disagree on purpose. Two pulses dividing the same span, a bell pattern cutting across the dancers' beat, loops of different lengths drifting apart and back, and one pattern sliding past a copy of itself. How listeners cope, and why so many traditions build on this.
+status: teaching-draft
+updated: 2026-11-16
+assumes: [beat, tempo, meter, subdivision, beat-induction, tactus, metrical-hierarchy, syncopation, clave, hemiola, entrainment, tuplet, accent, rhythmic-grouping, additive-meter, drum-kit, phase, pitch, register, timbre, auditory-stream, octave, half-time-feel, auditory-scene-analysis, habituation]
+lintIgnore: [frequency-ratio] # "ratio" here means rhythmic ratios like 3 : 2, not frequency ratios
+introduces: [polyrhythm, cross-rhythm, polymeter, timeline-pattern, ostinato, phasing, metric-modulation]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the earlier drafts. One new lab with three modes: two pulses at once (**polyrhythm**), loops of different lengths (**polymeter**), and one pattern sliding past a copy of itself (**phasing**). Use headphones for the phasing lab: the two parts are in opposite ears. Then write your version in `src/content/chapters/v2-04-polyrhythm.mdx`.
+
+This chapter builds on chapter 2.2 (the beat as something the listener supplies, hemiola, clave) and chapter 2.3 (tuplets, accent, grouping against meter). It sets up chapter 2.5 and the rhythmic traditions of chapter 2.6, and its last section ("phasing") picks up the idea of phase from chapter 1.1.
+</Callout>
+
+## The question
+
+Chapter 2.2 argued that a beat is something the listener does: you take a stream of sounds and impose a steady pulse and a hierarchy of strong and weak beats on it. Chapter 2.3 showed rhythms pulling against that structure, with syncopations and accents that land where the meter says they shouldn't.
+
+This chapter goes further. What if the music contains **two** rhythmic frameworks at once, and they disagree? A pianist's right hand plays four even notes while the left hand plays three in the same time. A bell plays a pattern that cuts across the beat the dancers feel. A guitar riff seven steps long repeats over drums that count in eights. Two pianists play the same pattern and one gradually pulls ahead.
+
+These aren't rare effects. Layered, disagreeing rhythms are the normal texture of much West African and Afro-Caribbean music; they're central to jazz, to a lot of progressive rock and metal, and to minimalism; and they turn up in Chopin and Brahms. The interesting questions are what the listener does with them (can you hear two beats at once?) and why so many musical traditions find this kind of disagreement worth building on.
+
+Four terms get used, and often blurred:
+
+- **Polyrhythm:** two pulses at once that divide the same span into different numbers of equal parts (3 against 2).
+- **Cross-rhythm:** a rhythm that cuts across the meter the listener holds.
+- **Polymeter:** patterns of different lengths on the same pulse, drifting apart and back together.
+- **Phasing:** one pattern against a copy of itself, offset in time.
+
+Each gets a section.
+
+## Two pulses at once
+
+### Three against two
+
+Take a span of time, say one second, and divide it two ways at once: one part plays three evenly spaced notes, another plays two. That's a **polyrhythm**, in this case **3 against 2** (written 3:2). The two pulses start together, go their separate ways, and meet again at the start of the next span.
+
+To play or picture both, you need a grid fine enough to hold both pulses. For 3:2 that's six cells: the "three" falls on cells 1, 3, and 5, the "two" on cells 1 and 4. Put them together and you get the **composite rhythm**, the pattern you actually hear when both parts sound: notes on cells 1, 3, 4, and 5, a long-short-short-long figure. Musicians learn it by saying a phrase with the same rhythm: *nice cup of tea*.
+
+<PolyrhythmLab modes={['ratio']} ratio="3:2" />
+
+<Callout kind="try">
+1. Play **3 : 2**. Watch the clock face: the high toks (circles) divide the cycle into three, the low drums (squares) into two. Listen to the composite rhythm along the bottom row and say "nice cup of tea" with it.
+2. Turn off **Pulse B**. Now there's just a steady pulse of three. Turn it back on and off again while listening to the high pulse: does it change character when the other pulse joins?
+3. Set **Lead with** to **A**, then **B**. Which one feels like "the beat" in each case? Most people hear the louder pulse as the beat and the other as a rhythm played against it.
+4. Try **4 : 3**, then **5 : 4**. The more cells in the grid, the harder it is to hear both pulses as equals. At 5 : 4 most listeners hear one steady beat and a rhythm that keeps slipping against it.
+5. Drag **Cycle** to 0.8 s and to 4 s. Check the readout "Either pulse could be the beat?": a pulse faster than about 200 ms or slower than about 1.8 s between notes can't be felt as a beat (chapter 2.2), so at extreme speeds only one of the two is a candidate.
+</Callout>
+
+The general rule for any ratio n:m: the grid needs lcm(n, m) cells, the least common multiple. When n and m share no common factor (3 and 2, 4 and 3, 5 and 4), that's simply n × m. The composite has n + m − 1 notes per cycle, because the two pulses share only their first note.
+
+<DataTable title="Common polyrhythms" caption="The grid is the smallest number of equal cells that holds both pulses. The mnemonic phrases have one syllable per note of the composite rhythm.">
+
+| Ratio | Grid | Composite (gaps between notes, in cells) | Mnemonic | Where you hear it |
+|---|---|---|---|---|
+| 3 : 2 | 6 | 2-1-1-2 | "nice cup of tea" | Afro-Cuban 6/8, "Afro Blue", Brahms; hemiola's simultaneous cousin |
+| 4 : 3 | 12 | 3-1-2-2-1-3 | "pass the god-damn butter" | Chopin's *Fantaisie-Impromptu*, much West African drumming |
+| 5 : 4 | 20 | 4-1-3-2-2-3-1-4 | (none in common use) | Jazz drumming, contemporary classical |
+| 3 : 4 | 12 | 3-1-2-2-1-3 | (same as 4 : 3, roles swapped) | Triplet figures across four beats |
+
+</DataTable>
+
+<Callout kind="check">
+In a 3 : 2 polyrhythm at a cycle of 1.2 seconds, how far apart are the notes of each pulse, and what are the gaps in the composite rhythm, in milliseconds?
+
+<Answer>
+The "three" pulse has notes every 400 ms and the "two" pulse every 600 ms. The six-cell grid has cells of 200 ms. The composite has notes at 0, 400, 600, and 800 ms, so the gaps are 400, 200, 200, and 400 ms (the 2-1-1-2 pattern), and then the cycle repeats.
+</Answer>
+</Callout>
+
+### Hearing a polyrhythm
+
+Can a listener hear two beats at once? The research says: mostly not, at least not as two equal beats.
+
+When people are asked to tap along to a polyrhythm, they almost always tap one of the two pulses, treating it as the beat and the other as a rhythm against it. Which one they choose depends on the sound. Stephen Handel and James Oshinsky (1981) found that the choice shifted with tempo, with which pulse was higher in pitch, and with which was louder or accented. At fast tempos, listeners favored the slower pulse, which keeps the beat inside the range where a beat can be felt.
+
+Can trained musicians do better? Ève Poudrier and Bruno Repp (2013) tested whether classical musicians could track two different beats at the same time. They could, under limited conditions, for a simple ratio like 3:2 and with the two pulses clearly separated, but performance fell off as the patterns got more complex. Their interpretation: rather than holding two independent beats, listeners hold *one* metrical framework, a grid fine enough to contain both pulses, and hear the two as different levels or patterns within it. That's what the lab's grid draws.
+
+This connects to chapter 1.4. If the two pulses are far apart in register and timbre, like the lab's high tok and low drum, the ear tends to split them into two **auditory streams**, and it becomes easier to follow either one. If they're in the same register and timbre, they merge into a single stream, and you hear the composite rhythm as one pattern. That's why "nice cup of tea" works as a learning aid: it turns two pulses into one rhythm you can say.
+
+<Callout kind="verify" title="polyrhythm perception">
+Check Handel & Oshinsky (1981): which factors shifted the tapped pulse (tempo, pitch, accent), and the direction of the tempo effect. Check Poudrier & Repp (2013): who the participants were, which ratios they tested, and their conclusion about one framework versus two parallel beats. Check whether there's newer work on parallel beat tracking (I don't know the post-2013 literature well).
+</Callout>
+
+<ListeningCue track="rubinstein-fantaisie-impromptu" start="0:00" end="0:40">
+Chopin's *Fantaisie-Impromptu* opens its fast section with the right hand racing in groups of four while the left hand rolls in groups of three, in the same time: 4 against 3, sustained for pages. Listen to the left hand alone for a few seconds, then switch to the right. Can you hold both? Most listeners hear the left hand as the steady accompaniment and the right hand floating over it.
+</ListeningCue>
+
+<ListeningCue track="mongo-afro-blue" start="0:00" end="1:00">
+Mongo Santamaría's "Afro Blue" (1959) became the jazz world's model of 3 against 2. Listen to the bass and percussion: the pattern can be felt as three beats to a span or as two. Clap three evenly, then two, over the same stretch, and notice how the melody sits comfortably on either.
+</ListeningCue>
+
+<Callout kind="verify" title="Chopin and Afro Blue">
+*Fantaisie-Impromptu*: confirm the 4:3 relationship between the hands in the opening fast section (it's often described as right-hand sixteenths against left-hand eighth-note triplets) and the cue time in this recording. "Afro Blue": confirm it's in 6/8 (or 3/4) and which parts carry the three and the two; confirm this recording is the 1959 Fantasy recording; and check the claim that it became the standard jazz example (Coltrane's versions made it famous).
+</Callout>
+
+### From polyrhythm to tempo change
+
+A polyrhythm can also be a doorway to a new tempo. If triplets have been running against the beat, a composer can declare that the triplet is now the beat: the music suddenly speeds up by exactly a ratio of 3 to 2, with no break in the pulse. This is called **metric modulation**, a term first applied to the music of Elliott Carter in the 1940s and 1950s. Rock drummers do a casual version all the time when they slide into a half-time or double-time feel (chapter 2.3); metric modulation is the same idea with less obvious ratios.
+
+<Callout kind="verify" title="metric modulation">
+Check the origin of the term: I believe Richard Franko Goldman coined it in a 1951 review of Carter's Cello Sonata (1948). Confirm the date and source.
+</Callout>
+
+## Cross-rhythm and the timeline
+
+### A bell that cuts across the beat
+
+A polyrhythm as described above is symmetrical: two pulses of equal standing. **Cross-rhythm** is the more general idea of a rhythm that cuts across the meter the listener holds. The listener keeps the meter; the cross-rhythm pulls against it, persistently, as a texture rather than an occasional syncopation.
+
+The richest cross-rhythmic music is from West and Central Africa and its diaspora. A typical Ewe dance-drumming ensemble from Ghana and Togo layers several parts over a 12-pulse cycle:
+
+- a **bell** playing a fixed pattern of seven strokes in the twelve pulses, repeated unchanged for the whole piece;
+- **rattles** or handclaps marking a steady beat;
+- **support drums** playing short repeating patterns, each with its own relationship to the bell;
+- a **lead drum** improvising, speaking, and signaling changes to the dancers.
+
+The bell's pattern is called a **timeline pattern**: a short, asymmetric pattern that orients every other part, in the way the clave does in Cuban music (chapter 2.2). The most widespread version, on a 12-pulse cycle, is the one in the lab below and in chapter 2.2's 12-pulse bell pattern.
+
+Twelve pulses can be grouped in several ways: four beats of three pulses, three beats of four, six beats of two. The dancers' feet usually move in four beats (every three pulses). Other parts suggest three or six. The bell's strokes fit none of them neatly. The result is a texture where 3 against 2 and 4 against 3 are always present, because they are built into the twelve-pulse cycle itself.
+
+<MeterLab initialMode="find" patterns={['bell']} pattern="bell" lock />
+
+<Callout kind="try">
+1. Play the **12-pulse bell** pattern with no beat. Where would you put the beat?
+2. Choose "every 3 steps from step 1." That's four beats per cycle, often the one dancers feel. Listen to how the bell strokes land around it: some on the beat, most between.
+3. Choose "every 4 steps from step 1" (three beats per cycle), then "every 2 steps" (six). The same bell pattern now cuts across a different beat. Each choice gives a different cross-rhythm.
+4. Switch back and forth between every 3 and every 4 steps while the bell keeps going. You're hearing 4 against 3 with one of the two pulses in your head.
+</Callout>
+
+<ListeningCue track="ewe-atsiagbekor" start="0:00" end="1:30">
+A 1969 field recording of Atsiagbekor (also called Agbekor), an Ewe war dance from Ghana. Listen first for the bell: a bright metallic pattern, repeating without change. Then try to find the dancers' beat with your foot. Then listen to the drums, each of which places its pattern differently against the bell. Don't expect to hold it all at once.
+</ListeningCue>
+
+### Inherent patterns
+
+Gerhard Kubik (1962) described a striking effect in East and Central African music for xylophones and lamellophones (instruments like the mbira). When several players interlock fast parts, listeners hear melodies and rhythms that none of the players is playing: notes from different parts that happen to fall close in pitch group into new lines. Kubik called these **inherent patterns**. They are scene analysis (chapter 1.4) at work: the ear regroups notes by pitch across players, so the texture contains more rhythms than the performers play. Musicians in these traditions compose with this effect deliberately.
+
+### A caution about "African polyrhythm"
+
+Western writing about African music has a long habit of treating "African rhythm" as one thing, uniquely complex, and the opposite of European harmony. The Ghanaian music theorist Kofi Agawu (1995, 2003) has criticized this as an invention of outsiders. His points are worth keeping in mind:
+
+- There are hundreds of distinct musical traditions in Africa, not one.
+- Much of the "complexity" is in the notation, not in the music as performers experience it. If a transcriber assumes the wrong beat, every part looks syncopated against it.
+- Performers usually hear a clear beat, often given by the dance, and the timeline pattern is heard *relative to that beat*, not as a free-floating rhythm.
+- Describing African music only in terms of rhythm ignores its melody, harmony, language, and form.
+
+David Locke's detailed studies of Ewe drumming (1982, 1987) take a middle path: they show precisely how each part relates to the bell and the beat, and they treat cross-rhythm as a carefully organized system rather than as exotic complexity.
+
+<Callout kind="verify" title="Ewe drumming and its interpretation">
+Check the description of the Ewe ensemble (bell, rattle, support drums, lead drum) against Locke (1982) and Locke's book on Agbekor. Check the claim about which grouping dancers' feet usually follow (I said four beats of three pulses; Locke and Agawu both discuss this). Check Kubik (1962) on inherent patterns (the article is already in chapter 1.4's references). Check Agawu (1995) "The Invention of 'African Rhythm'" and *Representing African Music* (2003) for the points I attributed to him. Listen to the field recording and confirm the bell is audible, and note a good cue time.
+</Callout>
+
+<Callout kind="check">
+Twelve pulses can be heard as four beats of three, three beats of four, or six beats of two. Why does this make the 12-pulse cycle such a good home for polyrhythm?
+
+<Answer>
+Because 12 divides evenly by 2, 3, 4, and 6, every pair of those groupings forms a polyrhythm that fits inside one cycle: four beats against three is 4 : 3, six against four is 3 : 2, and so on. Different parts (feet, rattles, drums, bell) can each emphasize a different grouping, and they all realign at the start of every cycle. An 8-pulse or 16-pulse cycle only divides into twos and fours, so it can't hold 3 : 2 without tuplets.
+</Answer>
+</Callout>
+
+## Loops of different lengths: polymeter
+
+### The same pulse, different cycles
+
+In a polyrhythm, the two parts move at different speeds but share a cycle. **Polymeter** reverses this: both parts step on the same pulse, but they repeat after different numbers of steps. A three-step figure over a four-step bar starts in a different place in each bar. The figure and the bar line up again only after twelve steps, the least common multiple of 3 and 4.
+
+A short figure repeated persistently like this is called an **ostinato** (Italian for "stubborn"). An ostinato that matches the bar repeats in the same place every time. An ostinato of a different length drifts across the bar, landing somewhere new each time it comes round.
+
+<PolyrhythmLab modes={['polymeter']} />
+
+<Callout kind="try">
+1. Play **3 against 4**. The wood-block figure is three steps long; the kick and hi-hat mark a four-step bar. Watch the figure's accent (the big circle) move to a different step of the bar each time, until both start together again after 12 steps.
+2. Mute the **Bar**. Now the figure alone just sounds like a steady waltz-like pattern. Bring the bar back: the same figure now pulls against the beat. Polymeter needs the second loop to be heard.
+3. Try **7 against 8**. A seven-step riff over a bar of eight slips back by one step every bar. It takes eight bars (56 steps) to come round.
+4. Try **13 against 16**. The readout says 208 steps (thirteen bars) before it lines up again: longer than most listeners can hold. Somewhere along the way, the riff stops sounding "wrong" and starts sounding like its own layer.
+5. Edit the figure by clicking its cells, and change **Figure length**. Find a length that never lines up within a bar of 16 until 16 figures have passed (any odd length will do). Why do odd lengths take so long?
+</Callout>
+
+<Callout kind="check">
+A riff five steps long repeats over a drum pattern eight steps long, both on the same sixteenth-note pulse. After how many steps do they line up again, and how many times will the riff have repeated?
+
+<Answer>
+The least common multiple of 5 and 8 is 40, so after 40 steps: eight repeats of the riff and five bars of eight. If the bar is a bar of 4/4 in eighth notes, that's five bars; in sixteenths (16 steps per bar), it's 2½ bars, so the true realignment with the *bar line* comes at 80 steps, the least common multiple of 5 and 16.
+</Answer>
+</Callout>
+
+### Polymeter in rock and metal
+
+Rock bands discovered polymeter as a way to build hypnotic, unsettling textures from simple loops. In the early-1980s King Crimson, the guitarists Robert Fripp and Adrian Belew played interlocking parts of different lengths, influenced partly by Balinese gamelan (chapter 1.4's kotekan) and minimalism, so that the two guitars continually realigned. The Swedish metal band Meshuggah took the idea to an extreme: the drummer's cymbals keep a plain 4/4, while the guitars and kick drum play long riffs built from uneven groups that only realign with the bar after many bars.
+
+<ListeningCue track="king-crimson-discipline" start="0:00" end="1:00">
+The title track of King Crimson's *Discipline* (1981). Two guitars play repeating figures that keep shifting against each other and the drums. Pick one guitar and follow it; then the other. Listen for the moments when they seem to click into place together.
+</ListeningCue>
+
+<ListeningCue track="meshuggah-bleed" start="0:00" end="0:45">
+Meshuggah's "Bleed" (2008). Tap the beat with the cymbals, which keep a steady four. Then listen to the guitars and the double kick drum: their riff is built from groups that don't fit the bar, so its accents land in a different place in each bar. Your foot and the riff disagree, and that disagreement is the point.
+</ListeningCue>
+
+<Callout kind="verify" title="polymeter examples">
+*Discipline*: check a transcription for the actual figure lengths of the two guitar parts (it's often described as two guitars in different meters, e.g. 5/8 and 10/16 + something, or 17/16 against 15/16; I don't trust my memory) and the gamelan influence (Fripp's and Belew's own accounts). "Bleed": check the riff structure (often analyzed as groups of 3 and 4 summing to a long cycle over 4/4) and that the cymbal keeps 4/4. The album version is 7:23; the YouTube video is a shorter edit, so cue times may differ.
+</Callout>
+
+### A note on the words
+
+The terms in this chapter are used inconsistently, even by music theorists. Some writers use "polymeter" for two parts with *different time signatures but the same bar length* (3/4 against 6/8, which is really 3 : 2), and "polyrhythm" for everything. Others use "cross-rhythm" and "polyrhythm" interchangeably. Justin London (2012) argues that true polymeter, two meters genuinely heard at once, may be rare or impossible for listeners, for the same reason two beats are hard to hold (Poudrier and Repp's single-framework finding): what we hear is one meter with a pattern of a different length against it.
+
+The distinctions in this chapter are useful even if the vocabulary isn't standard:
+
+<PolyGrid />
+
+<DataTable title="Four ways rhythms disagree" caption="The distinctions this chapter uses. Writers don't agree on the names, so when you read about these, check what the author means.">
+
+| | What differs | What's shared | Realigns | Example |
+|---|---|---|---|---|
+| **Hemiola** (chapter 2.2) | Grouping of the same pulses, in alternation | The pulse | Every regrouping | 6/8 and 3/4 alternating in "America" |
+| **Polyrhythm** | Two pulses at once | The cycle | Every cycle | 3 : 2 in "Afro Blue"; 4 : 3 in Chopin |
+| **Cross-rhythm** | A rhythm against the felt meter | The cycle (usually) | Every cycle | The Ewe bell against the dancers' beat |
+| **Polymeter** | Loop lengths | The pulse | After lcm(a, b) steps | A 7-step riff over a bar of 8 |
+| **Phasing** | Offset in time | The pattern | When the offset comes round | Reich's *Piano Phase*, *Clapping Music* |
+
+</DataTable>
+
+## Phasing
+
+### One pattern, two positions
+
+The last kind of disagreement uses one pattern twice. Steve Reich discovered it by accident in 1965, playing two tape loops of the same recorded phrase on two machines. The machines ran at very slightly different speeds, so one loop gradually pulled ahead of the other. As it did, the two copies passed through every possible offset, and each offset produced a new composite pattern from the same material.
+
+Chapter 1.1 described **phase** as a position within a repeating cycle, and showed two identical waves adding up differently depending on their offset. **Phasing** is the same idea on the scale of a rhythm or melody: same repeating shape, different offset, different result.
+
+Reich then asked live musicians to do what the tape machines had done. In *Piano Phase* (1967), two pianists play the same quick twelve-note pattern in unison. One of them speeds up very slightly until they're exactly one note ahead, then holds that position for a while; then drifts again to two notes ahead, and so on, until after twelve steps they are back in unison. In *Clapping Music* (1972), Reich removed the drifting: two performers clap the same twelve-pulse pattern, and after a set number of repetitions, one of them jumps ahead by one pulse.
+
+<PolyrhythmLab modes={['phase']} pattern="melody" />
+
+<Callout kind="try">
+Use headphones: the steady part is in your left ear and the moving part in your right.
+
+1. Press Play and listen through the first drift (about six cycles). In unison, it's one clean melody. As the moving part pulls ahead, the two blur into a ripple, then a smear.
+2. When the readout says **locked, 1 pulse apart**, the blur snaps into a new, clear pattern. Listen for melodies that weren't in the original: notes from the two parts that happen to be close in pitch group into new lines, just like Kubik's inherent patterns.
+3. Let it run through several locked positions. Some offsets sound busy and new; some sound almost like the original. Which offsets produce the most striking patterns?
+4. Set **Hold** to "no pause." Now the drift never stops, and the piece becomes a continuous wash. Reich's holds are what give the listener time to hear each new pattern.
+5. Switch **Process** to **Sudden steps** and **Pattern** to the **12-pulse bell pattern**. Now each new offset arrives all at once, in the manner of *Clapping Music*. The "Together" readout counts how many of the twelve pulses are struck at each offset; watch it change.
+</Callout>
+
+<ListeningCue track="reich-piano-phase" start="0:00" end="3:00">
+The opening minutes of *Piano Phase*. Listen for the first drift: the clean pattern blurs as one piano pulls ahead, then settles into a new pattern one note apart. Reich wanted the process to be audible: "I am interested in perceptible processes," as he wrote in his 1968 essay "Music as a Gradual Process."
+</ListeningCue>
+
+<ListeningCue track="reich-clapping-music" start="0:00" end="1:30">
+*Clapping Music*, performed by Reich and Russell Hartenberger. Both start in unison. Listen for each jump: the combined rhythm changes abruptly, then repeats several times so you can learn it before the next jump.
+</ListeningCue>
+
+<Callout kind="verify" title="Reich and phasing">
+Check the story of the tape-loop discovery (*It's Gonna Rain*, 1965) and the dates of *Piano Phase* (1967) and *Clapping Music* (1972). Check the description of *Piano Phase*'s process (gradual acceleration, then holding each new position) and of *Clapping Music* (shifts by one eighth note after a fixed number of repeats; I believe 12 repeats per shift in the score, with 13 sections). Check the quotation from "Music as a Gradual Process" (in Reich, *Writings on Music*, 2002). The lab uses an original twelve-note pattern and the West African bell pattern, not Reich's patterns.
+</Callout>
+
+<Callout kind="check">
+In the lab's sudden-steps mode, after the moving part has shifted twelve times, it's back in unison. Why twelve, and why does the composite pattern at offset 6 sound different from the one at offset 1?
+
+<Answer>
+The pattern is twelve pulses long, so shifting by twelve pulses moves it a whole cycle, which is the same as no shift at all, like a wave delayed by one full period (chapter 1.1). Each offset lines up different strokes of the pattern with each other. At offset 1, each stroke meets its neighbor; at offset 6, each stroke meets the stroke half a cycle away. Different strokes coincide or interleave, so the combined rhythm has a different number of sounding pulses and a different shape.
+</Answer>
+</Callout>
+
+## Why build music on disagreement?
+
+Why do so many traditions deliberately layer rhythms that don't line up? A few reasons, some well supported, some more speculative:
+
+- **It keeps a simple cycle interesting.** A twelve-pulse cycle, a four-step bar, a twelve-note pattern: each is simple on its own. Layered against something it disagrees with, it generates new patterns on every repeat, so the music can repeat for a long time without going stale (chapter 1.6 on habituation).
+- **It gives participants roles.** In an ensemble where each part has its own relationship to the timeline, each player and dancer can hold a different layer, and the whole emerges from their coordination. This is about social structure as much as sound.
+- **It rewards attention.** A listener can move their attention between layers and hear a different piece each time, which may be why polyrhythmic textures sustain repeated listening.
+- **It sits on the edge of what the listener can hold.** Too simple and it's predictable; too complex and it falls apart into noise. Chapter 2.5 takes up research suggesting that a moderate amount of rhythmic conflict is what makes people most want to move.
+
+<Callout kind="verify" title="why layering">
+These reasons are interpretive, not established findings. The link to habituation is my inference; the "roles" argument is common in ethnomusicology (e.g. Chernoff 1979, *African Rhythm and African Sensibility*; Locke); the "moderate complexity" claim is developed in chapter 2.5 (Witek et al. 2014).
+</Callout>
+
+## The layers at a glance
+
+<DataTable title="Rhythmic layers and how they combine" caption="A summary of this chapter's kinds of layering, with what the listener seems to do with each.">
+
+| Layering | What the listener does | Hard part | Signature examples |
+|---|---|---|---|
+| Polyrhythm | Picks one pulse as the beat; hears the other against it within one grid | Holding both pulses as equals | 3 : 2 in Afro-Cuban music; Chopin's 4 : 3 |
+| Cross-rhythm | Keeps the felt beat; hears the timeline and other parts cutting across it | Finding the beat at all, for an outsider | Ewe bell patterns; the clave |
+| Polymeter | Keeps the bar; follows the ostinato drifting across it | Remembering where the long cycle started | King Crimson; Meshuggah |
+| Phasing | Hears each offset as a new pattern; hears drift as a blur | Following the process without losing the pattern | Reich's *Piano Phase* and *Clapping Music* |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. Polyrhythm: two pulses dividing one cycle; the lcm grid; the composite rhythm; why 3 : 2 and 4 : 3 are the common ones.
+2. Perception: listeners usually pick one pulse as the beat (which one depends on tempo, register, and loudness); musicians probably hold one framework containing both pulses, not two independent beats; streaming helps separate the pulses.
+3. Cross-rhythm and the timeline pattern: the Ewe ensemble, the bell, the dancers' beat, why a 12-pulse cycle holds so many polyrhythms.
+4. Kubik's inherent patterns, and Agawu's critique of "African rhythm" as an outsiders' category.
+5. Polymeter: loops of different lengths on the same pulse, realigning after lcm steps; ostinato; rock and metal examples.
+6. Phasing: Reich's discovery, gradual drift versus sudden steps, and the connection to phase in chapter 1.1.
+7. Metric modulation as a polyrhythm turned into a tempo change.
+8. Why traditions build on rhythmic disagreement.
+
+**Decisions for your rewrite:**
+
+- **Terminology.** I've drawn sharp lines between polyrhythm, cross-rhythm, polymeter, and phasing, and admitted the field doesn't agree. You could instead adopt one author's scheme (London's is the most careful) and say so up front.
+- **How much West African material.** This chapter introduces the Ewe ensemble; chapter 2.6 (rhythmic traditions) will go deeper. Decide what belongs here and what waits, and whether to feature Agawu's critique prominently or as a caution.
+- **Examples.** Swap in your own: Fela Kuti's Afrobeat, Radiohead ("15 Step", "Pyramid Song"), Tool ("Schism"), Brahms's hemiolas and cross-rhythms, Elvin Jones's drumming with Coltrane, Indian tala's tihai (a figure repeated three times to land on the downbeat, which is a kind of polymeter).
+
+**Misconceptions to watch for:**
+
+- "Polyrhythm means complicated rhythm." It means two pulses at once; 3 : 2 is simple and everywhere.
+- "Listeners hear both pulses equally." Usually one is the beat and the other is heard against it.
+- "African music is polyrhythmic and European music isn't." Both have cross-rhythm; the difference is in how central it is, and "African music" isn't one tradition.
+- "Polymeter means two time signatures." Usage varies; the useful distinction is shared pulse with different cycle lengths.
+- "Phasing is out-of-time playing." It's exact: every offset is a precise relationship, passed through in order.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Agawu, K. (1995). The invention of "African rhythm." *Journal of the American Musicological Society*, 48(3), 380–395.
+- Agawu, K. (2003). *Representing African Music: Postcolonial Notes, Queries, Positions*. Routledge.
+- Chernoff, J. M. (1979). *African Rhythm and African Sensibility: Aesthetics and Social Action in African Musical Idioms*. University of Chicago Press.
+- Handel, S., & Oshinsky, J. S. (1981). The meter of syncopated auditory polyrhythms. *Perception & Psychophysics*, 30(1), 1–9.
+- Kubik, G. (1962). The phenomenon of inherent rhythms in East and Central African instrumental music. *African Music*, 3(1), 33–42.
+- Locke, D. (1982). Principles of offbeat timing and cross-rhythm in Southern Eve dance drumming. *Ethnomusicology*, 26(2), 217–246.
+- Locke, D. (1987). *Drum Gahu: A Systematic Method for an African Percussion Piece*. White Cliffs Media.
+- London, J. (2012). *Hearing in Time: Psychological Aspects of Musical Meter* (2nd ed.). Oxford University Press.
+- Poudrier, È., & Repp, B. H. (2013). Can musicians track two different beats simultaneously? *Music Perception*, 30(4), 369–390.
+- Reich, S. (2002). *Writings on Music, 1965–2000* (P. Hillier, Ed.). Oxford University Press. (Includes "Music as a Gradual Process," 1968.)
+- Toussaint, G. T. (2013). *The Geometry of Musical Rhythm: What Makes a "Good" Rhythm Good?* CRC Press.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details, especially Handel & Oshinsky's page range, Locke 1982's pages, and whether Locke's Agbekor book (*Drum Damba*? *Agbekor*?) should replace *Drum Gahu* here. Toussaint (2013) is the source for the bell pattern's name as the "standard pattern."
+</Callout>

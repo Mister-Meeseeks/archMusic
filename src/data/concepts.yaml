@@ -431,6 +431,96 @@
     fourths are pure and its thirds are wide and rough. It was the basis of
     medieval European music theory.
 
+# ---------- v3-02: scales and tuning systems ----------
+- id: comma
+  term: Comma (Pythagorean, syntonic)
+  category: Tuning
+  introducedIn: v1-05
+  deepIn: v3-02
+  aliases: [Pythagorean comma, syntonic comma, syntonic commas]
+  def: >-
+    A tiny interval left over when two routes to the "same" note disagree.
+    Twelve pure fifths overshoot seven octaves by the Pythagorean comma
+    (about 23.5 cents); four pure fifths overshoot a pure major third plus two
+    octaves by the syntonic comma (81:80, about 21.5 cents). Every fixed tuning
+    has to hide these somewhere.
+
+- id: temperament
+  term: Temperament
+  category: Tuning
+  introducedIn: v3-02
+  aliases: [temperaments, tempering, tempered intervals]
+  def: >-
+    Deliberately mistuning some intervals slightly away from pure so that a
+    fixed set of pitches works in more keys. Equal temperament, meantone, and
+    well temperament are different answers to where the commas should go.
+
+- id: meantone
+  term: Meantone
+  category: Tuning
+  introducedIn: v1-05
+  deepIn: v3-02
+  aliases: [meantone, quarter-comma meantone, meantone temperament]
+  def: >-
+    A family of tunings that narrow every fifth slightly so the major thirds
+    come out pure or nearly pure. Standard on European keyboards from the
+    sixteenth century into the eighteenth. Beautiful in keys near C; one fifth
+    (the wolf) is unusable.
+
+- id: wolf-interval
+  term: Wolf interval
+  category: Tuning
+  introducedIn: v3-02
+  aliases: [wolf fifth, wolf fifths, wolf interval]
+  def: >-
+    The one badly out-of-tune interval left over when a keyboard tuning makes
+    all the others pure or nearly pure: the place the comma was hidden. In
+    meantone it's the fifth G♯–E♭, about 36 cents too wide; it howls.
+
+- id: well-temperament
+  term: Well temperament
+  category: Tuning
+  introducedIn: v3-02
+  aliases: [well temperament, well temperaments, well-temperament]
+  def: >-
+    A keyboard tuning with no wolf, in which every key is usable but keys are
+    not all the same: keys near C have purer thirds than distant ones, giving
+    each key its own color. Werckmeister and others published such tunings
+    around 1700.
+
+- id: edo
+  term: Equal divisions of the octave (N-TET)
+  category: Tuning
+  introducedIn: v3-02
+  aliases: [N-TET, EDO, EDOs, 19-TET, 22-TET, 24-TET, 31-TET, 41-TET, 53-TET, equal divisions of the octave]
+  def: >-
+    Splitting the octave into some number N of identical steps. Twelve is the
+    standard; 19 and 31 give better thirds, 53 is almost pure everywhere, and
+    24 (quarter tones) is used in modern Arabic theory.
+
+- id: microtone
+  term: Microtone
+  category: Tuning
+  introducedIn: v3-02
+  deepIn: v3-10
+  aliases: [microtone, microtones, microtonal, microtonality, quarter tone, quarter tones, quarter-tone, quarter-tones]
+  def: >-
+    Any interval smaller than a semitone, or more loosely, any pitch that falls
+    between the keys of a piano. A quarter tone is half a semitone (50 cents).
+    Many traditions use them as ordinary scale steps.
+
+- id: slendro-pelog
+  term: Slendro and pelog
+  category: Tuning
+  introducedIn: v1-05
+  deepIn: v3-02
+  aliases: [slendro, pelog]
+  def: >-
+    The two tuning systems of Javanese and Balinese gamelan. Slendro divides
+    the octave into five nearly equal steps (roughly 240 cents each); pelog
+    has seven unequal steps. The exact tuning varies from one gamelan to
+    another, and each set of instruments is tuned as a unit.
+
 # ---------- consonance (introduced in 1.5) ----------
 - id: beats
   term: Beats (acoustic beating)
@@ -980,8 +1070,8 @@
 - id: scale
   term: Scale
   category: Notes & intervals
-  introducedIn: v3-03
-  deepIn: v3-02
+  introducedIn: v3-02 # v3-02: was v3-03 (3.3 now deepens it)
+  deepIn: v3-03
   aliases: [major scale, minor scale, scale degree, scale degrees]
   def: >-
     A fixed set of notes, listed in pitch order, that a piece mostly draws
@@ -1095,7 +1185,7 @@
 - id: song-sections
   term: Song sections
   category: Form & tension
-  introducedIn: v5-04
+  introducedIn: v5-02 # v5-02: moved earlier (was v5-04); the repetition table needs verse and chorus
   deepIn: v5-05
   aliases: [verse, verses, chorus, choruses, pre-chorus, bridge section]
   def: >-
@@ -1622,7 +1712,8 @@
 - id: click-track
   term: Click track (sync track)
   category: Production
-  introducedIn: v7-01
+  introducedIn: v2-01 # v2-01: was v7-01 (tempo stability); v7-01 covers the tape sync track
+  deepIn: v7-01
   aliases: [click track, click tracks, sync track, sync pulse]
   def: >-
     A steady electronic pulse recorded alongside the music, so that players or
@@ -1761,7 +1852,8 @@
 - id: circle-of-fifths
   term: Circle of fifths
   category: Harmony & style
-  introducedIn: v3-06
+  introducedIn: v3-02 # v3-02: was v3-06; 3.2 builds it from stacked fifths, 3.6 uses it for harmony
+  deepIn: v3-06
   aliases: [circle of fifths, cycle of fifths, falling fifths, descending fifths, root motion]
   def: >-
     The twelve notes arranged so that neighbors are a fifth apart (C G D A E B
@@ -2057,3 +2149,456 @@
     major scale without its two half steps. It turns up in folk music
     worldwide, in blues and rock (the minor pentatonic), and in East Asian music.
 
+
+# ---- v2-04 (polyrhythm) ----
+
+- id: polyrhythm
+  term: Polyrhythm
+  category: Rhythm
+  introducedIn: v2-04
+  aliases: [polyrhythm, polyrhythms, polyrhythmic, composite rhythm, composite rhythms, three against two, four against three, 3 against 2, 4 against 3]
+  def: >-
+    Two (or more) steady pulses at once that divide the same span of time
+    into different numbers of equal parts, such as 3 against 2: three evenly
+    spaced notes in one part while another plays two. The notes of all the
+    parts together make the composite rhythm.
+
+- id: cross-rhythm
+  term: Cross-rhythm
+  category: Rhythm
+  introducedIn: v2-04
+  aliases: [cross-rhythm, cross-rhythms, cross rhythm, cross rhythms, cross-rhythmic]
+  def: >-
+    A rhythm whose pulse or grouping cuts across the meter the listener holds,
+    so it is heard against the beat rather than as a second beat of equal
+    standing. In much West African music, cross-rhythm against the dancers'
+    beat is the normal texture, not an effect.
+
+- id: polymeter
+  term: Polymeter
+  category: Rhythm
+  introducedIn: v2-04
+  aliases: [polymeter, polymeters, polymetric, polymetre, polymetrical]
+  def: >-
+    Patterns of different lengths built on the same fast pulse, repeating
+    together so that they drift apart and realign: a 3-step loop against a
+    4-step loop lines up again every 12 steps. The pulse is shared; the cycle
+    lengths differ. Compare polyrhythm, where the pulses themselves differ.
+
+- id: timeline-pattern
+  term: Timeline pattern
+  category: Rhythm
+  introducedIn: v2-04
+  aliases: [timeline pattern, timeline patterns, time-line pattern, time-line patterns]
+  def: >-
+    A short, asymmetric pattern, usually played on a bell or sticks, that
+    repeats unchanged through a piece and orients every other part, as in
+    the 12-pulse bell pattern of Ewe music or the Cuban clave.
+
+- id: phasing
+  term: Phasing (phase music)
+  category: Rhythm
+  introducedIn: v2-04
+  aliases: [phasing, phase music, phase shifting, phase-shifting, phase process]
+  def: >-
+    Steve Reich's process of playing a repeating pattern against a copy of
+    itself while one copy gradually (or step by step) moves ahead, so the two
+    pass through every offset in turn and each offset produces a new
+    composite pattern.
+
+- id: metric-modulation
+  term: Metric modulation
+  category: Rhythm
+  introducedIn: v2-04
+  aliases: [metric modulation, metrical modulation, metric modulations]
+  def: >-
+    A tempo change made by reinterpreting a note value: a triplet in the old
+    tempo becomes the new beat, so the music speeds up or slows down by an
+    exact ratio. Associated with Elliott Carter.
+
+- id: ostinato
+  term: Ostinato and ground bass
+  category: Rhythm
+  introducedIn: v2-04
+  deepIn: v5-02
+  aliases: [ostinato, ostinatos, ostinati, ground bass, ground basses, basso ostinato]
+  def: >-
+    A short pattern repeated persistently, often unchanged, while other parts
+    change around it. A bass line or riff repeated through a song is an
+    ostinato; a ground bass is an ostinato in the bass, the basis of many
+    Baroque laments and variation sets.
+
+# ---------- v2-01: musical time ----------
+- id: inter-onset-interval
+  term: Onset and inter-onset interval (IOI)
+  category: Rhythm
+  introducedIn: v2-01
+  aliases: [inter-onset interval, inter-onset intervals, IOI, IOIs]
+  def: >-
+    An onset is the moment a sound event starts. The inter-onset interval is
+    the time from one onset to the next. Rhythm, as the ear tracks it, is
+    mostly a pattern of inter-onset intervals, not of note lengths.
+
+- id: simple-compound-meter
+  term: Simple and compound meter
+  category: Rhythm
+  introducedIn: v2-01
+  deepIn: v2-02
+  aliases: [simple meter, simple meters, compound meter, compound meters, simple time, compound time]
+  def: >-
+    In simple meter each beat divides into two (2/4, 3/4, 4/4). In compound
+    meter each beat divides into three (6/8, 9/8, 12/8), so 6/8 is felt as two
+    beats of three eighth notes each, not six beats.
+
+- id: tempo-marking
+  term: Tempo marking (Allegro, Andante…)
+  category: Rhythm
+  introducedIn: v2-01
+  aliases: [tempo marking, tempo markings, tempo indication, tempo indications, metronome marking, metronome markings]
+  def: >-
+    A word at the top of a score describing the speed and character of the
+    music, traditionally in Italian: Largo (broad), Andante (walking), Allegro
+    (cheerful), Presto (very fast). Since the early 1800s often paired with a
+    metronome marking in beats per minute.
+
+- id: expressive-timing
+  term: Expressive timing (rubato)
+  category: Rhythm
+  introducedIn: v2-01
+  aliases: [expressive timing, rubato, tempo rubato, phrase-final lengthening, final lengthening]
+  def: >-
+    Systematic deviations from strict tempo that performers use to shape the
+    music: pushing ahead within a phrase, slowing into its end, lingering on
+    important notes. Called rubato ("robbed" time) in classical playing.
+
+- id: tempo-change
+  term: Accelerando and ritardando
+  category: Rhythm
+  introducedIn: v2-01
+  aliases: [accelerando, accelerandos, ritardando, ritardandos, rallentando, ritard]
+  def: >-
+    A gradual change of tempo written into the music: accelerando means
+    getting faster, ritardando (or rallentando) getting slower, typically at
+    the end of a piece or section.
+
+# ---------- v3-01: intervals, ratios, and how precisely we hear and tune them ----------
+
+- id: interval-quality
+  term: Interval quality (perfect, major, minor, augmented, diminished)
+  category: Notes & intervals
+  introducedIn: v3-01
+  aliases: [interval quality, interval qualities, perfect interval, perfect intervals, augmented fourth, diminished fifth, augmented interval, augmented intervals, diminished interval, diminished intervals]
+  def: >-
+    The word in front of an interval's number. Unisons, fourths, fifths, and
+    octaves are perfect; seconds, thirds, sixths, and sevenths come in major
+    (larger) and minor (smaller) sizes. Stretching an interval a semitone
+    beyond major or perfect makes it augmented; shrinking it a semitone below
+    minor or perfect makes it diminished. The tritone is an augmented fourth
+    or a diminished fifth, depending on spelling.
+
+- id: enharmonic
+  term: Enharmonic
+  category: Notes & intervals
+  introducedIn: v3-01
+  aliases: [enharmonic, enharmonically, enharmonic equivalent, enharmonic equivalents]
+  def: >-
+    Two spellings of the same key on an equal-tempered keyboard: F♯ and G♭,
+    or an augmented fourth (C–F♯) and a diminished fifth (C–G♭). They sound
+    identical on a piano but play different roles in the music, and singers
+    or string players may tune them slightly differently.
+
+- id: compound-interval
+  term: Compound interval
+  category: Notes & intervals
+  introducedIn: v3-01
+  aliases: [compound interval, compound intervals, simple interval, simple intervals]
+  def: >-
+    An interval larger than an octave, named by continuing the letter count:
+    a ninth is a second plus an octave, a tenth a third plus an octave, a
+    twelfth a fifth plus an octave. Intervals within an octave are simple.
+    In ratios, adding an octave doubles the ratio (5/4 → 5/2).
+
+- id: interval-inversion
+  term: Interval inversion
+  category: Notes & intervals
+  introducedIn: v3-01
+  aliases: [interval inversion, interval inversions, inverting an interval, inverted interval, inverted intervals, inversion of an interval]
+  def: >-
+    Flipping an interval by moving its lower note up an octave (or its upper
+    note down one). The two intervals add up to an octave: the numbers sum to
+    9 (a third inverts to a sixth), the semitones to 12, the cents to 1,200,
+    and the ratios multiply to 2/1. Major becomes minor, augmented becomes
+    diminished, and perfect stays perfect.
+
+- id: interval-class
+  term: Interval class
+  category: Notes & intervals
+  introducedIn: v3-01
+  aliases: [interval class, interval classes]
+  def: >-
+    An interval and its inversion (and any compound version) treated as one
+    thing, measured by the shorter way round: 1 to 6 semitones. A major third,
+    a minor sixth, and a major tenth all belong to interval class 4. Used
+    where octave and direction don't matter, as in analysing post-tonal music.
+
+- id: categorical-perception
+  term: Categorical perception (of intervals)
+  category: Hearing
+  introducedIn: v3-01
+  aliases: [categorical perception, perceived categorically, perceive intervals categorically]
+  def: >-
+    Hearing a continuum as a few distinct categories. Trained musicians label
+    interval sizes between a minor and a major third as one or the other, with
+    a fairly sharp switch near the middle, and tell sizes apart more easily
+    across that boundary than within a category. The effect depends on
+    training and is weaker than for speech sounds.
+
+- id: intonation
+  term: Intonation (expressive tuning)
+  category: Tuning
+  introducedIn: v3-01
+  aliases: [expressive intonation, intonation practice, intonation practices]
+  def: >-
+    How performers who can bend pitch (singers, string and wind players)
+    actually place their notes. Measurements show they match neither just
+    ratios nor equal temperament exactly: they lock chords toward pure
+    ratios, push notes that lead somewhere toward their goal, and vary by
+    roughly ±10–20 cents from note to note.
+
+- id: octave-stretch
+  term: Octave stretch
+  category: Tuning
+  introducedIn: v3-01
+  aliases: [octave stretch, octave stretching, stretched-octave preference]
+  def: >-
+    The tendency of listeners, when adjusting a melodic octave of pure tones
+    (one note after the other), to set it slightly wider than an exact 2:1,
+    typically by around 10–20 cents. It's a perceptual effect, separate from
+    the stretched tuning of pianos, which comes from their strings' overtones.
+
+- id: absolute-pitch
+  term: Absolute and relative pitch
+  category: Hearing
+  introducedIn: v3-01
+  aliases: [absolute pitch, perfect pitch, relative pitch]
+  def: >-
+    Relative pitch is hearing notes by their intervals from one another, which
+    is how nearly everyone recognises a tune in any key. Absolute (perfect)
+    pitch is naming or producing a note with no reference, such as hearing a
+    car horn as an F. It's rare, and linked to early musical training and to
+    speaking a tonal language. Most people still remember the usual pitch
+    of familiar recordings within a semitone or two.
+
+# ---------- repetition, variation, development (v5-02) ----------
+# "fragmentation", "augmentation", "riff", and "development" are deliberately not
+# aliases here: v3-03 introduces them in passing (under melodic-transformation and motif).
+- id: variation
+  term: Variation
+  category: Form & tension
+  introducedIn: v5-02
+  aliases: [varied repetition, varied repetitions, variation technique, variation techniques]
+  def: >-
+    Repeating something with changes, so that it is recognizably the same
+    material and recognizably different. A variation changes some dimensions
+    (rhythm, harmony, mode, decoration, register, instrumentation) and keeps
+    others; what's kept is what makes it recognizable.
+
+- id: theme-and-variations
+  term: Theme and variations
+  category: Form & tension
+  introducedIn: v5-02
+  aliases: [theme and variations, variation form, variation set, variation sets, passacaglia, passacaglias, chaconne, chaconnes]
+  def: >-
+    A form made of a theme followed by a series of variations on it: A A′ A″
+    A‴. In a passacaglia or chaconne, the variations are built over a short
+    bass line or chord pattern that repeats throughout.
+
+- id: motivic-development
+  term: Motivic development and liquidation
+  category: Form & tension
+  introducedIn: v5-02
+  aliases: [motivic development, thematic development, liquidation, liquidated, liquidates, motivic work]
+  def: >-
+    Building a passage by working over a motif: sequencing, inverting,
+    stretching, recombining, and cutting it into fragments. Liquidation is
+    the end point of fragmentation: the motif is pared down until only a
+    rhythm or a single repeated note or chord is left.
+
+- id: developing-variation
+  term: Developing variation
+  category: Form & tension
+  introducedIn: v5-02
+  aliases: [developing variation]
+  def: >-
+    Schoenberg's name for a way of composing in which each new idea grows out
+    of a variation of an earlier one, so that a whole piece unfolds from a few
+    small cells without literal repeats. He found it above all in Brahms.
+
+- id: call-and-response
+  term: Call and response
+  category: Form & tension
+  introducedIn: v5-02
+  aliases: [call and response, call-and-response, antiphony, antiphonal]
+  def: >-
+    A phrase by one voice or group answered by another: a leader and a
+    chorus, a singer and a guitar, two sections of a band. Central to West and
+    Central African music and to the African American traditions that grew from
+    it (work songs, gospel, blues, jazz, soul), and found in church music worldwide.
+
+- id: musical-borrowing
+  term: Quotation, sampling, and interpolation
+  category: Form & tension
+  introducedIn: v5-02
+  aliases: [musical quotation, musical quotations, interpolation, interpolations, sample-based]
+  def: >-
+    Reusing material from another piece: quoting a recognizable tune, sampling
+    a piece of an actual recording, or interpolating (re-recording) part of an
+    older song in a new one. Variation that crosses from one piece to another.
+
+# ---- v4-01: acoustic instruments as physical systems ----
+- id: exciter-resonator
+  term: Exciter, resonator, radiator
+  category: Instruments
+  introducedIn: v4-01
+  aliases: [exciter, exciters, radiator, radiators]
+  def: >-
+    The three parts of almost every acoustic instrument. The exciter puts
+    energy in (a bow, a pluck, a hammer, a reed, the lips, a stick). The
+    resonator (a string, an air column, a drumhead, a bar) decides which
+    frequencies vibrate. The radiator (a soundboard, a body, a bell) passes the
+    vibration to the air.
+
+- id: mode-locking
+  term: Mode locking (self-sustained oscillation)
+  category: Instruments
+  introducedIn: v4-01
+  aliases: [mode locking, mode-locked, mode-locks, self-sustained, self-sustaining]
+  def: >-
+    In bowed and blown instruments, the resonator controls the exciter: the
+    string decides when the bow slips, the air column decides when the reed
+    opens. This feedback holds every partial in an exact whole-number ratio,
+    so a sustained note is perfectly harmonic even when the resonator's own
+    modes are slightly out of line.
+
+- id: helmholtz-motion
+  term: Stick-slip and Helmholtz motion
+  category: Instruments
+  introducedIn: v4-01
+  aliases: [stick-slip, Helmholtz motion, Helmholtz corner]
+  def: >-
+    How a bow drives a string. Rosin makes the hair grip the string and drag
+    it along, until it snaps free and slides back, then grips again, once per
+    period. The string takes the shape of a sharp corner racing around its
+    length, and its sound is close to a sawtooth wave: every harmonic, at
+    strength 1/n.
+
+- id: open-closed-pipe
+  term: Open and closed pipes
+  category: Instruments
+  introducedIn: v4-01
+  aliases: [closed pipe, closed pipes, open pipe, open pipes, stopped pipe, stopped pipes, closed tube, open tube]
+  def: >-
+    A tube open at both ends (a flute) has every harmonic. A tube closed at
+    one end (a clarinet, whose reed end acts closed) has only the odd
+    harmonics, and its lowest note is an octave below an open tube of the same
+    length.
+
+- id: bore
+  term: Bore (cylindrical or conical)
+  category: Instruments
+  introducedIn: v4-01
+  aliases: [cylindrical bore, conical bore, conical bores, cylindrical bores]
+  def: >-
+    The shape of a wind instrument's inside. A cylinder closed at the reed end
+    (clarinet) gives odd harmonics; a cone (oboe, bassoon, saxophone) behaves
+    like an open pipe and gives all of them, even though it too is closed at
+    the reed.
+
+- id: reed
+  term: Reeds and lip reeds
+  category: Instruments
+  introducedIn: v4-01
+  aliases: [single reed, single-reed, double reed, double-reed, lip reed, lip reeds, buzzing lips]
+  def: >-
+    A valve that chops a steady stream of breath into pulses: a single cane
+    reed against a mouthpiece (clarinet, saxophone), two blades beating
+    together (oboe, bassoon), or a brass player's lips buzzing in the
+    mouthpiece. The air column's pressure tells the valve when to open.
+
+- id: overblowing
+  term: Overblowing
+  category: Instruments
+  introducedIn: v4-01
+  aliases: [overblow, overblows, overblowing, overblown, register key]
+  def: >-
+    Blowing harder or differently so a wind instrument jumps to a higher mode
+    of its air column. A flute overblows to the octave (mode 2); a clarinet,
+    lacking even harmonics, jumps to the twelfth (mode 3). Brass instruments
+    play almost entirely by choosing modes this way.
+
+- id: soundboard
+  term: Soundboard and body
+  category: Instruments
+  introducedIn: v4-01
+  aliases: [soundboard, soundboards, top plate, body resonances]
+  def: >-
+    A string barely moves any air by itself. It passes its vibration through a
+    bridge to a large, light plate (a piano's soundboard, a violin's or
+    guitar's top), which radiates it. The plate and the air inside the body
+    have their own resonances, which color every note.
+
+- id: sympathetic-resonance
+  term: Sympathetic resonance
+  category: Instruments
+  introducedIn: v4-01
+  aliases: [sympathetic resonance, sympathetic vibration, sympathetic strings, sympathetically]
+  def: >-
+    An undamped string (or other resonator) starting to vibrate because a
+    nearby sound contains its frequencies. Pianos do it when the sustain
+    pedal is down; sitars and the viola d'amore have extra strings just for it.
+
+- id: membrane-modes
+  term: Drumhead and plate modes
+  category: Instruments
+  introducedIn: v4-01
+  aliases: [nodal diameter, nodal diameters, nodal circle, nodal circles, nodal line, nodal lines]
+  def: >-
+    A drumhead vibrates in patterns divided by still lines: diameters across it
+    and circles around its center. Their frequencies follow no whole-number
+    pattern (an ideal head's first modes are 1 : 1.59 : 2.14 : 2.30...), which
+    is why most drums have no clear pitch. Timpani and tabla are built to bend
+    them close to a harmonic series.
+
+- id: bar-modes
+  term: Bar modes and undercutting
+  category: Instruments
+  introducedIn: v4-01
+  aliases: [undercut, undercutting, free bar, free bars]
+  def: >-
+    A uniform bar free at both ends has modes at 1 : 2.76 : 5.40 : 8.93, far
+    from harmonic. Marimba and xylophone makers carve an arch under each bar
+    to pull the upper modes onto chosen intervals (two octaves up on a
+    marimba, an octave and a fifth on a xylophone).
+
+- id: bell-partials
+  term: Bell partials (hum, prime, tierce, nominal)
+  category: Instruments
+  introducedIn: v4-01
+  aliases: [strike note, hum note, hum tone]
+  def: >-
+    The named modes of a tuned church bell: the hum an octave below the prime,
+    the prime, a minor third above it (the tierce), a fifth, and the nominal an
+    octave above the prime. The pitch you hear when it's struck (the strike
+    note) is usually not any single mode.
+
+- id: hornbostel-sachs
+  term: Hornbostel–Sachs classification
+  category: Instruments
+  introducedIn: v4-01
+  aliases: [Hornbostel–Sachs, Hornbostel-Sachs, chordophone, chordophones, aerophone, aerophones, membranophone, membranophones, idiophone, idiophones, electrophone, electrophones]
+  def: >-
+    The standard scheme for classifying instruments by what vibrates:
+    chordophones (strings), aerophones (air), membranophones (stretched skins),
+    idiophones (the body itself: bells, bars, rattles), and electrophones
+    (electronic sound), added later. Devised by Erich von Hornbostel and Curt
+    Sachs in 1914.

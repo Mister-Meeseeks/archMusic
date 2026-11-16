@@ -1,0 +1,438 @@
+---
+title: "Acoustic Instruments as Physical Systems"
+volume: 4
+chapter: 1
+summary: A violin, a clarinet, and a drum are machines with three parts, an exciter, a resonator, and a radiator. How strings, air columns, drumheads, bars, and bells vibrate, why some instruments are exactly harmonic and others can't be, and how instrument makers bend physics toward music.
+status: teaching-draft
+updated: 2026-11-16
+assumes: [frequency, pitch, sine-wave, waveform, sound-wave, amplitude, wavelength, period, speed-of-sound, harmonics, standing-wave, spectrum, timbre, resonance, formant, inharmonicity, octave, interval, frequency-ratio, cents, semitone, note-names, middle-c, chord, major-minor, tonic, beats, equal-temperament, attack-transient, missing-fundamental, drum-kit, register]
+lintIgnore: [physical-modeling, oscillator] # forward pointers to 4.5; a reference title
+introduces: [exciter-resonator, mode-locking, helmholtz-motion, soundboard, sympathetic-resonance, open-closed-pipe, bore, reed, overblowing, membrane-modes, bar-modes, bell-partials, hornbostel-sachs]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the others. This chapter has one big lab, **Inside the instrument**, which you'll meet several times with different resonators selected. Headphones or decent speakers help: the low string and closed-pipe sounds lose their bottom on a laptop. Then write your version in `src/content/chapters/v4-01-instruments.mdx`.
+
+Chapter 1.2 explained *that* a vibrating string makes a harmonic series. This chapter goes inside real instruments: why a clarinet sounds hollow, why a bowed note is perfectly in tune with its own harmonics when a struck piano string isn't, why most drums have no pitch and a timpano does, and why a bell sounds faintly sad. It's the physics behind the timbres the rest of Volume IV works with, and behind the physical-modeling synthesis of chapter 4.5.
+</Callout>
+
+## The question
+
+A violinist and a clarinetist play the same note, at the same loudness. You can tell them apart instantly, with your eyes closed, from the far end of a hall. Chapter 1.2 gave the first answer: their notes have different recipes of <Term id="harmonics">harmonics</Term>. But why? Where does a recipe come from?
+
+The answer is that each instrument is a small physical machine, and the machine decides the recipe. Some of its parts are as simple as a stretched wire; some are as subtle as the curve of a brass bell. Instrument makers spent centuries learning, mostly by trial and error, how to shape those parts so that physics produces something musical. Seen this way, a Stradivarius and a marimba are feats of engineering as much as works of craft.
+
+This chapter takes the machines apart. The aim isn't to cover every instrument, but to give you a small set of principles that explain most of them.
+
+## Exciter, resonator, radiator
+
+Almost every acoustic instrument has three parts:
+
+- An **exciter** puts energy in: a bow, a finger plucking, a felt hammer, a stick, a reed, a player's buzzing lips, a jet of breath.
+- A **resonator** decides which frequencies vibrate: a string, a column of air inside a tube, a stretched skin, a metal bar. Its modes, the <Term id="standing-wave">standing-wave</Term> patterns it naturally supports, set the possible frequencies.
+- A **radiator** hands the vibration on to the air: a wooden soundboard, a guitar's body, a trumpet's bell, a drum's shell.
+
+The three parts work very differently in two families of instruments:
+
+- In **struck and plucked** instruments (piano, guitar, harp, drums, bells), the exciter acts once and gets out of the way. The resonator then rings on its own, in its own modes, and the sound dies away.
+- In **bowed and blown** instruments (violin family, woodwinds, brass, the voice), the exciter keeps pumping energy in for as long as the note lasts. And the resonator *talks back*: its vibration controls the exciter. That feedback loop turns out to matter enormously, as the next sections show.
+
+<ExciterResonator />
+
+## Strings
+
+### Why strings are harmonic, and how they're set going
+
+Chapter 1.2 showed the essentials. A string clamped at both ends can only vibrate in patterns that fit a whole number of half-waves between the ends, so its modes sit at 1×, 2×, 3×... the lowest frequency: a harmonic series. A pluck sets all the modes going at once, in proportions that depend on where you pluck. Pluck near the end and the high harmonics are strong (a bright, twangy sound); pluck in the middle and the sound is round and soft, with every even harmonic missing, because they all have a still point (a node) exactly in the middle.
+
+The three ways of exciting a string give three characteristic sounds:
+
+- **Plucking** (guitar, harp, harpsichord) pulls the string into a triangle and lets go. The harmonics fade at roughly 1/*n*², and the higher ones die away fastest, so a plucked note starts bright and mellows as it decays.
+- **Striking** (piano) throws a felt hammer at the string, which bounces off within a few thousandths of a second. A soft hammer, or a gentle blow, stays in contact longer and excites mainly the low modes; a hard blow from the same hammer is brighter. That's why a loud piano note isn't just a louder version of a soft one: its *spectrum* changes. Piano makers also place the hammer about one-seventh to one-ninth of the way along the string, roughly where the jarring 7th and 9th harmonics have their nodes.
+- **Bowing** is the strange one.
+
+<Callout kind="verify" title="hammer position">
+The "one-seventh to one-ninth of the string, to weaken the 7th and 9th harmonics" claim is traditional and often repeated, but how much it actually matters is debated (the hammer's width and contact time also shape the spectrum). Check against Fletcher & Rossing (1998), chapter 12, or Askenfelt's piano research before keeping it.
+</Callout>
+
+### The bow: stick and slip
+
+Pull a bow across a string. Rosin makes the hair sticky, so the hair grips the string and drags it sideways. The string's tension pulls back harder and harder until, suddenly, the hair loses its grip and the string snaps back the other way, sliding under the hair. Then the hair grips again, and the cycle repeats: **stick, slip, stick, slip**, hundreds of times a second.
+
+What's remarkable is the shape the string takes. Hermann von Helmholtz, watching a bowed string through a vibrating microscope in the 1860s, found that it doesn't wobble in a smooth curve. It forms two straight lines meeting at a sharp corner, and the corner races around the string, once per period, along a curved path. When the corner passes the bow, it knocks the string loose (slip); when it comes back, the string is recaptured (stick). This is now called **Helmholtz motion**. The force it puts on the bridge is a **sawtooth wave**, the waveform with every harmonic at strength 1/*n*: the bright, buzzy raw material a violin starts from.
+
+### Feedback makes perfect harmonics
+
+Here is the deep point about bowed and blown instruments. In a plucked string, each mode vibrates on its own, at its own natural frequency. If those frequencies were slightly out of a perfect harmonic series, the sound would simply contain slightly mistuned partials.
+
+A bowed string can't do that. The moment of slip is triggered by the corner returning to the bow, once per period. The whole motion is one pattern that repeats exactly, and a waveform that repeats exactly has, by definition, partials at *exact* whole-number multiples of its repetition rate. The bow forces the string's modes into lockstep. The same thing happens in wind instruments, where the pressure in the air column decides when the reed opens. This is called **mode locking**, and it's why sustained instruments (strings bowed, winds, brass, voices) produce perfectly harmonic tones, while struck and plucked ones are harmonic only as far as their resonators happen to be.
+
+You'll hear the difference in the lab below. Make the string stiff, which pulls its modes slightly out of line, then compare plucking it with bowing it.
+
+<Callout kind="verify" title="Helmholtz motion and mode locking">
+Check: Helmholtz's observation (*On the Sensations of Tone*, 1863; the vibration microscope) and the "corner traveling on a curved path" description; that the bridge force is close to a sawtooth (it's rounded in practice by the finite width of the bow and losses); and the mode-locking explanation (Fletcher 1978, "Mode locking in nonlinearly excited inharmonic musical oscillators", *JASA* 64, 1566–1569; also McIntyre, Schumacher & Woodhouse 1983).
+</Callout>
+
+### The body: why a bare string is nearly silent
+
+Stretch a string between two nails on a heavy table and pluck it. You'll barely hear it. A string is so thin that it slices through the air almost without pushing any of it: the air simply flows around it. A string by itself is a terrible radiator.
+
+So stringed instruments pass the vibration on. The string presses on a **bridge**, which rocks a large, thin, light plate: a piano's **soundboard**, the top of a violin or guitar. The plate moves a lot of air. But a plate is a resonator too, with modes of its own, and so is the air inside a hollow body. The body therefore acts as a **filter**: it boosts the string's harmonics near its own resonances and weakens others, just as the vocal tract shapes the buzz of the vocal folds into <Term id="formant">formants</Term> (chapter 1.2).
+
+These body resonances are a large part of what makes a violin a violin and a guitar a guitar, and a good violin different from a mediocre one. A violin has a few strong low resonances (the air in the body sloshing in and out of the f-holes, and the main modes of the wooden plates) and a group of resonances around 2–3 kHz, sometimes called the "bridge hill", which gives brilliance. Occasionally a body resonance is so strong that it fights the string, and one note comes out unsteady and growling: cellists call it the **wolf note**.
+
+<Callout kind="verify" title="violin body resonances">
+Check: the "A0" air (f-hole) resonance near 270–290 Hz and the main wood ("B1") modes around 450–550 Hz; the bridge hill at roughly 2–3 kHz (Jansson, Woodhouse; "bridge hill" is debated as a single feature); the wolf note mechanism (body resonance coupling with the string). Sources: Fletcher & Rossing (1998), chapter 10; Woodhouse (2014), "The acoustics of the violin: a review", *Reports on Progress in Physics* 77.
+</Callout>
+
+### Stiff strings and stretched octaves
+
+An ideal string bends freely. A real piano string is thick steel wire, and steel resists bending. For the low modes, which bend the string gently, this hardly matters. But the high modes divide the string into short segments with sharp bends, and the wire's stiffness pushes back, making them vibrate a little *faster* than the ideal. Mode 2 is a hair sharp of 2×, mode 10 noticeably sharp of 10×, and the error grows with the square of the mode number. Harvey Fletcher wrote it down in 1964: the *n*th mode sits at *n* × *f* × √(1 + *Bn*²), where *B* measures the string's stiffness.
+
+<DataTable title="How a stiff string's modes drift sharp" caption="Mode frequencies for a stiffness typical of a piano's middle register (B = 0.0004) and for a short, thick treble string (B = 0.004), compared with the ideal whole-number series. Computed from Fletcher's formula; real values vary from string to string.">
+
+| Mode | Ideal | B = 0.0004 | Sharp by | B = 0.004 | Sharp by |
+|---|---|---|---|---|---|
+| 1 | 1 | 1 | 0 cents | 1 | 0 cents |
+| 2 | 2 | 2.0012 | 1 cent | 2.0119 | 10 cents |
+| 4 | 4 | 4.012 | 5 cents | 4.118 | 50 cents |
+| 8 | 8 | 8.100 | 21 cents | 8.948 | 194 cents |
+
+</DataTable>
+
+That's the **inharmonicity** chapter 1.2 mentioned. Its consequences run through the whole design of the piano:
+
+- **Stretched tuning.** If a tuner set each octave to an exact 2:1, the second mode of the lower note (slightly sharp of 2×) would clash with the fundamental of the upper note, producing slow beating. So tuners widen each octave slightly to match the partials. Across the keyboard the stretch accumulates: the top notes end up something like 20–30 <Term id="cents">cents</Term> sharp of equal temperament, and the bottom notes a similar amount flat. Plotted against key number, that's the famous **Railsback curve** (1938).
+- **Wound bass strings.** To make a low note, a string needs to be long, heavy, or slack. A piano can't be ten meters long, so its bass strings are wrapped in copper wire, which adds mass without adding much stiffness.
+- **Why big pianos sound better in the bass.** A concert grand's bass strings are longer than an upright's, so they can be thinner and less stiff for the same pitch. Their partials are closer to harmonic, and the low notes sound clearer and less "tubby".
+
+<InstrumentLab initial="string" resonators={['string']} title="A string: pluck, bow, stiffen" />
+
+<Callout kind="try">
+1. Leave **Stiffness** at zero and **Pluck**. Move the pluck point toward the middle and watch the even modes vanish from the spectrum (you saw this in chapter 1.2's string lab too).
+2. Switch to **Bow** and play. Same pitch, but buzzier and sustained: every harmonic, at 1/*n*.
+3. Now raise **Stiffness** to the maximum and **Pluck** again. The bars drift right of the dashed harmonic lines, and the verdict changes to "nearly harmonic". Listen for a faintly metallic, "clangy" edge, like a short treble piano string.
+4. Keep the stiffness and switch to **Bow**. The bars snap back onto the lines: the bow locks the string into one exactly repeating motion. That's mode locking. (The real physics is subtler, but the result is the same: a sustained bowed note is harmonic.)
+</Callout>
+
+<Callout kind="verify" title="stretch tuning numbers">
+Check: Fletcher, H. (1964), "Normal vibration frequencies of a stiff piano string", *JASA* 36, 203–209 (the formula); typical B values (around 0.0002–0.0005 in the middle of a grand, rising steeply toward the top treble, and higher in the bass of small pianos); the size of the Railsback stretch (often quoted as about ±30 cents at the extremes, depending on the piano); Railsback, O. L. (1938), *JASA* 9, 274. The table is computed from the formula with the B values stated, not measured.
+</Callout>
+
+### Sympathetic resonance
+
+Press the sustain pedal on a piano, lifting all the dampers, and sing a loud note into it. When you stop, the piano sings your note back: every string whose modes match frequencies in your voice has picked up energy and started to ring. This is **sympathetic resonance**, resonance driven by a sound arriving from outside.
+
+Pianists use it constantly: the pedal doesn't just sustain notes, it adds a halo of sympathetically ringing strings. Some instruments are built around it. The Indian sitar has a set of thin *taraf* strings under the main ones that are never played directly; they're tuned to the notes of the raga and shimmer whenever the melody touches them. The Baroque viola d'amore and the Norwegian Hardanger fiddle have sympathetic strings too.
+
+## Air columns
+
+### Open and closed pipes
+
+In a wind instrument the resonator is the column of air inside a tube. Air in a tube supports standing waves just as a string does, but with a twist: what happens at the ends depends on whether they're open or closed.
+
+- At an **open end**, the air is free to rush in and out, so the air moves most there (the pressure stays close to the room's).
+- At a **closed end**, the air can't move at all, so that's a still point for the air's motion.
+
+A tube **open at both ends**, like a flute (open at the far end and, effectively, at the mouth hole), has free ends at both sides, and its standing waves fit the same way a string's do, just mirrored: a whole number of half-waves. Its modes form the complete harmonic series, 1, 2, 3, 4...
+
+A tube **closed at one end** is different. The pattern has to be still at the closed end and free at the open end. The lowest pattern that fits is a quarter of a wave, so the fundamental is an **octave lower** than an open tube of the same length. And the next patterns that fit are three quarters, five quarters, seven quarters...: only the **odd harmonics**, 1, 3, 5, 7.
+
+The clarinet is the classic closed pipe. Its tube is a cylinder, and the reed end acts as closed (more on why in a moment). That explains two famous clarinet facts at once: its low notes are surprisingly deep for its length (a clarinet and a flute are roughly the same length, but the clarinet reaches about an octave lower), and its low register has a hollow, woody tone with weak even harmonics. That's the "Hollow" recipe from chapter 1.2's harmonic builder.
+
+<InstrumentLab initial="closed" resonators={['open', 'closed']} title="Open and closed pipes" />
+
+<Callout kind="try">
+1. Choose **Open pipe** and press **Blow**. Then **Closed pipe**. The open pipe is at 262 Hz (a flute's low C); the closed pipe sounds at 147 Hz, near a clarinet's lowest note.
+2. Look at the spectra: every harmonic for the open pipe, only odd ones for the closed. Can you hear the hollowness?
+3. Step through the modes. In the open pipe the air sways most at both ends; in the closed pipe it never moves at the closed end.
+</Callout>
+
+<Callout kind="verify" title="pipe facts">
+Check: the flute's lowest note C4 (about 262 Hz) and the B♭ clarinet's lowest written E3, sounding D3 (about 147 Hz); "roughly the same length" (flute about 67 cm, B♭ clarinet about 66 cm with mouthpiece); and the qualification that the clarinet's odd-harmonic dominance holds mainly in the low (chalumeau) register: above about 1.5 kHz, the tone holes change the picture and even harmonics appear (Benade; Fletcher & Rossing chapter 15). The lab ignores end corrections and tone holes.
+</Callout>
+
+<ListeningCue track="pahud-syrinx" start="0:00">
+Debussy's *Syrinx*, for flute alone. The flute is an open pipe excited by a jet of air: listen to how pure and breathy the low notes are, with a strong fundamental and few harmonics, and how the tone brightens in the higher register.
+</ListeningCue>
+
+<ListeningCue track="meyer-mozart-clarinet-adagio" start="0:00">
+The slow movement of Mozart's Clarinet Concerto. The long melody spends much of its time in the clarinet's low register, where the closed-pipe tone is at its darkest and most "hollow". Compare it with the flute above.
+</ListeningCue>
+
+### Edges, reeds, and lips
+
+Each kind of wind instrument has its own exciter, and each one works as a valve controlled by the air column:
+
+- **Air jets (flutes, recorders, organ flue pipes).** The player blows a thin jet of air across a sharp edge. The jet flips back and forth, in and out of the tube, and the air column's pressure tells it when to flip. Because the mouth hole is open to the room, the flute behaves as a pipe open at both ends.
+- **Cane reeds.** A **single reed** (clarinet, saxophone) is a thin blade of cane that beats against the mouthpiece; a **double reed** (oboe, bassoon) is two blades beating against each other. Either way, the reed is a valve that opens and closes on the player's breath, chopping it into puffs. When the pressure in the mouthpiece swings high, it pushes the reed open, and so on: the air column drives the reed. Because the reed end is almost sealed most of the time, it behaves acoustically as a closed end.
+- **Lip reeds (brass).** A brass player's lips buzz in the mouthpiece, opening and closing like a reed. The air column again controls when they open.
+
+In every case the resonator controls the exciter, and that's mode locking again: as long as the player sustains a note, its partials are exactly harmonic.
+
+<Callout kind="verify" title="exciters">
+Check the jet-edge description (the flute jet is now understood to be a flow instability driven by the acoustic flow at the embouchure hole, not an edge tone in the old sense; Fletcher & Rossing chapter 16) and the "reed end acts closed" explanation for cylindrical reed instruments.
+</Callout>
+
+### Jumping between modes: overblowing
+
+Blow harder or tighter into a wind instrument, and at some point it jumps up to a higher mode of its air column. That's **overblowing**, and it's how winds cover their range:
+
+- A **flute** overblows to its second mode, the **octave**. Its fingerings repeat, one octave up.
+- A **clarinet** has no second mode (no even harmonics), so it jumps to its third, an **octave and a fifth** (a twelfth) up. A small hole near the top, the **register key**, helps it make the jump. Its fingerings repeat a twelfth higher, which is why clarinet fingering is notoriously different from other woodwinds.
+- **Brass instruments** take overblowing to the extreme. A bugle has no valves at all: by changing lip tension, a bugler picks out modes 2, 3, 4, 5, 6 of a single tube, which is why bugle calls ("Taps", "Reveille") use only the notes of a major chord. Valves (on trumpets and horns) and slides (on trombones) add extra lengths of tubing, giving several harmonic series to choose from, and the gaps between their modes are filled in.
+
+<ListeningCue track="gershwin-rhapsody" start="0:00" end="0:20">
+The opening of *Rhapsody in Blue*: a low clarinet trill, then a long glissando swooping up across the instrument's registers. Somewhere in the middle of that slide, the clarinet changes from its fundamental mode to its third. The player hides the seam, which is part of what made this opening famous.
+</ListeningCue>
+
+<Callout kind="verify" title="Rhapsody glissando">
+The opening was famously turned into a smear by the clarinetist Ross Gorman at rehearsals, then kept by Gershwin. Check the story and whether "across the registers" is accurate for this passage (it crosses the break between the chalumeau and clarion registers); confirm the cue time.
+</Callout>
+
+### Cones and bells
+
+Two more pieces explain the rest of the wind family.
+
+**Cones.** The oboe, bassoon, and saxophone have reeds, like the clarinet, but their tubes are **conical**, widening steadily from the reed to the end. Remarkably, a cone closed at its narrow end has the *same* modes as an open cylinder: the full harmonic series. So a saxophone, despite its single reed and clarinet-like mouthpiece, overblows to the octave and has all its harmonics, and it sounds more like an oboe's cousin than a clarinet's. The **bore**, the shape of the inside of the tube, matters more than the exciter.
+
+**Brass bells and mouthpieces.** A trumpet is mostly a cylinder, closed at the lips, which should give odd harmonics only. But the flaring bell at one end and the cup-shaped mouthpiece at the other shift the modes, and makers have refined those shapes over two centuries until the modes line up almost exactly with a full harmonic series (all but the lowest, which is out of place and rarely used). The bell also works as a radiator, and a filter: it lets high frequencies out efficiently and reflects low ones back into the tube. Played loudly, brass instruments generate many strong upper harmonics, which is why a loud trumpet isn't just louder than a soft one but blazingly brighter.
+
+<Callout kind="verify" title="cones and brass">
+Check: the conical-bore result (a complete cone closed at the apex has the modes of an open pipe the same length; real instruments are truncated cones, so it's approximate); the trumpet's lowest mode (it is not at the fundamental of the series the others imply; the low note brass players call a "pedal" is partly forced by the lips); the frequency above which the bell stops reflecting sound back into the tube (about 1.5 kHz for a trumpet); and the nonlinear steepening of loud brass sound (Hirschberg et al. 1996, "Shock waves in trombones", *JASA* 99, 1754).
+</Callout>
+
+## Membranes, bars, and bells
+
+### The drumhead
+
+A drumhead is a stretched membrane, fixed around its rim: the two-dimensional version of a string. And going from one dimension to two breaks the neat whole-number pattern completely.
+
+A drumhead's modes divide its surface into regions moving in opposite directions, separated by still **nodal lines**: straight **diameters** across the head and **circles** around its center. The simplest mode has the whole head bulging up and down together. The next has one nodal diameter, with one half going up while the other goes down. And so on. Their frequencies come from the mathematics of circles (the zeros of Bessel functions), and they're nowhere near whole-number multiples: for an ideal head, the first few modes are at 1, 1.59, 2.14, 2.30, 2.65, 2.92 times the lowest. That's why most drums have no clear pitch: their modes don't fit any harmonic series, so the brain can't find one fundamental to hear (chapter 1.4's grouping by harmonicity fails).
+
+Where you strike matters, because a stick can only excite modes that move at the point it hits:
+
+- **Dead center**, every mode with a nodal diameter has a node there, so only the circular modes sound. These modes also radiate sound very efficiently, which means they lose their energy fast. The result is a short, dull thud.
+- **Near the edge**, many more modes sound, and the note rings.
+
+That's why drummers and timpanists rarely hit the exact center. A snare drum adds one more trick: a set of wires (the **snares**) stretched across the bottom head buzz against it on every hit, adding a burst of noise. The snare's crack in a <Term id="drum-kit">drum kit</Term> is mostly that buzz.
+
+<InstrumentLab initial="membrane" resonators={['membrane', 'timpani', 'tabla']} title="Drumheads: ideal, timpani, tabla" />
+
+<Callout kind="try">
+1. With **Drumhead** selected, **Strike** at 50%, then at dead center, then near the edge. At the center, all modes with nodal diameters vanish from the spectrum, and the sound is short and dull.
+2. Step through the modes and watch the patterns: the numbers in brackets count the nodal diameters and, roughly, the circles. The bars sit at awkward, non-whole-number places between the dashed lines.
+3. Now try **Timpani** and **Tabla**. Same kinds of patterns, very different frequencies: both drums are built to pull their modes toward a harmonic series. The next two sections explain how.
+</Callout>
+
+### Timpani: tuning a drum
+
+The orchestral timpano is a membrane stretched over a large copper bowl, and it produces a clear, tunable pitch. How, when membranes are inharmonic? Lord Rayleigh puzzled over it in the nineteenth century, and the answer is the air. The head has to push the air in the kettle and the air around it, and that extra load lowers the modes' frequencies, the low ones most. In a well-made timpano, the modes with one, two, three, four, and five nodal diameters end up close to the ratios **2 : 3 : 4 : 5 : 6**, like harmonics of a note an octave below the main one. The bulging-up-and-down mode, which would wreck the harmony, radiates so efficiently that it dies almost instantly, and the timpanist strikes about a quarter of the way in from the rim to excite it as little as possible.
+
+Curiously, listeners usually hear the timpano's pitch as the frequency of its strongest mode (the one with one nodal diameter, called the *principal tone*), not as the missing fundamental an octave below it, even though the modes above line up like a harmonic series built on that lower note.
+
+<ListeningCue track="strauss-zarathustra-sunrise" start="0:00" end="0:45">
+After each brass fanfare in the opening of *Also sprach Zarathustra*, the timpani pound out two alternating notes, C and G, a fifth apart. A drum with a definite pitch, playing an interval: something an ordinary drum can't do.
+</ListeningCue>
+
+<Callout kind="verify" title="timpani">
+Check: Rossing's measured mode ratios (roughly 1 : 1.50 : 1.98 : 2.44 : 2.94 relative to the (1,1) mode; Fletcher & Rossing 1998, chapter 18; Rossing 1982, "The physics of kettledrums", *Scientific American* 247(5)); the claim that the pitch heard corresponds to the principal (1,1) mode rather than the implied fundamental an octave below; the lab's value for the (0,1) mode (0.85 × the principal) is a placeholder; the recommended striking point; and the timpani cue time in this recording.
+</Callout>
+
+### The tabla: a drum that sings
+
+Indian drummers solved the same problem differently, centuries earlier. The right-hand drum of the tabla (the *dayan*) has a thick black patch in the middle of its head, the *syahi*, built up from layers of a paste of iron filings, soot, and starch, and carefully shaped by the maker. That extra mass in the center changes the shapes of the modes and moves their frequencies. In 1934 the physicist C. V. Raman (by then a Nobel laureate for his work on light) showed that the loaded head brings the first nine modes into five groups at very nearly **1 : 2 : 3 : 4 : 5**: a harmonic series, from a drum. The tabla is tuned to the tonal center of the music, and it rings with a clear pitch.
+
+The left-hand drum (the *bayan*) is larger, with an off-center patch, and the player presses the heel of the hand into its head while it sounds, raising the tension and making the pitch swoop upward.
+
+<ListeningCue track="zakir-hussain-jhaptal" start="0:00">
+Zakir Hussain, the most celebrated tabla player of his generation. Listen for the right-hand drum's clear ringing pitch, a drum you could sing along with, and the left-hand drum's deep booms that slide upward as he presses the head.
+</ListeningCue>
+
+<Callout kind="verify" title="tabla">
+Check: Raman, C. V. (1934), "The Indian musical drums", *Proceedings of the Indian Academy of Sciences* A1, 179–188; the five harmonic groups and which modes belong to each; the syahi's ingredients (iron filings or iron oxide, soot or charcoal, starch or rice paste; recipes vary); whether the dayan is tuned to the tonic Sa (commonly yes, sometimes to the fifth or fourth); and the cue's content.
+</Callout>
+
+### Bars and how makers tune them
+
+A metal or wooden bar, free at both ends (held up only by soft supports), is the resonator of the glockenspiel, xylophone, marimba, vibraphone, and the metallophones of the Indonesian gamelan. A bar resists bending even more strongly than a piano string does, and its modes climb very fast: **1 : 2.76 : 5.40 : 8.93**. Strike a plain bar and you hear a clear pitch from mode 1, plus high, clashing overtones that die away quickly. That bright "ping" is the sound of a glockenspiel.
+
+Marimba and xylophone makers tame the bar by carving an arch out of its underside. Removing wood from the middle makes the bar more flexible exactly where mode 1 bends it most, lowering mode 1 relative to the others. By shaping the arch carefully, a maker can put mode 2 exactly **two octaves** above mode 1 on a marimba (4:1), or an **octave and a fifth** above on a xylophone (3:1); the best makers tune mode 3 as well. Bars are hung at the two nodes of mode 1, where they barely move, so the supports don't damp the note. And under each marimba bar hangs a tube, a closed pipe tuned to the bar's fundamental, which resonates and makes the note louder and warmer.
+
+<InstrumentLab initial="bar" resonators={['bar', 'marimba', 'bell']} title="Bars and bells" />
+
+<Callout kind="try">
+1. **Bar**, struck in the middle. Modes 2 and 4 are missing: they have a node at the center. Move the strike point toward the end and they appear. Note how far the bars sit from the dashed lines.
+2. **Marimba bar**: same picture, but the modes are at 1, 4, and 10. The sound is mellower and clearly pitched. (The lab's marimba has only three modes; real bars have more, untuned and quickly damped.)
+3. Notice the triangles under the bar: the supports, placed at mode 1's two nodes.
+</Callout>
+
+<ListeningCue track="gamelan-kebyar" start="0:00">
+Balinese gamelan, an orchestra mostly of bronze bars and gongs. Its instruments are made in pairs, one tuned slightly higher than its partner, so that together they produce a shimmering beating (chapter 1.5). The bars' inharmonic overtones are part of gamelan's character, and its tuning systems grew up around them.
+</ListeningCue>
+
+<Callout kind="verify" title="bars">
+Check: the free-bar mode ratios (from (βL)² with βL = 4.730, 7.853, 10.996, 14.137); marimba tuning (mode 2 at 4:1; mode 3 often at 10:1, three octaves and a major third, on high-quality instruments) and xylophone tuning (3:1); the node positions at about 22.4% from each end; and the resonator tubes being tuned to the fundamental (Fletcher & Rossing chapter 19; Bork's marimba bar studies).
+</Callout>
+
+### Bells
+
+A church bell is the most elaborate resonator in this chapter: a thick, curved shell of bronze that vibrates in dozens of modes, with nodal lines running down its sides (meridians) and around it (circles). Bell founders gave the important ones names. In a well-tuned bell, measured from the **prime**:
+
+- the **hum** sits an octave below,
+- the **tierce** a minor third above,
+- the **quint** a fifth above,
+- the **nominal** an octave above,
+- and more above that.
+
+That minor third, built into every tuned bell, is what gives bells their faintly sad, plaintive sound, even when a carillon plays a cheerful major-key melody.
+
+The puzzle is the pitch. When you hear a bell struck, you usually hear a **strike note**, close to the prime, but it often isn't produced by the prime mode at all. It's a pitch the brain constructs from the upper partials, the way it constructs the missing fundamental (chapter 1.3) from harmonics. Tuning bells so that the modes line up this well is a lost-and-found art: the Hemony brothers mastered it in the seventeenth-century Netherlands, and it was largely forgotten until bellfounders rediscovered it around 1900, cutting metal from the inside of the bell on a lathe while measuring the modes against tuning forks.
+
+<ListeningCue track="oldfield-tubular-bells" start="22:00">
+The end of Part One of *Tubular Bells*, where each instrument is announced in turn and the tubular bells come in last. Tubular bells (orchestral chimes) are metal tubes, closer to bars than to church bells, but they share the bell's trick: the pitch you hear, the strike note, isn't the frequency of any single mode. The start time here is a guess; find the bells by ear.
+</ListeningCue>
+
+<Callout kind="verify" title="bells">
+Check: the named partials and their ideal intervals (hum, prime, tierce, quint, nominal, then the "deciem" a major tenth, "undeciem" an eleventh, "duodeciem" a twelfth above the prime); the lab's nodal patterns for bell modes (approximate; Rossing & Perrin 1987); the strike note being a virtual pitch mainly from the nominal and the two partials above it (an octave below the nominal); the history (Hemony brothers, 1640s–1660s; rediscovery by Canon Simpson and the Taylor foundry around 1896–1904); and the tubular-bells claim (strike note derived from modes 4, 5, 6, which are near 2:3:4; Fletcher & Rossing chapter 19). Find the tubular bells' entry time in the track.
+</Callout>
+
+<DataTable title="The modes of common resonators" caption="Frequencies of the lowest modes, as multiples of the first mode. Ideal shapes; real instruments deviate, and makers deliberately reshape some of them.">
+
+| Resonator | Mode frequencies | Harmonic? | Examples |
+|---|---|---|---|
+| String (flexible) | 1, 2, 3, 4, 5... | Yes | Guitar, violin, harp |
+| String (stiff) | 1, 2.001, 3.005, 4.012... (stretched; B = 0.0004) | Nearly | Piano |
+| Pipe open at both ends | 1, 2, 3, 4, 5... | Yes | Flute, recorder, open organ pipe |
+| Pipe closed at one end | 1, 3, 5, 7, 9... | Odd harmonics only | Clarinet (low register), stopped organ pipe |
+| Cone | 1, 2, 3, 4, 5... | Yes | Oboe, bassoon, saxophone |
+| Ideal drumhead | 1, 1.59, 2.14, 2.30, 2.65... | No | Most drums |
+| Timpani (air-loaded) | about 2, 3, 4, 5, 6 (relative to an implied note an octave down) | Nearly | Timpani |
+| Tabla (center-loaded) | 1, 2, 3, 4, 5 | Nearly | Tabla, mridangam |
+| Uniform bar | 1, 2.76, 5.40, 8.93 | No | Glockenspiel, triangle (bent bar) |
+| Undercut bar | 1, 4, 10 (marimba); 1, 3 (xylophone) | Tuned partials | Marimba, xylophone |
+| Church bell | 0.5, 1, 1.2, 1.5, 2... (relative to the prime) | No | Bells, carillons |
+
+</DataTable>
+
+<Callout kind="check">
+A guitarist plays a note, then plays the same note as a "harmonic" by touching the string lightly at its midpoint while plucking. The second note is an octave higher and sounds purer. Using what you know about modes and nodes, explain both facts.
+
+<Answer>
+Touching the string at its midpoint forces a node there. Only modes that already have a node at the midpoint can survive: the even modes (2, 4, 6...). The lowest surviving mode is mode 2, an octave above the open string, so that's the pitch you hear. And with the odd modes gone, there are fewer harmonics in the sound (the remaining ones form the harmonic series of the new, higher note, but the mix is sparser and weighted to the low end), so it sounds purer and more flute-like.
+</Answer>
+</Callout>
+
+<Callout kind="check">
+Why can a trumpet, with valves, play a chromatic scale, while a bugle can only play the notes of a major chord? And why is the bugle's lowest playable note usually not the bottom of its chord?
+
+<Answer>
+A bugle is one fixed tube; the player can only choose among its modes by changing lip tension, and modes 2 to 6 of a harmonic series form a major chord (with the octave doubled). A trumpet's three valves can add tubing in seven combinations, giving seven different tube lengths, each with its own series of modes, which together fill in every semitone. The lowest mode of a brass instrument is out of place (the bell and mouthpiece pull the other modes into line, not that one) and hard to play, so the usable series starts on mode 2.
+</Answer>
+</Callout>
+
+## What makes an instrument recognizable
+
+Put the pieces together and you can see why timbre (chapter 1.2's "recipe of harmonics") is only the beginning of an instrument's identity.
+
+- **The steady spectrum** comes from the exciter (a bow's sawtooth, a reed's pulses, a pluck's triangle) filtered by the resonator's modes and the radiator's resonances.
+- **The spectrum changes with register.** A body's resonances stay put while the notes move, so each note has its harmonics boosted differently, just as each vowel's formants stay put when you sing higher. A clarinet's low notes are hollow, its middle notes clearer, its top notes shrill. This is why a single "clarinet waveform" played across the whole keyboard sounds fake.
+- **The spectrum changes with loudness.** Harder bowing, blowing, or striking puts more energy into the upper harmonics, so loud notes are brighter, not just louder.
+- **The beginning and end** are as distinctive as the middle. The <Term id="attack-transient">attack transients</Term> of chapter 1.3 come straight from the physics: the bow's scratchy start before Helmholtz motion settles in; the chiff of a flute's jet finding its rhythm; the clang of a hammer before the high modes die; the way a plucked or struck note decays, with high modes fading first. Bowed and blown notes can swell and hold; struck and plucked ones can only fade.
+- **Inharmonicity** gives struck metal, stiff strings, and drums their own colors: the clang of a bell, the shimmer of a gamelan, the slight metallic edge of a piano's top octave.
+
+This is also what physical-modeling synthesis (chapter 4.5) tries to capture: instead of copying a spectrum, it simulates the exciter, the resonator, and the feedback between them, and lets all these behaviors fall out on their own.
+
+## Classifying instruments
+
+In 1914 the musicologists Erich von Hornbostel and Curt Sachs proposed a way to classify every instrument in the world, from every culture, without relying on Western orchestral categories ("strings, woodwinds, brass, percussion") that don't fit most of the world's instruments. Their principle is exactly this chapter's: **classify by what vibrates.**
+
+<DataTable title="The Hornbostel–Sachs classification" caption="The top level of the scheme, with the fifth class added later. Each class divides further (for example, chordophones into zithers, lutes, harps, and lyres; aerophones by whether the air is set vibrating by an edge, a reed, or the lips).">
+
+| Class | What vibrates | Examples |
+|---|---|---|
+| **Idiophones** | The body of the instrument itself | Bells, gongs, xylophones, marimbas, cymbals, rattles, the mbira, the triangle |
+| **Membranophones** | A stretched membrane | Drums of all kinds: timpani, tabla, djembe, snare drum, kazoo |
+| **Chordophones** | A stretched string | Violin, guitar, piano, harp, sitar, koto, oud |
+| **Aerophones** | A column or jet of air | Flute, clarinet, trumpet, organ, bagpipes, didgeridoo, harmonica |
+| **Electrophones** | Electronic circuits (added later, by Sachs in 1940) | Theremin, synthesizer, electric organ |
+
+</DataTable>
+
+The scheme has quirks. A piano is a struck chordophone, though Western orchestras seat it with percussion. A kazoo is a membranophone: the player hums, and a membrane buzzes. The harmonica and accordion are aerophones built around free metal reeds. And the electric guitar is arguably a chordophone with an electronic radiator. But the core idea, that an instrument's identity starts with its resonator, has held up for over a century.
+
+<Callout kind="verify" title="Hornbostel–Sachs">
+Check: Hornbostel, E. M. von & Sachs, C. (1914), "Systematik der Musikinstrumente: Ein Versuch", *Zeitschrift für Ethnologie* 46, 553–590 (English translation by Baines & Wachsmann, *Galpin Society Journal* 14, 1961); the electrophone class (usually credited to Sachs, 1940, *The History of Musical Instruments*); and the kazoo's classification (a membranophone, "singing membrane" or mirliton).
+</Callout>
+
+## The instrument as a system
+
+<DataTable title="Instruments as systems" caption="A summary: the exciter, resonator, and radiator of the instruments in this chapter, and whether their sound is harmonic.">
+
+| Instrument | Exciter | Resonator | Radiator | Sound |
+|---|---|---|---|---|
+| Violin | Bow (stick-slip) | String | Bridge, body | Sustained, exactly harmonic (mode-locked) |
+| Guitar | Pluck | String | Top plate, body | Decaying, harmonic |
+| Piano | Felt hammer | Stiff steel string | Soundboard | Decaying, slightly stretched |
+| Flute | Air jet | Open pipe | Open holes and end | Sustained, harmonic |
+| Clarinet | Single reed | Closed cylindrical pipe | Tone holes, bell | Sustained, odd harmonics strong (low register) |
+| Saxophone, oboe | Single or double reed | Cone | Tone holes, bell | Sustained, all harmonics |
+| Trumpet | Lips | Cylinder with bell and mouthpiece | Bell | Sustained, harmonic; brighter when loud |
+| Snare drum | Stick | Two membranes plus snares | Shell | Decaying, inharmonic, noisy |
+| Timpani | Soft mallet | Air-loaded membrane | Head and kettle | Decaying, near-harmonic |
+| Marimba | Mallet | Undercut bar | Resonator tube | Decaying, tuned partials |
+| Bell | Clapper | Bronze shell | The shell itself | Long decay, inharmonic, strike note |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. The three parts of an instrument (exciter, resonator, radiator), and the difference between struck/plucked instruments (one input, free decay) and bowed/blown ones (continuous input with feedback).
+2. Strings: how plucking, striking, and bowing differ; stick-slip and Helmholtz motion; why the body is needed, and how it acts as a filter (with the formant analogy).
+3. Mode locking: why sustained tones are exactly harmonic even when the resonator isn't.
+4. Stiff strings: why piano partials are stretched, and the consequences (stretched tuning, wound bass strings, big pianos).
+5. Air columns: open versus closed pipes, odd harmonics and the octave-lower fundamental, overblowing to the octave or the twelfth, cones behaving like open pipes, and what valves do.
+6. Drums: why membranes are inharmonic, why striking position matters, and how timpani (air loading) and tabla (center loading) recover a pitch.
+7. Bars and bells: undercutting, supports at the nodes, bell partials and the minor-third tierce, and the strike note as a constructed pitch.
+8. The Hornbostel–Sachs classification and its principle.
+
+**Decisions for your rewrite:**
+
+- **Scope.** I covered a lot of instruments. You could instead go deep on three (violin, clarinet, drum) and leave the rest to the summary table. The lab supports either approach.
+- **The math.** I kept formulas to one (the stiff-string law). You might drop it, or add the pipe-length formulas (*f* = speed of sound ÷ 2*L* for open pipes, ÷ 4*L* for closed), which connect to chapter 1.1's wavelengths.
+- **Examples.** Swap in instruments you know or love: an electric guitar (where the pickup replaces the body as the radiator), a didgeridoo, a steel pan (an idiophone tuned so that each note area has harmonic modes), a mbira.
+- **Overlap with chapter 4.2.** The voice is a source-filter instrument too (vocal folds as a lip-reed-like exciter). Decide how much to foreshadow it.
+
+**Misconceptions to watch for:**
+
+- "The body amplifies the string." It doesn't add energy; it radiates the string's energy more efficiently (so the note dies faster) and filters it.
+- "All instruments are harmonic." Only resonators that are one-dimensional and flexible are naturally harmonic; others are made so by careful design, or aren't at all.
+- "The clarinet has only odd harmonics." Only roughly, and mainly in its low register.
+- "A drum has no pitch." Many don't, but timpani, tabla, and tuned toms do, by design.
+- "The pitch of a bell is its lowest mode." The hum is lowest, but the heard pitch is usually the strike note, which may not be any mode.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- Fletcher, N. H., & Rossing, T. D. (1998). *The Physics of Musical Instruments* (2nd ed.). Springer.
+- Benade, A. H. (1976). *Fundamentals of Musical Acoustics*. Oxford University Press. (Dover reprint 1990.)
+- Helmholtz, H. von (1863/1885). *On the Sensations of Tone* (A. J. Ellis, Trans.). Longmans, Green.
+- Raman, C. V. (1934). The Indian musical drums. *Proceedings of the Indian Academy of Sciences, Section A*, 1, 179–188.
+- Fletcher, H. (1964). Normal vibration frequencies of a stiff piano string. *Journal of the Acoustical Society of America*, 36(1), 203–209.
+- Railsback, O. L. (1938). Scale temperament as applied to piano tuning. *Journal of the Acoustical Society of America*, 9(3), 274.
+- Fletcher, N. H. (1978). Mode locking in nonlinearly excited inharmonic musical oscillators. *Journal of the Acoustical Society of America*, 64(6), 1566–1569.
+- McIntyre, M. E., Schumacher, R. T., & Woodhouse, J. (1983). On the oscillations of musical instruments. *Journal of the Acoustical Society of America*, 74(5), 1325–1345.
+- Woodhouse, J. (2014). The acoustics of the violin: A review. *Reports on Progress in Physics*, 77(11), 115901.
+- Rossing, T. D. (1982). The physics of kettledrums. *Scientific American*, 247(5), 172–178.
+- Rossing, T. D., & Perrin, R. (1987). Vibrations of bells. *Applied Acoustics*, 20(1), 41–70.
+- Hirschberg, A., Gilbert, J., Msallam, R., & Wijnands, A. P. J. (1996). Shock waves in trombones. *Journal of the Acoustical Society of America*, 99(3), 1754–1758.
+- Hornbostel, E. M. von, & Sachs, C. (1914). Systematik der Musikinstrumente: Ein Versuch. *Zeitschrift für Ethnologie*, 46, 553–590. Translated by A. Baines & K. P. Wachsmann (1961), *Galpin Society Journal*, 14, 3–29.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details, especially Raman 1934 (pages), Rossing & Perrin 1987 (volume and pages), Railsback 1938 (it's a short abstract), and the Hornbostel–Sachs translation's page range.
+</Callout>

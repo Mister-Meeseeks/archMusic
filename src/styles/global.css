@@ -922,3 +922,109 @@ main { padding: 0 1rem 6rem; }
 .cp-flags li.is-error::marker { color: var(--rough); }
 .cp-hidden { padding: 2.2rem 1rem; text-align: center; font: 0.9rem var(--sans); color: var(--muted); border: 1px dashed var(--rule); border-radius: 8px; }
 .pl-full { font-size: 0.8rem; align-self: center; }
+
+/* v2-01: TempoLab */
+.w-plot .tempo-curve { stroke: var(--tone-a); stroke-width: 2.2; }
+.w-plot .tempo-head { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 3; }
+.drift-bar { fill: var(--tone-b); opacity: 0.75; }
+.drift-bar.is-now { opacity: 1; fill: var(--ink); }
+
+/* v3-01: IntervalLab and CentsLine */
+.w-plot .il-axis { stroke: var(--muted); stroke-width: 1.2; }
+.w-plot .il-tick { stroke: var(--rule); }
+.w-plot .il-tick-label { font: 10px var(--sans); fill: var(--muted); }
+.w-plot .il-cents-label { font: 10px var(--sans); fill: var(--muted); font-style: italic; }
+.w-plot .il-bar-label { font: 600 11px var(--sans); fill: var(--ink); }
+.w-plot .il-total { stroke: var(--rough); stroke-width: 1.6; stroke-dasharray: 4 3; }
+.w-plot .il-total-label { font: 600 12px var(--sans); fill: var(--rough); }
+.w-plot .il-hint { font: 13px var(--sans); fill: var(--muted); }
+.w-plot .il-hint-small { font: 11px var(--sans); fill: var(--muted); }
+.w-plot .il-mid { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 4; }
+.w-plot .il-curve { stroke: var(--tone-a); stroke-width: 2; }
+.w-plot .il-et { stroke: var(--muted); stroke-width: 2; }
+.w-plot .il-just { stroke: var(--match); stroke-width: 2.4; }
+.w-plot .il-just-label { font: 600 10px var(--sans); fill: var(--match); }
+.w-plot .il-past { fill: color-mix(in srgb, var(--tone-a) 55%, transparent); }
+.il-chip-ratio { color: var(--muted); font-size: 0.72rem; margin-left: 0.15rem; }
+.w-chip.is-on .il-chip-ratio { color: inherit; }
+.il-answer { min-width: 8.5rem; }
+.il-status { min-height: 1.3em; }
+.fig .cl-hollow { fill: var(--surface); stroke: var(--tone-a); stroke-width: 1.6; }
+.fig .cl-grid { stroke: var(--grid); stroke-width: 1; }
+.fig .cl-num { font-size: 10px; }
+.fig .cl-ratio { font-size: 11.5px; }
+.fig .cl-dev { font-weight: 600; fill: var(--ink); }
+
+/* ---------- v5-02: DevelopmentLab ---------- */
+.dev-band { fill: color-mix(in srgb, var(--tone-a) 6%, transparent); stroke: color-mix(in srgb, var(--tone-a) 25%, transparent); stroke-width: 1; }
+.dev-band.is-alt { fill: color-mix(in srgb, var(--tone-b) 7%, transparent); stroke: color-mix(in srgb, var(--tone-b) 28%, transparent); }
+.dev-band.is-now { stroke: var(--ink); stroke-width: 1.5; }
+.dev-band-label { font-weight: 600; fill: var(--ink); }
+.dev-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.dev-tag { font-size: 0.75rem; padding: 0.1rem 0.45rem; border-radius: 4px; border: 1px solid var(--rule); color: var(--muted); }
+.dev-tag.is-changed { border-color: var(--tone-b); color: var(--ink); background: color-mix(in srgb, var(--tone-b) 16%, transparent); font-weight: 600; }
+.dev-chord { font: 600 12px var(--sans); fill: var(--muted); }
+.dev-chord.is-changed { fill: var(--tone-b); }
+
+/* ---- v4-01: InstrumentLab ---- */
+.ins-res { margin-bottom: 0.2rem; }
+.ins-blurb { margin: 0 0 0.4rem; font-size: 0.85rem; color: var(--muted); }
+.ins-family { font-weight: 600; color: var(--ink); }
+.ins-modes { align-items: center; }
+.ins-x { opacity: 0.7; font-variant-numeric: tabular-nums; }
+.ins-note { margin: 0.3rem 0 0; font-size: 0.82rem; color: var(--muted); }
+.w-plot .ins-tube { stroke: var(--ink); stroke-width: 2.5; }
+.w-plot .ins-env { fill: color-mix(in srgb, var(--tone-a) 10%, transparent); stroke: none; }
+.w-plot .ins-bar { stroke: var(--tone-b); stroke-width: 7; }
+.w-plot .ins-support { fill: var(--muted); stroke: none; }
+.w-plot path.ins-pos { fill: var(--tone-a); stroke: none; }
+.w-plot path.ins-neg { fill: var(--tone-b); stroke: none; }
+.w-plot .ins-rim { fill: none; stroke: var(--ink); stroke-width: 2; }
+.w-plot .ins-node { fill: none; stroke: var(--ink); stroke-width: 1.2; stroke-dasharray: 3 3; }
+.w-plot .ins-strike { fill: var(--bg); stroke: var(--tone-b); stroke-width: 2.5; }
+.ins-specbar { cursor: pointer; }
+.ins-bar-sel { fill: var(--tone-b); }
+
+/* ---------- v3-02: ScaleTuningLab ---------- */
+.st-note { margin: 0.2rem 0 0; font-size: 0.9rem; color: var(--muted); }
+.st-size { display: inline-block; margin-right: 0.9rem; font-weight: 600; }
+.st-size.st-c0 { color: var(--tone-a); }
+.st-size.st-c1 { color: var(--tone-b); }
+.st-size.st-c2 { color: var(--match); }
+.st-size.st-c3 { color: var(--rough); }
+.w-plot .st-seg.st-c0 { fill: var(--tone-a); }
+.w-plot .st-seg.st-c1 { fill: var(--tone-b); }
+.w-plot .st-seg.st-c2 { fill: var(--match); }
+.w-plot .st-seg.st-c3 { fill: var(--rough); }
+.w-plot .st-ring { fill: none; stroke: var(--rule); stroke-width: 1; }
+.w-plot .st-chain { stroke-width: 1.2; }
+.w-plot .st-name { fill: var(--ink); font-weight: 600; }
+.w-plot .st-used { fill: color-mix(in srgb, var(--tone-a) 7%, transparent); stroke: var(--tone-a); stroke-width: 1; stroke-dasharray: 3 3; }
+.w-plot .st-bar { fill: var(--tone-a); }
+.w-plot .st-bar.is-third { fill: var(--tone-b); }
+.w-plot .st-bar.is-bad { fill: var(--rough); }
+.st-table { display: grid; gap: 0.25rem; margin: 0.4rem 0; font-size: 0.9rem; }
+.st-row { display: flex; flex-wrap: wrap; gap: 0.3rem 1.2rem; padding: 0.25rem 0.5rem; border-radius: 6px; font-variant-numeric: tabular-nums; }
+.st-row.is-now { background: var(--surface-2); }
+.st-row.is-wolf strong { color: var(--rough); }
+.w-plot .st-link { stroke-width: 2; }
+.w-plot .st-t0 { stroke: var(--tone-a); fill: var(--tone-a); }
+.w-plot .st-t1 { stroke: var(--tone-b); fill: var(--tone-b); }
+.w-plot .st-t2 { stroke: var(--match); fill: var(--match); }
+.w-plot .st-t3 { stroke: var(--c-check); fill: var(--c-check); }
+.w-plot .st-ebar { stroke: none; }
+
+/* ---- v2-04 PolyrhythmLab ---- */
+.tone-a-text { color: var(--tone-a); font-weight: 600; }
+.tone-b-text { color: var(--tone-b); font-weight: 600; }
+.poly-cell-a { fill: color-mix(in srgb, var(--tone-a) 9%, transparent); }
+.poly-cell-a2 { fill: color-mix(in srgb, var(--tone-a) 18%, transparent); }
+.poly-cell-a:hover, .poly-cell-a2:hover { fill: color-mix(in srgb, var(--tone-a) 28%, transparent); }
+.poly-cell-b { fill: color-mix(in srgb, var(--tone-b) 9%, transparent); }
+.poly-cell-b2 { fill: color-mix(in srgb, var(--tone-b) 18%, transparent); }
+/* v3-02: EdoErrors figure */
+.fig-hollow-a { fill: var(--surface); stroke: var(--tone-a); stroke-width: 1.4; }
+.fig-hollow-b { fill: var(--surface); stroke: var(--tone-b); stroke-width: 1.4; }
+.formula { text-align: center; font-family: var(--serif); font-size: 1.1rem; margin: 1rem 0; } /* v3-01 */
+.poly-label { font: 600 12px var(--sans); fill: var(--ink); }
+.w-plot .st-lbl { stroke: none; font-weight: 600; }

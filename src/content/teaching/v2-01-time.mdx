@@ -1,0 +1,394 @@
+---
+title: "Musical Time: Tempo, Pulse, Events, and Meter"
+volume: 2
+chapter: 1
+summary: Music organizes vibration at every speed, from the thousandths of a second that make a pitch to the hours of an opera. This chapter maps those timescales, then zooms in on the middle one, where rhythm lives. What counts as an event, how tempo is measured and named, how players hold it (or don't), how great performers bend it on purpose, and how meter is written down.
+status: teaching-draft
+updated: 2026-11-16
+assumes: [frequency, pitch, middle-c, chord, sound-wave, period, waveform, attack-transient, short-term-memory, beat, tempo, meter, subdivision]
+lintIgnore: [interval, dynamics, metrical-hierarchy] # 'inter-onset interval' is a time interval; the others only in reference titles (Todd 1992; McKinney & Moelants 2006)
+introduces: [inter-onset-interval, tempo-marking, click-track, expressive-timing, tempo-change, simple-compound-meter]
+---
+
+<Callout kind="rewrite" title="How to use this draft">
+Same format as the other drafts. This chapter opens Volume II, so its job is to set up the vocabulary of time for the next six chapters, not to steal their material. Chapter 2.2 handles *how the brain finds a beat* and the hierarchy of strong and weak beats; chapter 2.3 handles subdivision, accent, and notes that land between the beats. Here: the big picture of timescales, events, tempo (including how it drifts and how performers shape it), and how meter is written.
+
+There's one new lab with three modes (tempo, expressive timing, drift) and one figure. Then write your version in `src/content/chapters/v2-01-time.mdx`.
+</Callout>
+
+## The question
+
+A melody is often described as notes in a row. Look at it another way: it is a plan for *when* things happen. Which moment the next note starts, how long the gap is, how fast the whole thing moves, and how the moments group into larger units. Change the pitches and you have a different melody. Change the timing and you often can't recognize it at all (chapter 3.3 showed this: strip a tune of its rhythm and it becomes a puzzle).
+
+The previous volume treated sound as vibration: a <Term id="sound-wave">sound wave</Term> repeating hundreds or thousands of times a second. This volume is about time at a slower scale, the scale of events you can count, tap, and dance to. But the two scales turn out to be ends of one continuum, and the first thing to do is to see the whole of it.
+
+The questions for this chapter:
+
+1. At what speeds does music organize time, and where does rhythm sit among them?
+2. What exactly is a rhythmic *event*, and what do we measure about it?
+3. What is tempo, how is it named, and why do different styles live at different tempos?
+4. Can people hold a tempo steady? What happens when they don't, and when they deliberately don't?
+5. How is meter written down?
+
+## The timescales of music
+
+Chapter 1.1 measured a sound wave by its <Term id="period">period</Term>: the time one cycle takes. The A above middle C repeats every 2.3 milliseconds, 440 times a second. Now imagine slowing a sound down, step by step, and listening to what it becomes.
+
+- Thousands of repetitions per second: a **pitch**. You don't hear the individual cycles; you hear a steady tone.
+- Slow it to around 20 repetitions per second (every 50 ms) and the pitch dissolves into a buzz or a rattle. You start to sense separate events, but they're too fast to count.
+- Slower still, around 10 per second (every 100 ms), and you hear a rapid stream of separate events: a drumroll, a trill.
+- Slower again, two or three per second, and you have something you can tap your foot to: a **beat**.
+- Slow it to one event every few seconds and the events stop connecting. Each one stands alone, and you wait for the next instead of anticipating it.
+
+Past that point, music is still organized, but not by anything you can feel as a pulse. A phrase of a melody lasts a few seconds; a section of a song, tens of seconds; a symphony movement, ten minutes; Wagner's *Ring* cycle, about fifteen hours over four evenings. At those scales the organizing is done by memory: recognizing a return, noticing a contrast, holding a shape in mind.
+
+<TimeScales />
+
+The composer Karlheinz Stockhausen made this continuum the subject of a famous 1957 essay, "...how time passes...": pitch and rhythm, he argued, are the same thing (a periodic repetition) at different speeds. That's true physically. Perceptually there's a seam. Below about 50 milliseconds between events, the ear stops hearing *events* and starts hearing a *quality* (a buzz, a rattle, a pitch). Above it, events stay separate.
+
+Rhythm lives in the middle band: from roughly 100 milliseconds (about the fastest notes a listener can still follow one by one) to about 2 seconds (beyond which successive events no longer feel connected). Chapter 2.2 measures the narrower range in which a *beat* can be felt. The upper edge lines up with the span of the auditory "present" that chapter 1.6 described: the few seconds that <Term id="short-term-memory">short-term memory</Term> holds as a single scene. A beat is something you can hold the previous instance of in mind while waiting for the next.
+
+<Callout kind="check">
+A drummer plays a roll: single strokes, faster and faster. At first you hear separate hits; eventually you hear a continuous rattle. Roughly how many strokes per second does it take to cross that line, and why doesn't the roll then turn into a pitch?
+
+<Answer>
+The separate hits blur at around 15–20 strokes per second (every 50–70 ms). It doesn't become a clear pitch because a pitch needs fast, very regular repetition (dozens of times a second at the very least, and hundreds for a clear tone). A human roll is too slow and too uneven: you get a rattle, which is the zone between rhythm and pitch. An electronic drum playing perfectly even hits faster than about 30 per second *does* start to produce a low, buzzy pitch.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="timescale numbers">
+Check the boundary figures: the ~50 ms seam between hearing separate events and hearing a quality (various sources give 30–100 ms depending on the task), the ~100 ms lower edge of followable rhythm, and the ~2 s upper edge (Fraisse; London's *Hearing in Time*). Check Pöppel's "subjective present" figure (~2–3 s) and whether it's fair to link it to the beat's upper limit. Check the Stockhausen essay's date and title ("...wie die Zeit vergeht...", *Die Reihe* 3, 1957) and the *Ring* duration (~15 hours of music).
+</Callout>
+
+## Events and onsets
+
+### What counts as an event
+
+A rhythm is a pattern of events in time. But what *is* an event? For most music the answer is: the moment a sound starts. A plucked string, a struck drum, a sung syllable, a new piano chord. That starting moment is called the **onset**.
+
+Onsets are what the ear tracks best. A sharp onset (a drum hit, a plucked string, the "t" or "k" at the start of a sung word) marks a moment precisely, because its <Term id="attack-transient">attack transient</Term> is a sudden burst of energy. A soft onset (a bowed note swelling in, a singer sliding into a vowel) marks a moment vaguely. This is one reason rhythm sections are built from percussive instruments, and why a string section playing a fast rhythm has to "dig in" to be heard as rhythmic at all.
+
+### Measuring the gaps
+
+The basic measurement in rhythm is the time from one onset to the next: the **inter-onset interval**, or **IOI**. A steady beat at 120 BPM is a stream of IOIs of 500 ms each. A rhythm is a pattern of IOIs: long, short-short, long.
+
+The IOI is not the same as the length of the note. A pianist can play the same four notes *staccato* (short and detached, with silence between) or *legato* (smooth, each note held until the next starts). The note lengths are completely different; the onsets, and so the IOIs, are identical. Listeners hear these as *the same rhythm* played with different articulation. What the ear follows is the onsets, not the ends of notes.
+
+<Callout kind="check">
+A drummer taps a cymbal on every eighth note, but lets every fourth one ring instead of damping it short. Did the rhythm change?
+
+<Answer>
+The pattern of onsets didn't change: every IOI is still one eighth note. So in the narrow sense, the rhythm is the same. But the ringing hits are longer and louder, so they stand out, and standing out is one way a note becomes an *accent* (chapter 2.3). Duration changes don't change the IOI rhythm, but they can change which events are heard as stronger, and that changes how the rhythm is grouped.
+</Answer>
+</Callout>
+
+### How precise is the ear?
+
+Very. In laboratory tests, listeners can notice that one gap in an otherwise steady series is a few percent longer or shorter than the rest: around 10–20 ms when the gaps are around 500 ms. Musicians are better than non-musicians, and everyone is better when the sequence is regular. That precision is why a drummer a few hundredths of a second late sounds "behind," and why chapter 2.5 can talk about rhythms whose feel depends on timing differences of 10–30 ms.
+
+<Callout kind="verify" title="timing sensitivity">
+Check the timing discrimination figures: Drake & Botte (1993) and others put the threshold for noticing a change in IOI at roughly 2–5% of the interval in the 300–800 ms range (a Weber fraction), lower for musicians. Confirm the "10–20 ms at 500 ms" phrasing is fair. Check the claim about staccato vs legato being heard as the same rhythm (is there a source, or present it as an observation?).
+</Callout>
+
+## Tempo
+
+### Beats per minute
+
+The Toolkit defined **tempo** as the speed of the beat in beats per minute (BPM): 60 BPM is one beat a second, 120 BPM two. That's a measure of the IOI between *beats*, and it's the most useful single number about a piece's time. But the same tune at different tempos is a different experience, and not only because it's faster.
+
+<TempoLab initialMode="tempo" modes={['tempo']} />
+
+<Callout kind="try">
+1. Play *Ode to Joy* at 100 BPM. Then try 60 and 160. At which tempos does it sound like the tune you know? (Most people accept a surprisingly wide range.)
+2. Drag the tempo to 30 BPM and play it. The notes are now more than a second apart. Does it still hang together as a melody? Watch the **One beat** readout and the note under the plot.
+3. Drag it to 240. **Shortest gap** is now 125 ms. The tune still works, but the beat feels different: you may find yourself feeling one beat for every *two* notes.
+4. Switch to *Happy Birthday* and find the tempo at which it sounds like a party, and the tempo at which it sounds like a dirge. How far apart are they?
+</Callout>
+
+### Tempo markings
+
+Before the metronome, composers had no way to specify a speed in numbers. They wrote words instead, usually in Italian, at the top of the score. These **tempo markings** describe a character as much as a speed: *Allegro* means cheerful, *Andante* means walking, *Grave* means heavy.
+
+<DataTable title="Tempo markings" caption="Rough metronome ranges as found in modern reference tables. They overlap, sources disagree, and the words describe a character more than a number. A slow Allegro by one composer can be faster than a quick Andante by another.">
+
+| Marking | Literal meaning | Rough range (BPM) |
+|---|---|---|
+| Grave | heavy, solemn | 25–45 |
+| Largo | broad | 40–60 |
+| Adagio | at ease | 55–76 |
+| Andante | walking | 73–108 |
+| Moderato | moderate | 98–120 |
+| Allegro | cheerful, lively | 112–160 |
+| Vivace | lively | 156–176 |
+| Presto | very fast | 168–200 |
+| Prestissimo | as fast as possible | 200 and up |
+
+</DataTable>
+
+The mechanical metronome, patented by Johann Maelzel in 1815, made numbers possible. Beethoven was an early enthusiast and went back to add metronome marks to his symphonies. Some of them are startlingly fast, and performers have argued about them ever since: was his metronome faulty, was he hearing the music in his head without an orchestra's weight, or did he really want it that fast? The argument is a reminder that a number doesn't settle everything. Tempo interacts with the size of the room, the instruments, and the detail in the music. A large orchestra in an echoing hall usually needs a little more time than a string quartet in a small one.
+
+Markings in other languages work the same way. Satie's first *Gymnopédie* is marked *Lent et douloureux*: "slow and sorrowful." The second word isn't a speed at all.
+
+<ListeningCue track="satie-gymnopedie-1" start="0:00" end="1:00">
+A very slow 3/4: listen for the low bass note on each downbeat and the soft chord after it. Try tapping the beat. At this speed it takes concentration; you may notice yourself waiting for each chord rather than anticipating it. That's the slow edge of the beat range.
+</ListeningCue>
+
+### Tempo and style
+
+Styles of music settle at characteristic tempos. Some of the reasons are physical (dance steps, walking, breathing, the speed at which words can be sung or rapped), and some are simply conventions that a scene settles into and listeners learn to expect.
+
+<DataTable title="Tempo and style" caption="Typical ranges, with plenty of exceptions. Several fast styles are commonly felt at half the speed: a drum-and-bass track at 174 BPM often has listeners nodding at 87.">
+
+| Style | Typical tempo (BPM) | Notes |
+|---|---|---|
+| Slow ballad, soul ballad | 60–80 | Often with each beat split into three |
+| Classic hip-hop | 85–100 | Leaves room for the words |
+| Pop and rock | 100–130 | The broad middle |
+| Military march | about 110–120 | Matched to marching steps |
+| Disco and house | 115–130 | A comfortable dance speed |
+| Techno | 125–150 | |
+| Dubstep | about 140 | Usually felt as a slow 70 |
+| Drum and bass | 160–180 | Often felt at half: 80–90 |
+| Punk and thrash metal | 160–220+ | Fast enough that the fastest notes blur |
+
+</DataTable>
+
+The middle of that table, around 100–130 BPM, overlaps with the tempo people fall into when asked to tap at a comfortable rate, and with the rate of a brisk walk (about two steps a second). Dirk Moelants, analyzing large collections of recorded music, found that tempos bunch up around 120 BPM. Whether that's because of walking, because of how the brain keeps time, or because dance music has to suit a crowd is debated; probably all three.
+
+One more puzzle hides in that table. Ask a hundred people to tap along to the same song and some will tap twice as fast as others. They aren't wrong; they've picked a different level of the pulse. Studies of this find that it happens most with songs near the edges of the comfortable range, and that listeners drift toward that 100–130 middle. Chapter 2.2 explains why a single rhythm supports several speeds of beat at once.
+
+### Tempo and feeling
+
+Tempo is one of the strongest cues to the mood of music. In listening experiments, faster tempos are judged happier and more energetic; slower ones sadder, calmer, or more solemn. That holds across many cultures, and it holds even when the melody is unfamiliar. (The other big cue is major versus minor, and in some experiments tempo matters more.) It fits the idea that music borrows the cues of movement and speech: an excited person moves and talks quickly; a sad one slowly.
+
+<Callout kind="verify" title="tempo facts">
+Check: Maelzel's metronome patent date (1815; Winkel's prior invention); Beethoven's metronome marks (the 1817 publication of marks for his first eight symphonies) and the faulty-metronome hypothesis (e.g. Forsén et al. 2013); the tempo-marking ranges (these vary by source; consider citing one table explicitly, or presenting only the order); Moelants (2002) on the ~120 BPM peak and MacDougall & Moore (2005) on walking rate; McKinney & Moelants (2006) on tapping at different levels; Gagnon & Peretz (2003) and Juslin & Laukka (2003) on tempo and emotion, including the cross-cultural claim. Check the style tempo ranges by tapping a few tracks.
+</Callout>
+
+## Holding a tempo
+
+### Players drift
+
+A machine keeps perfect time. People don't. Ask a band to play a song without any timing reference and the tempo will wander: usually upward as excitement builds, sometimes downward in a slow, quiet section. A few percent of drift over a song is normal and often not noticed at all. In an ensemble that plays together a lot, the musicians drift *together*, which is what matters for sounding tight.
+
+How much drift can a listener detect? A sudden change of a few percent is easy to hear. A *gradual* change of the same size is much harder, because there's no fixed reference: each beat is compared mostly with the last few, and each is only a tiny bit different. The drift lab tests this.
+
+<TempoLab initialMode="drift" modes={['drift']} />
+
+<Callout kind="try">
+1. Turn the **Steady click track** off. Press **Mystery drift**, play the eight bars, and decide: steady, faster, or slower? Reveal. Do it five or six times. How often were you right? Small drifts (3%) are hard; most people catch 12%.
+2. Now turn the click track **on** and do a few more. The drift that was hard to notice alone is suddenly obvious: by the end of eight bars, a 6% drift has put the drums more than half a second ahead of the click. You're no longer comparing tempos, you're hearing two sounds come apart.
+3. With the click on and the drift set to **+3%**, listen to the start. For the first bar or two the drums and click sound together. When do they start to sound separate?
+</Callout>
+
+### The click track
+
+That second experiment is exactly why recording studios use a **click track**: a metronome played into the musicians' headphones (and not onto the final mix). With a click, a song recorded in pieces, one instrument at a time over several days, can be assembled because every part sits on the same tempo. It's also what makes it possible to cut and paste sections, or to line music up with film.
+
+Clicks became standard in film scoring first (to synchronize music with picture), and then in pop recording. Machine-made music took the idea all the way: in a track programmed on a computer, the tempo is a number, and it doesn't drift at all. The Atlas case study of *I Feel Love* tells how one 1977 record solved the problem of keeping a synthesizer and a tape recorder in step.
+
+<ListeningCue track="donna-summer-i-feel-love" start="0:00" end="0:45">
+Machine tempo: every beat exactly the same length, from the first second to the last. Compare it in your mind with a live band recording you know well. Neither is better. Perfect steadiness is one aesthetic; a band that breathes and pushes is another.
+</ListeningCue>
+
+The click has costs too. Some players and producers feel that it flattens the music, removing the small pushes and pulls of a live band. Chapter 2.5 looks at the evidence on whether those tiny timing variations matter to how music makes you want to move.
+
+<Callout kind="check">
+In the drift lab, a +6% drift was hard to hear without the click and obvious with it. Explain why, in terms of what the ear is comparing in each case.
+
+<Answer>
+Without the click, the ear compares each beat's interval with the recent ones. Each interval differs from its neighbor by a tiny fraction of a percent, far below the threshold for noticing a change, so the drift slips by. With the click, the ear compares *onsets* of two sources. Small interval differences add up beat after beat, so the gap between drum and click grows to tens and then hundreds of milliseconds. The ear is very good at hearing two onsets that should coincide but don't. A slow change in rate becomes an obvious difference in position.
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="drift and click tracks">
+Check whether there's research on tempo drift in live performance (e.g. studies of rock and jazz drummers, or of orchestras, speeding up) and give a number if so; check detection thresholds for gradual tempo change versus sudden change. Check the history: click tracks in film scoring (1930s, Disney and the "tick" track?) before pop recording; when click tracks became routine in rock and pop recording (1970s–80s?).
+</Callout>
+
+## Shaping time: expressive timing
+
+### Deadpan sounds wrong
+
+If drift is time going astray, there's another kind of tempo change that's deliberate and essential. Play a piece of classical piano music exactly as written, every eighth note precisely the same length, and it sounds mechanical, even lifeless. Musicians call this "deadpan." Real performances bend time all the way through: a pianist pushes ahead through the middle of a phrase, slows into its end, lingers on an important note, and takes a breath before a new section. This is **expressive timing**. In classical music it's called **rubato**, Italian for "robbed": time taken from one place and given back in another.
+
+### What performers actually do
+
+In the 1980s and 90s, researchers began measuring exactly how long every note lasts in recorded performances. The psychologist Bruno Repp measured 28 recorded performances of Schumann's *Träumerei* by great pianists, note by note. He found that they were all different, and all remarkably similar. Nearly every pianist slowed down at the ends of phrases (**phrase-final lengthening**), most in a similar shape, and the deepest slowdowns came at the most important phrase endings. Individual pianists differed mainly in *how much*, and in a few personal choices in between.
+
+The shape is an arch: start a little under tempo, move ahead through the middle, slow down into the end. Neil Todd modeled it as a ball rolling over a hill. Anders Friberg and Johan Sundberg found that the final slowing at the end of a piece, the **ritardando**, follows almost exactly the curve of a runner coming to a stop. One plausible reason expressive timing sounds natural is that it moves like a body moves.
+
+<TempoLab initialMode="rubato" modes={['rubato']} tunes={['ode', 'twinkle']} />
+
+<Callout kind="try">
+1. Play **Deadpan**. Then **Phrase arch** at 30%. Which sounds more like a person playing? Watch the top plot: the tempo rises and falls with each phrase, and the bottom plot shows the notes drifting ahead of and behind where they're written.
+2. Turn on **Steady click** and play the phrase arch. The click makes the timing changes obvious; without it they mostly sound like phrasing.
+3. Now **Random wobble** at the same amount. Look at **Tempo range**: it's similar to the arch. But it sounds clumsy rather than expressive. The amount of change isn't what matters. What matters is that the change is tied to the music.
+4. Push the arch to 50%. At some point expression turns into exaggeration. Where is that point for you?
+5. Try **Final ritardando** and **Accelerando**: these are changes a composer writes into the score.
+</Callout>
+
+That third step is the important one. Expressive timing isn't randomness; it's structure. Repp also showed that listeners *expect* it. If a computer plays a piece with a phrase ending lengthened, listeners find it hard to notice, because they were expecting the lengthening; the same lengthening in the middle of a phrase is easy to spot. Timing is part of how a performer tells the listener where the phrases are, and listeners use it that way.
+
+<Callout kind="check">
+In the lab, random wobble and the phrase arch can have nearly the same tempo range. Why does one sound musical and the other sloppy?
+
+<Answer>
+The arch changes tempo in step with the music's structure: it slows at the ends of phrases and lingers on their last notes, exactly where listeners expect a breath. So it sounds like a performer shaping phrases. The wobble changes tempo in places that have nothing to do with the music, so the changes can't be heard as intentional. They sound like mistakes. Expressive timing works because it's predictable from the structure, which also means listeners partly hear it as part of the music rather than as a change of tempo at all.
+</Answer>
+</Callout>
+
+### Written-in tempo changes
+
+Some changes of tempo are part of the composition itself. **Accelerando** means gradually getting faster; **ritardando** (or **rallentando**) gradually slower. Almost every classical piece slows at its very end, whether it's marked or not. And a few pieces make a whole structure out of a tempo change.
+
+<ListeningCue track="grieg-mountain-king" start="0:00">
+Grieg's *In the Hall of the Mountain King*: one short tune, repeated again and again, getting louder and faster until it whirls out of control. It's the clearest accelerando in the orchestral repertoire. Try tapping the beat from the start and keep tapping: you'll feel your tapping being pulled faster.
+</ListeningCue>
+
+### Rubato in Chopin
+
+Rubato is most associated with Chopin. Accounts from his pupils describe a specific kind: the left hand keeps a fairly steady accompaniment while the right hand's melody floats free, ahead of the beat and then behind it, catching up at the end of the phrase. Mozart had described the same idea in a letter decades earlier. In practice, modern pianists mostly bend the whole texture together, with the melody stretching a little more than the accompaniment.
+
+<ListeningCue track="chopin-nocturne-op9-2" start="0:00" end="1:30">
+Listen to the melody stretch: the long, decorated notes are held longer than written, and the runs of fast notes rush. Then listen to the left hand underneath. Does it stay steady while the melody floats, or does it bend too?
+</ListeningCue>
+
+<Callout kind="verify" title="expressive timing">
+Check: Repp (1992), the number of performances (28), and the findings as summarized; Todd's models (1985 timing; 1992 "dynamics of dynamics") and the "rolling ball" image; Friberg & Sundberg (1999) on final ritardandi and stopping runners; Repp (1998) on listeners' expectations of phrase-final lengthening (detection is harder where lengthening is expected); the Chopin pupil accounts and Mozart's 1777 letter (Hudson's *Stolen Time* is the standard history). Make sure the lab's arch is described as stylized, not measured.
+</Callout>
+
+## Meter on the page
+
+### Bars and time signatures
+
+The Toolkit introduced meter as beats grouped into bars, with the downbeat strongest. Written music shows the bars with vertical **bar lines**, and the meter with a **time signature** at the start: two numbers stacked like a fraction.
+
+- The **top number** says how many of a certain note value fill one bar.
+- The **bottom number** says which note value: 4 means a quarter note, 8 an eighth note, 2 a half note.
+
+So 3/4 means "three quarter notes per bar," and in practice three beats per bar, each a quarter note. 4/4 is so common that it's often written as a large C ("common time").
+
+### Simple and compound
+
+That reading works for 2/4, 3/4, and 4/4, where each beat divides into two eighth notes. These are **simple meters**. But 6/8 does *not* mean six beats per bar. At ordinary speeds, 6/8 is felt as *two* beats, each divided into three eighth notes: ONE-two-three FOUR-five-six. The meters whose beats divide into three are **compound meters**. The rule: if the top number is 6, 9, or 12, the meter is compound, and you divide the top number by 3 to get the number of felt beats.
+
+<DataTable title="Reading a time signature" caption="The felt beats are what you'd tap to at an ordinary tempo. 2/2 ('cut time') is a simple meter whose beat is a half note; it often appears in fast marches and show tunes.">
+
+| Time signature | Fills each bar with | Kind | Felt as |
+|---|---|---|---|
+| 2/4 | 2 quarter notes | Simple | 2 beats, each split in 2 |
+| 3/4 | 3 quarter notes | Simple | 3 beats, each split in 2 (the waltz) |
+| 4/4 (C) | 4 quarter notes | Simple | 4 beats, each split in 2 |
+| 2/2 (cut time) | 2 half notes | Simple | 2 beats, each split in 2 |
+| 6/8 | 6 eighth notes | Compound | 2 beats, each split in 3 |
+| 9/8 | 9 eighth notes | Compound | 3 beats, each split in 3 |
+| 12/8 | 12 eighth notes | Compound | 4 beats, each split in 3 |
+| 5/4, 7/8 | 5 quarters, 7 eighths | Neither | Unequal groups (chapter 2.3) |
+
+</DataTable>
+
+You can hear the difference between 3/4 and 6/8 even though both have six eighth notes per bar. Set the metronome below to **3** beats with **Eighths**, then to **2** beats with **Triplets**. Same six clicks per bar; different meter.
+
+<Metronome controls={['meter', 'subdivision']} beatsPerBar={2} subdivision={3} bpm={66} />
+
+<Callout kind="try">
+1. Play it as set (2 beats, triplets: a 6/8 feel) and count "**ONE**-two-three **TWO**-two-three." Now switch to 3 beats with eighths (3/4) and count "**ONE**-and **TWO**-and **THREE**-and." Same number of clicks per bar. Which one sways, and which one marches?
+2. Then try 4 beats with triplets: that's 12/8, the feel of a slow soul ballad.
+</Callout>
+
+<ListeningCue track="etta-james-at-last" start="0:00" end="0:45">
+A slow 12/8: four slow beats per bar, each split into three. Listen for the piano's repeated chords marking the threes underneath the voice. Count "**ONE**-and-a **TWO**-and-a **THREE**-and-a **FOUR**-and-a."
+</ListeningCue>
+
+<ListeningCue track="animals-rising-sun" start="0:00" end="0:40">
+The guitar picks out each chord in groups of three notes. Is it in 6/8 (two swaying beats of three per bar), or three beats per bar? Listen for where the bass notes and chord changes fall, and where your head wants to nod. People count this one both ways; chapter 2.2 explains why such ambiguities exist.
+</ListeningCue>
+
+<ListeningCue track="strauss-blue-danube">
+For contrast, a simple triple meter: the waltz in 3/4. Once the main tune starts, the accompaniment goes "oom-pah-pah": bass on one, chords on two and three, and each of those beats can split into two.
+</ListeningCue>
+
+Notation is a convenience, not a law of perception. Two composers can write the same music in 3/4 and in 6/8, and a slow 6/8 played fast enough starts to feel like it has one beat per bar. What listeners actually hear as the beat, and how they find it, is the subject of the next chapter.
+
+<Callout kind="check">
+A song is written in 12/8 at a tempo marking of 60 (meaning 60 felt beats per minute). How many eighth notes are there per second, and what's the IOI between them?
+
+<Answer>
+12/8 has four felt beats per bar, each made of three eighth notes. At 60 beats per minute, each beat lasts one second, so there are three eighth notes per second and the IOI between eighth notes is about 333 ms. (A common confusion is to read "60" as 60 eighth notes per minute; in compound meters, metronome marks almost always count the felt beat.)
+</Answer>
+</Callout>
+
+<Callout kind="verify" title="notation">
+Check the conventions: in compound meters the metronome mark counts the felt beat (for 6/8, a beat three eighth notes long), "C" for common time and cut time as 2/2 (₵), and how often "House of the Rising Sun" is transcribed in 6/8 versus 3/4 or 12/8. Check that *At Last* is usually counted in 12/8.
+</Callout>
+
+## The layers of musical time
+
+<DataTable title="Musical time at a glance" caption="This chapter's terms, from fastest to slowest, and where the rest of the book picks each one up.">
+
+| Layer | What it is | Measured as | Picked up in |
+|---|---|---|---|
+| Onset | The start of a sound event | A moment in time | Chapters 2.3 (accent) and 2.5 (tiny timing shifts) |
+| Inter-onset interval | The gap from one onset to the next | Milliseconds | Throughout Volume II |
+| Subdivision | Faster pulses inside the beat | 2, 3, or 4 per beat | Chapter 2.3 |
+| Beat and tempo | The pulse you tap; its speed | BPM | Chapter 2.2 (how it's found) |
+| Expressive timing | Deliberate bending of the tempo | Local BPM over time | Chapter 2.5 (feel) |
+| Meter | Beats grouped into bars | Time signature | Chapter 2.2 (strong and weak beats) |
+| Phrase, section, form | Spans held by memory | Seconds to minutes | Chapters 1.6, 5.1, 5.5 |
+
+</DataTable>
+
+---
+
+<Callout kind="rewrite" title="What your version should be able to explain">
+1. The continuum of musical timescales, from pitch to form, and the perceptual seam (~50 ms) where events stop being separate; where rhythm lives (~100 ms to ~2 s) and why the upper edge relates to the auditory present.
+2. Onsets and IOIs: why rhythm is mostly the pattern of onsets, not of note lengths; how precise timing perception is.
+3. Tempo: BPM, tempo markings as characters as well as speeds, the metronome and the Beethoven debate, tempo and style, the ~120 BPM peak, tapping at different levels, tempo and emotion.
+4. Drift: why gradual tempo change is hard to hear alone and obvious against a click; what click tracks are for and what they cost.
+5. Expressive timing: phrase arches and phrase-final lengthening (Repp), the runner analogy for ritardandi, why structured timing sounds expressive and random timing sounds sloppy; rubato.
+6. Reading a time signature; simple versus compound; why 6/8 isn't six beats.
+
+**Decisions for your rewrite:**
+
+- **The opening.** I started with "a melody is a plan for when things happen" and moved straight to the timescale ladder. Alternatives: open with the drift experiment (a band speeding up), or with Grieg's accelerando, or with Stockhausen's claim that pitch and rhythm are one thing.
+- **Overlap with 2.2.** Chapter 2.2 also has a table of common meters and explains 6/8 versus 3/4. This chapter now does the *notation* and 2.2 the *perception*. Decide whether to trim 2.2's table to a refresher, or cut this chapter's meter section to a few lines.
+- **How much notation.** This is the only place the book explains time signatures properly. If your readers will never read a score, you could shorten it to the simple/compound idea.
+- **Examples.** Swap in your own: a live recording that audibly speeds up, a pianist whose rubato you love, a 6/8 song you know well.
+
+**Misconceptions to watch for:**
+
+- "Tempo is the speed of the notes." It's the speed of the beat; a fast-sounding song can have a moderate tempo and lots of short notes.
+- "6/8 means six beats in a bar." It's two beats of three.
+- "Great performers keep perfect time." They keep perfect *control* of time, and bend it on purpose, in shapes listeners expect.
+- "A click track makes music better (or worse)." It's a tool with real benefits and real costs; it depends on the aesthetic.
+- "Tempo markings are speeds." They're characters, with rough speed ranges that vary by era and composer.
+</Callout>
+
+## References
+
+<div class="refs">
+
+- London, J. (2012). *Hearing in Time: Psychological Aspects of Musical Meter* (2nd ed.). Oxford University Press.
+- Snyder, B. (2000). *Music and Memory: An Introduction*. MIT Press.
+- Fraisse, P. (1982). Rhythm and tempo. In D. Deutsch (Ed.), *The Psychology of Music* (pp. 149–180). Academic Press.
+- Pöppel, E. (1997). A hierarchical model of temporal perception. *Trends in Cognitive Sciences*, 1(2), 56–61.
+- Stockhausen, K. (1959). ...how time passes... *Die Reihe*, 3, 10–40. (English edition; German original 1957.)
+- Drake, C., & Botte, M.-C. (1993). Tempo sensitivity in auditory sequences: Evidence for a multiple-look model. *Perception & Psychophysics*, 54(3), 277–286.
+- Moelants, D. (2002). Preferred tempo reconsidered. In *Proceedings of the 7th International Conference on Music Perception and Cognition* (pp. 580–583). Sydney.
+- MacDougall, H. G., & Moore, S. T. (2005). Marching to the beat of the same drummer: The spontaneous tempo of human locomotion. *Journal of Applied Physiology*, 99(3), 1164–1173.
+- McKinney, M. F., & Moelants, D. (2006). Ambiguity in tempo perception: What draws listeners to different metrical levels? *Music Perception*, 24(2), 155–166.
+- Gagnon, L., & Peretz, I. (2003). Mode and tempo relative contributions to "happy–sad" judgements in equitone melodies. *Cognition and Emotion*, 17(1), 25–40.
+- Juslin, P. N., & Laukka, P. (2003). Communication of emotions in vocal expression and music performance: Different channels, same code? *Psychological Bulletin*, 129(5), 770–814.
+- Forsén, S., Gray, H. B., Lindgren, L. K. O., & Gray, S. B. (2013). Was something wrong with Beethoven's metronome? *Notices of the American Mathematical Society*, 60(9), 1146–1153.
+- Repp, B. H. (1992). Diversity and commonality in music performance: An analysis of timing microstructure in Schumann's "Träumerei." *Journal of the Acoustical Society of America*, 92(5), 2546–2568.
+- Repp, B. H. (1998). Obligatory "expectations" of expressive timing induced by perception of musical structure. *Psychological Research*, 61(1), 33–43.
+- Todd, N. P. M. (1985). A model of expressive timing in tonal music. *Music Perception*, 3(1), 33–57.
+- Todd, N. P. M. (1992). The dynamics of dynamics: A model of musical expression. *Journal of the Acoustical Society of America*, 91(6), 3540–3550.
+- Friberg, A., & Sundberg, J. (1999). Does music performance allude to locomotion? A model of final ritardandi derived from measurements of stopping runners. *Journal of the Acoustical Society of America*, 105(3), 1469–1484.
+- Hudson, R. (1994). *Stolen Time: The History of Tempo Rubato*. Clarendon Press.
+
+</div>
+
+<Callout kind="verify" title="references">
+Check every reference's details, especially Moelants 2002 (page numbers), Stockhausen's English edition (year and pages), Forsén et al. 2013, and Repp 1998 (volume and pages).
+</Callout>

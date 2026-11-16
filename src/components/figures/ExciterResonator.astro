@@ -1,0 +1,104 @@
+---
+// Every acoustic instrument as exciter → resonator → radiator. The two
+// sustained instruments have a feedback loop (the resonator's vibration
+// controls the exciter), which locks their partials into exact harmonics;
+// the struck drum has none, so its head rings freely in its own modes.
+import Figure from '../ui/Figure.astro';
+
+const BW = 132;
+const BH = 54;
+const COLS = [118, 290, 462];
+type Row = { y: number; name: string; note: string[]; boxes: [string, string][]; feedback: boolean; cls: string };
+const rows: Row[] = [
+  {
+    y: 34,
+    name: 'Violin',
+    note: ['sustained;', 'exactly harmonic'],
+    boxes: [
+      ['Bow', 'grips, slips, grips'],
+      ['String', 'harmonic modes'],
+      ['Bridge and body', 'radiate the sound'],
+    ],
+    feedback: true,
+    cls: 'is-a',
+  },
+  {
+    y: 134,
+    name: 'Clarinet',
+    note: ['sustained;', 'exactly harmonic'],
+    boxes: [
+      ['Reed', 'a valve on the breath'],
+      ['Air column', 'closed-pipe modes'],
+      ['Bell, tone holes', 'let the sound out'],
+    ],
+    feedback: true,
+    cls: 'is-a',
+  },
+  {
+    y: 234,
+    name: 'Drum',
+    note: ['rings, decays;', 'its own modes'],
+    boxes: [
+      ['Stick', 'one brief hit'],
+      ['Drumhead', 'inharmonic modes'],
+      ['Shell and air', 'radiate and damp'],
+    ],
+    feedback: false,
+    cls: 'is-b',
+  },
+];
+const HEAD = ['Exciter', 'Resonator', 'Radiator'];
+---
+
+<Figure
+  title="Exciter, resonator, radiator"
+  caption="Almost every acoustic instrument has three parts. An exciter puts energy in, a resonator decides which frequencies vibrate, and a radiator passes the vibration to the air. In a bowed string or a wind instrument, the resonator also drives the exciter (dashed arrows): the string's vibration decides when the bow slips, and the pressure in the air column decides when the reed opens. That feedback loop holds every partial in an exact whole-number ratio, so the note is sustained and harmonic. A struck drum has no loop: one hit, and the head rings on in its own modes until it dies away."
+>
+  <svg viewBox="0 0 680 310" role="img" aria-label="Exciter, resonator and radiator for violin, clarinet and drum; the violin and clarinet have feedback loops">
+    <defs>
+      <marker id="er-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fig-head" />
+      </marker>
+      <marker id="er-arrow-ctl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fig-head is-ctl" />
+      </marker>
+    </defs>
+
+    {HEAD.map((h, i) => (
+      <text x={COLS[i] + BW / 2} y="20" text-anchor="middle" class="fig-h">{h}</text>
+    ))}
+
+    {rows.map((row) => (
+      <g>
+        <text x="10" y={row.y + 22} class="fig-t">{row.name}</text>
+        {row.note.map((line, i) => (
+          <text x="10" y={row.y + 38 + i * 13} class="fig-s">{line}</text>
+        ))}
+        {row.boxes.map(([t, s], i) => (
+          <g>
+            <rect x={COLS[i]} y={row.y} width={BW} height={BH} rx="8" class={`fig-box ${i === 1 ? row.cls : ''}`} />
+            <text x={COLS[i] + BW / 2} y={row.y + 22} text-anchor="middle" class="fig-t">{t}</text>
+            <text x={COLS[i] + BW / 2} y={row.y + 39} text-anchor="middle" class="fig-s">{s}</text>
+          </g>
+        ))}
+        <line x1={COLS[0] + BW + 2} y1={row.y + 18} x2={COLS[1] - 3} y2={row.y + 18} class="fig-line" marker-end="url(#er-arrow)" />
+        <line x1={COLS[1] + BW + 2} y1={row.y + BH / 2} x2={COLS[2] - 3} y2={row.y + BH / 2} class="fig-line" marker-end="url(#er-arrow)" />
+        <line x1={COLS[2] + BW + 2} y1={row.y + BH / 2} x2={COLS[2] + BW + 30} y2={row.y + BH / 2} class="fig-line" marker-end="url(#er-arrow)" />
+        <path
+          d={`M${COLS[2] + BW + 36},${row.y + BH / 2} q5,-9 10,0 t10,0 t10,0`}
+          class="fig-thin"
+        />
+        {row.feedback && (
+          <g>
+            <path
+              d={`M${COLS[1] + 10},${row.y + BH + 2} C${COLS[1] - 6},${row.y + BH + 22} ${COLS[0] + BW + 6},${row.y + BH + 22} ${COLS[0] + BW - 10},${row.y + BH + 4}`}
+              class="fig-line is-ctl"
+              marker-end="url(#er-arrow-ctl)"
+            />
+            <text x={(COLS[0] + BW + COLS[1]) / 2} y={row.y + BH + 30} text-anchor="middle" class="fig-s">feedback</text>
+          </g>
+        )}
+      </g>
+    ))}
+  </svg>
+</Figure>

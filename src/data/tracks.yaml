@@ -1307,3 +1307,420 @@
     The whole song cycles three chords, C sharp minor, B, A (i, ♭VII, ♭VI):
     natural minor (Aeolian) with no raised 7th, so there is no leading tone.
     The key is from memory; check by ear.
+
+# ---- v2-04 (polyrhythm) ----
+
+- id: mongo-afro-blue
+  title: Afro Blue
+  artist: Mongo Santamaría
+  year: 1959
+  youtube: qt4G7C_dYdw        # Mongo Santamaría - Topic (Mongo's Greatest Hits, ℗ 1959 Fantasy), 3:58
+  spotify: 1dCReIsck6wJjgBpbeuOjs  # Mongo's Greatest Hits, 3:58
+  search: Mongo Santamaria Afro Blue 1959 Fantasy
+  rights: embed-official
+  listened: false
+  notes: >-
+    The jazz-standard model of 3 against 2. The bass and percussion lay down a
+    pulse that can be felt in three per bar while other parts and the melody
+    move in two (or the reverse), in 6/8. Check by ear which part carries
+    which pulse.
+
+- id: rubinstein-fantaisie-impromptu
+  title: Fantaisie-Impromptu in C-sharp minor, Op. 66
+  artist: Frédéric Chopin, Arthur Rubinstein
+  year: 1834
+  youtube: qjLN6xpyaSY        # Arthur Rubinstein - Topic, 5:12
+  spotify: 4hN9p9qHCO2AHaW2jBZXOw  # The Essential Arthur Rubinstein, 5:13
+  search: Chopin Fantaisie-Impromptu Op. 66 Rubinstein
+  rights: embed-official
+  listened: false
+  notes: >-
+    The textbook 4 against 3 in the piano repertoire. The right hand runs in
+    fast groups of four while the left hand plays groups of three in the same
+    time, from the first bars of the fast section. Year is the composition
+    year; check which Rubinstein recording (likely RCA) this is.
+
+- id: ewe-atsiagbekor
+  title: Atsiagbekor Dance
+  artist: Ewe drum and dance ensemble, Anyako (Ghana)
+  year: 1969
+  youtube: X2uYAGJnz0Q        # Release - Topic (Smithsonian Folkways, Ewe Music of Ghana), 7:18
+  spotify: 7jU85gVgkPUgc2VlrDKWOj  # Ewe Music of Ghana (Folkways), 7:18
+  search: Atsiagbekor Ewe Music of Ghana Folkways
+  rights: embed-official
+  listened: false
+  notes: >-
+    Agbekor (Atsiagbekor), the Ewe war-dance music analyzed at length by David
+    Locke. A bell plays the 12-pulse timeline pattern while rattles, a support
+    drum, and a lead drum play parts that cut across it. Field recording;
+    check that the bell is audible and where.
+
+- id: reich-clapping-music
+  title: Clapping Music
+  artist: Steve Reich, Russell Hartenberger
+  year: 1972
+  youtube: WxcNjkA4sS0        # Steve Reich - Topic (Nonesuch, Works 1965-1995, ℗ 1987), 4:49
+  spotify: 5CsQiYEc9glNTs8h7GygyC  # Early Works (Nonesuch), 4:48
+  search: Steve Reich Clapping Music Hartenberger Nonesuch
+  rights: embed-official
+  listened: false
+  notes: >-
+    Two performers clap the same 12-pulse pattern. One keeps it unchanged; the
+    other shifts it one pulse later every so many repetitions, until after
+    twelve shifts the two are back in unison. Phasing in sudden steps rather
+    than the gradual drift of Piano Phase.
+
+- id: king-crimson-discipline
+  title: Discipline
+  artist: King Crimson
+  year: 1981
+  youtube: en5YRCvppIA        # King Crimson official channel, 5:13
+  spotify: 739nt7EHoiy723RNSBVWRk  # Discipline, 5:13
+  search: King Crimson Discipline 1981
+  rights: embed-official
+  listened: false
+  notes: >-
+    Two interlocking guitars (Fripp and Belew) play repeating figures of
+    different lengths, so they drift against each other and realign, over a
+    steadier bass and drums. Often cited as polymeter in rock; check a
+    transcription for the actual figure lengths before quoting numbers.
+
+- id: meshuggah-bleed
+  title: Bleed
+  artist: Meshuggah
+  year: 2008
+  youtube: qc98u-eGzlc        # Reigning Phoenix Music, official video (5:01 edit)
+  spotify: 5p2sCetlJ6D0KiBljKwmLb  # ObZen, 7:23 (album version; the video is an edit)
+  search: Meshuggah Bleed ObZen
+  rights: embed-official
+  listened: false
+  notes: >-
+    The hi-hat or cymbal keeps a steady 4/4 while the guitars and kick drum
+    play a long riff built from groups of uneven length that cycles across
+    the bar lines. A modern metal example of polymeter against a steady
+    meter. The video is shorter than the album version.
+
+# ---------- v5-02: repetition, variation, development ----------
+- id: mozart-twinkle-variations
+  title: "12 Variations on \"Ah, vous dirai-je, maman\", K. 265"
+  artist: Wolfgang Amadeus Mozart; Ronald Brautigam (fortepiano)
+  year: 2001
+  youtube: PebSDzt4FoQ        # Ronald Brautigam - Topic (12:10)
+  spotify: 4Afrdcu2kkdaEUu11zIc8S  # Mozart: Complete Piano Variations (BIS), 12:10
+  search: Mozart 12 Variations Ah vous dirai-je maman K 265 Brautigam
+  rights: embed-official
+  listened: false
+  notes: >-
+    The theme is the French song known in English as Twinkle, Twinkle. Played
+    on a fortepiano (a period instrument), so it sounds lighter than a modern
+    piano. Brautigam takes the repeats, so each variation lasts about 50 s;
+    variation 8 (minor) should start around 6:30 and variation 11 (Adagio)
+    around 9:00. All cue times are estimates; check by ear.
+
+- id: purcell-dido-lament
+  title: "Dido and Aeneas: When I Am Laid in Earth (Dido's Lament)"
+  artist: Henry Purcell; Elin Manahan Thomas, Orchestra of the Age of Enlightenment, Harry Christophers
+  year: 2009
+  youtube: 7OeflJ71x8M        # Elin Manahan Thomas - Topic (4:48)
+  spotify: 1TnmZXmKNTEjdDUgxQTTub  # Purcell: Dido's Lament (2009), 4:50
+  search: Purcell Dido's Lament When I am laid in earth Elin Manahan Thomas
+  rights: embed-official
+  listened: false
+  notes: >-
+    A lament over a ground bass (a repeating bass line that falls chromatically
+    and then cadences). The ground is heard alone first. The recitative "Thy
+    hand, Belinda" may or may not be included on this track; check where the
+    ground starts.
+
+- id: brahms4-finale
+  title: "Symphony No. 4 in E minor, Op. 98: IV. Allegro energico e passionato"
+  artist: Johannes Brahms; Vienna Philharmonic, Carlos Kleiber
+  year: 1981
+  youtube: qPEGGIVV8iw        # auto-generated Topic upload, DG 1981 (Wiener Philharmoniker, Kleiber), 9:17
+  spotify: 5YCEXgNt8AATFFrL0KVdVu  # Brahms: Symphony No. 4 (DG 1981), 9:11
+  search: Brahms Symphony 4 finale Kleiber Vienna Philharmonic
+  rights: embed-official
+  listened: false
+  notes: >-
+    A passacaglia (chaconne) - variations over an eight-bar theme that repeats
+    about thirty times, then a coda. The theme is stated by the winds at the
+    start. The flute solo variation (slow, quiet, in 3/2) should come
+    around 2:30, and the return of the theme in its original form around
+    4:40. Estimates; check by ear.
+
+- id: ray-charles-whatd-i-say
+  title: "What'd I Say (Pts. 1 & 2)"
+  artist: Ray Charles
+  year: 1959
+  youtube: NR3h5t7Pwew        # Ray Charles - Topic (5:08)
+  spotify: 2KQD84JGzWu8bibaWHytjP  # The Atlantic Hits (2019), 5:07
+  search: Ray Charles What'd I Say Pt 1 and 2
+  rights: embed-official
+  listened: false
+  notes: >-
+    Electric-piano riff, then a 12-bar blues. In part 2 (after the fake ending,
+    around 2:40?) Charles trades wordless calls with the Raelettes, the
+    call and response taken from gospel. Times are estimates.
+
+- id: coltrane-favorite-things
+  title: My Favorite Things
+  artist: John Coltrane
+  year: 1961
+  youtube: JQvc-Gkwhow        # John Coltrane - Topic, Stereo 2022 Remaster (13:47)
+  spotify: 5KfVNDCsQHUBMAN9sFC1dl  # My Favorite Things (2022 Remaster), stereo, 13:46
+  search: John Coltrane My Favorite Things 1961 stereo
+  rights: embed-official
+  listened: false
+  notes: >-
+    The Rodgers and Hammerstein waltz played on soprano saxophone. The theme
+    is stated, then the long solos stretch out over a two-chord vamp in place
+    of the song's chord changes. Recorded October 1960, released 1961.
+
+- id: daft-punk-around-the-world
+  title: Around the World
+  artist: Daft Punk
+  year: 1997
+  youtube: dwDns8x3Jb4        # Daft Punk official channel, Official Audio (7:10)
+  spotify: 1pKYYY0dkg23sQQXi0Q5zN  # Homework (1997), 7:10
+  search: Daft Punk Around the World Homework album version
+  rights: embed-official
+  listened: false
+  notes: >-
+    One bass riff and one vocal phrase, repeated for seven minutes, with
+    layers entering and leaving and filters opening and closing. The title
+    phrase is often said to be sung 144 times in the album version; check.
+
+# ---------- v2-01: musical time ----------
+- id: grieg-mountain-king
+  title: "Peer Gynt Suite No. 1, Op. 46: IV. In the Hall of the Mountain King"
+  artist: Edvard Grieg; London Symphony Orchestra
+  year: 1875
+  youtube: CNDvw7d7Zts        # London Symphony Orchestra - Topic, 2:31
+  spotify: 14Qcrx6Dfjvcj0H8oV8oUW  # same LSO track ("The Top 100 of Classical Music"), 2:31
+  search: Grieg In the Hall of the Mountain King London Symphony Orchestra
+  rights: embed-official
+  listened: false
+  notes: >-
+    The textbook accelerando. One short tune repeats over and over, getting
+    louder and faster, until it breaks off. The conductor is not named in the
+    listing; durations match on both services.
+
+- id: chopin-nocturne-op9-2
+  title: "Nocturne in E-flat major, Op. 9 No. 2"
+  artist: Frédéric Chopin; Arthur Rubinstein
+  year: 1832
+  youtube: q0-svpeM-c0        # Arthur Rubinstein - Topic, 4:23
+  spotify: 0Bo3um7BNdatQmY6roA1hW  # "The Original Jacket Collection - Rubinstein Plays Chopin", 4:21
+  search: Chopin Nocturne Op 9 No 2 Rubinstein
+  rights: embed-official
+  listened: false
+  notes: >-
+    A showcase of rubato: the melody stretches and hurries over a steady-ish
+    accompaniment. Rubinstein recorded the nocturnes more than once (1930s,
+    1949–50, 1965); check that the YouTube and Spotify listings are the same
+    recording (4:23 vs 4:21).
+
+- id: satie-gymnopedie-1
+  title: "Gymnopédie No. 1 (Lent et douloureux)"
+  artist: Erik Satie; Pascal Rogé
+  year: 1888
+  youtube: Ey0l-4aGn34        # Pascal Rogé - Topic, 3:11
+  spotify: 4nd6FMCfNFWkbi2dnsf5I3  # "Satie: 3 Gymnopédies; 6 Gnossiennes etc." (Decca, 1984), 3:11
+  search: Satie Gymnopedie No 1 Pascal Roge
+  rights: embed-official
+  listened: false
+  notes: >-
+    Very slow 3/4, marked "Lent et douloureux" (slow and sorrowful): a tempo
+    marking that is mostly a mood. Good for hearing a beat near the slow end
+    of the range.
+
+- id: etta-james-at-last
+  title: At Last
+  artist: Etta James
+  year: 1960
+  youtube: 1qJU8G7gR_g        # Etta James - Topic, 3:00
+  spotify: 4Hhv2vrOTy89HFRcjU3QOx  # album "At Last!", 3:00
+  search: Etta James At Last
+  rights: embed-official
+  listened: false
+  notes: >-
+    A slow ballad usually counted in 12/8: four slow beats per bar, each split
+    into three (listen to the piano's triplets). Check the meter by ear.
+
+- id: animals-rising-sun
+  title: House of the Rising Sun
+  artist: The Animals
+  year: 1964
+  youtube: jpZ9SsH3lUs        # The Animals - Topic, 4:32
+  spotify: 7BY005dacJkbO6EPiOh2wb  # "The Animals" (1964), 4:31
+  search: The Animals House of the Rising Sun
+  rights: embed-official
+  listened: false
+  notes: >-
+    The guitar arpeggio moves in groups of three: commonly written in 6/8
+    (two beats of three) or felt as a slow 3/4-ish sway. Check which counting
+    feels right; it's a good test of simple versus compound.
+
+# ---------- v3-01: intervals and intonation ----------
+
+- id: casals-bach-prelude-1
+  title: "Cello Suite No. 1 in G major, BWV 1007: I. Prelude"
+  artist: Pablo Casals
+  year: 1938
+  youtube: iStjaHt1iMI        # Pablo Casals - Topic (Warner Classics, "Bach - Cello Suites, BWV 1007-1012")
+  spotify: 4JuJNsi77crvbAKtcPDFaW  # "Bach - Cello Suites, BWV 1007-1012" (1988 issue), 2:28
+  search: Pablo Casals Bach Cello Suite 1 Prelude
+  rights: embed-official
+  listened: false
+  notes: >-
+    Casals's famous 1930s recording (the suites were recorded 1936–39; the
+    Prelude's exact session date needs checking). Casals argued for
+    "expressive intonation": raising notes that lead upward, such as the
+    leading tone, and lowering notes that lead downward. Listen for whether
+    the rising semitones sound narrow. Both uploads come from the same Warner
+    album; confirm they are the same transfer.
+
+- id: cher-believe
+  title: Believe
+  artist: Cher
+  year: 1998
+  youtube: nZXRV4MezEw        # Cher (official channel), "Official Music Video [4K Remaster]"
+  spotify: 2goLsvvODILDzeeiT4dAoR  # album "Believe" (1998), 3:59
+  search: Cher Believe
+  rights: embed-official
+  listened: false
+  notes: >-
+    The first big hit to use pitch-correction software (Auto-Tune) as an
+    audible effect: with the correction speed set to its fastest, the voice
+    jumps from one equal-tempered pitch to the next instead of gliding. The
+    effect is clearest in the verses ("Do you believe in life after love").
+    The video edit may differ slightly from the album version; check cue
+    times against the embed actually used.
+
+# ---------- v3-02: scales and tuning systems ----------
+
+- id: king-gizzard-rattlesnake
+  title: Rattlesnake
+  artist: King Gizzard & The Lizard Wizard
+  year: 2017
+  youtube: Q-i1XZc8ZwA        # Flightless Records (the band's label), official video, 7:50
+  spotify: 4HOnIpqP8txGle3UvfjStU  # Flying Microtonal Banana, 7:48
+  search: King Gizzard Lizard Wizard Rattlesnake Flying Microtonal Banana
+  rights: embed-official
+  listened: false
+  notes: >-
+    Opening track of Flying Microtonal Banana, recorded with guitars and bass
+    refretted for 24 equal steps per octave (quarter tones) and a microtonal
+    zurna. The video runs about two seconds longer than the album track; check
+    that the audio is the album version.
+
+- id: collier-bleak-midwinter
+  title: In the Bleak Midwinter
+  artist: Jacob Collier
+  year: 2016
+  youtube: mPZn4x3uOac        # Jacob Collier (official channel), 6:11
+  spotify: 0qiQ5qSWjLOn3CbOtgzzST  # In the Bleak Midwinter (2016 single), 6:12
+  search: Jacob Collier In the Bleak Midwinter
+  rights: embed-official
+  listened: false
+  notes: >-
+    A cappella multitrack arrangement famous for a passage where the harmony
+    pivots by a quarter tone, so the piece ends in a key between two piano
+    keys (often described as G half-sharp). The exact timestamp of the pivot
+    is not sourced; find it by ear.
+
+- id: bashir-taqsim-rast
+  title: "Taqsîm en maqâm Râst"
+  artist: Munir Bashir
+  year: null
+  youtube: TKfuyktecSE        # Munir Bashir - Topic, 6:33
+  spotify: 1Vrzol9wsedYfFpUN4vVMP  # Iraq: The Art of the 'ûd (Ocora Radio France, 2001 release), 6:32
+  search: Munir Bashir Taqsim maqam Rast Ocora
+  rights: embed-official
+  listened: false
+  notes: >-
+    Solo oud improvisation (taqsim) in maqam Rast, whose third and seventh
+    degrees are "neutral", between the piano's major and minor versions. The
+    recording date of the Ocora performance needs checking (the CD is a
+    reissue).
+
+- id: partch-barstow
+  title: "Barstow: Eight Hitchhiker Inscriptions from a Highway Railing at Barstow, California"
+  artist: Harry Partch
+  year: 1969
+  youtube: EZ7tlCxXAfo        # Harry Partch - Topic, 9:21
+  spotify: 5yuWkyvkIPY0A7kvRMbJLn  # The World of Harry Partch (1969), 9:20
+  search: Harry Partch Barstow World of Harry Partch
+  rights: embed-official
+  listened: false
+  notes: >-
+    Partch's setting of graffiti he copied from a highway railing, sung and
+    spoken over his own instruments, built for his 43-tone-per-octave just
+    intonation scale. Durations match the 1969 Columbia recording; confirm
+    the YouTube upload is that recording and not a later one.
+
+# ---- v4-01: acoustic instruments ----
+- id: pahud-syrinx
+  title: Syrinx, L. 129
+  artist: Claude Debussy; Emmanuel Pahud
+  year: 2000
+  youtube: RNjroFNi7mA        # Warner Classics (official), 3:22
+  spotify: 5UgMumN4UnkUharjmOafoM  # "Debussy: Syrinx, Bilitis, La plus que lente…" (2000), 3:22
+  search: Debussy Syrinx Emmanuel Pahud
+  rights: embed-official
+  listened: false
+  notes: >-
+    Unaccompanied flute, so the instrument is completely exposed. Listen to the
+    low notes near the end, which are breathy and nearly pure (a strong
+    fundamental, few harmonics), against the brighter middle register.
+    Same duration on both uploads; confirm they are the same recording.
+
+- id: meyer-mozart-clarinet-adagio
+  title: Clarinet Concerto in A major, K. 622, II. Adagio
+  artist: Wolfgang Amadeus Mozart; Sabine Meyer, Berliner Philharmoniker, Claudio Abbado
+  year: 1999
+  youtube: J4ocVFqn7CY        # Sabine Meyer - Topic (Warner Classics, (p) 1999), 6:35
+  spotify: 2aL3jUjsWSXoXcl6j8Ikzc  # Meyer / Berlin Phil / Abbado, 6:35 (on a 2025 compilation)
+  search: Sabine Meyer Abbado Mozart Clarinet Concerto Adagio
+  rights: embed-official
+  listened: false
+  notes: >-
+    A long, singing clarinet line. Mozart's writing lingers in the clarinet's
+    low register (the chalumeau), where the closed-pipe odd-harmonic sound is
+    strongest. Meyer may play a basset clarinet (extended low range), as Mozart
+    intended; check the album notes. A different Meyer Topic upload,
+    3beEeF_QKag (6:46), is a different recording.
+
+- id: zakir-hussain-jhaptal
+  title: Tabla Solo in Jhaptal
+  artist: Zakir Hussain
+  year: null
+  youtube: q0ozIY7Vn0k        # Zakir Hussain - Topic ("Table Solo in Jhaptal"), 10:40
+  spotify: 6JwGgzSuyqM8QjjZ7tUa68  # "Ravi Shankar Presents Traditional Music of India" (2012 listing), 10:39
+  search: Zakir Hussain Tabla Solo in Jhaptal
+  rights: embed-official
+  listened: false
+  notes: >-
+    Solo tabla in jhaptal (a ten-beat cycle), probably with a repeating melodic
+    accompaniment (lehra) keeping the cycle. Listen for the right-hand drum's
+    clear, ringing pitch (the loaded head's near-harmonic modes) and the left
+    drum's booming tone that bends upward as the heel of the hand presses the
+    head. Recording date unknown; durations match (10:40 / 10:39), so probably
+    the same recording.
+
+- id: oldfield-tubular-bells
+  title: Tubular Bells, Part One
+  artist: Mike Oldfield
+  year: 1973
+  youtube: YjK9IHKKaEk        # Mike Oldfield - Topic, 25:29
+  spotify: 30LYf0cFgMsSbqwJla6UOB  # Tubular Bells Digital Box Set (2009 listing), 25:29
+  search: Mike Oldfield Tubular Bells Part One
+  rights: embed-official
+  listened: false
+  notes: >-
+    Part One ends with Vivian Stanshall announcing the instruments one by one
+    over a repeating bass line, finishing with "...plus tubular bells". The
+    bells enter near the end of the track (roughly the last three minutes;
+    find the exact time). Tubular bells are metal tubes struck at the top;
+    their pitch is a strike note that no single mode supplies. Check which mix
+    the 2009 box-set listing is (original 1973 or the 2009 remix).
